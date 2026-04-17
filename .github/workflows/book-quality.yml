@@ -20,7 +20,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 60
     container:
-      image: python:3.12-slim
+      image: python:3.12
 
     defaults:
       run:
