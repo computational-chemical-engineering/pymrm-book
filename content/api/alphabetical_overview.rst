@@ -1,7 +1,7 @@
 Alphabetical Overview
 =====================
 
-An overview of all functions and classes in the `pymrm package.
+An overview of all functions and classes in the ``pymrm`` package.
 
 .. autosummary::
    :toctree: generated/all
@@ -9,7 +9,7 @@ An overview of all functions and classes in the `pymrm package.
 
    pymrm.convect.clam
    pymrm.convect.construct_convflux_upwind
-   pymrm.convect.construct_convflux_upwind_bc
+   pymrm.convect.construct_convflux_bc
    pymrm.convect.construct_convflux_upwind_int
    pymrm.convect.minmod
    pymrm.convect.muscl
@@ -21,7 +21,6 @@ An overview of all functions and classes in the `pymrm package.
    pymrm.grid.generate_grid
    pymrm.grid.non_uniform_grid
    pymrm.helpers.construct_coefficient_matrix
-   pymrm.helpers.unwrap_bc
    pymrm.interpolate.create_staggered_array
    pymrm.interpolate.interp_cntr_to_stagg
    pymrm.interpolate.interp_cntr_to_stagg_tvd
