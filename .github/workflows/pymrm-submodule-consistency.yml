@@ -2,6 +2,7 @@ name: Check book against latest pymrm
 
 on:
   schedule:
+    # Run every Monday at 05:00 UTC.
     - cron: "0 5 * * 1"
   workflow_dispatch:
 
