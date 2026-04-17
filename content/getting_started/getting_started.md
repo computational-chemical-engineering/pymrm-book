@@ -15,7 +15,7 @@ To use PyMRM locally, install Python 3.10 or newer and create an isolated enviro
 Choose one of the following environment options:
 
 1. **Conda (Anaconda or Miniconda)**:
-   Install [Anaconda](https://www.anaconda.com/products/distribution) or [Miniconda](https://www.anaconda.com/docs/getting-started/miniconda/main), then create and activate an environment:
+   Install [Anaconda](https://www.anaconda.com/products/distribution) or [Miniconda](https://www.anaconda.com/docs/getting-started/miniconda/), then create and activate an environment:
    ```sh
    conda create -n pymrm_env python=3.12
    conda activate pymrm_env
@@ -26,10 +26,11 @@ Choose one of the following environment options:
    py -3.12 -m venv .venv
    .venv\Scripts\activate
    ```
-   In Windows PowerShell, if script execution is blocked, run:
+   In Windows PowerShell, if script execution is blocked, you may need to run:
    ```powershell
    Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned
    ```
+   Only do this if it is permitted by your system or organization security policy.
 
 After activating either environment, install PyMRM:
 
