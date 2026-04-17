@@ -20,11 +20,14 @@ An overview of all functions and classes in the ``pymrm`` package.
    pymrm.convect.vanleer
    pymrm.coupling.construct_interface_matrices
    pymrm.coupling.translate_indices_to_larger_array
+   pymrm.coupling.update_array_indices
    pymrm.coupling.update_csc_array_indices
+   pymrm.coupling.update_csr_array_indices
    pymrm.grid.generate_grid
    pymrm.grid.non_uniform_grid
    pymrm.helpers.construct_coefficient_matrix
    pymrm.interpolate.compute_boundary_values
+   pymrm.interpolate.construct_boundary_value_matrices
    pymrm.interpolate.create_staggered_array
    pymrm.interpolate.interp_cntr_to_stagg
    pymrm.interpolate.interp_cntr_to_stagg_tvd
