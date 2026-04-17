@@ -1,0 +1,1281 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>pymrm.numjac &#8212; Multiphase Reactor Modeling using PyMRM</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/pymrm/numjac';</script>
+    <link rel="shortcut icon" href="../../_static/logo.png"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../content/index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/logo.png" class="logo__image only-light" alt="Multiphase Reactor Modeling using PyMRM - Home"/>
+    <script>document.write(`<img src="../../_static/logo.png" class="logo__image only-dark" alt="Multiphase Reactor Modeling using PyMRM - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../content/index.html">
+                    <svg version="1.1" width="1.0em" height="1.0em" class="sd-octicon sd-octicon-home" viewBox="0 0 16 16" aria-hidden="true"><path fill-rule="evenodd" d="M8.156 1.835a.25.25 0 00-.312 0l-5.25 4.2a.25.25 0 00-.094.196v7.019c0 .138.112.25.25.25H5.5V8.25a.75.75 0 01.75-.75h3.5a.75.75 0 01.75.75v5.25h2.75a.25.25 0 00.25-.25V6.23a.25.25 0 00-.094-.195l-5.25-4.2zM6.906.664a1.75 1.75 0 012.187 0l5.25 4.2c.415.332.657.835.657 1.367v7.019A1.75 1.75 0 0113.25 15h-3.5a.75.75 0 01-.75-.75V9H7v5.25a.75.75 0 01-.75.75h-3.5A1.75 1.75 0 011 13.25V6.23c0-.531.242-1.034.657-1.366l5.25-4.2h-.001z"></path></svg> Multiphase Reactor Modeling using PyMRM
+                </a>
+            </li>
+        </ul>
+        <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../content/getting_started/getting_started.html">Getting Started with PyMRM</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../content/tutorials/tutorials.html">Tutorials</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../pymrm/tutorials/introduction_and_start.html">Introduction to PyMRM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../pymrm/tutorials/stationary_diffusion.html">Stationary Diffusion Equations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../pymrm/tutorials/diffusion_first_order_kinetics.html">Diffusion: First-order Kinetics, Multi-Component, Unsteady</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../pymrm/tutorials/nonlinear_kinetics.html">Nonlinear Kinetics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../pymrm/tutorials/diffusion_2D.html">2D Diffusion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../pymrm/tutorials/diffusion_model_class.html">Diffusion-Reaction Class Implementation</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../content/examples/examples.html">Examples</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../pymrm/examples/counter_diffusion_reaction.html">Counter diffusion and reaction in a slab</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../pymrm/examples/particle_model_effectiveness.html">Particle model: diffusion + first order reaction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../pymrm/examples/counter_current_reaction.html">Counter-current convection and reaction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../pymrm/examples/tvd.html">TVD schemes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../pymrm/examples/unsteady_diffusion_reaction_2D.html">Unsteady diffusion + reaction 1/2/3D</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../pymrm/examples/unsteady_convection_reaction.html">Unsteady convection + reaction 1D</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../pymrm/examples/darcy_flow.html">Darcy flow in a 2D domain with varying permeability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../pymrm/examples/lid_driven_cavity.html">Lid-driven cavity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../pymrm/examples/membrane_module_2D.html">Membrane Model</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../content/exercises/index.html">Exercises</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../content/exercises/ode-solving-for-reactor-modeling.html">1. ODE Solving for Reactor Modeling</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../content/exercises/first-order-reaction-in-a-batch-reactor.html">1.1. First order reaction in a batch reactor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../content/exercises/equilibrium-consecutive-batch-reactions.html">1.2. Equilibrium consecutive batch reactions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../content/exercises/steady-state-1d-fixed-bed-reactor-model-first-order-exothermal-reaction.html">1.3. Steady state 1D fixed bed reactor model: first order exothermal reaction</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../content/exercises/unsteady-convection-reaction-equations.html">2. Unsteady Convection-Reaction equations</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../content/exercises/convection-of-one-species-using-different-schemes.html">2.1. Convection of one species using different schemes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../content/exercises/multicomponent-convection-reaction-with-first-order-chemical-kinetics.html">2.2. Multicomponent convection-reaction with first-order chemical kinetics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../content/exercises/multicomponent-convection-reaction-with-general-chemical-kinetics.html">2.3. Multicomponent convection-reaction with general chemical kinetics</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../content/exercises/implicit-convection-diffusion-reaction.html">3. Implicit convection-diffusion-reaction</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../content/exercises/solving-a-one-component-1d-diffusion-reaction-equation.html">3.1. Solving a one-component 1D diffusion-reaction equation </a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../content/exercises/multi-component-1d-counter-diffusion-with-reaction.html">3.2. Multi-component 1D counter-diffusion with reaction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../content/exercises/multi-component-1d-counter-current-convection-with-reaction.html">3.3. Multi-component 1D counter-current convection with reaction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../content/exercises/convection-dispersion-reaction-in-a-1d-reactor-model.html">3.4. Convection-dispersion-reaction in a 1D reactor model </a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../content/exercises/particle-model-first-order-reaction.html">3.5. Particle model: first order reaction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../content/exercises/weisz-and-hicks-model.html">3.6. Weisz and Hicks model</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../content/exercises/modeling-dispersion-and-mass-transfer.html">4. Modeling Dispersion and Mass Transfer</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../content/exercises/counter-current-column-processes.html">4.1. Counter-current column processes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../content/exercises/reactor-model-for-heterogeneous-bubble-columns.html">4.2. Reactor model for heterogeneous bubble columns</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../content/exercises/kunii-and-levenspiel-model-for-a-fine-particle-fluidized-bed.html">4.3. Kunii and Levenspiel model for a 'fine particle' fluidized bed</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../content/exercises/computing-residence-time-distributions.html">4.4. Computing residence time distributions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../content/exercises/the-westerterp-wave-model-for-axial-dispersion-in-packed-beds.html">4.5. The Westerterp wave-model for axial dispersion in packed beds</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../content/exercises/modeling-a-desiccant-dryer.html">4.6. Modeling a desiccant dryer</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../content/exercises/2d-reactor-models.html">5. 2D Reactor Models</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../content/exercises/axial-convection-with-radial-dispersion.html">5.1. Axial convection with radial dispersion</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../content/exercises/diffusion-reaction-in-a-cylindrical-pore.html">5.2. Diffusion-reaction in a cylindrical pore</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../content/exercises/2d-membrane-fixed-bed-reactor-model.html">5.3. 2D Membrane Fixed Bed Reactor Model</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../content/exercises/steady-state-2d-fixed-bed-reactor-model-first-order-exothermal-reaction.html">5.4. Steady-state 2D fixed bed reactor model: first order exothermal reaction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../content/exercises/a-2d-gas-solid-fluidized-bed.html">5.5. A 2D Gas-solid fluidized bed</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../content/exercises/a-2d-bubble-column-model.html">5.6. A 2D Bubble column model</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../content/exercises/taylor-dispersion.html">5.7. Taylor Dispersion</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../content/exercises/generalized-maxwell-stefan-equations.html">6. Generalized Maxwell-Stefan equations</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../content/exercises/ternary-diffusion-with-maxwell-stefan-equations.html">6.1. Ternary diffusion with Maxwell-Stefan equations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../content/exercises/dehydrogenation-of-ethanol.html">6.2. Dehydrogenation of ethanol</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../content/exercises/mass-transfer-limitations-using-maxwell-stefan-equations.html">6.3. Mass transfer limitations using Maxwell-Stefan equations</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../content/exercises/advanced-reactor-modeling.html">7. Advanced Reactor Modeling</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../content/exercises/coupled-batch-reactor-and-particle-model.html">7.1. Coupled batch reactor and particle model</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../content/exercises/particle-model-coupled-to-column-model.html">7.2. Particle model coupled to column model</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../content/exercises/pressure-velocity-coupling-in-column-models.html">7.3. Pressure-velocity coupling in column models</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../content/api/index.html">API Reference</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../content/api/api.html">Modules</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../content/api/overview/pymrm.convect.html">pymrm.convect</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../content/api/overview/pymrm.coupling.html">pymrm.coupling</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../content/api/overview/pymrm.grid.html">pymrm.grid</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../content/api/overview/pymrm.helpers.html">pymrm.helpers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../content/api/overview/pymrm.interpolate.html">pymrm.interpolate</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../content/api/overview/pymrm.numjac.html">pymrm.numjac</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../content/api/overview/pymrm.operators.html">pymrm.operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../content/api/overview/pymrm.solve.html">pymrm.solve</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../content/api/alphabetical_overview.html">All Functions and Classes</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../content/api/generated/all/pymrm.convect.clam.html">pymrm.convect.clam</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../content/api/generated/all/pymrm.convect.construct_convflux_bc.html">pymrm.convect.construct_convflux_bc</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../content/api/generated/all/pymrm.convect.construct_convflux_upwind.html">pymrm.convect.construct_convflux_upwind</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../content/api/generated/all/pymrm.convect.construct_convflux_upwind_int.html">pymrm.convect.construct_convflux_upwind_int</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../content/api/generated/all/pymrm.convect.minmod.html">pymrm.convect.minmod</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../content/api/generated/all/pymrm.convect.muscl.html">pymrm.convect.muscl</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../content/api/generated/all/pymrm.convect.osher.html">pymrm.convect.osher</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../content/api/generated/all/pymrm.convect.smart.html">pymrm.convect.smart</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../content/api/generated/all/pymrm.convect.stoic.html">pymrm.convect.stoic</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../content/api/generated/all/pymrm.convect.upwind.html">pymrm.convect.upwind</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../content/api/generated/all/pymrm.convect.vanleer.html">pymrm.convect.vanleer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../content/api/generated/all/pymrm.coupling.construct_interface_matrices.html">pymrm.coupling.construct_interface_matrices</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../content/api/generated/all/pymrm.coupling.translate_indices_to_larger_array.html">pymrm.coupling.translate_indices_to_larger_array</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../content/api/generated/all/pymrm.coupling.update_array_indices.html">pymrm.coupling.update_array_indices</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../content/api/generated/all/pymrm.coupling.update_csc_array_indices.html">pymrm.coupling.update_csc_array_indices</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../content/api/generated/all/pymrm.coupling.update_csr_array_indices.html">pymrm.coupling.update_csr_array_indices</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../content/api/generated/all/pymrm.grid.generate_grid.html">pymrm.grid.generate_grid</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../content/api/generated/all/pymrm.grid.non_uniform_grid.html">pymrm.grid.non_uniform_grid</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../content/api/generated/all/pymrm.helpers.construct_coefficient_matrix.html">pymrm.helpers.construct_coefficient_matrix</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../content/api/generated/all/pymrm.interpolate.compute_boundary_values.html">pymrm.interpolate.compute_boundary_values</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../content/api/generated/all/pymrm.interpolate.construct_boundary_value_matrices.html">pymrm.interpolate.construct_boundary_value_matrices</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../content/api/generated/all/pymrm.interpolate.create_staggered_array.html">pymrm.interpolate.create_staggered_array</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../content/api/generated/all/pymrm.interpolate.interp_cntr_to_stagg.html">pymrm.interpolate.interp_cntr_to_stagg</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../content/api/generated/all/pymrm.interpolate.interp_cntr_to_stagg_tvd.html">pymrm.interpolate.interp_cntr_to_stagg_tvd</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../content/api/generated/all/pymrm.interpolate.interp_stagg_to_cntr.html">pymrm.interpolate.interp_stagg_to_cntr</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../content/api/generated/all/pymrm.numjac.NumJac.html">pymrm.numjac.NumJac</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../content/api/generated/all/pymrm.numjac.stencil_block_diagonals.html">pymrm.numjac.stencil_block_diagonals</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../content/api/generated/all/pymrm.operators.construct_div.html">pymrm.operators.construct_div</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../content/api/generated/all/pymrm.operators.construct_grad.html">pymrm.operators.construct_grad</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../content/api/generated/all/pymrm.operators.construct_grad_bc.html">pymrm.operators.construct_grad_bc</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../content/api/generated/all/pymrm.operators.construct_grad_int.html">pymrm.operators.construct_grad_int</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../content/api/generated/all/pymrm.solve.clip_approach.html">pymrm.solve.clip_approach</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../content/api/generated/all/pymrm.solve.newton.html">pymrm.solve.newton</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/eajfpeters/pymrm-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/eajfpeters/pymrm-book/issues/new?title=Issue%20on%20page%20%2F_modules/pymrm/numjac.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1></h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <h1>Source code for pymrm.numjac</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;Numerical Jacobian construction with sparse stencil support.&quot;&quot;&quot;</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scipy.sparse</span><span class="w"> </span><span class="kn">import</span> <span class="n">csc_array</span><span class="p">,</span> <span class="n">csr_array</span><span class="p">,</span> <span class="n">sparray</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scipy.sparse.csgraph</span><span class="w"> </span><span class="kn">import</span> <span class="n">reverse_cuthill_mckee</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">numba</span><span class="w"> </span><span class="kn">import</span> <span class="n">njit</span><span class="p">,</span> <span class="n">prange</span>
+
+
+<div class="viewcode-block" id="expand_dependencies"><a class="viewcode-back" href="../../pymrm/docs/sphinx/pymrm.html#pymrm.numjac.expand_dependencies">[docs]</a><span class="k">def</span><span class="w"> </span><span class="nf">expand_dependencies</span><span class="p">(</span><span class="n">shape_in</span><span class="p">,</span> <span class="n">shape_out</span><span class="p">,</span> <span class="n">dependencies</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Expand compact dependency definitions into fully explicit tuples.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    shape_in, shape_out : tuple[int, ...]</span>
+<span class="sd">        Input and output field shapes.</span>
+<span class="sd">    dependencies : tuple or list</span>
+<span class="sd">        Dependency specification in PyMRM notation.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    list[tuple]</span>
+<span class="sd">        Expanded dependencies in the canonical form</span>
+<span class="sd">        ``(index_in, index_out, fixed_axes, periodic_axes)``.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1"># Helper functions</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">slice_to_list</span><span class="p">(</span><span class="n">slc</span><span class="p">,</span> <span class="n">dim_size</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="o">*</span><span class="n">slc</span><span class="o">.</span><span class="n">indices</span><span class="p">(</span><span class="n">dim_size</span><span class="p">)))</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">expand_axis</span><span class="p">(</span><span class="n">axis_val</span><span class="p">,</span> <span class="n">dim_size</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Expand a single axis value which could be:</span>
+<span class="sd">        - int</span>
+<span class="sd">        - slice</span>
+<span class="sd">        - list of ints/slices</span>
+<span class="sd">        - range</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">axis_val</span><span class="p">,</span> <span class="nb">int</span><span class="p">):</span>
+            <span class="c1"># Single integer, no expansion needed</span>
+            <span class="k">return</span> <span class="p">[</span><span class="n">axis_val</span><span class="p">]</span>
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">axis_val</span><span class="p">,</span> <span class="nb">slice</span><span class="p">):</span>
+            <span class="c1"># Expand slice</span>
+            <span class="k">return</span> <span class="n">slice_to_list</span><span class="p">(</span><span class="n">axis_val</span><span class="p">,</span> <span class="n">dim_size</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">axis_val</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+            <span class="c1"># Could be a list of integers or slices</span>
+            <span class="n">expanded_list</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">axis_val</span><span class="p">:</span>
+                <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="nb">int</span><span class="p">):</span>
+                    <span class="n">expanded_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+                <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="nb">slice</span><span class="p">):</span>
+                    <span class="n">expanded_list</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">slice_to_list</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">dim_size</span><span class="p">))</span>
+                <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="nb">range</span><span class="p">):</span>
+                    <span class="n">expanded_list</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">v</span><span class="p">))</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                        <span class="s2">&quot;Unsupported element in list for axis expansion: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                            <span class="nb">type</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+                        <span class="p">)</span>
+                    <span class="p">)</span>
+            <span class="k">return</span> <span class="n">expanded_list</span>
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">axis_val</span><span class="p">,</span> <span class="nb">range</span><span class="p">):</span>
+            <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="n">axis_val</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="s2">&quot;Unsupported type in axis specification: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">axis_val</span><span class="p">))</span>
+            <span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">expand_index</span><span class="p">(</span><span class="n">idx</span><span class="p">,</span> <span class="n">shape</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Expand a single index tuple. The index can contain ints, slices, lists, or ranges.</span>
+<span class="sd">        Returns a list of fully expanded tuples, or [None] if idx is None.</span>
+
+<span class="sd">        Parameters:</span>
+<span class="sd">        - idx (tuple): Index tuple to expand.</span>
+<span class="sd">        - shape (tuple): Shape of the array.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">        - list: Expanded list of tuples.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">idx</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Index must be a tuple or None.&quot;</span><span class="p">)</span>
+
+        <span class="n">expanded_dims</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">val</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">idx</span><span class="p">):</span>
+            <span class="n">expanded_dims</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">expand_axis</span><span class="p">(</span><span class="n">val</span><span class="p">,</span> <span class="n">shape</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span>
+
+        <span class="c1"># Cartesian product of all expanded dimensions</span>
+        <span class="kn">from</span><span class="w"> </span><span class="nn">itertools</span><span class="w"> </span><span class="kn">import</span> <span class="n">product</span>
+
+        <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="n">product</span><span class="p">(</span><span class="o">*</span><span class="n">expanded_dims</span><span class="p">))</span>
+
+    <span class="c1"># Normalize dependencies to a list</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">dependencies</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">):</span>
+        <span class="n">dependencies</span> <span class="o">=</span> <span class="p">[</span><span class="n">dependencies</span><span class="p">]</span>
+
+    <span class="c1"># Convert shorthand notation to full triple form</span>
+    <span class="n">normalized_deps</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">dep</span> <span class="ow">in</span> <span class="n">dependencies</span><span class="p">:</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">dep</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Each dependency must be a tuple.&quot;</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">dep</span><span class="p">)</span> <span class="o">==</span> <span class="mi">3</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">dep</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="nb">tuple</span><span class="p">):</span>
+            <span class="c1"># Almost in full, assuming no periodic axes</span>
+            <span class="n">index_in</span><span class="p">,</span> <span class="n">index_out</span><span class="p">,</span> <span class="n">fixed_axes</span> <span class="o">=</span> <span class="n">dep</span>
+            <span class="n">periodic_axes</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">elif</span> <span class="nb">len</span><span class="p">(</span><span class="n">dep</span><span class="p">)</span> <span class="o">==</span> <span class="mi">4</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">dep</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="nb">tuple</span><span class="p">):</span>
+            <span class="c1"># Already in full form</span>
+            <span class="n">index_in</span><span class="p">,</span> <span class="n">index_out</span><span class="p">,</span> <span class="n">fixed_axes</span><span class="p">,</span> <span class="n">periodic_axes</span> <span class="o">=</span> <span class="n">dep</span>
+            <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">periodic_axes</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">fixed_axes</span><span class="p">:</span>
+                    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Axis cannot be both fixed and periodic.&quot;</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">shape_in</span><span class="p">[</span><span class="n">d</span><span class="p">]</span> <span class="o">!=</span> <span class="n">shape_out</span><span class="p">[</span><span class="n">d</span><span class="p">]:</span>
+                    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                        <span class="s2">&quot;Periodic axes must have the same size in input and output shapes.&quot;</span>
+                    <span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c1"># Shorthand form (e.g., (0,1,0))</span>
+            <span class="n">index_in</span> <span class="o">=</span> <span class="n">dep</span>
+            <span class="n">index_out</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,)</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">shape_out</span><span class="p">)</span>
+            <span class="n">fixed_axes</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="n">periodic_axes</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="c1"># Ensure fixed_axes is a list</span>
+        <span class="k">if</span> <span class="n">fixed_axes</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">fixed_axes</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">elif</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">fixed_axes</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;fixed_axes_list must be a list or None.&quot;</span><span class="p">)</span>
+
+        <span class="c1"># Ensure periodic_axes is a list</span>
+        <span class="k">if</span> <span class="n">periodic_axes</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">periodic_axes</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">elif</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">periodic_axes</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;periodic_axes_list must be a list or None.&quot;</span><span class="p">)</span>
+
+        <span class="n">normalized_deps</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">index_in</span><span class="p">,</span> <span class="n">index_out</span><span class="p">,</span> <span class="n">fixed_axes</span><span class="p">,</span> <span class="n">periodic_axes</span><span class="p">))</span>
+
+    <span class="c1"># Now expand reference and dependent indices</span>
+    <span class="n">expanded_deps</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">idx_in</span><span class="p">,</span> <span class="n">idx_out</span><span class="p">,</span> <span class="n">fixed_axes</span><span class="p">,</span> <span class="n">periodic_axes</span> <span class="ow">in</span> <span class="n">normalized_deps</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">idx_out</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">fixed_axes</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                    <span class="s2">&quot;Fixed axes are not allowed when the out-index is None.&quot;</span>
+                <span class="p">)</span>
+            <span class="n">idx_out</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,)</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">shape_out</span><span class="p">)</span>
+        <span class="n">in_expanded</span> <span class="o">=</span> <span class="n">expand_index</span><span class="p">(</span><span class="n">idx_in</span><span class="p">,</span> <span class="n">shape_in</span><span class="p">)</span>  <span class="c1"># list of tuples</span>
+        <span class="n">out_expanded</span> <span class="o">=</span> <span class="n">expand_index</span><span class="p">(</span><span class="n">idx_out</span><span class="p">,</span> <span class="n">shape_out</span><span class="p">)</span>  <span class="c1"># list of tuples or [None]</span>
+
+        <span class="k">for</span> <span class="n">idx_out</span> <span class="ow">in</span> <span class="n">out_expanded</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">idx_in</span> <span class="ow">in</span> <span class="n">in_expanded</span><span class="p">:</span>
+                <span class="n">expanded_deps</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">idx_in</span><span class="p">,</span> <span class="n">idx_out</span><span class="p">,</span> <span class="n">fixed_axes</span><span class="p">,</span> <span class="n">periodic_axes</span><span class="p">))</span>
+
+    <span class="k">return</span> <span class="n">expanded_deps</span></div>
+
+
+<div class="viewcode-block" id="ravel_index_numba"><a class="viewcode-back" href="../../pymrm/docs/sphinx/pymrm.html#pymrm.numjac.ravel_index_numba">[docs]</a><span class="nd">@njit</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">ravel_index_numba</span><span class="p">(</span><span class="n">shape</span><span class="p">,</span> <span class="n">index</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Convert a multidimensional index to a flat index.</span>
+
+<span class="sd">    Parameters:</span>
+<span class="sd">    - shape (tuple): Shape of the multidimensional array.</span>
+<span class="sd">    - index (tuple): Multidimensional index.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">    - int: Flat (linear) index.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">lin_idx</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">shape</span><span class="p">)):</span>
+        <span class="n">lin_idx</span> <span class="o">=</span> <span class="n">lin_idx</span> <span class="o">*</span> <span class="n">shape</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="n">index</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">lin_idx</span></div>
+
+
+<div class="viewcode-block" id="unravel_index_numba"><a class="viewcode-back" href="../../pymrm/docs/sphinx/pymrm.html#pymrm.numjac.unravel_index_numba">[docs]</a><span class="nd">@njit</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">unravel_index_numba</span><span class="p">(</span><span class="n">lin_idx</span><span class="p">,</span> <span class="n">shape</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Convert a flat (linear) index to a multidimensional index.</span>
+
+<span class="sd">    Parameters:</span>
+<span class="sd">    - lin_idx (int): Flat index.</span>
+<span class="sd">    - shape (tuple): Shape of the multidimensional array.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">    - np.ndarray: Multidimensional index.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">idx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">shape</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int64</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">shape</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+        <span class="n">idx</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">lin_idx</span> <span class="o">%</span> <span class="n">shape</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+        <span class="n">lin_idx</span> <span class="o">//=</span> <span class="n">shape</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">idx</span></div>
+
+
+<div class="viewcode-block" id="iterate_over_entries"><a class="viewcode-back" href="../../pymrm/docs/sphinx/pymrm.html#pymrm.numjac.iterate_over_entries">[docs]</a><span class="nd">@njit</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">iterate_over_entries</span><span class="p">(</span>
+    <span class="n">shape_in</span><span class="p">,</span> <span class="n">shape_out</span><span class="p">,</span> <span class="n">shape_rel</span><span class="p">,</span> <span class="n">idx_in</span><span class="p">,</span> <span class="n">idx_out</span><span class="p">,</span> <span class="n">row_indices</span><span class="p">,</span> <span class="n">col_indices</span><span class="p">,</span> <span class="n">entry_idx</span>
+<span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Iterate over all valid relative entries defined by shape_rel and fill row_indices and col_indices.</span>
+
+<span class="sd">    Parameters:</span>
+<span class="sd">    - shape_in (np.ndarray): Shape of the input array.</span>
+<span class="sd">    - shape_out (np.ndarray): Shape of the output array.</span>
+<span class="sd">    - shape_rel (np.ndarray): Shape of the relative axes.</span>
+<span class="sd">    - idx_in (np.ndarray): Input position array.</span>
+<span class="sd">    - idx_out (np.ndarray): Output position array.</span>
+<span class="sd">    - row_indices (np.ndarray): Preallocated array for row indices.</span>
+<span class="sd">    - col_indices (np.ndarray): Preallocated array for column indices.</span>
+<span class="sd">    - entry_idx (int): Starting index in the row_indices/col_indices arrays.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">    - int: Updated index after filling in entries.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">num_dims</span> <span class="o">=</span> <span class="n">shape_in</span><span class="o">.</span><span class="n">size</span>
+    <span class="n">size_lin</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_dims</span><span class="p">):</span>
+        <span class="n">size_lin</span> <span class="o">*=</span> <span class="n">shape_rel</span><span class="p">[</span><span class="n">d</span><span class="p">]</span>
+
+    <span class="n">out_idx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">(</span><span class="n">num_dims</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int64</span><span class="p">)</span>
+    <span class="n">in_idx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">(</span><span class="n">num_dims</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int64</span><span class="p">)</span>
+
+    <span class="n">current_idx</span> <span class="o">=</span> <span class="n">entry_idx</span>
+    <span class="k">for</span> <span class="n">idx_lin</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">size_lin</span><span class="p">):</span>
+        <span class="n">idx_rel</span> <span class="o">=</span> <span class="n">unravel_index_numba</span><span class="p">(</span><span class="n">idx_lin</span><span class="p">,</span> <span class="n">shape_rel</span><span class="p">)</span>
+
+        <span class="c1"># Compute absolute indices for output and input</span>
+        <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_dims</span><span class="p">):</span>
+            <span class="c1"># out position modulo shape</span>
+            <span class="n">out_idx</span><span class="p">[</span><span class="n">d</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">idx_out</span><span class="p">[</span><span class="n">d</span><span class="p">]</span> <span class="o">+</span> <span class="n">idx_rel</span><span class="p">[</span><span class="n">d</span><span class="p">])</span> <span class="o">%</span> <span class="n">shape_out</span><span class="p">[</span><span class="n">d</span><span class="p">]</span>
+            <span class="c1"># in position modulo shape</span>
+            <span class="n">in_idx</span><span class="p">[</span><span class="n">d</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">idx_in</span><span class="p">[</span><span class="n">d</span><span class="p">]</span> <span class="o">+</span> <span class="n">idx_rel</span><span class="p">[</span><span class="n">d</span><span class="p">])</span> <span class="o">%</span> <span class="n">shape_in</span><span class="p">[</span><span class="n">d</span><span class="p">]</span>
+
+        <span class="c1"># Convert multidimensional indices to linear form</span>
+        <span class="n">row_indices</span><span class="p">[</span><span class="n">current_idx</span><span class="p">]</span> <span class="o">=</span> <span class="n">ravel_index_numba</span><span class="p">(</span><span class="n">shape_out</span><span class="p">,</span> <span class="n">out_idx</span><span class="p">)</span>
+        <span class="n">col_indices</span><span class="p">[</span><span class="n">current_idx</span><span class="p">]</span> <span class="o">=</span> <span class="n">ravel_index_numba</span><span class="p">(</span><span class="n">shape_in</span><span class="p">,</span> <span class="n">in_idx</span><span class="p">)</span>
+        <span class="n">current_idx</span> <span class="o">+=</span> <span class="mi">1</span>
+
+    <span class="k">return</span> <span class="n">current_idx</span></div>
+
+
+<div class="viewcode-block" id="generate_sparsity_pattern"><a class="viewcode-back" href="../../pymrm/docs/sphinx/pymrm.html#pymrm.numjac.generate_sparsity_pattern">[docs]</a><span class="k">def</span><span class="w"> </span><span class="nf">generate_sparsity_pattern</span><span class="p">(</span><span class="n">shape_in</span><span class="p">,</span> <span class="n">shape_out</span><span class="p">,</span> <span class="n">dependencies</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;csc&quot;</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Generate row and column indices for the sparse matrix representation of a stencil pattern.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    shape_in : tuple</span>
+<span class="sd">        Shape of the input array.</span>
+<span class="sd">    shape_out : tuple</span>
+<span class="sd">        Shape of the output array.</span>
+<span class="sd">    dependencies : list</span>
+<span class="sd">        List of dependencies in PyMRM dependency notation.</span>
+<span class="sd">    format : {&#39;csc&#39;, &#39;csr&#39;}</span>
+<span class="sd">        Sparse format, ``&#39;csc&#39;`` or ``&#39;csr&#39;``. Controls sort order:</span>
+<span class="sd">        column-major for CSC (default), row-major for CSR.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    tuple</span>
+<span class="sd">        ``(row_indices, col_indices)`` for the sparse pattern.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">shape_in</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">shape_in</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int64</span><span class="p">)</span>
+    <span class="n">shape_out</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">shape_out</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int64</span><span class="p">)</span>
+    <span class="n">num_dims</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">shape_in</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">num_dims</span> <span class="o">!=</span> <span class="nb">len</span><span class="p">(</span><span class="n">shape_out</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+            <span class="s2">&quot;Input and output shapes must have the same number of dimensions.&quot;</span>
+        <span class="p">)</span>
+
+    <span class="c1"># Estimate total number of non-zero elements needed</span>
+    <span class="n">total_elements</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">dep</span> <span class="ow">in</span> <span class="n">dependencies</span><span class="p">:</span>
+        <span class="n">idx_in</span><span class="p">,</span> <span class="n">idx_out</span><span class="p">,</span> <span class="n">fixed_axes</span><span class="p">,</span> <span class="n">periodic_axes</span> <span class="o">=</span> <span class="n">dep</span>
+        <span class="n">idx_in_arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">idx_in</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int64</span><span class="p">)</span>
+        <span class="n">shape_rel</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">minimum</span><span class="p">(</span>
+            <span class="n">shape_in</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">minimum</span><span class="p">(</span><span class="o">-</span><span class="n">idx_in_arr</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">shape_out</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">minimum</span><span class="p">(</span><span class="n">idx_in_arr</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="p">)</span>
+        <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">fixed_axes</span><span class="p">:</span>
+            <span class="n">shape_rel</span><span class="p">[</span><span class="n">d</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">periodic_axes</span><span class="p">:</span>
+            <span class="n">shape_rel</span><span class="p">[</span><span class="n">d</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">minimum</span><span class="p">(</span><span class="n">shape_in</span><span class="p">[</span><span class="n">d</span><span class="p">],</span> <span class="n">shape_out</span><span class="p">[</span><span class="n">d</span><span class="p">])</span>
+        <span class="n">shape_rel</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">maximum</span><span class="p">(</span><span class="n">shape_rel</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="n">total_elements</span> <span class="o">+=</span> <span class="n">np</span><span class="o">.</span><span class="n">prod</span><span class="p">(</span><span class="n">shape_rel</span><span class="p">)</span>
+
+    <span class="c1"># Preallocate arrays for row and col indices</span>
+    <span class="n">row_indices</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">(</span><span class="n">total_elements</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int64</span><span class="p">)</span>
+    <span class="n">col_indices</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">(</span><span class="n">total_elements</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int64</span><span class="p">)</span>
+
+    <span class="n">entry_index</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">dep</span> <span class="ow">in</span> <span class="n">dependencies</span><span class="p">:</span>
+        <span class="n">idx_in</span><span class="p">,</span> <span class="n">idx_out</span><span class="p">,</span> <span class="n">fixed_axes</span><span class="p">,</span> <span class="n">periodic_axes</span> <span class="o">=</span> <span class="n">dep</span>
+        <span class="n">idx_in_arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">idx_in</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int64</span><span class="p">)</span>
+
+        <span class="c1"># Adjust shape_rel for periodic and fixed axes</span>
+        <span class="c1"># Adjust idx_out and idx_in so that one of them starts at zero for relative indexing</span>
+        <span class="c1"># This reduces complexity when computing final positions.</span>
+        <span class="n">idx_out_arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">maximum</span><span class="p">(</span><span class="o">-</span><span class="n">idx_in_arr</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="n">idx_in_arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">maximum</span><span class="p">(</span><span class="n">idx_in_arr</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="n">shape_rel</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">minimum</span><span class="p">(</span><span class="n">shape_in</span> <span class="o">-</span> <span class="n">idx_in_arr</span><span class="p">,</span> <span class="n">shape_out</span> <span class="o">-</span> <span class="n">idx_out_arr</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">fixed_axes</span><span class="p">:</span>
+            <span class="n">shape_rel</span><span class="p">[</span><span class="n">d</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+            <span class="n">idx_out_arr</span><span class="p">[</span><span class="n">d</span><span class="p">]</span> <span class="o">=</span> <span class="n">idx_out</span><span class="p">[</span><span class="n">d</span><span class="p">]</span>
+        <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">periodic_axes</span><span class="p">:</span>
+            <span class="n">shape_rel</span><span class="p">[</span><span class="n">d</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">minimum</span><span class="p">(</span><span class="n">shape_in</span><span class="p">[</span><span class="n">d</span><span class="p">],</span> <span class="n">shape_out</span><span class="p">[</span><span class="n">d</span><span class="p">])</span>
+        <span class="n">shape_rel</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">maximum</span><span class="p">(</span><span class="n">shape_rel</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+
+        <span class="c1"># Fill row and col indices using the helper</span>
+        <span class="n">entry_index</span> <span class="o">=</span> <span class="n">iterate_over_entries</span><span class="p">(</span>
+            <span class="n">shape_in</span><span class="p">,</span>
+            <span class="n">shape_out</span><span class="p">,</span>
+            <span class="n">shape_rel</span><span class="p">,</span>
+            <span class="n">idx_in_arr</span><span class="p">,</span>
+            <span class="n">idx_out_arr</span><span class="p">,</span>
+            <span class="n">row_indices</span><span class="p">,</span>
+            <span class="n">col_indices</span><span class="p">,</span>
+            <span class="n">entry_index</span><span class="p">,</span>
+        <span class="p">)</span>
+
+    <span class="c1"># Sort and deduplicate the indices.  The primary sort key is chosen to</span>
+    <span class="c1"># match the target sparse format so that the resulting index arrays are</span>
+    <span class="c1"># already in compressed-format order.</span>
+    <span class="k">if</span> <span class="nb">format</span> <span class="o">==</span> <span class="s2">&quot;csr&quot;</span><span class="p">:</span>
+        <span class="c1"># Row-major: sort by (row, col) — optimal for CSR</span>
+        <span class="n">sorted_idx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span>
+            <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(</span>
+                <span class="p">(</span><span class="n">row_indices</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)),</span> <span class="n">col_indices</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">))),</span>
+                <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+            <span class="p">),</span>
+            <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="n">row_indices</span> <span class="o">=</span> <span class="n">sorted_idx</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="p">:]</span>
+        <span class="n">col_indices</span> <span class="o">=</span> <span class="n">sorted_idx</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="p">:]</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="c1"># Column-major: sort by (col, row) — optimal for CSC (default)</span>
+        <span class="n">sorted_idx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span>
+            <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(</span>
+                <span class="p">(</span><span class="n">col_indices</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)),</span> <span class="n">row_indices</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">))),</span>
+                <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+            <span class="p">),</span>
+            <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="n">col_indices</span> <span class="o">=</span> <span class="n">sorted_idx</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="p">:]</span>
+        <span class="n">row_indices</span> <span class="o">=</span> <span class="n">sorted_idx</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="p">:]</span>
+
+    <span class="k">return</span> <span class="n">row_indices</span><span class="p">,</span> <span class="n">col_indices</span></div>
+
+
+<div class="viewcode-block" id="group_columns_by_non_overlap_numba"><a class="viewcode-back" href="../../pymrm/docs/sphinx/pymrm.html#pymrm.numjac.group_columns_by_non_overlap_numba">[docs]</a><span class="nd">@njit</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">group_columns_by_non_overlap_numba</span><span class="p">(</span><span class="n">indptr</span><span class="p">,</span> <span class="n">indices</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Group columns of a sparse matrix by non-overlapping rows.</span>
+
+<span class="sd">    Parameters:</span>
+<span class="sd">    - indptr (np.ndarray): Index pointer array of the sparse matrix.</span>
+<span class="sd">    - indices (np.ndarray): Column indices of the sparse matrix.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">    - tuple: (group array, number of groups).</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="n">indptr</span><span class="o">.</span><span class="n">size</span> <span class="o">-</span> <span class="mi">1</span>
+    <span class="n">g</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int64</span><span class="p">)</span>
+    <span class="n">groupnum</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">J</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+    <span class="k">while</span> <span class="nb">len</span><span class="p">(</span><span class="n">J</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">g</span><span class="p">[</span><span class="n">J</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span> <span class="o">=</span> <span class="n">groupnum</span>
+        <span class="n">col</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">bool_</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">indptr</span><span class="p">[</span><span class="n">J</span><span class="p">[</span><span class="mi">0</span><span class="p">]],</span> <span class="n">indptr</span><span class="p">[</span><span class="n">J</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]):</span>
+            <span class="n">col</span><span class="p">[</span><span class="n">indices</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">J</span><span class="p">:</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">col</span><span class="p">[</span><span class="n">k</span><span class="p">]:</span>
+                <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">indptr</span><span class="p">[</span><span class="n">k</span><span class="p">],</span> <span class="n">indptr</span><span class="p">[</span><span class="n">k</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]):</span>
+                    <span class="n">col</span><span class="p">[</span><span class="n">indices</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">True</span>
+                <span class="n">g</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">groupnum</span>
+        <span class="n">J</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">g</span> <span class="o">==</span> <span class="n">n</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">groupnum</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="n">g</span><span class="p">,</span> <span class="n">groupnum</span></div>
+
+
+<div class="viewcode-block" id="colgroup"><a class="viewcode-back" href="../../pymrm/docs/sphinx/pymrm.html#pymrm.numjac.colgroup">[docs]</a><span class="k">def</span><span class="w"> </span><span class="nf">colgroup</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">try_reorder</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Group structurally independent columns for simultaneous perturbations.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    *args</span>
+<span class="sd">        Either ``(sparse_matrix,)`` or ``(rows, cols)`` index arrays.</span>
+<span class="sd">    shape : tuple[int, int], optional</span>
+<span class="sd">        Matrix shape when row/column arrays are supplied.</span>
+<span class="sd">    try_reorder : bool, optional</span>
+<span class="sd">        If ``True``, attempt Reverse Cuthill-McKee reordering to reduce the</span>
+<span class="sd">        number of groups.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    tuple[numpy.ndarray, int]</span>
+<span class="sd">        Column group labels and the number of groups.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">sparray</span><span class="p">):</span>
+        <span class="n">S</span> <span class="o">=</span> <span class="n">csc_array</span><span class="p">(</span><span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+        <span class="n">T</span> <span class="o">=</span> <span class="n">csc_array</span><span class="p">((</span><span class="n">S</span><span class="o">.</span><span class="n">data</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">S</span><span class="o">.</span><span class="n">indices</span><span class="p">,</span> <span class="n">S</span><span class="o">.</span><span class="n">indptr</span><span class="p">),</span> <span class="n">shape</span><span class="o">=</span><span class="n">S</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">args</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">):</span>
+        <span class="n">rows</span> <span class="o">=</span> <span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">cols</span> <span class="o">=</span> <span class="n">args</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">rows</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">bool_</span><span class="p">)</span>
+        <span class="n">T</span> <span class="o">=</span> <span class="n">csc_array</span><span class="p">((</span><span class="n">data</span><span class="p">,</span> <span class="p">(</span><span class="n">rows</span><span class="p">,</span> <span class="n">cols</span><span class="p">)),</span> <span class="n">shape</span><span class="o">=</span><span class="n">shape</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">!=</span> <span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]:</span>
+            <span class="n">try_reorder</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+            <span class="s2">&quot;Input should be a sparse array, or two ndarrays containing row and col indices&quot;</span>
+        <span class="p">)</span>
+
+    <span class="n">TT</span> <span class="o">=</span> <span class="n">T</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span> <span class="o">@</span> <span class="n">T</span>
+    <span class="n">g</span><span class="p">,</span> <span class="n">num_groups</span> <span class="o">=</span> <span class="n">group_columns_by_non_overlap_numba</span><span class="p">(</span><span class="n">TT</span><span class="o">.</span><span class="n">indptr</span><span class="p">,</span> <span class="n">TT</span><span class="o">.</span><span class="n">indices</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">try_reorder</span> <span class="ow">and</span> <span class="n">num_groups</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="c1"># Form the reverse column minimum-degree ordering.</span>
+        <span class="n">p</span> <span class="o">=</span> <span class="n">reverse_cuthill_mckee</span><span class="p">(</span><span class="n">T</span><span class="p">)</span>
+        <span class="n">p</span> <span class="o">=</span> <span class="n">p</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+        <span class="n">T</span> <span class="o">=</span> <span class="n">T</span><span class="p">[:,</span> <span class="n">p</span><span class="p">]</span>
+        <span class="n">TT</span> <span class="o">=</span> <span class="n">T</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span> <span class="o">@</span> <span class="n">T</span>
+        <span class="n">g2</span><span class="p">,</span> <span class="n">num_groups2</span> <span class="o">=</span> <span class="n">group_columns_by_non_overlap_numba</span><span class="p">(</span><span class="n">TT</span><span class="o">.</span><span class="n">indptr</span><span class="p">,</span> <span class="n">TT</span><span class="o">.</span><span class="n">indices</span><span class="p">)</span>
+        <span class="c1"># Use whichever packing required fewer groups.</span>
+        <span class="k">if</span> <span class="n">num_groups2</span> <span class="o">&lt;</span> <span class="n">num_groups</span><span class="p">:</span>
+            <span class="n">q</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+            <span class="n">g</span> <span class="o">=</span> <span class="n">g2</span><span class="p">[</span><span class="n">q</span><span class="p">]</span>
+            <span class="n">num_groups</span> <span class="o">=</span> <span class="n">num_groups2</span>
+
+    <span class="k">return</span> <span class="n">g</span><span class="p">,</span> <span class="n">num_groups</span></div>
+
+
+<div class="viewcode-block" id="stencil_block_diagonals"><a class="viewcode-back" href="../../pymrm/docs/sphinx/pymrm.html#pymrm.numjac.stencil_block_diagonals">[docs]</a><span class="k">def</span><span class="w"> </span><span class="nf">stencil_block_diagonals</span><span class="p">(</span>
+    <span class="n">ndims</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">axes_diagonals</span><span class="o">=</span><span class="p">[],</span> <span class="n">axes_blocks</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">periodic_axes</span><span class="o">=</span><span class="p">[]</span>
+<span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Generate a block-diagonal or block-banded stencil description.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    ndims : int, optional</span>
+<span class="sd">        Number of spatial dimensions.</span>
+<span class="sd">    axes_diagonals : list[int], optional</span>
+<span class="sd">        Axes for which ``[-1, 0, 1]`` neighbor offsets are included.</span>
+<span class="sd">    axes_blocks : list[int], optional</span>
+<span class="sd">        Axes over which full-block coupling (``slice(None)``) is applied.</span>
+<span class="sd">    periodic_axes : list[int], optional</span>
+<span class="sd">        Axes with periodic indexing.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    list[tuple]</span>
+<span class="sd">        Dependency specification in PyMRM notation.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">ndims</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">axes_diagonals</span><span class="p">)</span> <span class="ow">or</span> <span class="n">ndims</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">axes_blocks</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+            <span class="s2">&quot;Number of dimensions should be greater than the number of axes.&quot;</span>
+        <span class="p">)</span>
+    <span class="n">dependencies</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">dep_block</span> <span class="o">=</span> <span class="n">ndims</span> <span class="o">*</span> <span class="p">[</span>
+        <span class="mi">0</span><span class="p">,</span>
+    <span class="p">]</span>
+    <span class="k">for</span> <span class="n">axis</span> <span class="ow">in</span> <span class="n">axes_blocks</span><span class="p">:</span>
+        <span class="n">dep_block</span><span class="p">[</span><span class="n">axis</span><span class="p">]</span> <span class="o">=</span> <span class="nb">slice</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">axes_diagonals</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">dep</span> <span class="o">=</span> <span class="p">(</span><span class="nb">tuple</span><span class="p">(</span><span class="n">dep_block</span><span class="p">),</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">dep_block</span><span class="p">),</span> <span class="n">axes_blocks</span><span class="p">,</span> <span class="n">periodic_axes</span><span class="p">)</span>
+        <span class="n">dependencies</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">dep</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">axis</span> <span class="ow">in</span> <span class="n">axes_diagonals</span><span class="p">:</span>
+            <span class="n">dep_diagonals</span> <span class="o">=</span> <span class="n">dep_block</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+            <span class="n">dep_diagonals</span><span class="p">[</span><span class="n">axis</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+            <span class="n">dep</span> <span class="o">=</span> <span class="p">(</span><span class="nb">tuple</span><span class="p">(</span><span class="n">dep_diagonals</span><span class="p">),</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">dep_block</span><span class="p">),</span> <span class="n">axes_blocks</span><span class="p">,</span> <span class="n">periodic_axes</span><span class="p">)</span>
+            <span class="n">dependencies</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">dep</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">dependencies</span></div>
+
+
+<div class="viewcode-block" id="precompute_perturbations"><a class="viewcode-back" href="../../pymrm/docs/sphinx/pymrm.html#pymrm.numjac.precompute_perturbations">[docs]</a><span class="k">def</span><span class="w"> </span><span class="nf">precompute_perturbations</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">dc</span><span class="p">,</span> <span class="n">num_gr</span><span class="p">,</span> <span class="n">gr</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Precompute perturbed values of the input array for numerical Jacobian computation.</span>
+
+<span class="sd">    Parameters:</span>
+<span class="sd">    - c (np.ndarray): Input array.</span>
+<span class="sd">    - dc (np.ndarray): Perturbation array.</span>
+<span class="sd">    - num_gr (int): Number of groups.</span>
+<span class="sd">    - gr (np.ndarray): Group array.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">    - np.ndarray: Perturbed values of the input array.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">c_perturb</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">tile</span><span class="p">(</span><span class="n">c</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">newaxis</span><span class="p">,</span> <span class="o">...</span><span class="p">],</span> <span class="p">(</span><span class="n">num_gr</span><span class="p">,)</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span><span class="p">,)</span> <span class="o">*</span> <span class="n">c</span><span class="o">.</span><span class="n">ndim</span><span class="p">)</span>
+    <span class="n">c_perturb</span><span class="o">.</span><span class="n">ravel</span><span class="p">()[</span><span class="n">c</span><span class="o">.</span><span class="n">size</span> <span class="o">*</span> <span class="n">gr</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">c</span><span class="o">.</span><span class="n">size</span><span class="p">)]</span> <span class="o">+=</span> <span class="n">dc</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">c_perturb</span></div>
+
+
+<div class="viewcode-block" id="precompute_perturbations_numba"><a class="viewcode-back" href="../../pymrm/docs/sphinx/pymrm.html#pymrm.numjac.precompute_perturbations_numba">[docs]</a><span class="nd">@njit</span><span class="p">(</span><span class="n">parallel</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">precompute_perturbations_numba</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">dc</span><span class="p">,</span> <span class="n">num_gr</span><span class="p">,</span> <span class="n">gr</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Precompute perturbed values of the input array using Numba for numerical Jacobian computation.</span>
+
+<span class="sd">    Parameters:</span>
+<span class="sd">    - c (np.ndarray): Input array.</span>
+<span class="sd">    - dc (np.ndarray): Perturbation array.</span>
+<span class="sd">    - num_gr (int): Number of groups.</span>
+<span class="sd">    - gr (np.ndarray): Group array.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">    - np.ndarray: Perturbed values of the input array.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">c_flat</span> <span class="o">=</span> <span class="n">c</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span>
+    <span class="n">dc_flat</span> <span class="o">=</span> <span class="n">dc</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span>
+    <span class="n">gr_flat</span> <span class="o">=</span> <span class="n">gr</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span>
+    <span class="n">c_size</span> <span class="o">=</span> <span class="n">c_flat</span><span class="o">.</span><span class="n">size</span>
+
+    <span class="n">c_perturb_flat</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">((</span><span class="n">num_gr</span><span class="p">,</span> <span class="n">c_size</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">c</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">prange</span><span class="p">(</span><span class="n">num_gr</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">idx</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">c_size</span><span class="p">):</span>
+            <span class="n">c_perturb_flat</span><span class="p">[</span><span class="n">k</span><span class="p">,</span> <span class="n">idx</span><span class="p">]</span> <span class="o">=</span> <span class="n">c_flat</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span>
+
+    <span class="k">for</span> <span class="n">idx</span> <span class="ow">in</span> <span class="n">prange</span><span class="p">(</span><span class="n">c_size</span><span class="p">):</span>
+        <span class="n">c_perturb_flat</span><span class="p">[</span><span class="n">gr_flat</span><span class="p">[</span><span class="n">idx</span><span class="p">],</span> <span class="n">idx</span><span class="p">]</span> <span class="o">+=</span> <span class="n">dc_flat</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span>
+
+    <span class="n">c_perturb</span> <span class="o">=</span> <span class="n">c_perturb_flat</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="n">num_gr</span><span class="p">,)</span> <span class="o">+</span> <span class="n">c</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">c_perturb</span></div>
+
+
+<div class="viewcode-block" id="compute_df"><a class="viewcode-back" href="../../pymrm/docs/sphinx/pymrm.html#pymrm.numjac.compute_df">[docs]</a><span class="nd">@njit</span><span class="p">(</span><span class="n">parallel</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">compute_df</span><span class="p">(</span><span class="n">f_value</span><span class="p">,</span> <span class="n">perturbed_values</span><span class="p">,</span> <span class="n">num_gr</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Compute the difference in function values for perturbed inputs.</span>
+
+<span class="sd">    Parameters:</span>
+<span class="sd">    - f_value (np.ndarray): Original function value.</span>
+<span class="sd">    - perturbed_values (np.ndarray): Function values for perturbed inputs.</span>
+<span class="sd">    - num_gr (int): Number of groups.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">    - np.ndarray: Differences in function values.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">(</span><span class="n">perturbed_values</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">prange</span><span class="p">(</span><span class="n">num_gr</span><span class="p">):</span>
+        <span class="n">df</span><span class="p">[</span><span class="n">k</span><span class="p">,</span> <span class="o">...</span><span class="p">]</span> <span class="o">=</span> <span class="n">perturbed_values</span><span class="p">[</span><span class="n">k</span><span class="p">,</span> <span class="o">...</span><span class="p">]</span> <span class="o">-</span> <span class="n">f_value</span>
+    <span class="k">return</span> <span class="n">df</span></div>
+
+
+<div class="viewcode-block" id="compute_df2"><a class="viewcode-back" href="../../pymrm/docs/sphinx/pymrm.html#pymrm.numjac.compute_df2">[docs]</a><span class="k">def</span><span class="w"> </span><span class="nf">compute_df2</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">f_value</span><span class="p">,</span> <span class="n">c_values</span><span class="p">,</span> <span class="n">num_gr</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Compute the difference in function values for perturbed inputs by evaluating the function.</span>
+
+<span class="sd">    Parameters:</span>
+<span class="sd">    - f (callable): Function to evaluate.</span>
+<span class="sd">    - f_value (np.ndarray): Original function value.</span>
+<span class="sd">    - c_values (np.ndarray): Perturbed input values.</span>
+<span class="sd">    - num_gr (int): Number of groups.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">    - np.ndarray: Differences in function values.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">((</span><span class="n">num_gr</span><span class="p">,</span> <span class="o">*</span><span class="n">f_value</span><span class="o">.</span><span class="n">shape</span><span class="p">))</span>
+    <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">prange</span><span class="p">(</span><span class="n">num_gr</span><span class="p">):</span>
+        <span class="n">df</span><span class="p">[</span><span class="n">k</span><span class="p">,</span> <span class="o">...</span><span class="p">]</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">c_values</span><span class="p">[</span><span class="n">k</span><span class="p">,</span> <span class="o">...</span><span class="p">])</span> <span class="o">-</span> <span class="n">f_value</span>
+    <span class="k">return</span> <span class="n">df</span></div>
+
+
+<div class="viewcode-block" id="NumJac"><a class="viewcode-back" href="../../pymrm/docs/sphinx/pymrm.html#pymrm.numjac.NumJac">[docs]</a><span class="k">class</span><span class="w"> </span><span class="nc">NumJac</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Numerical Jacobian evaluator based on grouped finite differences.</span>
+
+<span class="sd">    The class builds a sparse Jacobian structure from a stencil/dependency</span>
+<span class="sd">    description and reuses that structure across repeated evaluations.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="NumJac.__init__"><a class="viewcode-back" href="../../content/api/generated/all/pymrm.numjac.NumJac.html#pymrm.numjac.NumJac.__init__">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">shape</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">shape_in</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">shape_out</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">stencil</span><span class="o">=</span><span class="n">stencil_block_diagonals</span><span class="p">,</span>
+        <span class="n">eps_jac</span><span class="o">=</span><span class="mf">1e-6</span><span class="p">,</span>
+        <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;csc&quot;</span><span class="p">,</span>
+        <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
+    <span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create a Jacobian approximator.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        shape : tuple[int, ...], optional</span>
+<span class="sd">            Convenience argument for square mappings where</span>
+<span class="sd">            ``shape_in == shape_out == shape``.</span>
+<span class="sd">        shape_in, shape_out : tuple[int, ...], optional</span>
+<span class="sd">            Input and output shapes for non-square mappings.</span>
+<span class="sd">        stencil : callable or list or tuple, optional</span>
+<span class="sd">            Stencil specification or factory callable. When callable, it is</span>
+<span class="sd">            invoked with ``ndims`` and ``**kwargs``.</span>
+<span class="sd">        eps_jac : float, optional</span>
+<span class="sd">            Relative perturbation magnitude used in finite differences.</span>
+<span class="sd">        format : {&#39;csc&#39;, &#39;csr&#39;}, optional</span>
+<span class="sd">            Sparse format for produced Jacobian matrices.</span>
+<span class="sd">        **kwargs</span>
+<span class="sd">            Additional options passed to the stencil callable.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">shape</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="p">(</span><span class="n">shape_in</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">shape_out</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="s2">&quot;Specify either &#39;shape&#39; or both &#39;shape_in&#39; and &#39;shape_out&#39;, but not both.&quot;</span>
+            <span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">shape</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="c1"># Default case: shape_in == shape_out</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">shape_in</span> <span class="o">=</span> <span class="n">shape</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">shape_out</span> <span class="o">=</span> <span class="n">shape</span>
+        <span class="k">elif</span> <span class="n">shape_in</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">shape_out</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="c1"># General case: shape_in != shape_out</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">shape_in</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">len</span><span class="p">(</span><span class="n">shape_out</span><span class="p">):</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                    <span class="s2">&quot;Input and output shapes must have the same number of dimensions.&quot;</span>
+                <span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">shape_in</span> <span class="o">=</span> <span class="n">shape_in</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">shape_out</span> <span class="o">=</span> <span class="n">shape_out</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="s2">&quot;You must specify either &#39;shape&#39; or both &#39;shape_in&#39; and &#39;shape_out&#39;.&quot;</span>
+            <span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">eps_jac</span> <span class="o">=</span> <span class="n">eps_jac</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">format</span> <span class="o">=</span> <span class="nb">format</span>
+
+        <span class="c1"># Initialize stencil</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">init_stencil</span><span class="p">(</span><span class="n">stencil</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="NumJac.init_stencil"><a class="viewcode-back" href="../../pymrm/docs/sphinx/pymrm.html#pymrm.numjac.NumJac.init_stencil">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">init_stencil</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">stencil</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Initialize and process the stencil (dependency pattern) for numerical Jacobian computation.</span>
+
+<span class="sd">        This method configures the sparsity/dependency structure used to compute numerical Jacobians,</span>
+<span class="sd">        supporting a variety of stencil specifications. The stencil can be supplied as either:</span>
+
+<span class="sd">        - A function (callable) that generates a dependency pattern in PyMRM dependency notation.</span>
+<span class="sd">            The function should accept the keyword argument `ndims` (number of dimensions)</span>
+<span class="sd">            and any additional keyword arguments.</span>
+<span class="sd">        - A pre-defined dependency specification (e.g., list or tuple) in any accepted PyMRM format,</span>
+<span class="sd">            including full or shorthand forms.</span>
+
+<span class="sd">        The stencil is expanded using PyMRM&#39;s dependency notation, which allows concise or explicit</span>
+<span class="sd">        description of dependencies between positions in multidimensional fields. The result is used</span>
+<span class="sd">        to generate the internal sparsity pattern for efficient Jacobian assembly.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        stencil : callable or list or tuple</span>
+<span class="sd">            Specification of the dependency pattern. Either a function that returns a dependency</span>
+<span class="sd">            pattern in PyMRM notation (when called with `ndims` and additional `**kwargs`), or</span>
+<span class="sd">            a direct specification as a list or tuple following the PyMRM dependency notation.</span>
+<span class="sd">            See the PyMRM documentation for details on the allowed formats.</span>
+<span class="sd">        **kwargs</span>
+<span class="sd">            Additional keyword arguments passed to the stencil function (if `stencil` is callable).</span>
+
+<span class="sd">        Raises</span>
+<span class="sd">        ------</span>
+<span class="sd">        ValueError</span>
+<span class="sd">            If no stencil is provided.</span>
+
+<span class="sd">        Side Effects</span>
+<span class="sd">        ------------</span>
+<span class="sd">        Sets the following attributes on the class:</span>
+<span class="sd">        - `self.dependencies`: Fully expanded dependency list (PyMRM notation).</span>
+<span class="sd">        - `self.rows, self.cols`: Row/column indices for the Jacobian sparsity pattern.</span>
+<span class="sd">        - `self.gr, self.num_gr`: Grouping information for column grouping.</span>
+
+<span class="sd">        References</span>
+<span class="sd">        ----------</span>
+<span class="sd">        For a full description of the PyMRM dependency notation, see:</span>
+<span class="sd">        - `dependencies_format.md` in the PyMRM package.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">stencil</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="s2">&quot;A stencil function or stencil specification must be provided.&quot;</span>
+            <span class="p">)</span>
+
+        <span class="c1"># Call the stencil function with ndims, *args, and **kwargs</span>
+        <span class="k">if</span> <span class="nb">callable</span><span class="p">(</span><span class="n">stencil</span><span class="p">):</span>
+            <span class="n">stencil</span> <span class="o">=</span> <span class="n">stencil</span><span class="p">(</span><span class="n">ndims</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">shape_in</span><span class="p">),</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dependencies</span> <span class="o">=</span> <span class="n">expand_dependencies</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">shape_in</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">shape_out</span><span class="p">,</span> <span class="n">stencil</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rows</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">cols</span> <span class="o">=</span> <span class="n">generate_sparsity_pattern</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">shape_in</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">shape_out</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">dependencies</span><span class="p">,</span>
+            <span class="nb">format</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">format</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">gr</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">num_gr</span> <span class="o">=</span> <span class="n">colgroup</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">rows</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">cols</span><span class="p">,</span>
+            <span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">prod</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">shape_out</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">prod</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">shape_in</span><span class="p">)),</span>
+        <span class="p">)</span>
+
+        <span class="c1"># Precompute compressed sparse structure so that __call__ can</span>
+        <span class="c1"># construct the sparse matrix directly from (data, indices, indptr)</span>
+        <span class="c1"># instead of going through the slower COO → CSR/CSC conversion.</span>
+        <span class="n">n_out</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">prod</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">shape_out</span><span class="p">))</span>
+        <span class="n">n_in</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">prod</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">shape_in</span><span class="p">))</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">format</span> <span class="o">==</span> <span class="s2">&quot;csr&quot;</span><span class="p">:</span>
+            <span class="n">counts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">bincount</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">rows</span><span class="p">,</span> <span class="n">minlength</span><span class="o">=</span><span class="n">n_out</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_indptr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n_out</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int64</span><span class="p">)</span>
+            <span class="n">np</span><span class="o">.</span><span class="n">cumsum</span><span class="p">(</span><span class="n">counts</span><span class="p">,</span> <span class="n">out</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_indptr</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_indices</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">cols</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">counts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">bincount</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">cols</span><span class="p">,</span> <span class="n">minlength</span><span class="o">=</span><span class="n">n_in</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_indptr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n_in</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int64</span><span class="p">)</span>
+            <span class="n">np</span><span class="o">.</span><span class="n">cumsum</span><span class="p">(</span><span class="n">counts</span><span class="p">,</span> <span class="n">out</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_indptr</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_indices</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">rows</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+        <span class="c1"># Precompute flat index into df.ravel() to replace 2D fancy</span>
+        <span class="c1"># indexing with a single 1D gather in __call__.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_df_idx</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">gr</span><span class="o">.</span><span class="n">ravel</span><span class="p">()[</span><span class="bp">self</span><span class="o">.</span><span class="n">cols</span><span class="p">]</span> <span class="o">*</span> <span class="n">n_out</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">rows</span></div>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">f_value</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Compute the numerical Jacobian for a given function and input array.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        f : callable</span>
+<span class="sd">            Function to evaluate. Should accept a single argument (the input array).</span>
+<span class="sd">        c : np.ndarray</span>
+<span class="sd">            Input array at which to evaluate the Jacobian.</span>
+<span class="sd">        f_value : np.ndarray, optional</span>
+<span class="sd">            Precomputed function value at c (i.e., f(c)). If provided, this value</span>
+<span class="sd">            will be used directly and the function will not be called again for c.</span>
+<span class="sd">            This is useful if f(c) has already been computed elsewhere and avoids</span>
+<span class="sd">            redundant computation.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        tuple</span>
+<span class="sd">            (Function value at c, Jacobian as a sparse matrix).</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">f_value</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">f_value</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+        <span class="n">dc</span> <span class="o">=</span> <span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">eps_jac</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+        <span class="n">dc</span><span class="p">[</span><span class="n">dc</span> <span class="o">&gt;</span> <span class="p">(</span><span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">eps_jac</span><span class="p">)]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">eps_jac</span>
+        <span class="n">dc</span> <span class="o">=</span> <span class="p">(</span><span class="n">c</span> <span class="o">+</span> <span class="n">dc</span><span class="p">)</span> <span class="o">-</span> <span class="n">c</span>
+
+        <span class="n">c_perturb</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">tile</span><span class="p">(</span><span class="n">c</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">newaxis</span><span class="p">,</span> <span class="o">...</span><span class="p">],</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">num_gr</span><span class="p">,)</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span><span class="p">,)</span> <span class="o">*</span> <span class="n">c</span><span class="o">.</span><span class="n">ndim</span><span class="p">)</span>
+        <span class="n">c_perturb</span><span class="o">.</span><span class="n">ravel</span><span class="p">()[</span><span class="n">c</span><span class="o">.</span><span class="n">size</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">gr</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">c</span><span class="o">.</span><span class="n">size</span><span class="p">)]</span> <span class="o">+=</span> <span class="n">dc</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span>
+
+        <span class="n">df</span> <span class="o">=</span> <span class="n">compute_df2</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">f_value</span><span class="p">,</span> <span class="n">c_perturb</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">num_gr</span><span class="p">)</span>
+
+        <span class="c1"># Compute Jacobian values using precomputed flat index</span>
+        <span class="n">values</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">ravel</span><span class="p">()[</span><span class="bp">self</span><span class="o">.</span><span class="n">_df_idx</span><span class="p">]</span> <span class="o">/</span> <span class="n">dc</span><span class="o">.</span><span class="n">ravel</span><span class="p">()[</span><span class="bp">self</span><span class="o">.</span><span class="n">cols</span><span class="p">]</span>
+
+        <span class="c1"># Construct sparse matrix directly from (data, indices, indptr),</span>
+        <span class="c1"># bypassing the COO → compressed-format conversion.</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">format</span> <span class="o">==</span> <span class="s2">&quot;csr&quot;</span><span class="p">:</span>
+            <span class="n">jac</span> <span class="o">=</span> <span class="n">csr_array</span><span class="p">(</span>
+                <span class="p">(</span><span class="n">values</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_indices</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_indptr</span><span class="p">),</span>
+                <span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="n">f_value</span><span class="o">.</span><span class="n">size</span><span class="p">,</span> <span class="n">c</span><span class="o">.</span><span class="n">size</span><span class="p">),</span>
+            <span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">jac</span> <span class="o">=</span> <span class="n">csc_array</span><span class="p">(</span>
+                <span class="p">(</span><span class="n">values</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_indices</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_indptr</span><span class="p">),</span>
+                <span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="n">f_value</span><span class="o">.</span><span class="n">size</span><span class="p">,</span> <span class="n">c</span><span class="o">.</span><span class="n">size</span><span class="p">),</span>
+            <span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">f_value</span><span class="p">,</span> <span class="n">jac</span></div>
+</pre></div>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By E.A.J.F. Peters and M. van Sint Annaland
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2025, TU/e.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

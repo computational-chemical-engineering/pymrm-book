@@ -1,0 +1,710 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Introduction to PyMRM &#8212; Multiphase Reactor Modeling using PyMRM</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'pymrm/tutorials/introduction_and_start';</script>
+    <link rel="shortcut icon" href="../../_static/logo.png"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Stationary Diffusion Equations" href="stationary_diffusion.html" />
+    <link rel="prev" title="Tutorials" href="../../content/tutorials/tutorials.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../content/index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/logo.png" class="logo__image only-light" alt="Multiphase Reactor Modeling using PyMRM - Home"/>
+    <script>document.write(`<img src="../../_static/logo.png" class="logo__image only-dark" alt="Multiphase Reactor Modeling using PyMRM - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../content/index.html">
+                    <svg version="1.1" width="1.0em" height="1.0em" class="sd-octicon sd-octicon-home" viewBox="0 0 16 16" aria-hidden="true"><path fill-rule="evenodd" d="M8.156 1.835a.25.25 0 00-.312 0l-5.25 4.2a.25.25 0 00-.094.196v7.019c0 .138.112.25.25.25H5.5V8.25a.75.75 0 01.75-.75h3.5a.75.75 0 01.75.75v5.25h2.75a.25.25 0 00.25-.25V6.23a.25.25 0 00-.094-.195l-5.25-4.2zM6.906.664a1.75 1.75 0 012.187 0l5.25 4.2c.415.332.657.835.657 1.367v7.019A1.75 1.75 0 0113.25 15h-3.5a.75.75 0 01-.75-.75V9H7v5.25a.75.75 0 01-.75.75h-3.5A1.75 1.75 0 011 13.25V6.23c0-.531.242-1.034.657-1.366l5.25-4.2h-.001z"></path></svg> Multiphase Reactor Modeling using PyMRM
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../content/getting_started/getting_started.html">Getting Started with PyMRM</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../../content/tutorials/tutorials.html">Tutorials</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Introduction to PyMRM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stationary_diffusion.html">Stationary Diffusion Equations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="diffusion_first_order_kinetics.html">Diffusion: First-order Kinetics, Multi-Component, Unsteady</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nonlinear_kinetics.html">Nonlinear Kinetics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="diffusion_2D.html">2D Diffusion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="diffusion_model_class.html">Diffusion-Reaction Class Implementation</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../content/examples/examples.html">Examples</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../examples/counter_diffusion_reaction.html">Counter diffusion and reaction in a slab</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/particle_model_effectiveness.html">Particle model: diffusion + first order reaction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/counter_current_reaction.html">Counter-current convection and reaction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/tvd.html">TVD schemes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/unsteady_diffusion_reaction_2D.html">Unsteady diffusion + reaction 1/2/3D</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/unsteady_convection_reaction.html">Unsteady convection + reaction 1D</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/darcy_flow.html">Darcy flow in a 2D domain with varying permeability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/lid_driven_cavity.html">Lid-driven cavity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/membrane_module_2D.html">Membrane Model</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../content/exercises/index.html">Exercises</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../content/exercises/ode-solving-for-reactor-modeling.html">1. ODE Solving for Reactor Modeling</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../content/exercises/first-order-reaction-in-a-batch-reactor.html">1.1. First order reaction in a batch reactor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../content/exercises/equilibrium-consecutive-batch-reactions.html">1.2. Equilibrium consecutive batch reactions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../content/exercises/steady-state-1d-fixed-bed-reactor-model-first-order-exothermal-reaction.html">1.3. Steady state 1D fixed bed reactor model: first order exothermal reaction</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../content/exercises/unsteady-convection-reaction-equations.html">2. Unsteady Convection-Reaction equations</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../content/exercises/convection-of-one-species-using-different-schemes.html">2.1. Convection of one species using different schemes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../content/exercises/multicomponent-convection-reaction-with-first-order-chemical-kinetics.html">2.2. Multicomponent convection-reaction with first-order chemical kinetics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../content/exercises/multicomponent-convection-reaction-with-general-chemical-kinetics.html">2.3. Multicomponent convection-reaction with general chemical kinetics</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../content/exercises/implicit-convection-diffusion-reaction.html">3. Implicit convection-diffusion-reaction</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../content/exercises/solving-a-one-component-1d-diffusion-reaction-equation.html">3.1. Solving a one-component 1D diffusion-reaction equation </a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../content/exercises/multi-component-1d-counter-diffusion-with-reaction.html">3.2. Multi-component 1D counter-diffusion with reaction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../content/exercises/multi-component-1d-counter-current-convection-with-reaction.html">3.3. Multi-component 1D counter-current convection with reaction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../content/exercises/convection-dispersion-reaction-in-a-1d-reactor-model.html">3.4. Convection-dispersion-reaction in a 1D reactor model </a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../content/exercises/particle-model-first-order-reaction.html">3.5. Particle model: first order reaction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../content/exercises/weisz-and-hicks-model.html">3.6. Weisz and Hicks model</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../content/exercises/modeling-dispersion-and-mass-transfer.html">4. Modeling Dispersion and Mass Transfer</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../content/exercises/counter-current-column-processes.html">4.1. Counter-current column processes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../content/exercises/reactor-model-for-heterogeneous-bubble-columns.html">4.2. Reactor model for heterogeneous bubble columns</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../content/exercises/kunii-and-levenspiel-model-for-a-fine-particle-fluidized-bed.html">4.3. Kunii and Levenspiel model for a 'fine particle' fluidized bed</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../content/exercises/computing-residence-time-distributions.html">4.4. Computing residence time distributions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../content/exercises/the-westerterp-wave-model-for-axial-dispersion-in-packed-beds.html">4.5. The Westerterp wave-model for axial dispersion in packed beds</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../content/exercises/modeling-a-desiccant-dryer.html">4.6. Modeling a desiccant dryer</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../content/exercises/2d-reactor-models.html">5. 2D Reactor Models</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../content/exercises/axial-convection-with-radial-dispersion.html">5.1. Axial convection with radial dispersion</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../content/exercises/diffusion-reaction-in-a-cylindrical-pore.html">5.2. Diffusion-reaction in a cylindrical pore</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../content/exercises/2d-membrane-fixed-bed-reactor-model.html">5.3. 2D Membrane Fixed Bed Reactor Model</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../content/exercises/steady-state-2d-fixed-bed-reactor-model-first-order-exothermal-reaction.html">5.4. Steady-state 2D fixed bed reactor model: first order exothermal reaction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../content/exercises/a-2d-gas-solid-fluidized-bed.html">5.5. A 2D Gas-solid fluidized bed</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../content/exercises/a-2d-bubble-column-model.html">5.6. A 2D Bubble column model</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../content/exercises/taylor-dispersion.html">5.7. Taylor Dispersion</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../content/exercises/generalized-maxwell-stefan-equations.html">6. Generalized Maxwell-Stefan equations</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../content/exercises/ternary-diffusion-with-maxwell-stefan-equations.html">6.1. Ternary diffusion with Maxwell-Stefan equations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../content/exercises/dehydrogenation-of-ethanol.html">6.2. Dehydrogenation of ethanol</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../content/exercises/mass-transfer-limitations-using-maxwell-stefan-equations.html">6.3. Mass transfer limitations using Maxwell-Stefan equations</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../content/exercises/advanced-reactor-modeling.html">7. Advanced Reactor Modeling</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../content/exercises/coupled-batch-reactor-and-particle-model.html">7.1. Coupled batch reactor and particle model</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../content/exercises/particle-model-coupled-to-column-model.html">7.2. Particle model coupled to column model</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../content/exercises/pressure-velocity-coupling-in-column-models.html">7.3. Pressure-velocity coupling in column models</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../content/api/index.html">API Reference</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../content/api/api.html">Modules</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../content/api/overview/pymrm.convect.html">pymrm.convect</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../content/api/overview/pymrm.coupling.html">pymrm.coupling</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../content/api/overview/pymrm.grid.html">pymrm.grid</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../content/api/overview/pymrm.helpers.html">pymrm.helpers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../content/api/overview/pymrm.interpolate.html">pymrm.interpolate</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../content/api/overview/pymrm.numjac.html">pymrm.numjac</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../content/api/overview/pymrm.operators.html">pymrm.operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../content/api/overview/pymrm.solve.html">pymrm.solve</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../content/api/alphabetical_overview.html">All Functions and Classes</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../content/api/generated/all/pymrm.convect.clam.html">pymrm.convect.clam</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../content/api/generated/all/pymrm.convect.construct_convflux_bc.html">pymrm.convect.construct_convflux_bc</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../content/api/generated/all/pymrm.convect.construct_convflux_upwind.html">pymrm.convect.construct_convflux_upwind</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../content/api/generated/all/pymrm.convect.construct_convflux_upwind_int.html">pymrm.convect.construct_convflux_upwind_int</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../content/api/generated/all/pymrm.convect.minmod.html">pymrm.convect.minmod</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../content/api/generated/all/pymrm.convect.muscl.html">pymrm.convect.muscl</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../content/api/generated/all/pymrm.convect.osher.html">pymrm.convect.osher</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../content/api/generated/all/pymrm.convect.smart.html">pymrm.convect.smart</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../content/api/generated/all/pymrm.convect.stoic.html">pymrm.convect.stoic</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../content/api/generated/all/pymrm.convect.upwind.html">pymrm.convect.upwind</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../content/api/generated/all/pymrm.convect.vanleer.html">pymrm.convect.vanleer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../content/api/generated/all/pymrm.coupling.construct_interface_matrices.html">pymrm.coupling.construct_interface_matrices</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../content/api/generated/all/pymrm.coupling.translate_indices_to_larger_array.html">pymrm.coupling.translate_indices_to_larger_array</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../content/api/generated/all/pymrm.coupling.update_array_indices.html">pymrm.coupling.update_array_indices</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../content/api/generated/all/pymrm.coupling.update_csc_array_indices.html">pymrm.coupling.update_csc_array_indices</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../content/api/generated/all/pymrm.coupling.update_csr_array_indices.html">pymrm.coupling.update_csr_array_indices</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../content/api/generated/all/pymrm.grid.generate_grid.html">pymrm.grid.generate_grid</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../content/api/generated/all/pymrm.grid.non_uniform_grid.html">pymrm.grid.non_uniform_grid</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../content/api/generated/all/pymrm.helpers.construct_coefficient_matrix.html">pymrm.helpers.construct_coefficient_matrix</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../content/api/generated/all/pymrm.interpolate.compute_boundary_values.html">pymrm.interpolate.compute_boundary_values</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../content/api/generated/all/pymrm.interpolate.construct_boundary_value_matrices.html">pymrm.interpolate.construct_boundary_value_matrices</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../content/api/generated/all/pymrm.interpolate.create_staggered_array.html">pymrm.interpolate.create_staggered_array</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../content/api/generated/all/pymrm.interpolate.interp_cntr_to_stagg.html">pymrm.interpolate.interp_cntr_to_stagg</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../content/api/generated/all/pymrm.interpolate.interp_cntr_to_stagg_tvd.html">pymrm.interpolate.interp_cntr_to_stagg_tvd</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../content/api/generated/all/pymrm.interpolate.interp_stagg_to_cntr.html">pymrm.interpolate.interp_stagg_to_cntr</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../content/api/generated/all/pymrm.numjac.NumJac.html">pymrm.numjac.NumJac</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../content/api/generated/all/pymrm.numjac.stencil_block_diagonals.html">pymrm.numjac.stencil_block_diagonals</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../content/api/generated/all/pymrm.operators.construct_div.html">pymrm.operators.construct_div</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../content/api/generated/all/pymrm.operators.construct_grad.html">pymrm.operators.construct_grad</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../content/api/generated/all/pymrm.operators.construct_grad_bc.html">pymrm.operators.construct_grad_bc</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../content/api/generated/all/pymrm.operators.construct_grad_int.html">pymrm.operators.construct_grad_int</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../content/api/generated/all/pymrm.solve.clip_approach.html">pymrm.solve.clip_approach</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../content/api/generated/all/pymrm.solve.newton.html">pymrm.solve.newton</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/eajfpeters/pymrm-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/eajfpeters/pymrm-book/edit/main/_build/html/pymrm/tutorials/introduction_and_start.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/eajfpeters/pymrm-book/issues/new?title=Issue%20on%20page%20%2Fpymrm/tutorials/introduction_and_start.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/pymrm/tutorials/introduction_and_start.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Introduction to PyMRM</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-typical-transport-equation">A Typical Transport Equation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#discretization-of-the-reactor-model">Discretization of the Reactor Model</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tutorials">Tutorials</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="introduction-to-pymrm">
+<h1>Introduction to PyMRM<a class="headerlink" href="#introduction-to-pymrm" title="Permalink to this heading">#</a></h1>
+<p>Chemical reactors convert reactants into products through chemical reactions. The goal is often to optimize quantities such as yield and selectivity.
+In addition to reaction kinetics, transport phenomena like mixing, mass transfer, and heat transfer play a crucial role in determining reactor performance.
+A reactor model aims to describe these phenomena, serving as a tool for designing and optimizing reactors.</p>
+<section id="a-typical-transport-equation">
+<h2>A Typical Transport Equation<a class="headerlink" href="#a-typical-transport-equation" title="Permalink to this heading">#</a></h2>
+<p>A common model is the convection-diffusion-reaction equation:</p>
+<div class="math notranslate nohighlight">
+\[ \frac{\partial c}{\partial t} + \nabla \cdot (\mathbf{v} \, c - D\nabla c) = r\]</div>
+<p>Here, <span class="math notranslate nohighlight">\(c\)</span> represents the concentration of a species, but it can also represent multiple species across various phases. The reaction term <span class="math notranslate nohighlight">\(r\)</span> may include mass-transfer terms (between phases) in addition to reaction kinetics. The diffusion coefficient <span class="math notranslate nohighlight">\(D\)</span> could represent a dispersion coefficient. Similarly, temperature can be modeled using a similar equation. Accumulation terms can be more complex, and counter-flow or other phenomena may also need to be considered.</p>
+</section>
+<section id="discretization-of-the-reactor-model">
+<h2>Discretization of the Reactor Model<a class="headerlink" href="#discretization-of-the-reactor-model" title="Permalink to this heading">#</a></h2>
+<p>The convection-diffusion-reaction equation is a partial differential equation (PDE) that needs to be discretized for numerical solutions. The <code class="docutils literal notranslate"><span class="pre">PyMRM</span></code> package provides a set of tools to simplify this process and efficiently solve the resulting equations. Phenomenological models, which are the focus of <code class="docutils literal notranslate"><span class="pre">PyMRM</span></code>, are typically 1D or 2D in space. The discretization is performed on a structured rectilinear grid, represented as a multi-dimensional array. Different species and phases can also correspond to additional dimensions.</p>
+<p>To enable efficient computations with these multi-dimensional arrays, <code class="docutils literal notranslate"><span class="pre">PyMRM</span></code> extensively uses <code class="docutils literal notranslate"><span class="pre">Numpy</span></code>. For example, consider a 4-dimensional array where <code class="docutils literal notranslate"><span class="pre">c.shape</span> <span class="pre">=</span> <span class="pre">(n_x,</span> <span class="pre">n_y,</span> <span class="pre">n_p,</span> <span class="pre">n_c)</span></code>. Here:</p>
+<ul class="simple">
+<li><p>The first two axes (<code class="docutils literal notranslate"><span class="pre">n_x</span></code> and <code class="docutils literal notranslate"><span class="pre">n_y</span></code>) correspond to the spatial <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> directions.</p></li>
+<li><p>The third axis (<code class="docutils literal notranslate"><span class="pre">n_p</span></code>) represents the number of phases.</p></li>
+<li><p>The fourth axis (<code class="docutils literal notranslate"><span class="pre">n_c</span></code>) represents the number of components.</p></li>
+</ul>
+<p>In Python, axis indexing starts at 0, so <code class="docutils literal notranslate"><span class="pre">axis=2</span></code> corresponds to the phases, and <code class="docutils literal notranslate"><span class="pre">axis=3</span></code> corresponds to the components.</p>
+<p>In most cases, solving these equations involves a (partly) implicit approach. For non-linear equations, Newton-Raphson iteration is used. During each iteration, a linear system of equations is solved, represented as a sparse matrix-vector equation. To handle these sparse systems efficiently, <code class="docutils literal notranslate"><span class="pre">PyMRM</span></code> relies on the <code class="docutils literal notranslate"><span class="pre">SciPy</span></code> package, specifically its compressed column format (<code class="docutils literal notranslate"><span class="pre">csc_array</span></code>).</p>
+<p>The general transport equation, including reaction, represents a balance of accumulation and transport on the left-hand side, with production or consumption on the right-hand side. The transport term is the divergence of a (molar) flux, which has both convective and diffusive contributions. To explicitly distinguish between the divergence and gradient operators, the equation can be written as:</p>
+<div class="math notranslate nohighlight">
+\[\frac{\partial c}{\partial t} + \mathrm{div}(\mathbf{v} \, c - D \, \mathrm{grad}(c)) = r\]</div>
+<p>This form is particularly useful because it closely resembles the structure of the discretized equations. For example, in <code class="docutils literal notranslate"><span class="pre">PyMRM</span></code>, the discretized form can be expressed as:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">c</span> <span class="o">-</span> <span class="n">c_old</span><span class="p">)</span> <span class="o">/</span> <span class="n">dt</span> <span class="o">+</span> <span class="n">div_mat</span> <span class="o">@</span> <span class="p">(</span><span class="n">conv_mat</span> <span class="o">@</span> <span class="n">c</span> <span class="o">-</span> <span class="n">D</span> <span class="o">*</span> <span class="n">grad_mat</span> <span class="o">@</span> <span class="n">c</span><span class="p">)</span> <span class="o">=</span> <span class="n">r</span>
+</pre></div>
+</div>
+<p>Here:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">div_mat</span></code> and <code class="docutils literal notranslate"><span class="pre">grad_mat</span></code> are matrices that approximate the differential operators <span class="math notranslate nohighlight">\(\mathrm{div}\)</span> and <span class="math notranslate nohighlight">\(\mathrm{grad}\)</span>, respectively.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">conv_mat</span></code> is a matrix representing the convective velocities.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">c_old</span></code> is the concentration from the previous time step.</p></li>
+</ul>
+<p>While it might seem straightforward to compute convection as <code class="docutils literal notranslate"><span class="pre">v</span> <span class="pre">*</span> <span class="pre">c</span></code> when <code class="docutils literal notranslate"><span class="pre">v</span></code> is constant, convection is more complex due to numerical stability considerations. This is why specialized operators like <code class="docutils literal notranslate"><span class="pre">conv_mat</span></code> are used in <code class="docutils literal notranslate"><span class="pre">PyMRM</span></code>.</p>
+</section>
+<section id="tutorials">
+<h2>Tutorials<a class="headerlink" href="#tutorials" title="Permalink to this heading">#</a></h2>
+<p>This collection of tutorials is designed to familiarize you with the basic building blocks of <code class="docutils literal notranslate"><span class="pre">PyMRM</span></code> and some of its advanced features. The full API documentation is available at <a class="reference external" href="https://multiscale-modelling-multiphase-flows.github.io/pymrm-book/content/api/index.html">PyMRM Documentation</a>.</p>
+<p>Below is an outline of the available tutorials:</p>
+<ol class="arabic simple">
+<li><p><strong><a class="reference internal" href="stationary_diffusion.html"><span class="doc std std-doc">Stationary Diffusion</span></a></strong>: This tutorial introduces spatial discretization in <code class="docutils literal notranslate"><span class="pre">PyMRM</span></code> using stationary diffusion with a source term as an example. It covers constructing matrices for the divergence and grad ient operators, applying boundary conditions, and assembling the final matrix-vector equation.</p></li>
+<li><p><strong><a class="reference internal" href="diffusion_first_order_kinetics.html"><span class="doc std std-doc">Diffusion with First-Order Kinetics</span></a></strong>: This tutorial extends the diffusion example to include first-order kinetics, multi-component systems, and accumulation terms. It also demonstrates diffusion in cylindrical and spherical symmetric 1D geometries.</p></li>
+<li><p><strong><a class="reference internal" href="nonlinear_kinetics.html"><span class="doc std std-doc">Nonlinear Kinetics</span></a></strong>: This tutorial (coming soon) will extend the previous example to handle nonlinear multicomponent reaction kinetics. It will introduce the <code class="docutils literal notranslate"><span class="pre">NumJac</span></code> class for numerical differentiation and Jacobian matrix approximation, solving the non-linear problem using the Newton-Raphson method.</p></li>
+<li><p><strong><a class="reference internal" href="diffusion_2D.html"><span class="doc std std-doc">2D Diffusion</span></a></strong>: This tutorial (coming soon) will demonstrate diffusion-reaction modeling in a 2D geometry.</p></li>
+<li><p><strong><span class="xref myst">Convection</span></strong>: This tutorial (coming soon) will show how to include convection in the model. It will cover implicit upwind discretization and second-order TVD schemes using deferred correction.</p></li>
+<li><p><strong><span class="xref myst">Reactor Model Classes</span></strong>: This tutorial (coming soon) will explain how to organize a reactor model as a class.</p></li>
+</ol>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./pymrm/tutorials"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../../content/tutorials/tutorials.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Tutorials</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="stationary_diffusion.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Stationary Diffusion Equations</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-typical-transport-equation">A Typical Transport Equation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#discretization-of-the-reactor-model">Discretization of the Reactor Model</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tutorials">Tutorials</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By E.A.J.F. Peters and M. van Sint Annaland
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2025, TU/e.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

@@ -1,0 +1,44 @@
+h1 {
+    font-size: 2em; /* Adjust size for level 1 headers */
+}
+h2 {
+    font-size: 1.75em; /* Adjust size for level 2 headers */
+}
+h3 {
+    font-size: 1.5em; /* Adjust size for level 3 headers */
+}
+h4 {
+    font-size: 1.25em; /* Adjust size for level 4 headers */
+}
+h5 {
+    font-size: 1em;
+}
+h6 {
+    font-size: 1em;
+}
+
+
+/* Expand the main content area to full width */
+.bd-article-container {
+    max-width: 100% !important;
+}
+
+/* Style captions */
+.figure .caption {
+    font-size: 14px;
+    color: #555;
+}
+
+/* Add borders to plots */
+.figure img {
+    max-width: 80%;  /* Restrict images to 80% of the container width */
+    height: auto;    /* Maintain aspect ratio */
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 5px;
+}
+
+/* Customize legends */
+.figure .legend {
+    font-size: 12px;
+}
