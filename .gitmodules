@@ -1,4 +1,4 @@
 [submodule "pymrm"]
 	path = pymrm
-	url = https://github.com/multiscale-modelling-multiphase-flows/pymrm.git
+	url = https://github.com/computational-chemical-engineering/pymrm.git
 	branch = main
