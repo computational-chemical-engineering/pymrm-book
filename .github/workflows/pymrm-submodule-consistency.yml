@@ -46,7 +46,11 @@ jobs:
         run: python3 scripts/generate_function_list.py
 
       - name: Check generated API files are up to date
-        run: git diff --exit-code -- content/api
+        run: |
+          git diff --exit-code -- content/api || (
+            echo "Error: API docs are out of sync with the latest pymrm. Run scripts/generate_function_list.py and commit updated content/api files."
+            exit 1
+          )
 
       - name: Build Jupyter Book
         run: |
