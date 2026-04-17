@@ -8,23 +8,54 @@ This book is designed to help you get started with PyMRM, explore its features, 
 
 ## Installation
 
-To use PyMRM locally, follow these steps:
+To use PyMRM locally, install Python 3.10 or newer and create an isolated environment before installing the package.
 
-1. **Install Python**: Use [Anaconda](https://www.anaconda.com/products/distribution) or another Python distribution.
-2. **Set up a virtual environment**:
+### Windows
+
+Choose one of the following environment options:
+
+1. **Conda (Anaconda or Miniconda)**:
+   Install [Anaconda](https://www.anaconda.com/products/distribution) or [Miniconda](https://www.anaconda.com/docs/getting-started/miniconda/), then create and activate an environment:
    ```sh
-   conda create -n pymrm_env python=3.10
+   conda create -n pymrm_env python=3.12
    conda activate pymrm_env
    ```
-3. **Install PyMRM**:
+2. **`venv` (standard Python)**:
+   Install Python from [python.org](https://www.python.org/downloads/windows/), then create and activate a virtual environment:
    ```sh
-   pip install pymrm
+   py -3.12 -m venv .venv
+   .venv\Scripts\activate
    ```
-4. **Verify the installation**:
-   ```python
-   import pymrm
-   print("PyMRM version:", pymrm.__version__)
+   In Windows PowerShell, if script execution is blocked, you may need to run:
+   ```powershell
+   Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned
    ```
+   Only do this if it is permitted by your system or organization security policy.
+
+After activating either environment, install PyMRM:
+
+```sh
+python -m pip install --upgrade pip
+pip install pymrm
+```
+
+### Linux and macOS
+
+The same steps apply, but activation for `venv` is usually:
+
+```sh
+python3 -m venv .venv
+source .venv/bin/activate
+python -m pip install --upgrade pip
+pip install pymrm
+```
+
+### Verify the installation
+
+```python
+import pymrm
+print("PyMRM version:", pymrm.__version__)
+```
 
 For detailed instructions, refer to the [Installation Guide](../../pymrm/docs/installation.md).
 
