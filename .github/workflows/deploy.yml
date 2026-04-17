@@ -25,6 +25,9 @@ jobs:
         pip install -r requirements.txt        
         pip install jupyter-book
 
+    - name: Regenerate API autosummary index
+      run: python3 scripts/generate_function_list.py
+
     - name: Build Jupyter Book
       run: jupyter-book build .
 

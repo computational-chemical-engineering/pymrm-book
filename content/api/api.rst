@@ -1,15 +1,17 @@
 Modules
-=============
+=======
 
-An overview of all modules of the `pymrm package
+An overview of all modules of the ``pymrm`` package.
 
 .. autosummary::
    :toctree: overview
    :nosignatures:
 
-   pymrm.grid
    pymrm.convect
-   pymrm.numjac
-   pymrm.solve
+   pymrm.coupling
+   pymrm.grid
+   pymrm.helpers
    pymrm.interpolate
+   pymrm.numjac
    pymrm.operators
+   pymrm.solve

@@ -1,10 +1,10 @@
 Change number of questions from a), b) to 1., 2.
 Change value unit pairs to a format like $c_0 = 1~\mathrm{mol\cdot m^{-3}}$. So no fractions, but negative powers, ~ as space (not '\ ') and mathrm fonts for units.
 All equations and variables in text should by latex math, i.e. in between $$
-Remove spurious '> ' that where erronously placed before some equations when converting from Word to md format
+Remove spurious '> ' that were erroneously placed before some equations when converting from Word to md format
 For equations that should be aligned use the align* environment
 For tables typeset these correctly with solid borders for all cells
 For operators div and grad use mathrm fonts. Do not susbstitute by nabla operator.
 For MyST instructions use the ::: directives
-In the text, replace any occurances of numjac_loc by numjac, and py_mrm by pymrm
+In the text, replace any occurrences of numjac_loc by numjac, and py_mrm by pymrm
 Improve language
