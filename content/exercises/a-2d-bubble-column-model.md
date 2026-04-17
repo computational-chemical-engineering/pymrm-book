@@ -10,7 +10,7 @@ In a bubble column, the gas hold-up is larger in the middle. Rising bubbles indu
 :::{figure} ./media/image6.png
 :width: 60%
 :align: center
----
+
 Bubble Column Model
 :::
 
@@ -21,19 +21,19 @@ Bubble Column Model
 :::{figure} ./media/image7.png
 :width: 60%
 :align: left
----
+
 Radial Profile Holdup
 :::
 :::{figure} ./media/image8.png
 :width: 60%
 :align: left
----
+
 Radial Profile Velocity
 :::
 :::{figure} ./media/image9.png
 :width: 60%
 :align: left
----
+
 Radial Profile Diffusivity
 :::
 

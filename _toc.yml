@@ -8,6 +8,17 @@ chapters:
   title: Tutorials
 - file: content/examples/examples
   title: Examples
+  sections:
+  - file: pymrm/examples/counter_diffusion_reaction
+  - file: pymrm/examples/particle_model_effectiveness
+  - file: pymrm/examples/counter_current_reaction
+  - file: pymrm/examples/tvd
+  - file: pymrm/examples/unsteady_diffusion_reaction_2D
+  - file: pymrm/examples/unsteady_convection_reaction
+  - file: pymrm/examples/darcy_flow
+  - file: pymrm/examples/lid_driven_cavity
+  - file: pymrm/examples/membrane_module_2D
+  - file: pymrm/examples/optimization_example
 - file: content/exercises/index
   title: Exercises
   options:

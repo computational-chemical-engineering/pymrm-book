@@ -34,7 +34,7 @@ jobs:
       run: |
         pip install ./pymrm
         pip install -r requirements.txt
-        pip install "jupyter-book==0.15.1" "sphinx==5.0.2" "sphinx-autodoc-typehints<1.19"
+        pip install --upgrade "jupyter-book>=1,<2"
 
     - name: Regenerate API autosummary index
       run: python3 scripts/generate_function_list.py

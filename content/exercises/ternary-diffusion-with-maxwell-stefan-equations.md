@@ -5,7 +5,7 @@ Consider the two-bulb diffusion experiment where bulb A contains a 50-50 molar-%
 :::{figure} ./media/image10.png
 :width: 60%
 :align: left
----
+
 Two-Bulb Diffusion Experiment
 :::
 
