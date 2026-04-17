@@ -56,7 +56,6 @@ sphinx:
     html_css_files:
       - custom.css
     linkcheck_ignore:
-      - "https://multiscale-modelling-multiphase-flows\\.github\\.io/pymrm-book(/.*)?"
       - "https://computational-chemical-engineering\\.github\\.io/pymrm-book(/.*)?"
     numfig: true  # Number figures, tables, and code blocks
     numfig_secnum_depth: 2  # Depth of section numbering (1=Chapters, 2=Sections, 3=Subsections)
