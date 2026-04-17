@@ -66,8 +66,8 @@ If you prefer not to install PyMRM locally, you can use [Google Colab](https://c
 1. Open [Google Colab](https://colab.research.google.com/).
 2. Navigate to the **GitHub** tab under **File → Open Notebook**.
 3. Enter the repository URL:  
-   [https://github.com/multiscale-modelling-multiphase-flows/pymrm](https://github.com/multiscale-modelling-multiphase-flows/pymrm).
-4. Select a notebook from the [examples folder](https://github.com/multiscale-modelling-multiphase-flows/pymrm/tree/main/examples), such as [counter_diffusion_reaction.ipynb](https://github.com/multiscale-modelling-multiphase-flows/pymrm/blob/main/examples/counter_diffusion_reaction.ipynb).
+   [https://github.com/computational-chemical-engineering/pymrm](https://github.com/computational-chemical-engineering/pymrm).
+4. Select a notebook from the [examples folder](https://github.com/computational-chemical-engineering/pymrm/tree/main/examples), such as [counter_diffusion_reaction.ipynb](https://github.com/computational-chemical-engineering/pymrm/blob/main/examples/counter_diffusion_reaction.ipynb).
 5. Add the following code cell to install PyMRM:
    ```python
    !pip install pymrm
