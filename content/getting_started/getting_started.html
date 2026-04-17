@@ -518,7 +518,12 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installation">Installation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installation">Installation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#windows">Windows</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#linux-and-macos">Linux and macOS</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verify-the-installation">Verify the installation</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-google-colab">Using Google Colab</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#content-of-the-book">Content of the Book</a></li>
 </ul>
@@ -541,28 +546,55 @@ document.write(`
 </section>
 <section id="installation">
 <h2>Installation<a class="headerlink" href="#installation" title="Permalink to this heading">#</a></h2>
-<p>To use PyMRM locally, follow these steps:</p>
+<p>To use PyMRM locally, install Python 3.10 or newer and create an isolated environment before installing the package.</p>
+<section id="windows">
+<h3>Windows<a class="headerlink" href="#windows" title="Permalink to this heading">#</a></h3>
+<p>Choose one of the following environment options:</p>
 <ol class="arabic">
-<li><p><strong>Install Python</strong>: Use <a class="reference external" href="https://www.anaconda.com/products/distribution">Anaconda</a> or another Python distribution.</p></li>
-<li><p><strong>Set up a virtual environment</strong>:</p>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>create<span class="w"> </span>-n<span class="w"> </span>pymrm_env<span class="w"> </span><span class="nv">python</span><span class="o">=</span><span class="m">3</span>.10
+<li><p><strong>Conda (Anaconda or Miniconda)</strong>:
+Install <a class="reference external" href="https://www.anaconda.com/products/distribution">Anaconda</a> or <a class="reference external" href="https://www.anaconda.com/docs/getting-started/miniconda/">Miniconda</a>, then create and activate an environment:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>create<span class="w"> </span>-n<span class="w"> </span>pymrm_env<span class="w"> </span><span class="nv">python</span><span class="o">=</span><span class="m">3</span>.12
 conda<span class="w"> </span>activate<span class="w"> </span>pymrm_env
 </pre></div>
 </div>
 </li>
-<li><p><strong>Install PyMRM</strong>:</p>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>pymrm
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">venv</span></code> (standard Python)</strong>:
+Install Python from <a class="reference external" href="https://www.python.org/downloads/windows/">python.org</a>, then create and activate a virtual environment:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>py<span class="w"> </span>-3.12<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>.venv
+.venv<span class="se">\S</span>cripts<span class="se">\a</span>ctivate
 </pre></div>
 </div>
+<p>In Windows PowerShell, if script execution is blocked, you may need to run:</p>
+<div class="highlight-powershell notranslate"><div class="highlight"><pre><span></span><span class="nb">Set-ExecutionPolicy</span> <span class="n">-Scope</span> <span class="n">CurrentUser</span> <span class="n">-ExecutionPolicy</span> <span class="n">RemoteSigned</span>
+</pre></div>
+</div>
+<p>Only do this if it is permitted by your system or organization security policy.</p>
 </li>
-<li><p><strong>Verify the installation</strong>:</p>
+</ol>
+<p>After activating either environment, install PyMRM:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>--upgrade<span class="w"> </span>pip
+pip<span class="w"> </span>install<span class="w"> </span>pymrm
+</pre></div>
+</div>
+</section>
+<section id="linux-and-macos">
+<h3>Linux and macOS<a class="headerlink" href="#linux-and-macos" title="Permalink to this heading">#</a></h3>
+<p>The same steps apply, but activation for <code class="docutils literal notranslate"><span class="pre">venv</span></code> is usually:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>python3<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>.venv
+<span class="nb">source</span><span class="w"> </span>.venv/bin/activate
+python<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>--upgrade<span class="w"> </span>pip
+pip<span class="w"> </span>install<span class="w"> </span>pymrm
+</pre></div>
+</div>
+</section>
+<section id="verify-the-installation">
+<h3>Verify the installation<a class="headerlink" href="#verify-the-installation" title="Permalink to this heading">#</a></h3>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pymrm</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;PyMRM version:&quot;</span><span class="p">,</span> <span class="n">pymrm</span><span class="o">.</span><span class="n">__version__</span><span class="p">)</span>
 </pre></div>
 </div>
-</li>
-</ol>
 <p>For detailed instructions, refer to the <a class="reference internal" href="../../pymrm/docs/installation.html"><span class="doc std std-doc">Installation Guide</span></a>.</p>
+</section>
 </section>
 <section id="using-google-colab">
 <h2>Using Google Colab<a class="headerlink" href="#using-google-colab" title="Permalink to this heading">#</a></h2>
@@ -658,7 +690,12 @@ conda<span class="w"> </span>activate<span class="w"> </span>pymrm_env
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installation">Installation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installation">Installation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#windows">Windows</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#linux-and-macos">Linux and macOS</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verify-the-installation">Verify the installation</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-google-colab">Using Google Colab</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#content-of-the-book">Content of the Book</a></li>
 </ul>
