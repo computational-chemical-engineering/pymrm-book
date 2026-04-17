@@ -1,4 +1,4 @@
-name: Jupyter Book Quality Checks
+name: Jupyter Book CI Checks
 
 on:
   pull_request:
@@ -16,7 +16,7 @@ concurrency:
 
 jobs:
   book-quality:
-    name: Build, lint, spell, language, and link checks
+    name: Validate book build and content quality
     runs-on: ubuntu-latest
     timeout-minutes: 60
     container:

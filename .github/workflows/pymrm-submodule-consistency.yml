@@ -1,0 +1,58 @@
+name: Check book against latest pymrm
+
+on:
+  schedule:
+    # Run every Monday at 05:00 UTC.
+    - cron: "0 5 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pymrm-submodule-consistency-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  consistency-check:
+    name: Validate docs with latest pymrm submodule
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+
+    steps:
+      - name: Checkout repository (with submodules)
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      - name: Update pymrm submodule to latest main
+        run: |
+          git submodule update --init --remote --recursive pymrm
+          git submodule status pymrm
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install Python dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install ./pymrm
+          pip install -r requirements.txt
+          pip install "jupyter-book==0.15.1" "sphinx==5.0.2" "sphinx-autodoc-typehints<1.19"
+
+      - name: Regenerate API autosummary index
+        run: python3 scripts/generate_function_list.py
+
+      - name: Check generated API files are up to date
+        run: |
+          git diff --exit-code -- content/api || (
+            echo "Error: API docs are out of sync with the latest pymrm. Run scripts/generate_function_list.py and commit updated content/api files."
+            exit 1
+          )
+
+      - name: Build Jupyter Book
+        run: |
+          jupyter-book clean .
+          jupyter-book build .

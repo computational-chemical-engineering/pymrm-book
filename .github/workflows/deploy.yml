@@ -1,16 +1,20 @@
-name: Deploy Jupyter Book to GitHub Pages
+name: Jupyter Book Deploy (GitHub Pages)
 
 on:
   push:
     branches:
       - main
 
+permissions:
+  contents: write
+
 jobs:
   build-deploy:
+    name: Build and deploy pages from main
     runs-on: ubuntu-latest
     steps:
     - name: Checkout repository
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
       with:
         submodules: recursive
 
@@ -21,9 +25,9 @@ jobs:
 
     - name: Install dependencies
       run: |
-        pip install ./pymrm   
-        pip install -r requirements.txt        
-        pip install jupyter-book
+        pip install ./pymrm
+        pip install -r requirements.txt
+        pip install "jupyter-book==0.15.1" "sphinx==5.0.2" "sphinx-autodoc-typehints<1.19"
 
     - name: Regenerate API autosummary index
       run: python3 scripts/generate_function_list.py
