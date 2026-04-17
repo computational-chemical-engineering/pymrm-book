@@ -5,7 +5,7 @@ Taylor dispersion is caused by the presence of a velocity profile. Solute partic
 :::{figure} ./media/Taylor_dispersion.png
 :width: 60%
 :align: left
----
+
 Taylor Dispersion
 :::
 
