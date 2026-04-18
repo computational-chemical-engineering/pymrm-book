@@ -3,6 +3,8 @@
 This book is a work in progress. Currently, it contains a set of tutorials, examples, case studies and, exercises.  
 For TU/e students of the MRM class (6EMA05), the course material is posted on the [Canvas page](../_static/redirect.html).
 
+::::::{grid} 1 2 2 5
+
 :::{card} 🚀 Getting Started
 :link: getting_started/getting_started.md
 Install the pymrm Python package and run some multiphase reactor models.
@@ -27,3 +29,5 @@ A set of reactor modeling exercises.
 :link: api/index.md
 The `PyMRM` API reference.
 :::
+
+::::::
