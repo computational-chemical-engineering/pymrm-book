@@ -1,0 +1,154 @@
+version: 1
+project:
+  title: Multiphase Reactor Modeling using PyMRM
+  authors:
+    - name: E.A.J.F. Peters
+    - name: M. van Sint Annaland
+  copyright: 2025, TU/e
+  github: eajfpeters/pymrm-book
+  bibliography:
+    - content/references.bib
+  exports:
+    - format: pdf
+      template: plain_latex_book
+      output: exports/mrm-jupyter-book.pdf
+  toc:
+    - file: content/index.md
+    - file: content/getting_started/getting_started.md
+      title: Getting Started with PyMRM
+    - file: content/tutorials/tutorials
+      title: Tutorials
+    - file: content/examples/examples
+      title: Examples
+      children:
+        - file: pymrm/examples/counter_diffusion_reaction
+        - file: pymrm/examples/particle_model_effectiveness
+        - file: pymrm/examples/counter_current_reaction
+        - file: pymrm/examples/tvd
+        - file: pymrm/examples/unsteady_diffusion_reaction_2D
+        - file: pymrm/examples/unsteady_convection_reaction
+        - file: pymrm/examples/darcy_flow
+        - file: pymrm/examples/lid_driven_cavity
+        - file: pymrm/examples/membrane_module_2D
+        - file: pymrm/examples/optimization_example
+    - file: content/exercises/index.md
+      title: Exercises
+      children:
+        - file: content/exercises/ode-solving-for-reactor-modeling.md
+          title: ODE Solving for Reactor Modeling
+          children:
+            - file: content/exercises/first-order-reaction-in-a-batch-reactor.md
+              title: First order reaction in a batch reactor
+            - file: content/exercises/equilibrium-consecutive-batch-reactions.md
+              title: Equilibrium consecutive batch reactions
+            - file: >-
+                content/exercises/steady-state-1d-fixed-bed-reactor-model-first-order-exothermal-reaction.md
+              title: >-
+                Steady state 1D fixed bed reactor model: first order exothermal
+                reaction
+        - file: content/exercises/unsteady-convection-reaction-equations.md
+          title: Unsteady Convection-Reaction equations
+          children:
+            - file: >-
+                content/exercises/convection-of-one-species-using-different-schemes.md
+              title: Convection of one species using different schemes
+            - file: >-
+                content/exercises/multicomponent-convection-reaction-with-first-order-chemical-kinetics.md
+              title: >-
+                Multicomponent convection-reaction with first-order chemical
+                kinetics
+            - file: >-
+                content/exercises/multicomponent-convection-reaction-with-general-chemical-kinetics.md
+              title: >-
+                Multicomponent convection-reaction with general chemical
+                kinetics
+        - file: content/exercises/implicit-convection-diffusion-reaction.md
+          title: Implicit convection-diffusion-reaction
+          children:
+            - file: >-
+                content/exercises/solving-a-one-component-1d-diffusion-reaction-equation.md
+              title: 'Solving a one-component 1D diffusion-reaction equation '
+            - file: >-
+                content/exercises/multi-component-1d-counter-diffusion-with-reaction.md
+              title: Multi-component 1D counter-diffusion with reaction
+            - file: >-
+                content/exercises/multi-component-1d-counter-current-convection-with-reaction.md
+              title: Multi-component 1D counter-current convection with reaction
+            - file: >-
+                content/exercises/convection-dispersion-reaction-in-a-1d-reactor-model.md
+              title: 'Convection-dispersion-reaction in a 1D reactor model '
+            - file: content/exercises/particle-model-first-order-reaction.md
+              title: 'Particle model: first order reaction'
+            - file: content/exercises/weisz-and-hicks-model.md
+              title: Weisz and Hicks model
+        - file: content/exercises/modeling-dispersion-and-mass-transfer.md
+          title: Modeling Dispersion and Mass Transfer
+          children:
+            - file: content/exercises/counter-current-column-processes.md
+              title: Counter-current column processes
+            - file: >-
+                content/exercises/reactor-model-for-heterogeneous-bubble-columns.md
+              title: Reactor model for heterogeneous bubble columns
+            - file: >-
+                content/exercises/kunii-and-levenspiel-model-for-a-fine-particle-fluidized-bed.md
+              title: Kunii and Levenspiel model for a 'fine particle' fluidized bed
+            - file: content/exercises/computing-residence-time-distributions.md
+              title: Computing residence time distributions
+            - file: >-
+                content/exercises/the-westerterp-wave-model-for-axial-dispersion-in-packed-beds.md
+              title: The Westerterp wave-model for axial dispersion in packed beds
+            - file: content/exercises/modeling-a-desiccant-dryer.md
+              title: Modeling a desiccant dryer
+        - file: content/exercises/2d-reactor-models.md
+          title: 2D Reactor Models
+          children:
+            - file: content/exercises/axial-convection-with-radial-dispersion.md
+              title: Axial convection with radial dispersion
+            - file: content/exercises/diffusion-reaction-in-a-cylindrical-pore.md
+              title: Diffusion-reaction in a cylindrical pore
+            - file: content/exercises/2d-membrane-fixed-bed-reactor-model.md
+              title: 2D Membrane Fixed Bed Reactor Model
+            - file: >-
+                content/exercises/steady-state-2d-fixed-bed-reactor-model-first-order-exothermal-reaction.md
+              title: >-
+                Steady-state 2D fixed bed reactor model: first order exothermal
+                reaction
+            - file: content/exercises/a-2d-gas-solid-fluidized-bed.md
+              title: A 2D Gas-solid fluidized bed
+            - file: content/exercises/a-2d-bubble-column-model.md
+              title: A 2D Bubble column model
+            - file: content/exercises/taylor-dispersion.md
+              title: Taylor Dispersion
+        - file: content/exercises/generalized-maxwell-stefan-equations.md
+          title: Generalized Maxwell-Stefan equations
+          children:
+            - file: >-
+                content/exercises/ternary-diffusion-with-maxwell-stefan-equations.md
+              title: Ternary diffusion with Maxwell-Stefan equations
+            - file: content/exercises/dehydrogenation-of-ethanol.md
+              title: Dehydrogenation of ethanol
+            - file: >-
+                content/exercises/mass-transfer-limitations-using-maxwell-stefan-equations.md
+              title: Mass transfer limitations using Maxwell-Stefan equations
+        - file: content/exercises/advanced-reactor-modeling.md
+          title: Advanced Reactor Modeling
+          children:
+            - file: content/exercises/coupled-batch-reactor-and-particle-model.md
+              title: Coupled batch reactor and particle model
+            - file: content/exercises/particle-model-coupled-to-column-model.md
+              title: Particle model coupled to column model
+            - file: content/exercises/pressure-velocity-coupling-in-column-models.md
+              title: Pressure-velocity coupling in column models
+    - file: content/api/index.md
+      title: API Reference
+      children:
+        - file: content/api/api
+          title: Modules
+        - file: content/api/alphabetical_overview
+          title: All Functions and Classes
+site:
+  options:
+    logo: content/logo.png
+    favicon: content/logo.png
+    folders: true
+  template: book-theme
