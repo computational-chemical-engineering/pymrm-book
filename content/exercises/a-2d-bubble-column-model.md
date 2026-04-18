@@ -3,7 +3,6 @@
 In a bubble column, the gas hold-up is larger in the middle. Rising bubbles induce a circulation pattern, dragging along the liquid in the middle, which circulates downward at the wall. We will model this by using radial profiles of hold-up and velocities. In most of the column, these profiles are constant along the height. However, at the bottom and top of the column, the flow will also be radially directed. These end zones will be modeled as ideally mixed, as indicated in the figure below.
 
 :::::{grid}
-:gutter: 2
 
 ::::{grid-item}
 

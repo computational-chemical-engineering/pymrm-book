@@ -40,9 +40,8 @@ jobs:
           python -m pip install --upgrade pip
           pip install ./pymrm
           pip install -r requirements.txt
-          pip install "jupyter-book==0.15.1" "sphinx==5.0.2" "sphinx-autodoc-typehints<1.19"
 
-      - name: Regenerate API autosummary index
+      - name: Regenerate API docs
         run: python3 scripts/generate_function_list.py
 
       - name: Check generated API files are up to date
@@ -53,6 +52,4 @@ jobs:
           )
 
       - name: Build Jupyter Book
-        run: |
-          jupyter-book clean .
-          jupyter-book build .
+        run: jupyter-book build --html

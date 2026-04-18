@@ -1,9 +1,4 @@
-jupyter-book
-sphinx
-sphinx-autodoc-typehints
-jinja2
-sphinx_rtd_theme
-sphinx-book-theme
+jupyter-book>=2,<3
 matplotlib
 numpy
 scipy

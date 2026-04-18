@@ -26,7 +26,7 @@ jobs:
         submodules: recursive
 
     - name: Set up Python
-      uses: actions/setup-python@v4
+      uses: actions/setup-python@v5
       with:
         python-version: '3.12'
 
@@ -34,13 +34,12 @@ jobs:
       run: |
         pip install ./pymrm
         pip install -r requirements.txt
-        pip install --upgrade "jupyter-book>=1,<2"
 
-    - name: Regenerate API autosummary index
+    - name: Regenerate API docs
       run: python3 scripts/generate_function_list.py
 
     - name: Build Jupyter Book
-      run: jupyter-book build .
+      run: jupyter-book build --html
 
     - name: Upload Pages artifact
       uses: actions/upload-pages-artifact@v3

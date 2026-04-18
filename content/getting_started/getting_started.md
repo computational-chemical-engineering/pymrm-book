@@ -82,4 +82,4 @@ This book contains the following sections to help you master PyMRM:
 - **Exercises**: Practice problems to deepen your understanding of PyMRM's features.
 - **API Documentation**: A comprehensive reference for all functions and classes in PyMRM.
 
-Start with the tutorials to build a strong foundation, then explore the examples and exercises to enhance your skills. For further details, consult the [API documentation](../api/api.rst).
+Start with the tutorials to build a strong foundation, then explore the examples and exercises to enhance your skills. For further details, consult the [API documentation](../api/api.md).
