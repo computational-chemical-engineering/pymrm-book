@@ -44,7 +44,7 @@ Suggested approach:
 $$f_{i} = \left\{ \begin{matrix}
   - v\left( \frac{c_{0} - c_{in}}{\Delta x} \right),\ \text{for}\ i = 0 \\
   - v\left( \frac{c_{i} - c_{i - 1}}{\Delta x} \right),\ \text{for}\ i > 0
-\end{matrix} \right.\ $$
+\end{matrix} \right. $$
 
 2.  Implement central differencing, where
 
@@ -52,6 +52,6 @@ $$f_{i} = \left\{ \begin{array}{l}
   - v\left( \frac{c_{1} - c_{in}}{\Delta x} \right),\ \text{for}\ i = 0 \\
   - v\left( \frac{c_{i + 1} - c_{i - 1}}{2\ \Delta x} \right),\ \text{for}\ i > 0 \\
   - v\left( \frac{c_{i} - c_{i - 1}}{\Delta x} \right),\ \text{for}\ i = N - 1
-\end{array} \right.\ $$
+\end{array} \right. $$
 
 3.  Implement a TVD scheme, e.g. Min-Mod, for the convection. See lecture notes for the scheme.
