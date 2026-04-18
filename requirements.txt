@@ -1,9 +1,6 @@
-jupyter-book
-sphinx
-sphinx-autodoc-typehints
+jupyter-book>=2.0,<3
+griffe>=1.0,<2
 jinja2
-sphinx_rtd_theme
-sphinx-book-theme
 matplotlib
 numpy
 scipy

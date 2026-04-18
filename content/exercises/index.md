@@ -1,3 +1,6 @@
+---
+numbering: true
+---
 # Exercises
 
 Welcome to the **Multiphase Reactor Modeling Exercises**.  

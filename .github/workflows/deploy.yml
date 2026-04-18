@@ -26,21 +26,25 @@ jobs:
         submodules: recursive
 
     - name: Set up Python
-      uses: actions/setup-python@v4
+      uses: actions/setup-python@v5
       with:
         python-version: '3.12'
+
+    - name: Set up Node.js (required by mystmd)
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20'
 
     - name: Install dependencies
       run: |
         pip install ./pymrm
         pip install -r requirements.txt
-        pip install --upgrade "jupyter-book>=1,<2"
 
-    - name: Regenerate API autosummary index
-      run: python3 scripts/generate_function_list.py
+    - name: Generate API documentation (MyST Markdown)
+      run: python scripts/generate_api_docs.py
 
     - name: Build Jupyter Book
-      run: jupyter-book build .
+      run: jupyter-book build --html
 
     - name: Upload Pages artifact
       uses: actions/upload-pages-artifact@v3

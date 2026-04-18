@@ -2,7 +2,6 @@ name: Check book against latest pymrm
 
 on:
   schedule:
-    # Run every Monday at 05:00 UTC.
     - cron: "0 5 * * 1"
   workflow_dispatch:
 
@@ -35,24 +34,27 @@ jobs:
         with:
           python-version: "3.12"
 
+      - name: Set up Node.js (required by mystmd)
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
       - name: Install Python dependencies
         run: |
           python -m pip install --upgrade pip
           pip install ./pymrm
           pip install -r requirements.txt
-          pip install "jupyter-book==0.15.1" "sphinx==5.0.2" "sphinx-autodoc-typehints<1.19"
 
-      - name: Regenerate API autosummary index
-        run: python3 scripts/generate_function_list.py
+      - name: Regenerate API documentation (MyST Markdown)
+        run: python scripts/generate_api_docs.py
 
       - name: Check generated API files are up to date
         run: |
-          git diff --exit-code -- content/api || (
-            echo "Error: API docs are out of sync with the latest pymrm. Run scripts/generate_function_list.py and commit updated content/api files."
+          git diff --exit-code -- content/api/generated || (
+            echo "Error: API docs are out of sync with the latest pymrm."
+            echo "Run scripts/generate_api_docs.py and commit the updated content/api/generated files."
             exit 1
           )
 
       - name: Build Jupyter Book
-        run: |
-          jupyter-book clean .
-          jupyter-book build .
+        run: jupyter-book build --html

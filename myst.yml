@@ -1,0 +1,149 @@
+version: 1
+
+project:
+  title: Multiphase Reactor Modeling using PyMRM
+  authors:
+    - name: E.A.J.F. Peters
+    - name: M. van Sint Annaland
+  copyright: "2025, TU/e"
+  github: https://github.com/eajfpeters/pymrm-book
+  bibliography:
+    - content/references.bib
+
+  toc:
+    - file: content/index.md
+    - file: content/getting_started/getting_started.md
+      title: Getting Started with PyMRM
+    - file: content/tutorials/tutorials.md
+      title: Tutorials
+      children:
+        - file: pymrm/tutorials/introduction_and_start.ipynb
+        - file: pymrm/tutorials/stationary_diffusion.ipynb
+        - file: pymrm/tutorials/diffusion_first_order_kinetics.ipynb
+        - file: pymrm/tutorials/nonlinear_kinetics.ipynb
+        - file: pymrm/tutorials/diffusion_2D.ipynb
+        - file: pymrm/tutorials/diffusion_model_class.ipynb
+    - file: content/examples/examples.md
+      title: Examples
+      children:
+        - file: pymrm/examples/counter_diffusion_reaction.ipynb
+        - file: pymrm/examples/particle_model_effectiveness.ipynb
+        - file: pymrm/examples/counter_current_reaction.ipynb
+        - file: pymrm/examples/tvd.ipynb
+        - file: pymrm/examples/unsteady_diffusion_reaction_2D.ipynb
+        - file: pymrm/examples/unsteady_convection_reaction.ipynb
+        - file: pymrm/examples/darcy_flow.ipynb
+        - file: pymrm/examples/lid_driven_cavity.ipynb
+        - file: pymrm/examples/membrane_module_2D.ipynb
+        - file: pymrm/examples/optimization_example.ipynb
+    - file: content/exercises/index.md
+      title: Exercises
+      children:
+        - file: content/exercises/ode-solving-for-reactor-modeling.md
+          title: ODE Solving for Reactor Modeling
+          children:
+            - file: content/exercises/first-order-reaction-in-a-batch-reactor.md
+            - file: content/exercises/equilibrium-consecutive-batch-reactions.md
+            - file: content/exercises/steady-state-1d-fixed-bed-reactor-model-first-order-exothermal-reaction.md
+        - file: content/exercises/unsteady-convection-reaction-equations.md
+          title: Unsteady Convection-Reaction equations
+          children:
+            - file: content/exercises/convection-of-one-species-using-different-schemes.md
+            - file: content/exercises/multicomponent-convection-reaction-with-first-order-chemical-kinetics.md
+            - file: content/exercises/multicomponent-convection-reaction-with-general-chemical-kinetics.md
+        - file: content/exercises/implicit-convection-diffusion-reaction.md
+          title: Implicit convection-diffusion-reaction
+          children:
+            - file: content/exercises/solving-a-one-component-1d-diffusion-reaction-equation.md
+            - file: content/exercises/multi-component-1d-counter-diffusion-with-reaction.md
+            - file: content/exercises/multi-component-1d-counter-current-convection-with-reaction.md
+            - file: content/exercises/convection-dispersion-reaction-in-a-1d-reactor-model.md
+            - file: content/exercises/particle-model-first-order-reaction.md
+            - file: content/exercises/weisz-and-hicks-model.md
+        - file: content/exercises/modeling-dispersion-and-mass-transfer.md
+          title: Modeling Dispersion and Mass Transfer
+          children:
+            - file: content/exercises/counter-current-column-processes.md
+            - file: content/exercises/reactor-model-for-heterogeneous-bubble-columns.md
+            - file: content/exercises/kunii-and-levenspiel-model-for-a-fine-particle-fluidized-bed.md
+            - file: content/exercises/computing-residence-time-distributions.md
+            - file: content/exercises/the-westerterp-wave-model-for-axial-dispersion-in-packed-beds.md
+            - file: content/exercises/modeling-a-desiccant-dryer.md
+        - file: content/exercises/2d-reactor-models.md
+          title: 2D Reactor Models
+          children:
+            - file: content/exercises/axial-convection-with-radial-dispersion.md
+            - file: content/exercises/diffusion-reaction-in-a-cylindrical-pore.md
+            - file: content/exercises/2d-membrane-fixed-bed-reactor-model.md
+            - file: content/exercises/steady-state-2d-fixed-bed-reactor-model-first-order-exothermal-reaction.md
+            - file: content/exercises/a-2d-gas-solid-fluidized-bed.md
+            - file: content/exercises/a-2d-bubble-column-model.md
+            - file: content/exercises/taylor-dispersion.md
+        - file: content/exercises/generalized-maxwell-stefan-equations.md
+          title: Generalized Maxwell-Stefan equations
+          children:
+            - file: content/exercises/ternary-diffusion-with-maxwell-stefan-equations.md
+            - file: content/exercises/dehydrogenation-of-ethanol.md
+            - file: content/exercises/mass-transfer-limitations-using-maxwell-stefan-equations.md
+        - file: content/exercises/advanced-reactor-modeling.md
+          title: Advanced Reactor Modeling
+          children:
+            - file: content/exercises/coupled-batch-reactor-and-particle-model.md
+            - file: content/exercises/particle-model-coupled-to-column-model.md
+            - file: content/exercises/pressure-velocity-coupling-in-column-models.md
+    - file: content/api/index.md
+      title: API Reference
+      children:
+        - file: content/api/api.md
+          title: Module Overview
+          children:
+            - file: content/api/generated/overview/pymrm.convect.md
+            - file: content/api/generated/overview/pymrm.coupling.md
+            - file: content/api/generated/overview/pymrm.grid.md
+            - file: content/api/generated/overview/pymrm.helpers.md
+            - file: content/api/generated/overview/pymrm.interpolate.md
+            - file: content/api/generated/overview/pymrm.numjac.md
+            - file: content/api/generated/overview/pymrm.operators.md
+            - file: content/api/generated/overview/pymrm.solve.md
+        - file: content/api/alphabetical_overview.md
+          title: All Functions and Classes
+          children:
+            - file: content/api/generated/all/pymrm.convect.clam.md
+            - file: content/api/generated/all/pymrm.convect.construct_convflux_bc.md
+            - file: content/api/generated/all/pymrm.convect.construct_convflux_upwind.md
+            - file: content/api/generated/all/pymrm.convect.construct_convflux_upwind_int.md
+            - file: content/api/generated/all/pymrm.convect.minmod.md
+            - file: content/api/generated/all/pymrm.convect.muscl.md
+            - file: content/api/generated/all/pymrm.convect.osher.md
+            - file: content/api/generated/all/pymrm.convect.smart.md
+            - file: content/api/generated/all/pymrm.convect.stoic.md
+            - file: content/api/generated/all/pymrm.convect.upwind.md
+            - file: content/api/generated/all/pymrm.convect.vanleer.md
+            - file: content/api/generated/all/pymrm.coupling.construct_interface_matrices.md
+            - file: content/api/generated/all/pymrm.coupling.translate_indices_to_larger_array.md
+            - file: content/api/generated/all/pymrm.coupling.update_array_indices.md
+            - file: content/api/generated/all/pymrm.coupling.update_csc_array_indices.md
+            - file: content/api/generated/all/pymrm.coupling.update_csr_array_indices.md
+            - file: content/api/generated/all/pymrm.grid.generate_grid.md
+            - file: content/api/generated/all/pymrm.grid.non_uniform_grid.md
+            - file: content/api/generated/all/pymrm.helpers.construct_coefficient_matrix.md
+            - file: content/api/generated/all/pymrm.interpolate.compute_boundary_values.md
+            - file: content/api/generated/all/pymrm.interpolate.construct_boundary_value_matrices.md
+            - file: content/api/generated/all/pymrm.interpolate.create_staggered_array.md
+            - file: content/api/generated/all/pymrm.interpolate.interp_cntr_to_stagg.md
+            - file: content/api/generated/all/pymrm.interpolate.interp_cntr_to_stagg_tvd.md
+            - file: content/api/generated/all/pymrm.interpolate.interp_stagg_to_cntr.md
+            - file: content/api/generated/all/pymrm.numjac.NumJac.md
+            - file: content/api/generated/all/pymrm.numjac.stencil_block_diagonals.md
+            - file: content/api/generated/all/pymrm.operators.construct_div.md
+            - file: content/api/generated/all/pymrm.operators.construct_grad.md
+            - file: content/api/generated/all/pymrm.operators.construct_grad_bc.md
+            - file: content/api/generated/all/pymrm.operators.construct_grad_int.md
+            - file: content/api/generated/all/pymrm.solve.clip_approach.md
+            - file: content/api/generated/all/pymrm.solve.newton.md
+
+site:
+  template: book-theme
+  options:
+    logo: content/logo.png
+    favicon: content/logo.png
