@@ -43,6 +43,18 @@ h6 {
     font-size: 12px;
 }
 
+/* Heroicon SVGs in card titles */
+.myst-card-title img {
+    height: 1.4em;
+    width: auto;
+    vertical-align: middle;
+    margin-right: 0.3em;
+    border: none !important;
+    padding: 0 !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+}
+
 /* Move logo from tiny top-bar to the sidebar (desktop only) */
 @media (min-width: 1280px) {
     .myst-home-link-logo {
