@@ -8,9 +8,16 @@ automatically included.  Run this script after bumping the pymrm submodule::
     python3 scripts/generate_function_list.py
 """
 
+import importlib
 import inspect
+import re
 
 import pymrm
+
+
+def strip_sphinx_roles(text):
+    """Remove Sphinx cross-reference roles like :mod:`pymrm` → `pymrm`."""
+    return re.sub(r":(mod|class|func|meth|attr|exc|obj|ref|doc):`([^`]*)`", r"`\2`", text)
 
 # ---------------------------------------------------------------------------
 # Build the qualified symbol list from pymrm.__all__.
@@ -25,6 +32,7 @@ for name in pymrm.__all__:
     if mod_name and mod_name.startswith("pymrm."):
         doc = inspect.getdoc(obj) or ""
         first_line = doc.split("\n")[0] if doc else ""
+        first_line = strip_sphinx_roles(first_line)
         sig = ""
         try:
             sig = str(inspect.signature(obj))
@@ -59,9 +67,10 @@ with open("content/api/api.md", "w") as f:
     f.write("# Modules\n\n")
     f.write("An overview of all modules of the `pymrm` package.\n\n")
     for mod_name in module_names:
-        mod = __import__(mod_name, fromlist=[""])
+        mod = importlib.import_module(mod_name)
         mod_doc = inspect.getdoc(mod) or ""
         first_line = mod_doc.split("\n")[0] if mod_doc else ""
+        first_line = strip_sphinx_roles(first_line)
         f.write(f"## `{mod_name}`\n\n")
         if first_line:
             f.write(f"{first_line}\n\n")

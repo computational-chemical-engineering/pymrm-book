@@ -84,7 +84,7 @@ Sparse gradient and divergence operators for finite-volume discretisation.
 
 ## `pymrm.solve`
 
-Nonlinear-solver utilities used by :mod:`pymrm`.
+Nonlinear-solver utilities used by `pymrm`.
 
 | Function / Class | Description |
 | ---------------- | ----------- |
