@@ -42,3 +42,23 @@ h6 {
 .figure .legend {
     font-size: 12px;
 }
+
+/* Move logo from tiny top-bar to the sidebar (desktop only) */
+@media (min-width: 1280px) {
+    .myst-home-link-logo {
+        display: none;
+    }
+}
+
+.myst-primary-sidebar-nav::before {
+    content: '';
+    display: block;
+    width: 100%;
+    aspect-ratio: 1939 / 1069;
+    background-image: url('./logo-51346d12018f4db93668f8930872ed7e.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: left center;
+    margin-bottom: 1rem;
+    box-sizing: border-box;
+}
