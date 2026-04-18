@@ -53,3 +53,5 @@ jobs:
 
       - name: Build Jupyter Book
         run: jupyter-book build --html
+        env:
+          BASE_URL: /pymrm-book
