@@ -38,6 +38,31 @@ project:
         - file: pymrm/examples/lid_driven_cavity.ipynb
         - file: pymrm/examples/membrane_module_2D.ipynb
         - file: pymrm/examples/optimization_example.ipynb
+    - file: content/lecture_notes/index.md
+      title: Lecture Notes
+      children:
+        - file: content/lecture_notes/L1_ode_reactor_modeling.ipynb
+          title: 'L1: ODE Solving for Reactor Modeling'
+        - file: content/lecture_notes/L2_convection_reaction.ipynb
+          title: 'L2: Unsteady Convection-Reaction'
+        - file: content/lecture_notes/L3_diffusion_reaction.ipynb
+          title: 'L3: Implicit Diffusion-Reaction'
+        - file: content/lecture_notes/L4_dispersion_mass_transfer.ipynb
+          title: 'L4: Dispersion and Mass Transfer'
+        - file: content/lecture_notes/L5_2d_reactor_models.ipynb
+          title: 'L5: 2D Reactor Models'
+        - file: content/lecture_notes/L67_maxwell_stefan.ipynb
+          title: 'L6–7: Generalized Maxwell-Stefan Equations'
+        - file: content/lecture_notes/L8_advanced_modeling.ipynb
+          title: 'L8: Advanced Reactor Modeling'
+        - file: content/lecture_notes/reactor_packed_bed.ipynb
+          title: 'Reactor Type: Packed Bed'
+        - file: content/lecture_notes/reactor_fluidized_bed.ipynb
+          title: 'Reactor Type: Fluidized Bed'
+        - file: content/lecture_notes/reactor_slurry_bubble_column.ipynb
+          title: 'Reactor Type: Slurry Bubble Column'
+        - file: content/lecture_notes/reactor_gls_packed_bed.ipynb
+          title: 'Reactor Type: GLS Packed Bed'
     - file: content/exercises/index.md
       title: Exercises
       children:

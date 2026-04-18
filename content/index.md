@@ -3,7 +3,7 @@
 This book is a work in progress. Currently, it contains a set of tutorials, examples, case studies and, exercises.  
 For TU/e students of the MRM class (6EMA05), the course material is posted on the [Canvas page](https://canvas.tue.nl/courses/31211).
 
-::::::{grid} 1 2 2 5
+::::::{grid} 1 2 3 3
 
 :::{card} ![rocket](../_static/icons/rocket-launch.svg) Getting Started
 :link: getting_started/getting_started.md
@@ -23,6 +23,11 @@ Example Python notebooks and case studies for different use cases.
 :::{card} ![pencil](../_static/icons/pencil-square.svg) Exercises
 :link: exercises/index.md
 A set of reactor modeling exercises.
+:::
+
+:::{card} ![notes](../_static/icons/academic-cap.svg) Lecture Notes
+:link: lecture_notes/index.md
+Structured notes for each MRM lecture with compact pymrm examples and reactor-type modeling guides.
 :::
 
 :::{card} ![code](../_static/icons/code-bracket.svg) API Reference
