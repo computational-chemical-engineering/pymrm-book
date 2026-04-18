@@ -40,6 +40,8 @@ jobs:
 
     - name: Build Jupyter Book
       run: jupyter-book build --html
+      env:
+        BASE_URL: /pymrm-book
 
     - name: Upload Pages artifact
       uses: actions/upload-pages-artifact@v3

@@ -49,6 +49,8 @@ jobs:
 
       - name: Build Jupyter Book (HTML)
         run: jupyter-book build --html
+        env:
+          BASE_URL: /pymrm-book
 
       - name: Check links
         continue-on-error: true
