@@ -156,6 +156,14 @@ project:
           title: Modules
         - file: content/api/alphabetical_overview.md
           title: All Functions and Classes
+sphinx:
+  config:
+    extensions:
+      - sphinx.ext.autodoc
+      - sphinx.ext.napoleon
+      - sphinx.ext.viewcode
+    autodoc_typehints: description
+    viewcode_follow_imported_members: true
 site:
   options:
     logo: _static/logo.png
