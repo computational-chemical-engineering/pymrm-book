@@ -26,6 +26,20 @@ def slugify_symbol(qualified_name):
     return re.sub(r"[^0-9A-Za-z._-]+", "-", qualified_name)
 
 
+def get_clean_docstring(obj):
+    """Return a role-stripped docstring for markdown rendering."""
+    doc = inspect.getdoc(obj) or ""
+    return strip_sphinx_roles(doc)
+
+
+def get_source_code(obj):
+    """Best-effort source extraction for implementation display."""
+    try:
+        return inspect.getsource(obj)
+    except (OSError, TypeError):
+        return ""
+
+
 REPO_ROOT = Path(__file__).resolve().parent.parent
 API_DIR = REPO_ROOT / "content" / "api"
 MODULES_DIR = API_DIR / "modules"
@@ -63,6 +77,7 @@ for name in pymrm.__all__:
                 "doc": first_line,
                 "sig": sig,
                 "is_class": inspect.isclass(obj),
+                "object": obj,
             }
         )
 
@@ -78,27 +93,38 @@ module_names = sorted({item["module"] for item in all_items})
 # ---------------------------------------------------------------------------
 for mod_name in module_names:
     module_page = MODULES_DIR / f"{slugify_symbol(mod_name)}.md"
+    mod = importlib.import_module(mod_name)
+    mod_doc = get_clean_docstring(mod)
     with module_page.open("w") as f:
         f.write(f"# `{mod_name}`\n\n")
-        f.write(f"```{{automodule}} {mod_name}\n")
-        f.write(":members:\n")
-        f.write(":undoc-members:\n")
-        f.write(":show-inheritance:\n")
-        f.write("```\n")
+        if mod_doc:
+            f.write("## Docstring\n\n")
+            f.write("```text\n")
+            f.write(f"{mod_doc}\n")
+            f.write("```\n\n")
 
 for item in all_items:
     symbol_page = SYMBOLS_DIR / f"{slugify_symbol(item['qualified'])}.md"
+    full_doc = get_clean_docstring(item["object"])
+    source_code = get_source_code(item["object"])
     with symbol_page.open("w") as f:
         f.write(f"# `{item['qualified']}`\n\n")
-        if item["is_class"]:
-            f.write(f"```{{autoclass}} {item['qualified']}\n")
-            f.write(":members:\n")
-            f.write(":undoc-members:\n")
-            f.write(":show-inheritance:\n")
+        if item["sig"]:
+            f.write("## Signature\n\n")
+            f.write(f"`{item['qualified']}{item['sig']}`\n\n")
+        if full_doc:
+            f.write("## Docstring\n\n")
+            f.write("```text\n")
+            f.write(f"{full_doc}\n")
+            f.write("```\n\n")
+        if source_code:
+            f.write("## Implementation\n\n")
+            f.write("```python\n")
+            f.write(f"{source_code}\n")
             f.write("```\n")
         else:
-            f.write(f"```{{autofunction}} {item['qualified']}\n")
-            f.write("```\n")
+            f.write("## Implementation\n\n")
+            f.write("_Source code is not available via Python introspection._\n")
 
 # ---------------------------------------------------------------------------
 # Write content/api/alphabetical_overview.md
@@ -113,12 +139,6 @@ with (API_DIR / "alphabetical_overview.md").open("w") as f:
     for item in all_items:
         symbol_link = f"symbols/{slugify_symbol(item['qualified'])}.md"
         f.write(f"| [`{item['qualified']}`]({symbol_link}) | {item['doc']} |\n")
-    f.write("\n")
-    f.write("```{toctree}\n")
-    f.write(":hidden:\n")
-    for item in all_items:
-        f.write(f"symbols/{slugify_symbol(item['qualified'])}\n")
-    f.write("```\n")
 
 # ---------------------------------------------------------------------------
 # Write content/api/api.md
@@ -126,16 +146,10 @@ with (API_DIR / "alphabetical_overview.md").open("w") as f:
 with (API_DIR / "api.md").open("w") as f:
     f.write("# Modules\n\n")
     f.write("An overview of all modules of the `pymrm` package.\n\n")
-    f.write("```{toctree}\n")
-    f.write(":hidden:\n")
-    for mod_name in module_names:
-        f.write(f"modules/{slugify_symbol(mod_name)}\n")
-    f.write("```\n\n")
     for mod_name in module_names:
         mod = importlib.import_module(mod_name)
-        mod_doc = inspect.getdoc(mod) or ""
+        mod_doc = get_clean_docstring(mod)
         first_line = mod_doc.split("\n")[0] if mod_doc else ""
-        first_line = strip_sphinx_roles(first_line)
         module_link = f"modules/{slugify_symbol(mod_name)}.md"
         f.write(f"## [`{mod_name}`]({module_link})\n\n")
         if first_line:
@@ -147,6 +161,5 @@ with (API_DIR / "api.md").open("w") as f:
             f.write("| ---------------- | ----------- |\n")
             for item in mod_items:
                 symbol_link = f"symbols/{slugify_symbol(item['qualified'])}.md"
-                display_name = f"{item['name']}{item['sig']}" if item["sig"] else item["name"]
-                f.write(f"| [`{display_name}`]({symbol_link}) | {item['doc']} |\n")
+                f.write(f"| [`{item['name']}`]({symbol_link}) | {item['doc']} |\n")
             f.write("\n")
