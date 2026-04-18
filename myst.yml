@@ -144,6 +144,7 @@ project:
 
 site:
   template: book-theme
+  baseurl: /pymrm-book
   options:
     logo: content/logo.png
     favicon: content/logo.png
