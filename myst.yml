@@ -133,8 +133,8 @@ project:
           title: All Functions and Classes
 site:
   options:
-    logo: content/logo.png
-    favicon: content/logo.png
+    logo: _static/logo.png
+    favicon: _static/logo.png
     folders: true
     style: _static/custom.css
   template: book-theme
