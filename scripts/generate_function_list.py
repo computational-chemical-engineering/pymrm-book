@@ -1,6 +1,7 @@
 """Regenerate the PyMRM API reference from source docstrings.
 
-Run this script after bumping the pymrm submodule::
+After updating the `pymrm` submodule, install both the package and docs
+dependencies before regenerating the API pages::
 
     pip install ./pymrm
     pip install -r requirements.txt
@@ -252,12 +253,18 @@ def analyse_package() -> dict[str, dict]:
 
 def get_commit_sha() -> str:
     """Return the checked-out pymrm submodule commit SHA."""
-    return (
-        subprocess.check_output(
-            ["git", "-C", str(PYMRM_ROOT), "rev-parse", "HEAD"], text=True
+    try:
+        return (
+            subprocess.check_output(
+                ["git", "-C", str(PYMRM_ROOT), "rev-parse", "HEAD"], text=True
+            )
+            .strip()
         )
-        .strip()
-    )
+    except subprocess.CalledProcessError as exc:
+        raise RuntimeError(
+            "Unable to determine the pinned pymrm revision. "
+            "Ensure the pymrm submodule is initialized before generating API docs."
+        ) from exc
 
 
 def write_text(path: Path, lines: list[str]) -> None:
