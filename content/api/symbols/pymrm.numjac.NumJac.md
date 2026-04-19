@@ -2,7 +2,7 @@
 
 ## Signature
 
-`pymrm.numjac.NumJac(shape=None, shape_in=None, shape_out=None, stencil=<function stencil_block_diagonals at 0x7f50c29c6ca0>, eps_jac=1e-06, format='csc', **kwargs)`
+`pymrm.numjac.NumJac(shape=None, shape_in=None, shape_out=None, stencil=<function stencil_block_diagonals at 0x7f420dc9ad40>, eps_jac=1e-06, format='csc', **kwargs)`
 
 ## Docstring
 
