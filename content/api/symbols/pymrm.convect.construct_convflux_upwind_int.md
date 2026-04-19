@@ -1,32 +1,39 @@
 # `pymrm.convect.construct_convflux_upwind_int`
 
+[Back to module page](../modules/pymrm.convect.md) · [Back to alphabetical overview](../alphabetical_overview.md)
+
 ## Signature
 
-`pymrm.convect.construct_convflux_upwind_int(shape, v=1.0, axis=0, format='csc')`
+`construct_convflux_upwind_int(shape, v = 1.0, axis = 0, format = 'csc')`
 
-## Docstring
+## Summary
 
-```text
 Construct the internal-face upwind advection operator.
 
-Parameters
-----------
-shape : tuple[int, ...]
-    Cell-centered field shape.
-v : float or array_like, optional
-    Face velocity field.
-axis : int, optional
-    Convection axis.
-format : {'csc', 'csr'}, optional
-    Sparse format of the returned matrix.
+## Documentation
 
-Returns
--------
-scipy.sparse.csc_array or scipy.sparse.csr_array
-    Sparse matrix mapping cell-centered values to interior face fluxes.
-```
+### Parameters
 
-## Implementation
+- `shape` (*tuple[int, ...]*)
+  Cell-centered field shape.
+
+- `v` (*float or array_like, optional*)
+  Face velocity field.
+
+- `axis` (*int, optional*)
+  Convection axis.
+
+- `format` (*{'csc', 'csr'}, optional*)
+  Sparse format of the returned matrix.
+
+### Returns
+
+- `scipy.sparse.csc_array or scipy.sparse.csr_array`
+  Sparse matrix mapping cell-centered values to interior face fluxes.
+
+## Source
+
+[View on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/0b0ac9e5d5a7ceb669718e3aafef1ebd9960b860/src/pymrm/convect.py#L72-L129)
 
 ```python
 def construct_convflux_upwind_int(shape, v=1.0, axis=0, format="csc"):
@@ -87,5 +94,4 @@ def construct_convflux_upwind_int(shape, v=1.0, axis=0, format="csc"):
         )
     conv_matrix.sort_indices()
     return conv_matrix
-
 ```

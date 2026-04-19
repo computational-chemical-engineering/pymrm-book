@@ -1,41 +1,51 @@
 # `pymrm.operators.construct_grad`
 
+[Back to module page](../modules/pymrm.operators.md) · [Back to alphabetical overview](../alphabetical_overview.md)
+
 ## Signature
 
-`pymrm.operators.construct_grad(shape, x_f, x_c=None, bc=(None, None), axis=0, shapes_d=(None, None), format='csc')`
+`construct_grad(shape, x_f, x_c = None, bc = (None, None), axis = 0, shapes_d = (None, None), format = 'csc')`
 
-## Docstring
+## Summary
 
-```text
 Construct the full gradient operator including boundary contributions.
 
-Parameters
-----------
-shape : tuple[int, ...] or int
-    Cell-centered field shape.
-x_f : array_like
-    Face coordinates along ``axis``.
-x_c : array_like, optional
-    Cell-center coordinates along ``axis``. If omitted, they are generated
-    as arithmetic midpoints.
-bc : tuple[dict | None, dict | None], optional
-    Left and right boundary-condition dictionaries with coefficients
-    ``'a'``, ``'b'``, and ``'d'``.
-axis : int, optional
-    Differentiation axis.
-shapes_d : tuple[tuple | None, tuple | None], optional
-    Optional output shapes for inhomogeneous boundary source vectors.
-format : {'csc', 'csr'}, optional
-    Sparse format used for returned operator matrices.
+## Documentation
 
-Returns
--------
-tuple
-    Without ``shapes_d``: ``(grad_matrix, grad_bc)``.
-    With ``shapes_d``: ``(grad_matrix, grad_bc_left, grad_bc_right)``.
-```
+### Parameters
 
-## Implementation
+- `shape` (*tuple[int, ...] or int*)
+  Cell-centered field shape.
+
+- `x_f` (*array_like*)
+  Face coordinates along ``axis``.
+
+- `x_c` (*array_like, optional*)
+  Cell-center coordinates along ``axis``. If omitted, they are generated
+  as arithmetic midpoints.
+
+- `bc` (*tuple[dict | None, dict | None], optional*)
+  Left and right boundary-condition dictionaries with coefficients
+  ``'a'``, ``'b'``, and ``'d'``.
+
+- `axis` (*int, optional*)
+  Differentiation axis.
+
+- `shapes_d` (*tuple[tuple | None, tuple | None], optional*)
+  Optional output shapes for inhomogeneous boundary source vectors.
+
+- `format` (*{'csc', 'csr'}, optional*)
+  Sparse format used for returned operator matrices.
+
+### Returns
+
+- `tuple`
+  Without ``shapes_d``: ``(grad_matrix, grad_bc)``.
+  With ``shapes_d``: ``(grad_matrix, grad_bc_left, grad_bc_right)``.
+
+## Source
+
+[View on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/0b0ac9e5d5a7ceb669718e3aafef1ebd9960b860/src/pymrm/operators.py#L10-L65)
 
 ```python
 def construct_grad(
@@ -94,5 +104,4 @@ def construct_grad(
             )
             grad_matrix += grad_matrix_bc_0 + grad_matrix_bc_1
             return grad_matrix, grad_bc_0, grad_bc_1
-
 ```

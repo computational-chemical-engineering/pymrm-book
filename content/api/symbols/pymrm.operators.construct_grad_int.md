@@ -1,34 +1,42 @@
 # `pymrm.operators.construct_grad_int`
 
+[Back to module page](../modules/pymrm.operators.md) · [Back to alphabetical overview](../alphabetical_overview.md)
+
 ## Signature
 
-`pymrm.operators.construct_grad_int(shape, x_f, x_c=None, axis=0, format='csc')`
+`construct_grad_int(shape, x_f, x_c = None, axis = 0, format = 'csc')`
 
-## Docstring
+## Summary
 
-```text
 Construct the interior-face gradient operator.
 
-Parameters
-----------
-shape : tuple[int, ...]
-    Cell-centered field shape.
-x_f : array_like
-    Face coordinates along ``axis``.
-x_c : array_like, optional
-    Cell-center coordinates. If omitted, arithmetic midpoints are used.
-axis : int, optional
-    Differentiation axis.
-format : {'csc', 'csr'}, optional
-    Output sparse format.
+## Documentation
 
-Returns
--------
-scipy.sparse.csc_array or scipy.sparse.csr_array
-    Matrix that maps cell-centered values to face-normal gradients.
-```
+### Parameters
 
-## Implementation
+- `shape` (*tuple[int, ...]*)
+  Cell-centered field shape.
+
+- `x_f` (*array_like*)
+  Face coordinates along ``axis``.
+
+- `x_c` (*array_like, optional*)
+  Cell-center coordinates. If omitted, arithmetic midpoints are used.
+
+- `axis` (*int, optional*)
+  Differentiation axis.
+
+- `format` (*{'csc', 'csr'}, optional*)
+  Output sparse format.
+
+### Returns
+
+- `scipy.sparse.csc_array or scipy.sparse.csr_array`
+  Matrix that maps cell-centered values to face-normal gradients.
+
+## Source
+
+[View on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/0b0ac9e5d5a7ceb669718e3aafef1ebd9960b860/src/pymrm/operators.py#L68-L153)
 
 ```python
 def construct_grad_int(shape, x_f, x_c=None, axis=0, format="csc"):
@@ -117,5 +125,4 @@ def construct_grad_int(shape, x_f, x_c=None, axis=0, format="csc"):
             f"format must be 'csc' or 'csr', got {format!r}"
         )
     return grad_matrix
-
 ```

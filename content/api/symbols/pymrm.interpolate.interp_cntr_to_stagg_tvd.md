@@ -1,41 +1,51 @@
 # `pymrm.interpolate.interp_cntr_to_stagg_tvd`
 
+[Back to module page](../modules/pymrm.interpolate.md) · [Back to alphabetical overview](../alphabetical_overview.md)
+
 ## Signature
 
-`pymrm.interpolate.interp_cntr_to_stagg_tvd(cell_centered_values, x_f, x_c=None, bc=None, v=0, tvd_limiter=None, axis=0)`
+`interp_cntr_to_stagg_tvd(cell_centered_values, x_f, x_c = None, bc = None, v = 0, tvd_limiter = None, axis = 0)`
 
-## Docstring
+## Summary
 
-```text
 Perform TVD interpolation from cell centers to faces.
 
-Parameters
-----------
-cell_centered_values : numpy.ndarray
-    Cell-centered values.
-x_f : array_like
-    Face coordinates along ``axis``.
-x_c : array_like, optional
-    Cell-center coordinates. If omitted, midpoint locations are used.
-bc : tuple[dict | None, dict | None], optional
-    Left and right boundary-condition dictionaries with keys ``a``, ``b``,
-    and ``d``.
-v : float or array_like, optional
-    Face velocity used to determine upwind/downwind directions.
-tvd_limiter : callable, optional
-    Limiter function with signature ``phi(c_norm, x_norm_c, x_norm_d)``. If
-    ``None``, the routine returns linear upwind interpolation without TVD
-    correction.
-axis : int, optional
-    Interpolation axis.
+## Documentation
 
-Returns
--------
-tuple[numpy.ndarray, numpy.ndarray]
-    Interpolated staggered values and TVD correction term.
-```
+### Parameters
 
-## Implementation
+- `cell_centered_values` (*numpy.ndarray*)
+  Cell-centered values.
+
+- `x_f` (*array_like*)
+  Face coordinates along ``axis``.
+
+- `x_c` (*array_like, optional*)
+  Cell-center coordinates. If omitted, midpoint locations are used.
+
+- `bc` (*tuple[dict | None, dict | None], optional*)
+  Left and right boundary-condition dictionaries with keys ``a``, ``b``,
+  and ``d``.
+
+- `v` (*float or array_like, optional*)
+  Face velocity used to determine upwind/downwind directions.
+
+- `tvd_limiter` (*callable, optional*)
+  Limiter function with signature ``phi(c_norm, x_norm_c, x_norm_d)``. If
+  ``None``, the routine returns linear upwind interpolation without TVD
+  correction.
+
+- `axis` (*int, optional*)
+  Interpolation axis.
+
+### Returns
+
+- `tuple[numpy.ndarray, numpy.ndarray]`
+  Interpolated staggered values and TVD correction term.
+
+## Source
+
+[View on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/0b0ac9e5d5a7ceb669718e3aafef1ebd9960b860/src/pymrm/interpolate.py#L107-L303)
 
 ```python
 def interp_cntr_to_stagg_tvd(
@@ -235,5 +245,4 @@ def interp_cntr_to_stagg_tvd(
             delta_staggered_values = delta_staggered_values.reshape(shape_f)
             staggered_values = staggered_values.reshape(shape_f)
     return staggered_values, delta_staggered_values
-
 ```

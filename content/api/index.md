@@ -1,7 +1,7 @@
 # API Reference of PyMRM
 
-Welcome to the API Reference for PyMRM, a comprehensive library designed for multiphase reactor modeling. This documentation provides detailed information about the modules, classes, and functions available in PyMRM, enabling users to effectively utilize its capabilities for solving complex engineering problems.
+The API reference is generated from the pinned `pymrm` source tree with Autodoc2-backed analysis so that the published pages stay aligned with the real package docstrings, signatures, and implementation locations.
 
-The API is organized into sections, making it straightforward to navigate and find the tools you need. Whether you're a beginner looking to understand the basics or an advanced user seeking in-depth details, this reference serves as a valuable resource.
+Use the [Modules](api.md) page when you want a guided view of the public API grouped by module, or jump to the [Alphabetical Overview](alphabetical_overview.md) for a flat index of every public function and class.
 
-Explore the modules to learn about the core functionalities, and refer to the examples and tutorials for practical applications. For a complete list of all available functions and classes, visit the [Alphabetical Overview](alphabetical_overview.md).
+Every generated reference page links back to the exact source file in the current `pymrm` submodule revision and includes an in-book code excerpt for quick inspection.

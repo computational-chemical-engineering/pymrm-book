@@ -1,42 +1,52 @@
 # `pymrm.coupling.construct_interface_matrices`
 
+[Back to module page](../modules/pymrm.coupling.md) · [Back to alphabetical overview](../alphabetical_overview.md)
+
 ## Signature
 
-`pymrm.coupling.construct_interface_matrices(shapes, x_fs, x_cs=(None, None), ic=({'a': (1, 1), 'b': (0, 0), 'd': 0}, {'a': (0, 0), 'b': (1, -1), 'd': 0}), axis=0, shapes_d=(None, None), format='csc')`
+`construct_interface_matrices(shapes, x_fs, x_cs = (None, None), ic = ({'a': (1, 1), 'b': (0, 0), 'd': 0}, {'a': (0, 0), 'b': (1, -1), 'd': 0}), axis = 0, shapes_d = (None, None), format = 'csc')`
 
-## Docstring
+## Summary
 
-```text
 Construct implicit interface-coupling matrices for two adjacent domains.
 
-Parameters
-----------
-shapes : tuple[tuple[int, ...], tuple[int, ...]]
-    Shapes of the two subdomains.
-x_fs : tuple[array_like, array_like]
-    Face coordinates for each subdomain along ``axis``.
-x_cs : tuple[array_like | None, array_like | None], optional
-    Cell-center coordinates for each subdomain.
-ic : tuple[dict, dict], optional
-    Two interface equations. Each dictionary may define ``a``, ``b``, and
-    ``d`` terms with coefficients for both subdomains.
-axis : int, optional
-    Interface-normal axis.
-shapes_d : tuple[tuple | None, tuple | None], optional
-    Optional source-vector shapes for decomposed inhomogeneous terms.
-format : {'csc', 'csr'}, optional
-    Sparse format for the homogeneous interface matrices.
+## Documentation
 
-Returns
--------
-tuple
-    Without ``shapes_d``:
-    ``(mat0, bc0, mat1, bc1)``.
-    With ``shapes_d``:
-    ``(mat0, bc00, bc01, mat1, bc10, bc11)``.
-```
+### Parameters
 
-## Implementation
+- `shapes` (*tuple[tuple[int, ...], tuple[int, ...]]*)
+  Shapes of the two subdomains.
+
+- `x_fs` (*tuple[array_like, array_like]*)
+  Face coordinates for each subdomain along ``axis``.
+
+- `x_cs` (*tuple[array_like | None, array_like | None], optional*)
+  Cell-center coordinates for each subdomain.
+
+- `ic` (*tuple[dict, dict], optional*)
+  Two interface equations. Each dictionary may define ``a``, ``b``, and
+  ``d`` terms with coefficients for both subdomains.
+
+- `axis` (*int, optional*)
+  Interface-normal axis.
+
+- `shapes_d` (*tuple[tuple | None, tuple | None], optional*)
+  Optional source-vector shapes for decomposed inhomogeneous terms.
+
+- `format` (*{'csc', 'csr'}, optional*)
+  Sparse format for the homogeneous interface matrices.
+
+### Returns
+
+- `tuple`
+  Without ``shapes_d``:
+  ``(mat0, bc0, mat1, bc1)``.
+  With ``shapes_d``:
+  ``(mat0, bc00, bc01, mat1, bc10, bc11)``.
+
+## Source
+
+[View on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/0b0ac9e5d5a7ceb669718e3aafef1ebd9960b860/src/pymrm/coupling.py#L190-L394)
 
 ```python
 def construct_interface_matrices(
@@ -244,5 +254,4 @@ def construct_interface_matrices(
             interface_bc[1][0],
             interface_bc[1][1],
         )
-
 ```

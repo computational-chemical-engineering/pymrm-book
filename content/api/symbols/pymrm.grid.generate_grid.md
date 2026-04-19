@@ -1,44 +1,51 @@
 # `pymrm.grid.generate_grid`
 
+[Back to module page](../modules/pymrm.grid.md) · [Back to alphabetical overview](../alphabetical_overview.md)
+
 ## Signature
 
-`pymrm.grid.generate_grid(size, x_f=None, generate_x_c=False, x_c=None)`
+`generate_grid(size, x_f = None, generate_x_c = False, x_c = None)`
 
-## Docstring
+## Summary
 
-```text
 Return face coordinates and optionally cell-center coordinates.
 
-Parameters
-----------
-size : int
-    Number of cells along the axis.
-x_f : array_like, optional
-    Face coordinates. Accepted inputs are:
+## Documentation
 
-    * ``None`` or an empty array: build a uniform grid on ``[0, 1]``;
-    * an array of length ``size + 1``: interpreted directly as face
-      coordinates;
-    * an array-like of length ``2``: interpreted as ``(xmin, xmax)`` and
-      used to build a uniform grid.
-generate_x_c : bool, optional
-    If ``True``, also return cell-center coordinates.
-x_c : array_like, optional
-    Explicit cell-center coordinates. When provided, length must equal
-    ``size``.
+### Parameters
 
-Returns
--------
-numpy.ndarray or tuple[numpy.ndarray, numpy.ndarray]
-    Face coordinates, and optionally cell-center coordinates.
+- `size` (*int*)
+  Number of cells along the axis.
 
-Raises
-------
-ValueError
-    If provided coordinates are inconsistent with ``size``.
-```
+- `x_f` (*array_like, optional*)
+  Face coordinates. Accepted inputs are:
 
-## Implementation
+  * ``None`` or an empty array: build a uniform grid on ``[0, 1]``;
+  * an array of length ``size + 1``: interpreted directly as face
+    coordinates;
+  * an array-like of length ``2``: interpreted as ``(xmin, xmax)`` and
+    used to build a uniform grid.
+
+- `generate_x_c` (*bool, optional*)
+  If ``True``, also return cell-center coordinates.
+
+- `x_c` (*array_like, optional*)
+  Explicit cell-center coordinates. When provided, length must equal
+  ``size``.
+
+### Returns
+
+- `numpy.ndarray or tuple[numpy.ndarray, numpy.ndarray]`
+  Face coordinates, and optionally cell-center coordinates.
+
+### Raises
+
+- `ValueError`
+  If provided coordinates are inconsistent with ``size``.
+
+## Source
+
+[View on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/0b0ac9e5d5a7ceb669718e3aafef1ebd9960b860/src/pymrm/grid.py#L35-L87)
 
 ```python
 def generate_grid(size, x_f=None, generate_x_c=False, x_c=None):
@@ -94,5 +101,4 @@ def generate_grid(size, x_f=None, generate_x_c=False, x_c=None):
         return x_f, x_c
 
     return x_f
-
 ```

@@ -1,28 +1,35 @@
 # `pymrm.solve.clip_approach`
 
+[Back to module page](../modules/pymrm.solve.md) · [Back to alphabetical overview](../alphabetical_overview.md)
+
 ## Signature
 
-`pymrm.solve.clip_approach(values, dummy, lower_bounds=0, upper_bounds=None, factor=0)`
+`clip_approach(values, dummy, lower_bounds = 0, upper_bounds = None, factor = 0)`
 
-## Docstring
+## Summary
 
-```text
 Project values onto bounds, optionally with a relaxed approach rule.
 
-Parameters
-----------
-values : numpy.ndarray
-    Values to modify in place.
-dummy : Any
-    Placeholder argument kept for API compatibility.
-lower_bounds, upper_bounds : float or numpy.ndarray, optional
-    Lower and upper bounds. Scalars and broadcastable arrays are supported.
-factor : float, optional
-    Relaxation factor for out-of-bound entries. ``0`` applies strict clipping.
-    Non-zero values apply a linear approach update toward the violated bound.
-```
+## Documentation
 
-## Implementation
+### Parameters
+
+- `values` (*numpy.ndarray*)
+  Values to modify in place.
+
+- `dummy` (*Any*)
+  Placeholder argument kept for API compatibility.
+
+- `lower_bounds, upper_bounds` (*float or numpy.ndarray, optional*)
+  Lower and upper bounds. Scalars and broadcastable arrays are supported.
+
+- `factor` (*float, optional*)
+  Relaxation factor for out-of-bound entries. ``0`` applies strict clipping.
+  Non-zero values apply a linear approach update toward the violated bound.
+
+## Source
+
+[View on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/0b0ac9e5d5a7ceb669718e3aafef1ebd9960b860/src/pymrm/solve.py#L115-L146)
 
 ```python
 def clip_approach(values, dummy, lower_bounds=0, upper_bounds=None, factor=0):
@@ -57,5 +64,4 @@ def clip_approach(values, dummy, lower_bounds=0, upper_bounds=None, factor=0):
                 values[above_upper] = (1.0 + factor) * broadcasted_upper_bounds[
                     above_upper
                 ] - factor * values[above_upper]
-
 ```

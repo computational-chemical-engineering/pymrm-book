@@ -1,32 +1,39 @@
 # `pymrm.coupling.translate_indices_to_larger_array`
 
+[Back to module page](../modules/pymrm.coupling.md) · [Back to alphabetical overview](../alphabetical_overview.md)
+
 ## Signature
 
-`pymrm.coupling.translate_indices_to_larger_array(linear_indices, shape, new_shape, offset=None)`
+`translate_indices_to_larger_array(linear_indices, shape, new_shape, offset = None)`
 
-## Docstring
+## Summary
 
-```text
 Map flat indices from a local array shape to a larger embedding shape.
 
-Parameters
-----------
-linear_indices : array_like
-    Flat indices defined in ``shape``.
-shape : tuple[int, ...]
-    Local array shape.
-new_shape : tuple[int, ...]
-    Embedding array shape.
-offset : tuple[int, ...], optional
-    Offset of the local array origin in the embedding array.
+## Documentation
 
-Returns
--------
-numpy.ndarray
-    Flat indices in ``new_shape``.
-```
+### Parameters
 
-## Implementation
+- `linear_indices` (*array_like*)
+  Flat indices defined in ``shape``.
+
+- `shape` (*tuple[int, ...]*)
+  Local array shape.
+
+- `new_shape` (*tuple[int, ...]*)
+  Embedding array shape.
+
+- `offset` (*tuple[int, ...], optional*)
+  Offset of the local array origin in the embedding array.
+
+### Returns
+
+- `numpy.ndarray`
+  Flat indices in ``new_shape``.
+
+## Source
+
+[View on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/0b0ac9e5d5a7ceb669718e3aafef1ebd9960b860/src/pymrm/coupling.py#L11-L43)
 
 ```python
 def translate_indices_to_larger_array(linear_indices, shape, new_shape, offset=None):
@@ -62,5 +69,4 @@ def translate_indices_to_larger_array(linear_indices, shape, new_shape, offset=N
     new_linear_indices = np.ravel_multi_index(adjusted_multi_indices, new_shape)
 
     return new_linear_indices
-
 ```

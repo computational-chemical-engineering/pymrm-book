@@ -1,16 +1,19 @@
 # `pymrm.helpers.construct_coefficient_matrix`
 
+[Back to module page](../modules/pymrm.helpers.md) · [Back to alphabetical overview](../alphabetical_overview.md)
+
 ## Signature
 
-`pymrm.helpers.construct_coefficient_matrix(coefficients, shape=None, axis=None, format='csc')`
+`construct_coefficient_matrix(coefficients, shape = None, axis = None, format = 'csc')`
 
-## Docstring
+## Summary
 
-```text
 Build a sparse coefficient matrix with optional broadcasting and (row, col) coupling.
 
-Modes
------
+## Documentation
+
+### Modes
+
 1. shape is None
    Treat coefficients as a flat sequence placed on the diagonal of an N×N matrix.
 
@@ -33,38 +36,42 @@ Modes
        n_cols = prod(shape_cols)
        nnz    = prod(working_shape)
 
-Parameters
-----------
-coefficients : array_like
-    Scalar field to broadcast; shape must be broadcast-compatible with the target.
-shape : None | tuple | (tuple, tuple), optional
-    Selects mode (see above).
-axis : int, optional
-    Staggered axis: length along this axis is increased by 1 for broadcasting.
-format : {'csc', 'csr'}, optional
-    Sparse storage format.  Default is ``'csc'``.
+### Parameters
 
-Returns
--------
-csc_array or csr_array
-    Sparse matrix in the requested format.
+- `coefficients` (*array_like*)
+  Scalar field to broadcast; shape must be broadcast-compatible with the target.
 
-Notes
------
+- `shape` (*None | tuple | (tuple, tuple), optional*)
+  Selects mode (see above).
+
+- `axis` (*int, optional*)
+  Staggered axis: length along this axis is increased by 1 for broadcasting.
+
+- `format` (*{'csc', 'csr'}, optional*)
+  Sparse storage format.  Default is ``'csc'``.
+
+### Returns
+
+- `csc_array or csr_array`
+  Sparse matrix in the requested format.
+
+### Notes
+
 - In mode (3) this is not a diagonal; it is a pointwise coupling pattern.
 - Broadcasting follows NumPy rules after auto-prepending leading 1s.
 
-Examples
---------
+### Examples
+
 Diagonal from flat:
     A = construct_coefficient_matrix(np.ones(20))
 Diagonal from 2D field (staggered in axis 0):
     A = construct_coefficient_matrix(kz, shape=(Nz, Nr), axis=0)
 Rectangular coupling (cell centers -> axial faces):
     A = construct_coefficient_matrix(alpha, shape=((1, Nr), (Nz, Nr)), axis=0)
-```
 
-## Implementation
+## Source
+
+[View on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/0b0ac9e5d5a7ceb669718e3aafef1ebd9960b860/src/pymrm/helpers.py#L91-L201)
 
 ```python
 def construct_coefficient_matrix(coefficients, shape=None, axis=None, format="csc"):
@@ -178,5 +185,4 @@ def construct_coefficient_matrix(coefficients, shape=None, axis=None, format="cs
         coefficients_copy = np.broadcast_to(coefficients_copy, shape)
         coeff_matrix = cls(diags(coefficients_copy.ravel(), format=fmt))
     return coeff_matrix
-
 ```

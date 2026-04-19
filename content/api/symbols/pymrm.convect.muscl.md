@@ -1,16 +1,18 @@
 # `pymrm.convect.muscl`
 
+[Back to module page](../modules/pymrm.convect.md) · [Back to alphabetical overview](../alphabetical_overview.md)
+
 ## Signature
 
-`pymrm.convect.muscl(normalized_c_c, normalized_x_c, normalized_x_d)`
+`muscl(normalized_c_c, normalized_x_c, normalized_x_d)`
 
-## Docstring
+## Summary
 
-```text
 Compute the MUSCL TVD correction in normalized-variable space.
-```
 
-## Implementation
+## Source
+
+[View on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/0b0ac9e5d5a7ceb669718e3aafef1ebd9960b860/src/pymrm/convect.py#L436-L451)
 
 ```python
 def muscl(normalized_c_c, normalized_x_c, normalized_x_d):
@@ -29,5 +31,4 @@ def muscl(normalized_c_c, normalized_x_c, normalized_x_d):
         ),
     )  # noqa: E501
     return normalized_concentration_diff
-
 ```
