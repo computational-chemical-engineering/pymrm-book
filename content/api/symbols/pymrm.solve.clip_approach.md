@@ -1,6 +1,6 @@
 # `pymrm.solve.clip_approach`
 
-[Back to module page](../modules/pymrm.solve.md) · [Back to alphabetical overview](../alphabetical_overview.md)
+[Back to module page](../modules/pymrm.solve) · [Back to alphabetical overview](../alphabetical_overview)
 
 ## Signature
 

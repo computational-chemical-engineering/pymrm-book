@@ -1,6 +1,6 @@
 # `pymrm.numjac.stencil_block_diagonals`
 
-[Back to module page](../modules/pymrm.numjac.md) · [Back to alphabetical overview](../alphabetical_overview.md)
+[Back to module page](../modules/pymrm.numjac) · [Back to alphabetical overview](../alphabetical_overview)
 
 ## Signature
 

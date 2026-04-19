@@ -1,6 +1,6 @@
 # `pymrm.coupling.update_csc_array_indices`
 
-[Back to module page](../modules/pymrm.coupling.md) · [Back to alphabetical overview](../alphabetical_overview.md)
+[Back to module page](../modules/pymrm.coupling) · [Back to alphabetical overview](../alphabetical_overview)
 
 ## Signature
 

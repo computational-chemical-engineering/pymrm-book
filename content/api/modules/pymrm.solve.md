@@ -1,6 +1,6 @@
 # `pymrm.solve`
 
-[Back to modules overview](../api.md)
+[Back to modules overview](../api)
 
 Nonlinear-solver utilities used by `pymrm`.
 
@@ -10,12 +10,12 @@ Nonlinear-solver utilities used by `pymrm`.
 
 | Symbol | Type | Summary |
 | ------ | ---- | ------- |
-| [`clip_approach`](../symbols/pymrm.solve.clip_approach.md) | function | Project values onto bounds, optionally with a relaxed approach rule. |
-| [`newton`](../symbols/pymrm.solve.newton.md) | function | Solve ``function(x) = 0`` with Newton iterations. |
+| [`clip_approach`](../symbols/pymrm.solve.clip_approach) | function | Project values onto bounds, optionally with a relaxed approach rule. |
+| [`newton`](../symbols/pymrm.solve.newton) | function | Solve ``function(x) = 0`` with Newton iterations. |
 
 ## `clip_approach(values, dummy, lower_bounds = 0, upper_bounds = None, factor = 0)`
 
-[Open dedicated reference page](../symbols/pymrm.solve.clip_approach.md)
+[Open dedicated reference page](../symbols/pymrm.solve.clip_approach)
 
 Project values onto bounds, optionally with a relaxed approach rule.
 
@@ -38,7 +38,7 @@ Project values onto bounds, optionally with a relaxed approach rule.
 
 ## `newton(function, initial_guess, args = (), tol = 1.49012e-08, maxfev = 100, solver = None, lin_solver_kwargs = None, callback = None)`
 
-[Open dedicated reference page](../symbols/pymrm.solve.newton.md)
+[Open dedicated reference page](../symbols/pymrm.solve.newton)
 
 Solve ``function(x) = 0`` with Newton iterations.
 

@@ -1,6 +1,6 @@
 # `pymrm.convect`
 
-[Back to modules overview](../api.md)
+[Back to modules overview](../api)
 
 Convective-flux operators and TVD limiter functions.
 
@@ -10,21 +10,21 @@ Convective-flux operators and TVD limiter functions.
 
 | Symbol | Type | Summary |
 | ------ | ---- | ------- |
-| [`clam`](../symbols/pymrm.convect.clam.md) | function | Compute the CLAM TVD correction in normalized-variable space. |
-| [`construct_convflux_bc`](../symbols/pymrm.convect.construct_convflux_bc.md) | function | Construct boundary-face upwind corrections and source terms. |
-| [`construct_convflux_upwind`](../symbols/pymrm.convect.construct_convflux_upwind.md) | function | Construct a first-order upwind convective-flux operator. |
-| [`construct_convflux_upwind_int`](../symbols/pymrm.convect.construct_convflux_upwind_int.md) | function | Construct the internal-face upwind advection operator. |
-| [`minmod`](../symbols/pymrm.convect.minmod.md) | function | Compute the Minmod TVD correction in normalized-variable space. |
-| [`muscl`](../symbols/pymrm.convect.muscl.md) | function | Compute the MUSCL TVD correction in normalized-variable space. |
-| [`osher`](../symbols/pymrm.convect.osher.md) | function | Compute the Osher TVD correction in normalized-variable space. |
-| [`smart`](../symbols/pymrm.convect.smart.md) | function | Compute the SMART TVD correction in normalized-variable space. |
-| [`stoic`](../symbols/pymrm.convect.stoic.md) | function | Compute the STOIC TVD correction in normalized-variable space. |
-| [`upwind`](../symbols/pymrm.convect.upwind.md) | function | Return zero correction (first-order upwind limiter). |
-| [`vanleer`](../symbols/pymrm.convect.vanleer.md) | function | Compute the van-Leer TVD correction in normalized-variable space. |
+| [`clam`](../symbols/pymrm.convect.clam) | function | Compute the CLAM TVD correction in normalized-variable space. |
+| [`construct_convflux_bc`](../symbols/pymrm.convect.construct_convflux_bc) | function | Construct boundary-face upwind corrections and source terms. |
+| [`construct_convflux_upwind`](../symbols/pymrm.convect.construct_convflux_upwind) | function | Construct a first-order upwind convective-flux operator. |
+| [`construct_convflux_upwind_int`](../symbols/pymrm.convect.construct_convflux_upwind_int) | function | Construct the internal-face upwind advection operator. |
+| [`minmod`](../symbols/pymrm.convect.minmod) | function | Compute the Minmod TVD correction in normalized-variable space. |
+| [`muscl`](../symbols/pymrm.convect.muscl) | function | Compute the MUSCL TVD correction in normalized-variable space. |
+| [`osher`](../symbols/pymrm.convect.osher) | function | Compute the Osher TVD correction in normalized-variable space. |
+| [`smart`](../symbols/pymrm.convect.smart) | function | Compute the SMART TVD correction in normalized-variable space. |
+| [`stoic`](../symbols/pymrm.convect.stoic) | function | Compute the STOIC TVD correction in normalized-variable space. |
+| [`upwind`](../symbols/pymrm.convect.upwind) | function | Return zero correction (first-order upwind limiter). |
+| [`vanleer`](../symbols/pymrm.convect.vanleer) | function | Compute the van-Leer TVD correction in normalized-variable space. |
 
 ## `clam(normalized_c_c, normalized_x_c, normalized_x_d)`
 
-[Open dedicated reference page](../symbols/pymrm.convect.clam.md)
+[Open dedicated reference page](../symbols/pymrm.convect.clam)
 
 Compute the CLAM TVD correction in normalized-variable space.
 
@@ -32,7 +32,7 @@ Compute the CLAM TVD correction in normalized-variable space.
 
 ## `construct_convflux_bc(shape, x_f, x_c = None, bc = (None, None), v = 1.0, axis = 0, shapes_d = (None, None), format = 'csc')`
 
-[Open dedicated reference page](../symbols/pymrm.convect.construct_convflux_bc.md)
+[Open dedicated reference page](../symbols/pymrm.convect.construct_convflux_bc)
 
 Construct boundary-face upwind corrections and source terms.
 
@@ -74,7 +74,7 @@ Construct boundary-face upwind corrections and source terms.
 
 ## `construct_convflux_upwind(shape, x_f, x_c = None, bc = (None, None), v = 1.0, axis = 0, shapes_d = (None, None), format = 'csc')`
 
-[Open dedicated reference page](../symbols/pymrm.convect.construct_convflux_upwind.md)
+[Open dedicated reference page](../symbols/pymrm.convect.construct_convflux_upwind)
 
 Construct a first-order upwind convective-flux operator.
 
@@ -115,7 +115,7 @@ Construct a first-order upwind convective-flux operator.
 
 ## `construct_convflux_upwind_int(shape, v = 1.0, axis = 0, format = 'csc')`
 
-[Open dedicated reference page](../symbols/pymrm.convect.construct_convflux_upwind_int.md)
+[Open dedicated reference page](../symbols/pymrm.convect.construct_convflux_upwind_int)
 
 Construct the internal-face upwind advection operator.
 
@@ -142,7 +142,7 @@ Construct the internal-face upwind advection operator.
 
 ## `minmod(normalized_c_c, normalized_x_c, normalized_x_d)`
 
-[Open dedicated reference page](../symbols/pymrm.convect.minmod.md)
+[Open dedicated reference page](../symbols/pymrm.convect.minmod)
 
 Compute the Minmod TVD correction in normalized-variable space.
 
@@ -150,7 +150,7 @@ Compute the Minmod TVD correction in normalized-variable space.
 
 ## `muscl(normalized_c_c, normalized_x_c, normalized_x_d)`
 
-[Open dedicated reference page](../symbols/pymrm.convect.muscl.md)
+[Open dedicated reference page](../symbols/pymrm.convect.muscl)
 
 Compute the MUSCL TVD correction in normalized-variable space.
 
@@ -158,7 +158,7 @@ Compute the MUSCL TVD correction in normalized-variable space.
 
 ## `osher(normalized_c_c, normalized_x_c, normalized_x_d)`
 
-[Open dedicated reference page](../symbols/pymrm.convect.osher.md)
+[Open dedicated reference page](../symbols/pymrm.convect.osher)
 
 Compute the Osher TVD correction in normalized-variable space.
 
@@ -166,7 +166,7 @@ Compute the Osher TVD correction in normalized-variable space.
 
 ## `smart(normalized_c_c, normalized_x_c, normalized_x_d)`
 
-[Open dedicated reference page](../symbols/pymrm.convect.smart.md)
+[Open dedicated reference page](../symbols/pymrm.convect.smart)
 
 Compute the SMART TVD correction in normalized-variable space.
 
@@ -174,7 +174,7 @@ Compute the SMART TVD correction in normalized-variable space.
 
 ## `stoic(normalized_c_c, normalized_x_c, normalized_x_d)`
 
-[Open dedicated reference page](../symbols/pymrm.convect.stoic.md)
+[Open dedicated reference page](../symbols/pymrm.convect.stoic)
 
 Compute the STOIC TVD correction in normalized-variable space.
 
@@ -182,7 +182,7 @@ Compute the STOIC TVD correction in normalized-variable space.
 
 ## `upwind(normalized_c_c, normalized_x_c, normalized_x_d)`
 
-[Open dedicated reference page](../symbols/pymrm.convect.upwind.md)
+[Open dedicated reference page](../symbols/pymrm.convect.upwind)
 
 Return zero correction (first-order upwind limiter).
 
@@ -190,7 +190,7 @@ Return zero correction (first-order upwind limiter).
 
 ## `vanleer(normalized_c_c, normalized_x_c, normalized_x_d)`
 
-[Open dedicated reference page](../symbols/pymrm.convect.vanleer.md)
+[Open dedicated reference page](../symbols/pymrm.convect.vanleer)
 
 Compute the van-Leer TVD correction in normalized-variable space.
 

@@ -1,6 +1,6 @@
 # `pymrm.coupling`
 
-[Back to modules overview](../api.md)
+[Back to modules overview](../api)
 
 Sparse-matrix utilities for multi-domain coupling and interface assembly.
 
@@ -10,15 +10,15 @@ Sparse-matrix utilities for multi-domain coupling and interface assembly.
 
 | Symbol | Type | Summary |
 | ------ | ---- | ------- |
-| [`construct_interface_matrices`](../symbols/pymrm.coupling.construct_interface_matrices.md) | function | Construct implicit interface-coupling matrices for two adjacent domains. |
-| [`translate_indices_to_larger_array`](../symbols/pymrm.coupling.translate_indices_to_larger_array.md) | function | Map flat indices from a local array shape to a larger embedding shape. |
-| [`update_array_indices`](../symbols/pymrm.coupling.update_array_indices.md) | function | Update sparse-matrix indices for a new embedding shape. |
-| [`update_csc_array_indices`](../symbols/pymrm.coupling.update_csc_array_indices.md) | function | Update CSC matrix row/column indexing for embedding in a larger domain. |
-| [`update_csr_array_indices`](../symbols/pymrm.coupling.update_csr_array_indices.md) | function | Update CSR matrix row/column indexing for embedding in a larger domain. |
+| [`construct_interface_matrices`](../symbols/pymrm.coupling.construct_interface_matrices) | function | Construct implicit interface-coupling matrices for two adjacent domains. |
+| [`translate_indices_to_larger_array`](../symbols/pymrm.coupling.translate_indices_to_larger_array) | function | Map flat indices from a local array shape to a larger embedding shape. |
+| [`update_array_indices`](../symbols/pymrm.coupling.update_array_indices) | function | Update sparse-matrix indices for a new embedding shape. |
+| [`update_csc_array_indices`](../symbols/pymrm.coupling.update_csc_array_indices) | function | Update CSC matrix row/column indexing for embedding in a larger domain. |
+| [`update_csr_array_indices`](../symbols/pymrm.coupling.update_csr_array_indices) | function | Update CSR matrix row/column indexing for embedding in a larger domain. |
 
 ## `construct_interface_matrices(shapes, x_fs, x_cs = (None, None), ic = ({'a': (1, 1), 'b': (0, 0), 'd': 0}, {'a': (0, 0), 'b': (1, -1), 'd': 0}), axis = 0, shapes_d = (None, None), format = 'csc')`
 
-[Open dedicated reference page](../symbols/pymrm.coupling.construct_interface_matrices.md)
+[Open dedicated reference page](../symbols/pymrm.coupling.construct_interface_matrices)
 
 Construct implicit interface-coupling matrices for two adjacent domains.
 
@@ -58,7 +58,7 @@ Construct implicit interface-coupling matrices for two adjacent domains.
 
 ## `translate_indices_to_larger_array(linear_indices, shape, new_shape, offset = None)`
 
-[Open dedicated reference page](../symbols/pymrm.coupling.translate_indices_to_larger_array.md)
+[Open dedicated reference page](../symbols/pymrm.coupling.translate_indices_to_larger_array)
 
 Map flat indices from a local array shape to a larger embedding shape.
 
@@ -85,7 +85,7 @@ Map flat indices from a local array shape to a larger embedding shape.
 
 ## `update_array_indices(sparse_mat, shape, new_shape, offset = None)`
 
-[Open dedicated reference page](../symbols/pymrm.coupling.update_array_indices.md)
+[Open dedicated reference page](../symbols/pymrm.coupling.update_array_indices)
 
 Update sparse-matrix indices for a new embedding shape.
 
@@ -111,7 +111,7 @@ Update sparse-matrix indices for a new embedding shape.
 
 ## `update_csc_array_indices(sparse_mat, shape, new_shape, offset = None)`
 
-[Open dedicated reference page](../symbols/pymrm.coupling.update_csc_array_indices.md)
+[Open dedicated reference page](../symbols/pymrm.coupling.update_csc_array_indices)
 
 Update CSC matrix row/column indexing for embedding in a larger domain.
 
@@ -122,7 +122,7 @@ Update CSC matrix row/column indexing for embedding in a larger domain.
 
 ## `update_csr_array_indices(sparse_mat, shape, new_shape, offset = None)`
 
-[Open dedicated reference page](../symbols/pymrm.coupling.update_csr_array_indices.md)
+[Open dedicated reference page](../symbols/pymrm.coupling.update_csr_array_indices)
 
 Update CSR matrix row/column indexing for embedding in a larger domain.
 

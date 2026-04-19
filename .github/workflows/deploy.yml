@@ -43,6 +43,9 @@ jobs:
       env:
         BASE_URL: /pymrm-book
 
+    - name: Disable Jekyll processing
+      run: touch _build/html/.nojekyll
+
     - name: Upload Pages artifact
       uses: actions/upload-pages-artifact@v3
       with:

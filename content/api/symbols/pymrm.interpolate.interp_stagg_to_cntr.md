@@ -1,6 +1,6 @@
 # `pymrm.interpolate.interp_stagg_to_cntr`
 
-[Back to module page](../modules/pymrm.interpolate.md) · [Back to alphabetical overview](../alphabetical_overview.md)
+[Back to module page](../modules/pymrm.interpolate) · [Back to alphabetical overview](../alphabetical_overview)
 
 ## Signature
 
