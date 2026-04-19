@@ -1,6 +1,6 @@
 # `pymrm.grid.non_uniform_grid`
 
-[Back to module page](../modules/pymrm.grid.md) · [Back to alphabetical overview](../alphabetical_overview.md)
+[Back to module page](../modules/pymrm.grid) · [Back to alphabetical overview](../alphabetical_overview)
 
 ## Signature
 

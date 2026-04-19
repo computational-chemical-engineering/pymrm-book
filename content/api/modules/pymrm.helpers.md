@@ -1,6 +1,6 @@
 # `pymrm.helpers`
 
-[Back to modules overview](../api.md)
+[Back to modules overview](../api)
 
 Utility helpers used throughout `pymrm`.
 
@@ -24,11 +24,11 @@ finite volume discretisation implemented by the package.
 
 | Symbol | Type | Summary |
 | ------ | ---- | ------- |
-| [`construct_coefficient_matrix`](../symbols/pymrm.helpers.construct_coefficient_matrix.md) | function | Build a sparse coefficient matrix with optional broadcasting and (row, col) coupling. |
+| [`construct_coefficient_matrix`](../symbols/pymrm.helpers.construct_coefficient_matrix) | function | Build a sparse coefficient matrix with optional broadcasting and (row, col) coupling. |
 
 ## `construct_coefficient_matrix(coefficients, shape = None, axis = None, format = 'csc')`
 
-[Open dedicated reference page](../symbols/pymrm.helpers.construct_coefficient_matrix.md)
+[Open dedicated reference page](../symbols/pymrm.helpers.construct_coefficient_matrix)
 
 Build a sparse coefficient matrix with optional broadcasting and (row, col) coupling.
 

@@ -1,6 +1,6 @@
 # `pymrm.operators.construct_grad`
 
-[Back to module page](../modules/pymrm.operators.md) · [Back to alphabetical overview](../alphabetical_overview.md)
+[Back to module page](../modules/pymrm.operators) · [Back to alphabetical overview](../alphabetical_overview)
 
 ## Signature
 

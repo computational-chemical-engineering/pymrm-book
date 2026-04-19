@@ -1,6 +1,6 @@
 # `pymrm.numjac`
 
-[Back to modules overview](../api.md)
+[Back to modules overview](../api)
 
 Numerical Jacobian construction with sparse stencil support.
 
@@ -10,12 +10,12 @@ Numerical Jacobian construction with sparse stencil support.
 
 | Symbol | Type | Summary |
 | ------ | ---- | ------- |
-| [`NumJac`](../symbols/pymrm.numjac.NumJac.md) | class | Numerical Jacobian evaluator based on grouped finite differences. |
-| [`stencil_block_diagonals`](../symbols/pymrm.numjac.stencil_block_diagonals.md) | function | Generate a block-diagonal or block-banded stencil description. |
+| [`NumJac`](../symbols/pymrm.numjac.NumJac) | class | Numerical Jacobian evaluator based on grouped finite differences. |
+| [`stencil_block_diagonals`](../symbols/pymrm.numjac.stencil_block_diagonals) | function | Generate a block-diagonal or block-banded stencil description. |
 
 ## `NumJac(shape = None, shape_in = None, shape_out = None, stencil = stencil_block_diagonals, eps_jac = 1e-06, format = 'csc', **kwargs)`
 
-[Open dedicated reference page](../symbols/pymrm.numjac.NumJac.md)
+[Open dedicated reference page](../symbols/pymrm.numjac.NumJac)
 
 Numerical Jacobian evaluator based on grouped finite differences.
 
@@ -128,7 +128,7 @@ For a full description of the PyMRM dependency notation, see:
 
 ## `stencil_block_diagonals(ndims = 1, axes_diagonals = [], axes_blocks = [-1], periodic_axes = [])`
 
-[Open dedicated reference page](../symbols/pymrm.numjac.stencil_block_diagonals.md)
+[Open dedicated reference page](../symbols/pymrm.numjac.stencil_block_diagonals)
 
 Generate a block-diagonal or block-banded stencil description.
 

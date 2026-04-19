@@ -1,6 +1,6 @@
 # `pymrm.convect.vanleer`
 
-[Back to module page](../modules/pymrm.convect.md) · [Back to alphabetical overview](../alphabetical_overview.md)
+[Back to module page](../modules/pymrm.convect) · [Back to alphabetical overview](../alphabetical_overview)
 
 ## Signature
 

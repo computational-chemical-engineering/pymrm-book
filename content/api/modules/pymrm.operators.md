@@ -1,6 +1,6 @@
 # `pymrm.operators`
 
-[Back to modules overview](../api.md)
+[Back to modules overview](../api)
 
 Sparse gradient and divergence operators for finite-volume discretisation.
 
@@ -10,14 +10,14 @@ Sparse gradient and divergence operators for finite-volume discretisation.
 
 | Symbol | Type | Summary |
 | ------ | ---- | ------- |
-| [`construct_div`](../symbols/pymrm.operators.construct_div.md) | function | Construct a divergence matrix that maps face fluxes to cell balances. |
-| [`construct_grad`](../symbols/pymrm.operators.construct_grad.md) | function | Construct the full gradient operator including boundary contributions. |
-| [`construct_grad_bc`](../symbols/pymrm.operators.construct_grad_bc.md) | function | Construct boundary-face gradient corrections and source terms. |
-| [`construct_grad_int`](../symbols/pymrm.operators.construct_grad_int.md) | function | Construct the interior-face gradient operator. |
+| [`construct_div`](../symbols/pymrm.operators.construct_div) | function | Construct a divergence matrix that maps face fluxes to cell balances. |
+| [`construct_grad`](../symbols/pymrm.operators.construct_grad) | function | Construct the full gradient operator including boundary contributions. |
+| [`construct_grad_bc`](../symbols/pymrm.operators.construct_grad_bc) | function | Construct boundary-face gradient corrections and source terms. |
+| [`construct_grad_int`](../symbols/pymrm.operators.construct_grad_int) | function | Construct the interior-face gradient operator. |
 
 ## `construct_div(shape, x_f, nu = 0, axis = 0, format = 'csc')`
 
-[Open dedicated reference page](../symbols/pymrm.operators.construct_div.md)
+[Open dedicated reference page](../symbols/pymrm.operators.construct_div)
 
 Construct a divergence matrix that maps face fluxes to cell balances.
 
@@ -48,7 +48,7 @@ Construct a divergence matrix that maps face fluxes to cell balances.
 
 ## `construct_grad(shape, x_f, x_c = None, bc = (None, None), axis = 0, shapes_d = (None, None), format = 'csc')`
 
-[Open dedicated reference page](../symbols/pymrm.operators.construct_grad.md)
+[Open dedicated reference page](../symbols/pymrm.operators.construct_grad)
 
 Construct the full gradient operator including boundary contributions.
 
@@ -87,7 +87,7 @@ Construct the full gradient operator including boundary contributions.
 
 ## `construct_grad_bc(shape, x_f, x_c = None, bc = (None, None), axis = 0, shapes_d = (None, None), format = 'csc')`
 
-[Open dedicated reference page](../symbols/pymrm.operators.construct_grad_bc.md)
+[Open dedicated reference page](../symbols/pymrm.operators.construct_grad_bc)
 
 Construct boundary-face gradient corrections and source terms.
 
@@ -126,7 +126,7 @@ Construct boundary-face gradient corrections and source terms.
 
 ## `construct_grad_int(shape, x_f, x_c = None, axis = 0, format = 'csc')`
 
-[Open dedicated reference page](../symbols/pymrm.operators.construct_grad_int.md)
+[Open dedicated reference page](../symbols/pymrm.operators.construct_grad_int)
 
 Construct the interior-face gradient operator.
 

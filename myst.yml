@@ -156,6 +156,8 @@ project:
           title: Modules
         - file: content/api/alphabetical_overview.md
           title: All Functions and Classes
+        - pattern: content/api/modules/*.md
+        - pattern: content/api/symbols/*.md
 site:
   options:
     logo: _static/logo.png

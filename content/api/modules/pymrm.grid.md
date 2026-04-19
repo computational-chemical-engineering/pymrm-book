@@ -1,6 +1,6 @@
 # `pymrm.grid`
 
-[Back to modules overview](../api.md)
+[Back to modules overview](../api)
 
 Grid-generation utilities for one-dimensional coordinates.
 
@@ -10,12 +10,12 @@ Grid-generation utilities for one-dimensional coordinates.
 
 | Symbol | Type | Summary |
 | ------ | ---- | ------- |
-| [`generate_grid`](../symbols/pymrm.grid.generate_grid.md) | function | Return face coordinates and optionally cell-center coordinates. |
-| [`non_uniform_grid`](../symbols/pymrm.grid.non_uniform_grid.md) | function | Generate a one-dimensional stretched face grid. |
+| [`generate_grid`](../symbols/pymrm.grid.generate_grid) | function | Return face coordinates and optionally cell-center coordinates. |
+| [`non_uniform_grid`](../symbols/pymrm.grid.non_uniform_grid) | function | Generate a one-dimensional stretched face grid. |
 
 ## `generate_grid(size, x_f = None, generate_x_c = False, x_c = None)`
 
-[Open dedicated reference page](../symbols/pymrm.grid.generate_grid.md)
+[Open dedicated reference page](../symbols/pymrm.grid.generate_grid)
 
 Return face coordinates and optionally cell-center coordinates.
 
@@ -54,7 +54,7 @@ Return face coordinates and optionally cell-center coordinates.
 
 ## `non_uniform_grid(left_bound, right_bound, num_points, dx_inf, factor)`
 
-[Open dedicated reference page](../symbols/pymrm.grid.non_uniform_grid.md)
+[Open dedicated reference page](../symbols/pymrm.grid.non_uniform_grid)
 
 Generate a one-dimensional stretched face grid.
 

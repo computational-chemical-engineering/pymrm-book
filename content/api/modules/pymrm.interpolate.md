@@ -1,6 +1,6 @@
 # `pymrm.interpolate`
 
-[Back to modules overview](../api.md)
+[Back to modules overview](../api)
 
 Interpolation utilities between cell-centered and staggered grids.
 
@@ -10,16 +10,16 @@ Interpolation utilities between cell-centered and staggered grids.
 
 | Symbol | Type | Summary |
 | ------ | ---- | ------- |
-| [`compute_boundary_values`](../symbols/pymrm.interpolate.compute_boundary_values.md) | function | Compute boundary values and boundary-normal gradients. |
-| [`construct_boundary_value_matrices`](../symbols/pymrm.interpolate.construct_boundary_value_matrices.md) | function | Build matrices that evaluate boundary values from cell-centered unknowns. |
-| [`create_staggered_array`](../symbols/pymrm.interpolate.create_staggered_array.md) | function | Create a face/staggered field from scalar, centered, or staggered input. |
-| [`interp_cntr_to_stagg`](../symbols/pymrm.interpolate.interp_cntr_to_stagg.md) | function | Interpolate cell-centered values to face/staggered locations. |
-| [`interp_cntr_to_stagg_tvd`](../symbols/pymrm.interpolate.interp_cntr_to_stagg_tvd.md) | function | Perform TVD interpolation from cell centers to faces. |
-| [`interp_stagg_to_cntr`](../symbols/pymrm.interpolate.interp_stagg_to_cntr.md) | function | Interpolate face/staggered values to cell centers. |
+| [`compute_boundary_values`](../symbols/pymrm.interpolate.compute_boundary_values) | function | Compute boundary values and boundary-normal gradients. |
+| [`construct_boundary_value_matrices`](../symbols/pymrm.interpolate.construct_boundary_value_matrices) | function | Build matrices that evaluate boundary values from cell-centered unknowns. |
+| [`create_staggered_array`](../symbols/pymrm.interpolate.create_staggered_array) | function | Create a face/staggered field from scalar, centered, or staggered input. |
+| [`interp_cntr_to_stagg`](../symbols/pymrm.interpolate.interp_cntr_to_stagg) | function | Interpolate cell-centered values to face/staggered locations. |
+| [`interp_cntr_to_stagg_tvd`](../symbols/pymrm.interpolate.interp_cntr_to_stagg_tvd) | function | Perform TVD interpolation from cell centers to faces. |
+| [`interp_stagg_to_cntr`](../symbols/pymrm.interpolate.interp_stagg_to_cntr) | function | Interpolate face/staggered values to cell centers. |
 
 ## `compute_boundary_values(cell_centered_values, x_f, x_c = None, bc = None, axis = 0, bound_id = None)`
 
-[Open dedicated reference page](../symbols/pymrm.interpolate.compute_boundary_values.md)
+[Open dedicated reference page](../symbols/pymrm.interpolate.compute_boundary_values)
 
 Compute boundary values and boundary-normal gradients.
 
@@ -56,7 +56,7 @@ Compute boundary values and boundary-normal gradients.
 
 ## `construct_boundary_value_matrices(shape, x_f, x_c = None, bc = None, axis = 0, bound_id = 0, shape_d = None, format = 'csc')`
 
-[Open dedicated reference page](../symbols/pymrm.interpolate.construct_boundary_value_matrices.md)
+[Open dedicated reference page](../symbols/pymrm.interpolate.construct_boundary_value_matrices)
 
 Build matrices that evaluate boundary values from cell-centered unknowns.
 
@@ -96,7 +96,7 @@ Build matrices that evaluate boundary values from cell-centered unknowns.
 
 ## `create_staggered_array(array, shape, axis, x_f = None, x_c = None)`
 
-[Open dedicated reference page](../symbols/pymrm.interpolate.create_staggered_array.md)
+[Open dedicated reference page](../symbols/pymrm.interpolate.create_staggered_array)
 
 Create a face/staggered field from scalar, centered, or staggered input.
 
@@ -124,7 +124,7 @@ Create a face/staggered field from scalar, centered, or staggered input.
 
 ## `interp_cntr_to_stagg(cell_centered_values, x_f, x_c = None, axis = 0)`
 
-[Open dedicated reference page](../symbols/pymrm.interpolate.interp_cntr_to_stagg.md)
+[Open dedicated reference page](../symbols/pymrm.interpolate.interp_cntr_to_stagg)
 
 Interpolate cell-centered values to face/staggered locations.
 
@@ -151,7 +151,7 @@ Interpolate cell-centered values to face/staggered locations.
 
 ## `interp_cntr_to_stagg_tvd(cell_centered_values, x_f, x_c = None, bc = None, v = 0, tvd_limiter = None, axis = 0)`
 
-[Open dedicated reference page](../symbols/pymrm.interpolate.interp_cntr_to_stagg_tvd.md)
+[Open dedicated reference page](../symbols/pymrm.interpolate.interp_cntr_to_stagg_tvd)
 
 Perform TVD interpolation from cell centers to faces.
 
@@ -190,7 +190,7 @@ Perform TVD interpolation from cell centers to faces.
 
 ## `interp_stagg_to_cntr(staggered_values, x_f, x_c = None, axis = 0)`
 
-[Open dedicated reference page](../symbols/pymrm.interpolate.interp_stagg_to_cntr.md)
+[Open dedicated reference page](../symbols/pymrm.interpolate.interp_stagg_to_cntr)
 
 Interpolate face/staggered values to cell centers.
 
