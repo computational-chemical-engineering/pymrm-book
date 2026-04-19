@@ -1,51 +1,63 @@
 # `pymrm.solve.newton`
 
+[Back to module page](../modules/pymrm.solve.md) · [Back to alphabetical overview](../alphabetical_overview.md)
+
 ## Signature
 
-`pymrm.solve.newton(function, initial_guess, args=(), tol=1.49012e-08, maxfev=100, solver=None, lin_solver_kwargs=None, callback=None)`
+`newton(function, initial_guess, args = (), tol = 1.49012e-08, maxfev = 100, solver = None, lin_solver_kwargs = None, callback = None)`
 
-## Docstring
+## Summary
 
-```text
 Solve ``function(x) = 0`` with Newton iterations.
 
-Parameters
-----------
-function : callable
-    Callable with signature ``function(x, *args) -> (residual, jacobian)``.
-initial_guess : numpy.ndarray
-    Starting point of the iterations.
-args : tuple, optional
-    Extra positional arguments passed to ``function``.
-tol : float, optional
-    Stopping tolerance on the infinity norm of the Newton update.
-maxfev : int, optional
-    Maximum number of Newton iterations.
-solver : {'spsolve', 'cg', 'bicgstab'} or callable, optional
-    Linear solver used for each Newton step. If ``None``, the routine picks
-    ``'spsolve'`` for smaller systems and ``'bicgstab'`` for larger systems.
-    A callable solver must accept ``(jac_matrix, rhs, **kwargs)`` and return
-    the solution vector.
-lin_solver_kwargs : dict, optional
-    Keyword arguments forwarded to the selected linear solver.
-callback : callable, optional
-    Optional hook called as ``callback(x, residual)`` after each iteration.
+## Documentation
 
-Returns
--------
-scipy.optimize.OptimizeResult
-    Result object with fields ``x``, ``success``, ``nit``, ``fun``, and
-    ``message``.
+### Parameters
 
-Raises
-------
-ValueError
-    If ``solver`` is not one of the supported names and is not callable.
-RuntimeError
-    If an iterative linear solver fails to converge.
-```
+- `function` (*callable*)
+  Callable with signature ``function(x, *args) -> (residual, jacobian)``.
 
-## Implementation
+- `initial_guess` (*numpy.ndarray*)
+  Starting point of the iterations.
+
+- `args` (*tuple, optional*)
+  Extra positional arguments passed to ``function``.
+
+- `tol` (*float, optional*)
+  Stopping tolerance on the infinity norm of the Newton update.
+
+- `maxfev` (*int, optional*)
+  Maximum number of Newton iterations.
+
+- `solver` (*{'spsolve', 'cg', 'bicgstab'} or callable, optional*)
+  Linear solver used for each Newton step. If ``None``, the routine picks
+  ``'spsolve'`` for smaller systems and ``'bicgstab'`` for larger systems.
+  A callable solver must accept ``(jac_matrix, rhs, **kwargs)`` and return
+  the solution vector.
+
+- `lin_solver_kwargs` (*dict, optional*)
+  Keyword arguments forwarded to the selected linear solver.
+
+- `callback` (*callable, optional*)
+  Optional hook called as ``callback(x, residual)`` after each iteration.
+
+### Returns
+
+- `scipy.optimize.OptimizeResult`
+  Result object with fields ``x``, ``success``, ``nit``, ``fun``, and
+  ``message``.
+
+### Raises
+
+- `ValueError`
+  If ``solver`` is not one of the supported names and is not callable.
+
+- `RuntimeError`
+  If an iterative linear solver fails to converge.
+
+## Source
+
+[View on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/0b0ac9e5d5a7ceb669718e3aafef1ebd9960b860/src/pymrm/solve.py#L9-L112)
 
 ```python
 def newton(
@@ -152,5 +164,4 @@ def newton(
     return OptimizeResult(
         x=x, success=False, nit=maxfev, fun=g, message="Did not converge"
     )
-
 ```

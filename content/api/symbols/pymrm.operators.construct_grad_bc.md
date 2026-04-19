@@ -1,41 +1,51 @@
 # `pymrm.operators.construct_grad_bc`
 
+[Back to module page](../modules/pymrm.operators.md) · [Back to alphabetical overview](../alphabetical_overview.md)
+
 ## Signature
 
-`pymrm.operators.construct_grad_bc(shape, x_f, x_c=None, bc=(None, None), axis=0, shapes_d=(None, None), format='csc')`
+`construct_grad_bc(shape, x_f, x_c = None, bc = (None, None), axis = 0, shapes_d = (None, None), format = 'csc')`
 
-## Docstring
+## Summary
 
-```text
 Construct boundary-face gradient corrections and source terms.
 
-Parameters
-----------
-shape : tuple[int, ...]
-    Cell-centered field shape.
-x_f : array_like
-    Face coordinates along ``axis``.
-x_c : array_like, optional
-    Cell-center coordinates.
-bc : tuple[dict | None, dict | None], optional
-    Left and right boundary-condition dictionaries with keys ``a``, ``b``,
-    and ``d``.
-axis : int, optional
-    Differentiation axis.
-shapes_d : tuple[tuple | None, tuple | None], optional
-    Optional source-vector shapes for left/right boundary contributions.
-format : {'csc', 'csr'}, optional
-    Sparse format for returned operator matrices.
+## Documentation
 
-Returns
--------
-tuple
-    ``(grad_matrix_bc, grad_bc)`` when ``shapes_d`` is not supplied, or
-    ``(grad_matrix_left, grad_bc_left, grad_matrix_right, grad_bc_right)``
-    otherwise.
-```
+### Parameters
 
-## Implementation
+- `shape` (*tuple[int, ...]*)
+  Cell-centered field shape.
+
+- `x_f` (*array_like*)
+  Face coordinates along ``axis``.
+
+- `x_c` (*array_like, optional*)
+  Cell-center coordinates.
+
+- `bc` (*tuple[dict | None, dict | None], optional*)
+  Left and right boundary-condition dictionaries with keys ``a``, ``b``,
+  and ``d``.
+
+- `axis` (*int, optional*)
+  Differentiation axis.
+
+- `shapes_d` (*tuple[tuple | None, tuple | None], optional*)
+  Optional source-vector shapes for left/right boundary contributions.
+
+- `format` (*{'csc', 'csr'}, optional*)
+  Sparse format for returned operator matrices.
+
+### Returns
+
+- `tuple`
+  ``(grad_matrix_bc, grad_bc)`` when ``shapes_d`` is not supplied, or
+  ``(grad_matrix_left, grad_bc_left, grad_matrix_right, grad_bc_right)``
+  otherwise.
+
+## Source
+
+[View on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/0b0ac9e5d5a7ceb669718e3aafef1ebd9960b860/src/pymrm/operators.py#L156-L397)
 
 ```python
 def construct_grad_bc(
@@ -280,5 +290,4 @@ def construct_grad_bc(
                 format=format,
             )
         return grad_matrix_0, grad_bc[0], grad_matrix_1, grad_bc[1]
-
 ```

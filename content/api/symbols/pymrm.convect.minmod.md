@@ -1,16 +1,18 @@
 # `pymrm.convect.minmod`
 
+[Back to module page](../modules/pymrm.convect.md) · [Back to alphabetical overview](../alphabetical_overview.md)
+
 ## Signature
 
-`pymrm.convect.minmod(normalized_c_c, normalized_x_c, normalized_x_d)`
+`minmod(normalized_c_c, normalized_x_c, normalized_x_d)`
 
-## Docstring
+## Summary
 
-```text
 Compute the Minmod TVD correction in normalized-variable space.
-```
 
-## Implementation
+## Source
+
+[View on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/0b0ac9e5d5a7ceb669718e3aafef1ebd9960b860/src/pymrm/convect.py#L398-L407)
 
 ```python
 def minmod(normalized_c_c, normalized_x_c, normalized_x_d):
@@ -23,5 +25,4 @@ def minmod(normalized_c_c, normalized_x_c, normalized_x_d):
         ),
     )
     return normalized_concentration_diff
-
 ```

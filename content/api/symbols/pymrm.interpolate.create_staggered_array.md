@@ -1,33 +1,40 @@
 # `pymrm.interpolate.create_staggered_array`
 
+[Back to module page](../modules/pymrm.interpolate.md) · [Back to alphabetical overview](../alphabetical_overview.md)
+
 ## Signature
 
-`pymrm.interpolate.create_staggered_array(array, shape, axis, x_f=None, x_c=None)`
+`create_staggered_array(array, shape, axis, x_f = None, x_c = None)`
 
-## Docstring
+## Summary
 
-```text
 Create a face/staggered field from scalar, centered, or staggered input.
 
-Parameters
-----------
-array : array_like
-    Input values. May be scalar, centered, or already staggered.
-shape : tuple[int, ...] or int
-    Target centered-field shape.
-axis : int
-    Staggering axis.
-x_f, x_c : array_like, optional
-    Face and center coordinates used when centered input must be
-    interpolated to faces.
+## Documentation
 
-Returns
--------
-numpy.ndarray
-    Broadcasted/interpolated array with staggered shape.
-```
+### Parameters
 
-## Implementation
+- `array` (*array_like*)
+  Input values. May be scalar, centered, or already staggered.
+
+- `shape` (*tuple[int, ...] or int*)
+  Target centered-field shape.
+
+- `axis` (*int*)
+  Staggering axis.
+
+- `x_f, x_c` (*array_like, optional*)
+  Face and center coordinates used when centered input must be
+  interpolated to faces.
+
+### Returns
+
+- `numpy.ndarray`
+  Broadcasted/interpolated array with staggered shape.
+
+## Source
+
+[View on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/0b0ac9e5d5a7ceb669718e3aafef1ebd9960b860/src/pymrm/interpolate.py#L306-L360)
 
 ```python
 def create_staggered_array(array, shape, axis, x_f=None, x_c=None):
@@ -85,5 +92,4 @@ def create_staggered_array(array, shape, axis, x_f=None, x_c=None):
         array_f = array
     array_f = np.broadcast_to(array_f, shape_f)
     return array_f
-
 ```

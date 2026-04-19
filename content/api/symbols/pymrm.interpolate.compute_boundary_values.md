@@ -1,40 +1,49 @@
 # `pymrm.interpolate.compute_boundary_values`
 
+[Back to module page](../modules/pymrm.interpolate.md) · [Back to alphabetical overview](../alphabetical_overview.md)
+
 ## Signature
 
-`pymrm.interpolate.compute_boundary_values(cell_centered_values, x_f, x_c=None, bc=None, axis=0, bound_id=None)`
+`compute_boundary_values(cell_centered_values, x_f, x_c = None, bc = None, axis = 0, bound_id = None)`
 
-## Docstring
+## Summary
 
-```text
 Compute boundary values and boundary-normal gradients.
 
-Parameters
-----------
-cell_centered_values : numpy.ndarray
-    Cell-centered solution values.
-x_f : array_like
-    Face coordinates along ``axis``.
-x_c : array_like, optional
-    Cell-center coordinates.
-bc : dict or tuple[dict | None, dict | None], optional
-    Boundary-condition data. For a single boundary query (``bound_id`` set),
-    a single dictionary is accepted. For both boundaries, pass a
-    two-element tuple.
-axis : int, optional
-    Axis normal to the boundary.
-bound_id : {0, 1} or None, optional
-    Boundary selector. ``None`` returns both boundaries.
+## Documentation
 
-Returns
--------
-tuple
-    If ``bound_id`` is ``None``:
-    ``(value_left, grad_left, value_right, grad_right)``.
-    Otherwise: ``(value, grad)`` for the requested boundary.
-```
+### Parameters
 
-## Implementation
+- `cell_centered_values` (*numpy.ndarray*)
+  Cell-centered solution values.
+
+- `x_f` (*array_like*)
+  Face coordinates along ``axis``.
+
+- `x_c` (*array_like, optional*)
+  Cell-center coordinates.
+
+- `bc` (*dict or tuple[dict | None, dict | None], optional*)
+  Boundary-condition data. For a single boundary query (``bound_id`` set),
+  a single dictionary is accepted. For both boundaries, pass a
+  two-element tuple.
+
+- `axis` (*int, optional*)
+  Axis normal to the boundary.
+
+- `bound_id` (*{0, 1} or None, optional*)
+  Boundary selector. ``None`` returns both boundaries.
+
+### Returns
+
+- `tuple`
+  If ``bound_id`` is ``None``:
+  ``(value_left, grad_left, value_right, grad_right)``.
+  Otherwise: ``(value, grad)`` for the requested boundary.
+
+## Source
+
+[View on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/0b0ac9e5d5a7ceb669718e3aafef1ebd9960b860/src/pymrm/interpolate.py#L363-L574)
 
 ```python
 def compute_boundary_values(
@@ -249,5 +258,4 @@ def compute_boundary_values(
         )
     else:
         return boundary_values[bound_id], boundary_grads[bound_id]
-
 ```

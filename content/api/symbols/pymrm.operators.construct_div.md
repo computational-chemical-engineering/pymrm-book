@@ -1,35 +1,43 @@
 # `pymrm.operators.construct_div`
 
+[Back to module page](../modules/pymrm.operators.md) · [Back to alphabetical overview](../alphabetical_overview.md)
+
 ## Signature
 
-`pymrm.operators.construct_div(shape, x_f, nu=0, axis=0, format='csc')`
+`construct_div(shape, x_f, nu = 0, axis = 0, format = 'csc')`
 
-## Docstring
+## Summary
 
-```text
 Construct a divergence matrix that maps face fluxes to cell balances.
 
-Parameters
-----------
-shape : tuple[int, ...] or int
-    Cell-centered field shape.
-x_f : array_like
-    Face coordinates along ``axis``.
-nu : int or callable, optional
-    Geometry descriptor. ``0`` gives Cartesian, ``1`` cylindrical,
-    ``2`` spherical, and a callable ``nu(x)`` enables custom metrics.
-axis : int, optional
-    Axis for flux divergence.
-format : {'csc', 'csr'}, optional
-    Sparse format of the returned operator.
+## Documentation
 
-Returns
--------
-scipy.sparse.csc_array or scipy.sparse.csr_array
-    Divergence operator.
-```
+### Parameters
 
-## Implementation
+- `shape` (*tuple[int, ...] or int*)
+  Cell-centered field shape.
+
+- `x_f` (*array_like*)
+  Face coordinates along ``axis``.
+
+- `nu` (*int or callable, optional*)
+  Geometry descriptor. ``0`` gives Cartesian, ``1`` cylindrical,
+  ``2`` spherical, and a callable ``nu(x)`` enables custom metrics.
+
+- `axis` (*int, optional*)
+  Axis for flux divergence.
+
+- `format` (*{'csc', 'csr'}, optional*)
+  Sparse format of the returned operator.
+
+### Returns
+
+- `scipy.sparse.csc_array or scipy.sparse.csr_array`
+  Divergence operator.
+
+## Source
+
+[View on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/0b0ac9e5d5a7ceb669718e3aafef1ebd9960b860/src/pymrm/operators.py#L400-L508)
 
 ```python
 def construct_div(shape, x_f, nu=0, axis=0, format="csc"):
@@ -141,5 +149,4 @@ def construct_div(shape, x_f, nu=0, axis=0, format="csc"):
         )
     div_matrix.sort_indices()
     return div_matrix
-
 ```

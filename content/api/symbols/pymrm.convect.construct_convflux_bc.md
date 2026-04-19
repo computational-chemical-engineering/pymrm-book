@@ -1,43 +1,54 @@
 # `pymrm.convect.construct_convflux_bc`
 
+[Back to module page](../modules/pymrm.convect.md) · [Back to alphabetical overview](../alphabetical_overview.md)
+
 ## Signature
 
-`pymrm.convect.construct_convflux_bc(shape, x_f, x_c=None, bc=(None, None), v=1.0, axis=0, shapes_d=(None, None), format='csc')`
+`construct_convflux_bc(shape, x_f, x_c = None, bc = (None, None), v = 1.0, axis = 0, shapes_d = (None, None), format = 'csc')`
 
-## Docstring
+## Summary
 
-```text
 Construct boundary-face upwind corrections and source terms.
 
-Parameters
-----------
-shape : tuple[int, ...]
-    Cell-centered field shape.
-x_f : array_like
-    Face coordinates along ``axis``.
-x_c : array_like, optional
-    Cell-center coordinates.
-bc : tuple[dict | None, dict | None], optional
-    Left and right boundary-condition dictionaries with keys ``a``, ``b``,
-    and ``d``.
-v : float or array_like, optional
-    Face velocity field.
-axis : int, optional
-    Convection axis.
-shapes_d : tuple[tuple | None, tuple | None], optional
-    Optional source-vector shapes for inhomogeneous boundary terms.
-format : {'csc', 'csr'}, optional
-    Sparse format for returned operator matrices.
+## Documentation
 
-Returns
--------
-tuple
-    ``(conv_matrix_bc, conv_bc)`` when ``shapes_d`` is not supplied, or
-    ``(conv_matrix_left, conv_bc_left, conv_matrix_right, conv_bc_right)``
-    otherwise.
-```
+### Parameters
 
-## Implementation
+- `shape` (*tuple[int, ...]*)
+  Cell-centered field shape.
+
+- `x_f` (*array_like*)
+  Face coordinates along ``axis``.
+
+- `x_c` (*array_like, optional*)
+  Cell-center coordinates.
+
+- `bc` (*tuple[dict | None, dict | None], optional*)
+  Left and right boundary-condition dictionaries with keys ``a``, ``b``,
+  and ``d``.
+
+- `v` (*float or array_like, optional*)
+  Face velocity field.
+
+- `axis` (*int, optional*)
+  Convection axis.
+
+- `shapes_d` (*tuple[tuple | None, tuple | None], optional*)
+  Optional source-vector shapes for inhomogeneous boundary terms.
+
+- `format` (*{'csc', 'csr'}, optional*)
+  Sparse format for returned operator matrices.
+
+### Returns
+
+- `tuple`
+  ``(conv_matrix_bc, conv_bc)`` when ``shapes_d`` is not supplied, or
+  ``(conv_matrix_left, conv_bc_left, conv_matrix_right, conv_bc_right)``
+  otherwise.
+
+## Source
+
+[View on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/0b0ac9e5d5a7ceb669718e3aafef1ebd9960b860/src/pymrm/convect.py#L132-L386)
 
 ```python
 def construct_convflux_bc(
@@ -295,5 +306,4 @@ def construct_convflux_bc(
                 format=format,
             )
         return conv_matrix_0, conv_bc[0], conv_matrix_1, conv_bc[1]
-
 ```

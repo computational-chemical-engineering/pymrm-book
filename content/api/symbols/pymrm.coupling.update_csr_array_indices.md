@@ -1,16 +1,18 @@
 # `pymrm.coupling.update_csr_array_indices`
 
+[Back to module page](../modules/pymrm.coupling.md) · [Back to alphabetical overview](../alphabetical_overview.md)
+
 ## Signature
 
-`pymrm.coupling.update_csr_array_indices(sparse_mat, shape, new_shape, offset=None)`
+`update_csr_array_indices(sparse_mat, shape, new_shape, offset = None)`
 
-## Docstring
+## Summary
 
-```text
 Update CSR matrix row/column indexing for embedding in a larger domain.
-```
 
-## Implementation
+## Source
+
+[View on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/0b0ac9e5d5a7ceb669718e3aafef1ebd9960b860/src/pymrm/coupling.py#L123-L161)
 
 ```python
 def update_csr_array_indices(sparse_mat, shape, new_shape, offset=None):
@@ -52,5 +54,4 @@ def update_csr_array_indices(sparse_mat, shape, new_shape, offset=None):
     )
 
     return updated_mat
-
 ```

@@ -1,32 +1,39 @@
 # `pymrm.interpolate.interp_cntr_to_stagg`
 
+[Back to module page](../modules/pymrm.interpolate.md) · [Back to alphabetical overview](../alphabetical_overview.md)
+
 ## Signature
 
-`pymrm.interpolate.interp_cntr_to_stagg(cell_centered_values, x_f, x_c=None, axis=0)`
+`interp_cntr_to_stagg(cell_centered_values, x_f, x_c = None, axis = 0)`
 
-## Docstring
+## Summary
 
-```text
 Interpolate cell-centered values to face/staggered locations.
 
-Parameters
-----------
-cell_centered_values : numpy.ndarray
-    Values defined at cell centers.
-x_f : array_like
-    Face coordinates along ``axis``.
-x_c : array_like, optional
-    Cell-center coordinates. If omitted, midpoint locations are used.
-axis : int, optional
-    Interpolation axis.
+## Documentation
 
-Returns
--------
-numpy.ndarray
-    Staggered values with one additional element along ``axis``.
-```
+### Parameters
 
-## Implementation
+- `cell_centered_values` (*numpy.ndarray*)
+  Values defined at cell centers.
+
+- `x_f` (*array_like*)
+  Face coordinates along ``axis``.
+
+- `x_c` (*array_like, optional*)
+  Cell-center coordinates. If omitted, midpoint locations are used.
+
+- `axis` (*int, optional*)
+  Interpolation axis.
+
+### Returns
+
+- `numpy.ndarray`
+  Staggered values with one additional element along ``axis``.
+
+## Source
+
+[View on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/0b0ac9e5d5a7ceb669718e3aafef1ebd9960b860/src/pymrm/interpolate.py#L53-L104)
 
 ```python
 def interp_cntr_to_stagg(cell_centered_values, x_f, x_c=None, axis=0):
@@ -81,5 +88,4 @@ def interp_cntr_to_stagg(cell_centered_values, x_f, x_c=None, axis=0):
             - cell_centered_values[:, -2, :] * (x_f[-1] - x_c[-1])
         ) / (x_c[-1] - x_c[-2])
     return staggered_values.reshape(shape_f)
-
 ```
