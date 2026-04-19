@@ -1,6 +1,6 @@
 # Lecture Notes
 
-These notes accompany the **Multiphase Reactor Modeling (MRM)** course (6EMA05) at TU Eindhoven.
+These notes accompany the **Multiphase Reactor Modeling (MRM)** course (6EMA05) at TU Eindhoven. This is a preview version auto-generated using Claude Code. It is no replacement for the MRM slide deck.
 Each chapter corresponds to one or more lectures and provides:
 
 - concise derivation of the governing equations,
