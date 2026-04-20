@@ -64,7 +64,7 @@ h6 {
     box-shadow: none !important;
     max-width: 100% !important;
 }
-/* Vertically centre title next to logo */
+/* Vertically center title next to logo */
 .pymrm-title-cell {
     display: flex;
     align-items: center;
