@@ -1,4 +1,23 @@
+:::::::{grid} 1 1 2 2
+
+:::::{grid-item}
+:columns: 4
+
+```{image} ../_static/logo.png
+:alt: PyMRM Logo
+:class: pymrm-header-logo
+```
+
+:::::
+
+:::::{grid-item}
+:columns: 8
+
 # Multiphase Reactor Modeling using PyMRM
+
+:::::
+
+:::::::
 
 This book is a work in progress. Currently, it contains a set of tutorials, examples, case studies and, exercises.  
 For TU/e students of the MRM class (6EMA05), the course material is posted on the [Canvas page](https://canvas.tue.nl/courses/31211).
