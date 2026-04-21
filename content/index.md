@@ -5,8 +5,7 @@
 :class: pymrm-header-logo
 ```
 
-This book is a work in progress. Currently, it contains a set of tutorials, examples, case studies and, exercises.  
-For TU/e students of the MRM class (6EMA05), the course material is posted on the [Canvas page](https://canvas.tue.nl/courses/31211).
+This book is a work in progress. Currently, it contains a set of tutorials, examples, case studies and, exercises. For TU/e students of the MRM class (6EMA05): the course material is posted on the [Canvas page](https://canvas.tue.nl/courses/31211).
 
 ::::::{grid} 1 2 3 3
 
