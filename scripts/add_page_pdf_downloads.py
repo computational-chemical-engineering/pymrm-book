@@ -2,8 +2,8 @@
 
 Run this after ``jupyter-book build --html`` and before uploading the
 ``_build/html`` directory. The script renders every generated HTML page to a
-matching PDF under ``downloads/pdf/`` and injects a small JavaScript helper that
-adds a PDF download link beside the existing MyST download button.
+matching PDF under ``downloads/pdf/`` and adds the PDF to each page's MyST export
+metadata, so the existing download menu offers both Markdown and PDF versions.
 """
 
 from __future__ import annotations
@@ -12,78 +12,17 @@ import argparse
 import contextlib
 import functools
 import http.server
+import json
 import os
 import posixpath
+import re
 import socketserver
 import threading
 from pathlib import Path
 from urllib.parse import unquote, urlsplit
 
 
-PDF_HELPER_JS = r"""
-(function () {
-  function normalizeBase(value) {
-    if (!value || value === "/") return "";
-    return value.replace(/\/+$/, "");
-  }
-
-  const config = window.__MYST_PAGE_PDF_DOWNLOADS__ || {};
-  const baseUrl = normalizeBase(config.baseUrl || "");
-
-  function routePath() {
-    let path = window.location.pathname.replace(/\/+$/, "");
-    if (baseUrl && path === baseUrl) path = "/";
-    if (baseUrl && path.startsWith(baseUrl + "/")) path = path.slice(baseUrl.length);
-    if (!path) path = "/";
-    return path;
-  }
-
-  function pdfHref() {
-    const route = routePath();
-    const pdfPath = route === "/" ? "/downloads/pdf/index.pdf" : "/downloads/pdf" + route + ".pdf";
-    return baseUrl + pdfPath;
-  }
-
-  function ensureDirectLink() {
-    const dropdown = document.querySelector(".myst-fm-downloads-dropdown");
-    if (!dropdown || document.querySelector(".myst-fm-pdf-download-link")) return;
-
-    const link = document.createElement("a");
-    link.className = "myst-fm-pdf-download-link relative ml-2 -mr-1";
-    link.href = pdfHref();
-    link.download = "";
-    link.title = "Download this page as PDF";
-    link.setAttribute("aria-label", "Download this page as PDF");
-    link.innerHTML = '<span class="sr-only">Download PDF</span><span aria-hidden="true" style="font-size:0.75rem;font-weight:600;line-height:1.25rem">PDF</span>';
-    dropdown.insertAdjacentElement("afterend", link);
-  }
-
-  function ensureMenuItem() {
-    const menu = document.querySelector('[role="menu"], [data-headlessui-state~="open"]');
-    if (!menu || menu.querySelector(".myst-fm-pdf-download-menu-item")) return;
-    const item = document.createElement("a");
-    item.className = "myst-fm-pdf-download-menu-item block px-4 py-2 text-sm no-underline";
-    item.href = pdfHref();
-    item.download = "";
-    item.setAttribute("role", "menuitem");
-    item.textContent = "PDF";
-    menu.appendChild(item);
-  }
-
-  function install() {
-    ensureDirectLink();
-    ensureMenuItem();
-  }
-
-  const style = document.createElement("style");
-  style.textContent = ".myst-fm-pdf-download-link{display:inline-flex;align-items:center;color:inherit;text-decoration:none}.myst-fm-pdf-download-link:hover{text-decoration:underline}";
-  document.head.appendChild(style);
-
-  install();
-  new MutationObserver(install).observe(document.documentElement, { childList: true, subtree: true });
-  window.addEventListener("popstate", install);
-})();
-"""
+REMIX_CONTEXT_RE = re.compile(r"window\.__remixContext\s*=\s*(\{.*?\});</script>", re.DOTALL)
 
 
 class BasePathHandler(http.server.SimpleHTTPRequestHandler):
@@ -128,6 +67,19 @@ def pdf_path(html_dir: Path, route: str) -> Path:
     if route == "/":
         return html_dir / "downloads" / "pdf" / "index.pdf"
     return html_dir / "downloads" / "pdf" / (route.strip("/").replace("/", os.sep) + ".pdf")
+
+
+def pdf_url(route: str, base_url: str) -> str:
+    base = normalize_base_url(base_url)
+    if route == "/":
+        return f"{base}/downloads/pdf/index.pdf"
+    return f"{base}/downloads/pdf{route}.pdf"
+
+
+def pdf_filename(route: str) -> str:
+    if route == "/":
+        return "index.pdf"
+    return f"{route.rstrip('/').rsplit('/', 1)[-1]}.pdf"
 
 
 def iter_pages(html_dir: Path) -> list[Path]:
@@ -192,28 +144,94 @@ def render_pdfs(html_dir: Path, base_url: str, max_pages: int | None) -> int:
     return len(pages)
 
 
-def inject_helper(html_dir: Path, base_url: str) -> int:
-    build_dir = html_dir / "build"
-    build_dir.mkdir(parents=True, exist_ok=True)
-    helper_path = build_dir / "page-pdf-downloads.js"
-    helper_path.write_text(PDF_HELPER_JS.strip() + "\n", encoding="utf-8")
+def pdf_export(route: str, base_url: str) -> dict[str, str]:
+    return {
+        "format": "pdf",
+        "filename": pdf_filename(route),
+        "url": pdf_url(route, base_url),
+    }
 
-    base = normalize_base_url(base_url)
-    snippet = (
-        f'<script>window.__MYST_PAGE_PDF_DOWNLOADS__={{baseUrl:{base!r}}};</script>'
-        f'<script src="{base}/build/page-pdf-downloads.js" defer></script>'
+
+def add_pdf_export(frontmatter: dict[str, object], export: dict[str, str]) -> bool:
+    exports = frontmatter.setdefault("exports", [])
+    if not isinstance(exports, list):
+        return False
+    if any(item.get("format") == "pdf" for item in exports if isinstance(item, dict)):
+        return False
+    exports.append(export)
+    return True
+
+
+def extract_page_slug(html: str) -> str | None:
+    match = re.search(r'"slug":"([^"]+)"\s*,\s*"location"', html)
+    return match.group(1) if match else None
+
+
+def update_page_json(json_file: Path, export: dict[str, str]) -> bool:
+    data = json.loads(json_file.read_text(encoding="utf-8"))
+    frontmatter = data.get("frontmatter")
+    if not isinstance(frontmatter, dict):
+        return False
+    changed = add_pdf_export(frontmatter, export)
+    if changed:
+        json_file.write_text(
+            json.dumps(data, ensure_ascii=False, separators=(",", ":")) + "\n",
+            encoding="utf-8",
+            newline="\n",
+        )
+    return changed
+
+
+def update_remix_context(html: str, page_slug: str, export: dict[str, str]) -> tuple[str, bool]:
+    match = REMIX_CONTEXT_RE.search(html)
+    if not match:
+        return html, False
+
+    context = json.loads(match.group(1))
+    changed = False
+
+    def visit(value: object) -> None:
+        nonlocal changed
+        if isinstance(value, dict):
+            if value.get("slug") == page_slug and isinstance(value.get("frontmatter"), dict):
+                changed = add_pdf_export(value["frontmatter"], export) or changed
+            for child in value.values():
+                visit(child)
+        elif isinstance(value, list):
+            for child in value:
+                visit(child)
+
+    visit(context)
+    if not changed:
+        return html, False
+
+    replacement = (
+        "window.__remixContext = "
+        + json.dumps(context, ensure_ascii=False, separators=(",", ":")).replace("</", "<\\/")
+        + ";</script>"
     )
+    return html[: match.start()] + replacement + html[match.end() :], True
+
+
+def add_pdf_exports(html_dir: Path, base_url: str) -> int:
     count = 0
     for html_file in iter_pages(html_dir):
+        route = page_route(html_dir, html_file)
+        export = pdf_export(route, base_url)
         html = html_file.read_text(encoding="utf-8")
-        if "page-pdf-downloads.js" in html:
-            continue
-        if "</body>" in html:
-            html = html.replace("</body>", snippet + "</body>", 1)
-        else:
-            html += snippet
-        html_file.write_text(html, encoding="utf-8", newline="\n")
-        count += 1
+        page_slug = extract_page_slug(html)
+        changed = False
+
+        if page_slug:
+            json_file = html_dir / f"{page_slug}.json"
+            if json_file.exists():
+                changed = update_page_json(json_file, export) or changed
+            html, html_changed = update_remix_context(html, page_slug, export)
+            changed = html_changed or changed
+
+        if changed:
+            html_file.write_text(html, encoding="utf-8", newline="\n")
+            count += 1
     return count
 
 
@@ -232,8 +250,8 @@ def main(argv: list[str] | None = None) -> int:
     rendered = 0
     if not args.skip_pdfs:
         rendered = render_pdfs(html_dir, args.base_url, args.max_pages)
-    injected = inject_helper(html_dir, args.base_url)
-    print(f"Rendered {rendered} page PDF(s); injected helper into {injected} HTML page(s).")
+    updated = add_pdf_exports(html_dir, args.base_url)
+    print(f"Rendered {rendered} page PDF(s); added PDF export metadata to {updated} page(s).")
     return 0
 
 
