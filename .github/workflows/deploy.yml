@@ -35,6 +35,9 @@ jobs:
         pip install ./pymrm
         pip install -r requirements.txt
 
+    - name: Install PDF renderer
+      run: python -m playwright install --with-deps chromium
+
     - name: Regenerate API docs
       run: python3 scripts/generate_function_list.py
 
@@ -42,6 +45,9 @@ jobs:
       run: jupyter-book build --html
       env:
         BASE_URL: /pymrm-book
+
+    - name: Add per-page PDF downloads
+      run: python scripts/add_page_pdf_downloads.py --base-url /pymrm-book
 
     - name: Disable Jekyll processing
       run: touch _build/html/.nojekyll
