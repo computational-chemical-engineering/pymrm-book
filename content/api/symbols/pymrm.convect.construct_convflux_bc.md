@@ -48,7 +48,7 @@ Construct boundary-face upwind corrections and source terms.
 
 ## Source
 
-[View on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/0b0ac9e5d5a7ceb669718e3aafef1ebd9960b860/src/pymrm/convect.py#L132-L386)
+[View on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/89c91222a061c475e309f0ea6a6207ac8d5a3d20/src/pymrm/convect.py#L132-L386)
 
 ```python
 def construct_convflux_bc(

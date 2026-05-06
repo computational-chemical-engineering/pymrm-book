@@ -57,7 +57,7 @@ Solve ``function(x) = 0`` with Newton iterations.
 
 ## Source
 
-[View on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/0b0ac9e5d5a7ceb669718e3aafef1ebd9960b860/src/pymrm/solve.py#L9-L112)
+[View on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/89c91222a061c475e309f0ea6a6207ac8d5a3d20/src/pymrm/solve.py#L10-L123)
 
 ```python
 def newton(
@@ -118,11 +118,17 @@ def newton(
     if solver == "spsolve":
 
         def linsolver(jac_matrix, g, **kwargs):
-            return linalg.spsolve(jac_matrix, g, **kwargs)
+            if sparse.issparse(jac_matrix):
+                return linalg.spsolve(jac_matrix, g, **kwargs)
+            return dense_solve(np.asarray(jac_matrix), np.asarray(g), **kwargs)
 
     elif solver == "cg":
 
         def linsolver(jac_matrix, g, **kwargs):
+            if not sparse.issparse(jac_matrix):
+                raise ValueError(
+                    "solver='cg' requires a sparse Jacobian or a custom solver."
+                )
             Jac_iLU = linalg.spilu(jac_matrix)
             M = linalg.LinearOperator((n, n), Jac_iLU.solve)
             dx_neg, info = linalg.cg(jac_matrix, g, M=M, **kwargs)
@@ -133,6 +139,10 @@ def newton(
     elif solver == "bicgstab":
 
         def linsolver(jac_matrix, g, **kwargs):
+            if not sparse.issparse(jac_matrix):
+                raise ValueError(
+                    "solver='bicgstab' requires a sparse Jacobian or a custom solver."
+                )
             Jac_iLU = linalg.spilu(jac_matrix)
             M = linalg.LinearOperator((n, n), Jac_iLU.solve)
             dx_neg, info = linalg.bicgstab(jac_matrix, g, M=M, **kwargs)

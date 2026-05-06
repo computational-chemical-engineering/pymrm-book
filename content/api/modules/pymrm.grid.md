@@ -4,7 +4,7 @@
 
 Grid-generation utilities for one-dimensional coordinates.
 
-[View module source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/0b0ac9e5d5a7ceb669718e3aafef1ebd9960b860/src/pymrm/grid.py)
+[View module source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/89c91222a061c475e309f0ea6a6207ac8d5a3d20/src/pymrm/grid.py)
 
 ## Public API
 
@@ -50,7 +50,7 @@ Return face coordinates and optionally cell-center coordinates.
 - `ValueError`
   If provided coordinates are inconsistent with ``size``.
 
-[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/0b0ac9e5d5a7ceb669718e3aafef1ebd9960b860/src/pymrm/grid.py#L35-L87)
+[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/89c91222a061c475e309f0ea6a6207ac8d5a3d20/src/pymrm/grid.py#L35-L87)
 
 ## `non_uniform_grid(left_bound, right_bound, num_points, dx_inf, factor)`
 
@@ -78,4 +78,4 @@ Generate a one-dimensional stretched face grid.
 - `numpy.ndarray`
   Monotonic array of face coordinates with length ``num_points``.
 
-[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/0b0ac9e5d5a7ceb669718e3aafef1ebd9960b860/src/pymrm/grid.py#L6-L32)
+[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/89c91222a061c475e309f0ea6a6207ac8d5a3d20/src/pymrm/grid.py#L6-L32)

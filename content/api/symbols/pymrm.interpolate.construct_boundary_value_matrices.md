@@ -46,7 +46,7 @@ Build matrices that evaluate boundary values from cell-centered unknowns.
 
 ## Source
 
-[View on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/0b0ac9e5d5a7ceb669718e3aafef1ebd9960b860/src/pymrm/interpolate.py#L577-L722)
+[View on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/89c91222a061c475e309f0ea6a6207ac8d5a3d20/src/pymrm/interpolate.py#L577-L722)
 
 ```python
 def construct_boundary_value_matrices(

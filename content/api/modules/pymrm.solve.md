@@ -4,7 +4,7 @@
 
 Nonlinear-solver utilities used by `pymrm`.
 
-[View module source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/0b0ac9e5d5a7ceb669718e3aafef1ebd9960b860/src/pymrm/solve.py)
+[View module source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/89c91222a061c475e309f0ea6a6207ac8d5a3d20/src/pymrm/solve.py)
 
 ## Public API
 
@@ -34,7 +34,7 @@ Project values onto bounds, optionally with a relaxed approach rule.
   Relaxation factor for out-of-bound entries. ``0`` applies strict clipping.
   Non-zero values apply a linear approach update toward the violated bound.
 
-[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/0b0ac9e5d5a7ceb669718e3aafef1ebd9960b860/src/pymrm/solve.py#L115-L146)
+[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/89c91222a061c475e309f0ea6a6207ac8d5a3d20/src/pymrm/solve.py#L126-L157)
 
 ## `newton(function, initial_guess, args = (), tol = 1.49012e-08, maxfev = 100, solver = None, lin_solver_kwargs = None, callback = None)`
 
@@ -85,4 +85,4 @@ Solve ``function(x) = 0`` with Newton iterations.
 - `RuntimeError`
   If an iterative linear solver fails to converge.
 
-[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/0b0ac9e5d5a7ceb669718e3aafef1ebd9960b860/src/pymrm/solve.py#L9-L112)
+[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/89c91222a061c475e309f0ea6a6207ac8d5a3d20/src/pymrm/solve.py#L10-L123)
