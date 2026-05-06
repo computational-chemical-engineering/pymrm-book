@@ -17,7 +17,7 @@ Update CSC matrix row/column indexing for embedding in a larger domain.
 
 ## Source
 
-[View on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/0b0ac9e5d5a7ceb669718e3aafef1ebd9960b860/src/pymrm/coupling.py#L67-L78)
+[View on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/89c91222a061c475e309f0ea6a6207ac8d5a3d20/src/pymrm/coupling.py#L67-L78)
 
 ```python
 def update_csc_array_indices(sparse_mat, shape, new_shape, offset=None):

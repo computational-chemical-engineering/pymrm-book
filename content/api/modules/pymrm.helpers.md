@@ -18,7 +18,7 @@ finite volume discretisation implemented by the package.
 ``_sparse_array``
     Internal helper to construct a sparse array in the requested format.
 
-[View module source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/0b0ac9e5d5a7ceb669718e3aafef1ebd9960b860/src/pymrm/helpers.py)
+[View module source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/89c91222a061c475e309f0ea6a6207ac8d5a3d20/src/pymrm/helpers.py)
 
 ## Public API
 
@@ -89,4 +89,4 @@ Diagonal from 2D field (staggered in axis 0):
 Rectangular coupling (cell centers -> axial faces):
     A = construct_coefficient_matrix(alpha, shape=((1, Nr), (Nz, Nr)), axis=0)
 
-[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/0b0ac9e5d5a7ceb669718e3aafef1ebd9960b860/src/pymrm/helpers.py#L91-L201)
+[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/89c91222a061c475e309f0ea6a6207ac8d5a3d20/src/pymrm/helpers.py#L91-L201)

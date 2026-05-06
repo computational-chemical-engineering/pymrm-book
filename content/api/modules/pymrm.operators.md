@@ -4,7 +4,7 @@
 
 Sparse gradient and divergence operators for finite-volume discretisation.
 
-[View module source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/0b0ac9e5d5a7ceb669718e3aafef1ebd9960b860/src/pymrm/operators.py)
+[View module source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/89c91222a061c475e309f0ea6a6207ac8d5a3d20/src/pymrm/operators.py)
 
 ## Public API
 
@@ -44,7 +44,7 @@ Construct a divergence matrix that maps face fluxes to cell balances.
 - `scipy.sparse.csc_array or scipy.sparse.csr_array`
   Divergence operator.
 
-[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/0b0ac9e5d5a7ceb669718e3aafef1ebd9960b860/src/pymrm/operators.py#L400-L508)
+[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/89c91222a061c475e309f0ea6a6207ac8d5a3d20/src/pymrm/operators.py#L400-L508)
 
 ## `construct_grad(shape, x_f, x_c = None, bc = (None, None), axis = 0, shapes_d = (None, None), format = 'csc')`
 
@@ -83,7 +83,7 @@ Construct the full gradient operator including boundary contributions.
   Without ``shapes_d``: ``(grad_matrix, grad_bc)``.
   With ``shapes_d``: ``(grad_matrix, grad_bc_left, grad_bc_right)``.
 
-[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/0b0ac9e5d5a7ceb669718e3aafef1ebd9960b860/src/pymrm/operators.py#L10-L65)
+[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/89c91222a061c475e309f0ea6a6207ac8d5a3d20/src/pymrm/operators.py#L10-L65)
 
 ## `construct_grad_bc(shape, x_f, x_c = None, bc = (None, None), axis = 0, shapes_d = (None, None), format = 'csc')`
 
@@ -122,7 +122,7 @@ Construct boundary-face gradient corrections and source terms.
   ``(grad_matrix_left, grad_bc_left, grad_matrix_right, grad_bc_right)``
   otherwise.
 
-[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/0b0ac9e5d5a7ceb669718e3aafef1ebd9960b860/src/pymrm/operators.py#L156-L397)
+[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/89c91222a061c475e309f0ea6a6207ac8d5a3d20/src/pymrm/operators.py#L156-L397)
 
 ## `construct_grad_int(shape, x_f, x_c = None, axis = 0, format = 'csc')`
 
@@ -152,4 +152,4 @@ Construct the interior-face gradient operator.
 - `scipy.sparse.csc_array or scipy.sparse.csr_array`
   Matrix that maps cell-centered values to face-normal gradients.
 
-[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/0b0ac9e5d5a7ceb669718e3aafef1ebd9960b860/src/pymrm/operators.py#L68-L153)
+[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/89c91222a061c475e309f0ea6a6207ac8d5a3d20/src/pymrm/operators.py#L68-L153)

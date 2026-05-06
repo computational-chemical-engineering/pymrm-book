@@ -4,7 +4,7 @@
 
 Numerical Jacobian construction with sparse stencil support.
 
-[View module source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/0b0ac9e5d5a7ceb669718e3aafef1ebd9960b860/src/pymrm/numjac.py)
+[View module source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/89c91222a061c475e309f0ea6a6207ac8d5a3d20/src/pymrm/numjac.py)
 
 ## Public API
 
@@ -22,7 +22,7 @@ Numerical Jacobian evaluator based on grouped finite differences.
 The class builds a sparse Jacobian structure from a stencil/dependency
 description and reuses that structure across repeated evaluations.
 
-[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/0b0ac9e5d5a7ceb669718e3aafef1ebd9960b860/src/pymrm/numjac.py#L561-L756)
+[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/89c91222a061c475e309f0ea6a6207ac8d5a3d20/src/pymrm/numjac.py#L561-L756)
 
 ## Members
 
@@ -52,7 +52,7 @@ Create a Jacobian approximator.
 - `**kwargs`
   Additional options passed to the stencil callable.
 
-[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/0b0ac9e5d5a7ceb669718e3aafef1ebd9960b860/src/pymrm/numjac.py#L568-L623)
+[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/89c91222a061c475e309f0ea6a6207ac8d5a3d20/src/pymrm/numjac.py#L568-L623)
 
 ### `__call__(f, c, f_value = None)`
 
@@ -77,7 +77,7 @@ Compute the numerical Jacobian for a given function and input array.
 - `tuple`
   (Function value at c, Jacobian as a sparse matrix).
 
-[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/0b0ac9e5d5a7ceb669718e3aafef1ebd9960b860/src/pymrm/numjac.py#L708-L756)
+[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/89c91222a061c475e309f0ea6a6207ac8d5a3d20/src/pymrm/numjac.py#L708-L756)
 
 ### `init_stencil(stencil, **kwargs)`
 
@@ -124,7 +124,7 @@ Sets the following attributes on the class:
 For a full description of the PyMRM dependency notation, see:
 - `dependencies_format.md` in the PyMRM package.
 
-[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/0b0ac9e5d5a7ceb669718e3aafef1ebd9960b860/src/pymrm/numjac.py#L625-L706)
+[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/89c91222a061c475e309f0ea6a6207ac8d5a3d20/src/pymrm/numjac.py#L625-L706)
 
 ## `stencil_block_diagonals(ndims = 1, axes_diagonals = [], axes_blocks = [-1], periodic_axes = [])`
 
@@ -151,4 +151,4 @@ Generate a block-diagonal or block-banded stencil description.
 - `list[tuple]`
   Dependency specification in PyMRM notation.
 
-[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/0b0ac9e5d5a7ceb669718e3aafef1ebd9960b860/src/pymrm/numjac.py#L430-L470)
+[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/89c91222a061c475e309f0ea6a6207ac8d5a3d20/src/pymrm/numjac.py#L430-L470)

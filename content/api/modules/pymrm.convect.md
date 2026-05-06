@@ -4,7 +4,7 @@
 
 Convective-flux operators and TVD limiter functions.
 
-[View module source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/0b0ac9e5d5a7ceb669718e3aafef1ebd9960b860/src/pymrm/convect.py)
+[View module source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/89c91222a061c475e309f0ea6a6207ac8d5a3d20/src/pymrm/convect.py)
 
 ## Public API
 
@@ -28,7 +28,7 @@ Convective-flux operators and TVD limiter functions.
 
 Compute the CLAM TVD correction in normalized-variable space.
 
-[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/0b0ac9e5d5a7ceb669718e3aafef1ebd9960b860/src/pymrm/convect.py#L423-L433)
+[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/89c91222a061c475e309f0ea6a6207ac8d5a3d20/src/pymrm/convect.py#L423-L433)
 
 ## `construct_convflux_bc(shape, x_f, x_c = None, bc = (None, None), v = 1.0, axis = 0, shapes_d = (None, None), format = 'csc')`
 
@@ -70,7 +70,7 @@ Construct boundary-face upwind corrections and source terms.
   ``(conv_matrix_left, conv_bc_left, conv_matrix_right, conv_bc_right)``
   otherwise.
 
-[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/0b0ac9e5d5a7ceb669718e3aafef1ebd9960b860/src/pymrm/convect.py#L132-L386)
+[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/89c91222a061c475e309f0ea6a6207ac8d5a3d20/src/pymrm/convect.py#L132-L386)
 
 ## `construct_convflux_upwind(shape, x_f, x_c = None, bc = (None, None), v = 1.0, axis = 0, shapes_d = (None, None), format = 'csc')`
 
@@ -111,7 +111,7 @@ Construct a first-order upwind convective-flux operator.
   Without ``shapes_d``: ``(conv_matrix, conv_bc)``.
   With ``shapes_d``: ``(conv_matrix, conv_bc_left, conv_bc_right)``.
 
-[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/0b0ac9e5d5a7ceb669718e3aafef1ebd9960b860/src/pymrm/convect.py#L11-L69)
+[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/89c91222a061c475e309f0ea6a6207ac8d5a3d20/src/pymrm/convect.py#L11-L69)
 
 ## `construct_convflux_upwind_int(shape, v = 1.0, axis = 0, format = 'csc')`
 
@@ -138,7 +138,7 @@ Construct the internal-face upwind advection operator.
 - `scipy.sparse.csc_array or scipy.sparse.csr_array`
   Sparse matrix mapping cell-centered values to interior face fluxes.
 
-[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/0b0ac9e5d5a7ceb669718e3aafef1ebd9960b860/src/pymrm/convect.py#L72-L129)
+[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/89c91222a061c475e309f0ea6a6207ac8d5a3d20/src/pymrm/convect.py#L72-L129)
 
 ## `minmod(normalized_c_c, normalized_x_c, normalized_x_d)`
 
@@ -146,7 +146,7 @@ Construct the internal-face upwind advection operator.
 
 Compute the Minmod TVD correction in normalized-variable space.
 
-[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/0b0ac9e5d5a7ceb669718e3aafef1ebd9960b860/src/pymrm/convect.py#L398-L407)
+[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/89c91222a061c475e309f0ea6a6207ac8d5a3d20/src/pymrm/convect.py#L398-L407)
 
 ## `muscl(normalized_c_c, normalized_x_c, normalized_x_d)`
 
@@ -154,7 +154,7 @@ Compute the Minmod TVD correction in normalized-variable space.
 
 Compute the MUSCL TVD correction in normalized-variable space.
 
-[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/0b0ac9e5d5a7ceb669718e3aafef1ebd9960b860/src/pymrm/convect.py#L436-L451)
+[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/89c91222a061c475e309f0ea6a6207ac8d5a3d20/src/pymrm/convect.py#L436-L451)
 
 ## `osher(normalized_c_c, normalized_x_c, normalized_x_d)`
 
@@ -162,7 +162,7 @@ Compute the MUSCL TVD correction in normalized-variable space.
 
 Compute the Osher TVD correction in normalized-variable space.
 
-[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/0b0ac9e5d5a7ceb669718e3aafef1ebd9960b860/src/pymrm/convect.py#L410-L420)
+[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/89c91222a061c475e309f0ea6a6207ac8d5a3d20/src/pymrm/convect.py#L410-L420)
 
 ## `smart(normalized_c_c, normalized_x_c, normalized_x_d)`
 
@@ -170,7 +170,7 @@ Compute the Osher TVD correction in normalized-variable space.
 
 Compute the SMART TVD correction in normalized-variable space.
 
-[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/0b0ac9e5d5a7ceb669718e3aafef1ebd9960b860/src/pymrm/convect.py#L454-L485)
+[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/89c91222a061c475e309f0ea6a6207ac8d5a3d20/src/pymrm/convect.py#L454-L485)
 
 ## `stoic(normalized_c_c, normalized_x_c, normalized_x_d)`
 
@@ -178,7 +178,7 @@ Compute the SMART TVD correction in normalized-variable space.
 
 Compute the STOIC TVD correction in normalized-variable space.
 
-[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/0b0ac9e5d5a7ceb669718e3aafef1ebd9960b860/src/pymrm/convect.py#L488-L534)
+[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/89c91222a061c475e309f0ea6a6207ac8d5a3d20/src/pymrm/convect.py#L488-L534)
 
 ## `upwind(normalized_c_c, normalized_x_c, normalized_x_d)`
 
@@ -186,7 +186,7 @@ Compute the STOIC TVD correction in normalized-variable space.
 
 Return zero correction (first-order upwind limiter).
 
-[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/0b0ac9e5d5a7ceb669718e3aafef1ebd9960b860/src/pymrm/convect.py#L392-L395)
+[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/89c91222a061c475e309f0ea6a6207ac8d5a3d20/src/pymrm/convect.py#L392-L395)
 
 ## `vanleer(normalized_c_c, normalized_x_c, normalized_x_d)`
 
@@ -194,4 +194,4 @@ Return zero correction (first-order upwind limiter).
 
 Compute the van-Leer TVD correction in normalized-variable space.
 
-[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/0b0ac9e5d5a7ceb669718e3aafef1ebd9960b860/src/pymrm/convect.py#L537-L546)
+[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/89c91222a061c475e309f0ea6a6207ac8d5a3d20/src/pymrm/convect.py#L537-L546)
