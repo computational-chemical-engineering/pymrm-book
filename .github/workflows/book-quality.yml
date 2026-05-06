@@ -69,7 +69,8 @@ jobs:
       - name: Spelling check (codespell)
         run: |
           codespell README.md content _static myst.yml \
-            --skip="*.png,*.svg,*.ipynb,*.tex,*.bib,*.css,*.js"
+            --skip="*.png,*.svg,*.ipynb,*.tex,*.bib,*.css,*.js" \
+            --ignore-words=.codespell-ignore-words.txt
 
       - name: Language check (alex)
         continue-on-error: true
