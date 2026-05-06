@@ -36,13 +36,23 @@ jobs:
           python -m pip install --upgrade pip
           pip install ./pymrm
           pip install -r requirements.txt
-          pip install codespell
+          pip install codespell nbconvert ipykernel
+          python -m ipykernel install --user --name python3
 
       - name: Install language checker
         run: |
           sudo apt-get update
           sudo apt-get install -y nodejs npm
           npm install --global alex
+
+      - name: Execute lecture note notebooks
+        run: |
+          for nb in content/lecture_notes/*.ipynb; do
+            echo "Executing: $nb"
+            jupyter nbconvert --to notebook --execute \
+              --ExecutePreprocessor.timeout=120 \
+              "$nb" --output /tmp/nb_check_output.ipynb
+          done
 
       - name: Regenerate API docs
         run: python3 scripts/generate_function_list.py
