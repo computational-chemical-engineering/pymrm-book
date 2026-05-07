@@ -66,88 +66,88 @@ project:
     - file: content/exercises/index.md
       title: Exercises
       children:
-        - file: content/exercises/ode-solving-for-reactor-modeling.md
+        - file: content/exercises/ode-solving-for-reactor-modeling.ipynb
           title: ODE Solving for Reactor Modeling
           children:
-            - file: content/exercises/first-order-reaction-in-a-batch-reactor.md
+            - file: content/exercises/first-order-reaction-in-a-batch-reactor.ipynb
               title: First order reaction in a batch reactor
-            - file: content/exercises/equilibrium-consecutive-batch-reactions.md
+            - file: content/exercises/equilibrium-consecutive-batch-reactions.ipynb
               title: Equilibrium consecutive batch reactions
-            - file: content/exercises/steady-state-1d-fixed-bed-reactor-model-first-order-exothermal-reaction.md
+            - file: content/exercises/steady-state-1d-fixed-bed-reactor-model-first-order-exothermal-reaction.ipynb
               title: 'Steady state 1D fixed bed reactor model: first order exothermal reaction'
-        - file: content/exercises/unsteady-convection-reaction-equations.md
+        - file: content/exercises/unsteady-convection-reaction-equations.ipynb
           title: Unsteady Convection-Reaction equations
           children:
-            - file: content/exercises/convection-of-one-species-using-different-schemes.md
+            - file: content/exercises/convection-of-one-species-using-different-schemes.ipynb
               title: Convection of one species using different schemes
-            - file: content/exercises/multicomponent-convection-reaction-with-first-order-chemical-kinetics.md
+            - file: content/exercises/multicomponent-convection-reaction-with-first-order-chemical-kinetics.ipynb
               title: Multicomponent convection-reaction with first-order chemical kinetics
-            - file: content/exercises/multicomponent-convection-reaction-with-general-chemical-kinetics.md
+            - file: content/exercises/multicomponent-convection-reaction-with-general-chemical-kinetics.ipynb
               title: Multicomponent convection-reaction with general chemical kinetics
-        - file: content/exercises/implicit-convection-diffusion-reaction.md
+        - file: content/exercises/implicit-convection-diffusion-reaction.ipynb
           title: Implicit convection-diffusion-reaction
           children:
-            - file: content/exercises/solving-a-one-component-1d-diffusion-reaction-equation.md
+            - file: content/exercises/solving-a-one-component-1d-diffusion-reaction-equation.ipynb
               title: Solving a one-component 1D diffusion-reaction equation
-            - file: content/exercises/multi-component-1d-counter-diffusion-with-reaction.md
+            - file: content/exercises/multi-component-1d-counter-diffusion-with-reaction.ipynb
               title: Multi-component 1D counter-diffusion with reaction
-            - file: content/exercises/multi-component-1d-counter-current-convection-with-reaction.md
+            - file: content/exercises/multi-component-1d-counter-current-convection-with-reaction.ipynb
               title: Multi-component 1D counter-current convection with reaction
-            - file: content/exercises/convection-dispersion-reaction-in-a-1d-reactor-model.md
+            - file: content/exercises/convection-dispersion-reaction-in-a-1d-reactor-model.ipynb
               title: Convection-dispersion-reaction in a 1D reactor model
-            - file: content/exercises/particle-model-first-order-reaction.md
+            - file: content/exercises/particle-model-first-order-reaction.ipynb
               title: 'Particle model: first order reaction'
-            - file: content/exercises/weisz-and-hicks-model.md
+            - file: content/exercises/weisz-and-hicks-model.ipynb
               title: Weisz and Hicks model
-        - file: content/exercises/modeling-dispersion-and-mass-transfer.md
+        - file: content/exercises/modeling-dispersion-and-mass-transfer.ipynb
           title: Modeling Dispersion and Mass Transfer
           children:
-            - file: content/exercises/counter-current-column-processes.md
+            - file: content/exercises/counter-current-column-processes.ipynb
               title: Counter-current column processes
-            - file: content/exercises/reactor-model-for-heterogeneous-bubble-columns.md
+            - file: content/exercises/reactor-model-for-heterogeneous-bubble-columns.ipynb
               title: Reactor model for heterogeneous bubble columns
-            - file: content/exercises/kunii-and-levenspiel-model-for-a-fine-particle-fluidized-bed.md
+            - file: content/exercises/kunii-and-levenspiel-model-for-a-fine-particle-fluidized-bed.ipynb
               title: "Kunii and Levenspiel model for a 'fine particle' fluidized bed"
-            - file: content/exercises/computing-residence-time-distributions.md
+            - file: content/exercises/computing-residence-time-distributions.ipynb
               title: Computing residence time distributions
-            - file: content/exercises/the-westerterp-wave-model-for-axial-dispersion-in-packed-beds.md
+            - file: content/exercises/the-westerterp-wave-model-for-axial-dispersion-in-packed-beds.ipynb
               title: The Westerterp wave-model for axial dispersion in packed beds
-            - file: content/exercises/modeling-a-desiccant-dryer.md
+            - file: content/exercises/modeling-a-desiccant-dryer.ipynb
               title: Modeling a desiccant dryer
-        - file: content/exercises/2d-reactor-models.md
+        - file: content/exercises/2d-reactor-models.ipynb
           title: 2D Reactor Models
           children:
-            - file: content/exercises/axial-convection-with-radial-dispersion.md
+            - file: content/exercises/axial-convection-with-radial-dispersion.ipynb
               title: Axial convection with radial dispersion
-            - file: content/exercises/diffusion-reaction-in-a-cylindrical-pore.md
+            - file: content/exercises/diffusion-reaction-in-a-cylindrical-pore.ipynb
               title: Diffusion-reaction in a cylindrical pore
-            - file: content/exercises/2d-membrane-fixed-bed-reactor-model.md
+            - file: content/exercises/2d-membrane-fixed-bed-reactor-model.ipynb
               title: 2D Membrane Fixed Bed Reactor Model
-            - file: content/exercises/steady-state-2d-fixed-bed-reactor-model-first-order-exothermal-reaction.md
+            - file: content/exercises/steady-state-2d-fixed-bed-reactor-model-first-order-exothermal-reaction.ipynb
               title: 'Steady-state 2D fixed bed reactor model: first order exothermal reaction'
-            - file: content/exercises/a-2d-gas-solid-fluidized-bed.md
+            - file: content/exercises/a-2d-gas-solid-fluidized-bed.ipynb
               title: A 2D Gas-solid fluidized bed
-            - file: content/exercises/a-2d-bubble-column-model.md
+            - file: content/exercises/a-2d-bubble-column-model.ipynb
               title: A 2D Bubble column model
-            - file: content/exercises/taylor-dispersion.md
+            - file: content/exercises/taylor-dispersion.ipynb
               title: Taylor Dispersion
-        - file: content/exercises/generalized-maxwell-stefan-equations.md
+        - file: content/exercises/generalized-maxwell-stefan-equations.ipynb
           title: Generalized Maxwell-Stefan equations
           children:
-            - file: content/exercises/ternary-diffusion-with-maxwell-stefan-equations.md
+            - file: content/exercises/ternary-diffusion-with-maxwell-stefan-equations.ipynb
               title: Ternary diffusion with Maxwell-Stefan equations
-            - file: content/exercises/dehydrogenation-of-ethanol.md
+            - file: content/exercises/dehydrogenation-of-ethanol.ipynb
               title: Dehydrogenation of ethanol
-            - file: content/exercises/mass-transfer-limitations-using-maxwell-stefan-equations.md
+            - file: content/exercises/mass-transfer-limitations-using-maxwell-stefan-equations.ipynb
               title: Mass transfer limitations using Maxwell-Stefan equations
-        - file: content/exercises/advanced-reactor-modeling.md
+        - file: content/exercises/advanced-reactor-modeling.ipynb
           title: Advanced Reactor Modeling
           children:
-            - file: content/exercises/coupled-batch-reactor-and-particle-model.md
+            - file: content/exercises/coupled-batch-reactor-and-particle-model.ipynb
               title: Coupled batch reactor and particle model
-            - file: content/exercises/particle-model-coupled-to-column-model.md
+            - file: content/exercises/particle-model-coupled-to-column-model.ipynb
               title: Particle model coupled to column model
-            - file: content/exercises/pressure-velocity-coupling-in-column-models.md
+            - file: content/exercises/pressure-velocity-coupling-in-column-models.ipynb
               title: Pressure-velocity coupling in column models
     - file: content/api/index.md
       title: API Reference
