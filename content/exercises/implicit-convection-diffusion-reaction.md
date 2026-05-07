@@ -9,4 +9,4 @@ This set of exercises is associated with Lecture 3 of the class *Multiphase Reac
 3. [Multi-component 1D counter-current convection with reaction](multi-component-1d-counter-current-convection-with-reaction)
 4. [Convection-dispersion-reaction in a 1D reactor model](convection-dispersion-reaction-in-a-1d-reactor-model)
 5. [Particle model: first order reaction](particle-model-first-order-reaction)
-- [Weisz and Hicks model](weisz-and-hicks-model)
+6. [Weisz and Hicks model](weisz-and-hicks-model)
