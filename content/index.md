@@ -25,7 +25,7 @@ Example Python notebooks and case studies for different use cases.
 :::
 
 :::{card} ![pencil](../_static/icons/pencil-square.svg) Exercises
-:link: exercises/index.md
+:link: exercises/index
 A set of reactor modeling exercises.
 :::
 

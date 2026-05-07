@@ -63,7 +63,7 @@ project:
           title: 'Reactor Type: Slurry Bubble Column'
         - file: content/lecture_notes/reactor_gls_packed_bed.ipynb
           title: 'Reactor Type: GLS Packed Bed'
-    - file: content/exercises/index.md
+    - file: content/exercises/index.ipynb
       title: Exercises
       children:
         - file: content/exercises/ode-solving-for-reactor-modeling.ipynb
