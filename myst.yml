@@ -149,6 +149,8 @@ project:
               title: Particle model coupled to column model
             - file: content/exercises/pressure-velocity-coupling-in-column-models.ipynb
               title: Pressure-velocity coupling in column models
+        - file: content/exercises/student_exercise_result_checks.md
+          title: Exercise Result Checks
     - file: content/api/index.md
       title: API Reference
       children:
