@@ -19,6 +19,7 @@ jobs:
   build:
     name: Build book
     runs-on: ubuntu-latest
+    timeout-minutes: 30
     steps:
     - name: Checkout repository
       uses: actions/checkout@v4
@@ -42,7 +43,7 @@ jobs:
       run: python3 scripts/generate_function_list.py
 
     - name: Build Jupyter Book
-      run: jupyter-book build --html --execute
+      run: jupyter-book build --html --execute --ci
       env:
         BASE_URL: /pymrm-book
 

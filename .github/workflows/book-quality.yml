@@ -58,13 +58,13 @@ jobs:
         run: python3 scripts/generate_function_list.py
 
       - name: Build Jupyter Book (HTML)
-        run: jupyter-book build --html
+        run: jupyter-book build --html --ci
         env:
           BASE_URL: /pymrm-book
 
       - name: Check links
         continue-on-error: true
-        run: jupyter-book build --html --check-links
+        run: jupyter-book build --html --check-links --ci
 
       - name: Spelling check (codespell)
         run: |
