@@ -56,16 +56,16 @@ project:
     - file: content/lecture_notes/L8_advanced_modeling.ipynb
       title: 'L8: Advanced Reactor Modeling'
       children:
-      - file: content/lecture_notes/L8_pressure_velocity.ipynb
-        title: 'L8a: Pressure-Velocity Coupled 2D Fixed-Bed Reactor'
-      - file: content/lecture_notes/L8_reactor_particle_coupling.ipynb
-        title: 'L8b: Reactor-Particle Coupling'
-      - file: content/lecture_notes/L8_surface_reaction_2D_boundary_coupling.ipynb
-        title: 'L8c: 2D Boundary Surface-Reaction Coupling'
       - file: content/lecture_notes/L8_simple_monolithic_membrane_module.ipynb
-        title: 'L8d: Monolithic 2D Membrane Module'
+        title: 'L8a: Monolithic 2D Membrane Module'
+      - file: content/lecture_notes/L8_surface_reaction_2D_boundary_coupling.ipynb
+        title: 'L8b: 2D Boundary Surface-Reaction Coupling'
+      - file: content/lecture_notes/L8_reactor_particle_coupling.ipynb
+        title: 'L8c: Reactor-Particle Coupling'
       - file: content/lecture_notes/L8_reactor_particle_maxwell_stefan_coupling.ipynb
-        title: 'L8e: Maxwell-Stefan Reactor-Particle Coupling'
+        title: 'L8d: Maxwell-Stefan Reactor-Particle Coupling'
+      - file: content/lecture_notes/L8_pressure_velocity.ipynb
+        title: 'L8e: Pressure-Velocity Coupled 2D Fixed-Bed Reactor'
     - file: content/lecture_notes/reactor_packed_bed.ipynb
       title: 'Reactor Type: Packed Bed'
     - file: content/lecture_notes/reactor_fluidized_bed.ipynb
