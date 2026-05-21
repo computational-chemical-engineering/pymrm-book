@@ -1225,3 +1225,100 @@ The Ergun pressure drop remains moderate for the chosen 3 mm particles and 0.5 m
 **Input data**
 
 Use the values stated in the exercise. The reference figures below give the expected scale and trends for those values.
+
+## Pressure-Velocity Coupling in a 2D Fixed-Bed Reactor
+
+**Input data and modelling choices**
+
+Use the base settings in `L8_pressure_velocity.ipynb`: `n_z=100`, `n_r=30`, `radius=0.006 m`, wall heat-transfer coefficient `20 W m^-2 K^-1`, radial diffusivity `5.0e-5 m^2/s`, and radial thermal conductivity `0.035 W m^-1 K^-1`.
+
+**Numerical checks**
+
+```text
+1D outlet conversion A         = 1.000
+1D outlet temperature          = 443.0 K
+1D outlet velocity             = 6.048 m/s
+2D outlet temperature          = 434.5 K
+2D outlet velocity             = 6.006 m/s
+2D pressure drop               = 8.77 Pa
+maximum radial temperature span = 71.8 K
+```
+
+**Hints and interpretation**
+
+The wall-cooled 2D model has a lower outlet temperature than the 1D reference while keeping nearly complete conversion. The radial temperature and concentration spans are the main signs that the 2D model is doing something the 1D cup-mixing model cannot represent.
+
+## Reactor-Particle Coupling
+
+**Input data and modelling choices**
+
+Use the reactor and particle parameters in `L8_reactor_particle_coupling.ipynb`. The useful validation is qualitative: the coupled model must predict lower bulk concentration downstream and lower particle-center concentration than particle-surface concentration when intraparticle diffusion limits the rate.
+
+**Hints and interpretation**
+
+Explicit coupling should approach the implicit result only after iteration. If explicit coupling gives an outlet conversion that changes strongly with the relaxation factor or iteration count, the coupling is too strong for a single-pass update.
+
+## 2D Boundary Surface-Reaction Coupling
+
+**Input data and modelling choices**
+
+Use the base settings in `L8_surface_reaction_2D_boundary_coupling.ipynb` and integrate to `t=1.0 s`.
+
+**Numerical checks**
+
+```text
+final step residual norm           = 3.66e-13
+outlet A average                   = 0.170
+outlet B average                   = 0.0127
+weighted site-balance error        = 4.44e-16
+bulk concentrations nonnegative    = True
+surface coverages nonnegative      = True
+```
+
+**Hints and interpretation**
+
+The strictest check is the surface-site balance. The coverages should remain non-negative and the weighted sum of occupied and vacant sites should remain one to roundoff.
+
+## Monolithic 2D Membrane Module
+
+**Input data and modelling choices**
+
+Use the base case in `L8_simple_monolithic_membrane_module.ipynb`: `length=0.20 m`, `D=1.0e-4 m^2/s`, `P=2.0e-3 m/s`, retentate and permeate velocities `0.1 m/s`, and 100 axial by 30+30 radial cells.
+
+**Numerical checks**
+
+```text
+residual norm              = 2.48e-11
+retentate outlet average   = 0.4568
+permeate outlet average    = 0.7246
+integrated membrane rate   = 4.272e-06 mol/s
+mass-balance error         = 1.28e-12
+minimum concentration      = 7.72e-03
+```
+
+**Hints and interpretation**
+
+The membrane flux should be from retentate to permeate everywhere in the base case. The total retentate-plus-permeate molar flow is conserved even though each side separately gains or loses material through the membrane.
+
+## Reactor-Particle Coupling with Maxwell-Stefan Film Transfer
+
+**Input data and modelling choices**
+
+Use the base settings in `L8_reactor_particle_maxwell_stefan_coupling.ipynb`: 40 axial cells, 14 particle radial cells, reactor length `1.0 m`, velocity `0.30 m/s`, particle radius `1.0 mm`, solid holdup `0.35`, and reaction rate constant `3.0 s^-1`.
+
+**Numerical checks**
+
+```text
+Newton iterations                    = 5
+minimum concentration                = 0.04295 mol/m3
+outlet A conversion                  = 0.8558
+outlet gas c_A                       = 0.1380 mol/m3
+outlet boundary c_A                  = 0.0930 mol/m3
+monolithic residual norm             = 3.14e-12
+film residual norm                   = 1.39e-16
+particle residual norm               = 3.20e-12
+```
+
+**Hints and interpretation**
+
+The particle boundary concentration of A should be lower than the gas concentration where A is consumed in the particle. The film residual must be small at convergence; otherwise the gas-particle boundary values are not consistent with the Maxwell-Stefan film law.

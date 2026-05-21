@@ -21,7 +21,7 @@ and pymrm modeling strategy for important industrial reactor classes.
 | [L4: Dispersion & Mass Transfer](L4_dispersion_mass_transfer.ipynb) | Axial dispersion, RTD, Wakao-Funazkri, heterogeneous bed |
 | [L5: 2D Reactor Models](L5_2d_reactor_models.ipynb) | Kronecker assembly, cylindrical geometry, pellet model |
 | [L6–7: Maxwell-Stefan](L67_maxwell_stefan.ipynb) | GMS equations, B-matrix, osmotic/reverse diffusion |
-| [L8: Advanced Modeling](L8_advanced_modeling.ipynb) | Multi-scale coupling, Darcy flow, Schur complement |
+| [L8: Advanced Reactor Modeling](L8_advanced_modeling.ipynb) | Coupled pressure-velocity, reactor-particle, surface, membrane, and Maxwell-Stefan models |
 
 ## Reactor-type chapters
 
