@@ -111,8 +111,9 @@ def local_server(html_dir: Path, base_url: str):
             thread.join()
 
 
-def render_pdfs(html_dir: Path, base_url: str, max_pages: int | None) -> int:
+def render_pdfs(html_dir: Path, base_url: str, max_pages: int | None, page_timeout_ms: int) -> int:
     try:
+        from playwright.sync_api import TimeoutError as PlaywrightTimeoutError
         from playwright.sync_api import sync_playwright
     except ImportError as exc:
         raise SystemExit(
@@ -129,11 +130,19 @@ def render_pdfs(html_dir: Path, base_url: str, max_pages: int | None) -> int:
             browser = playwright.chromium.launch()
             context = browser.new_context()
             page = context.new_page()
+            page.set_default_timeout(page_timeout_ms)
+            page.set_default_navigation_timeout(page_timeout_ms)
             for html_file in pages:
                 route = page_route(html_dir, html_file)
                 output = pdf_path(html_dir, route)
                 output.parent.mkdir(parents=True, exist_ok=True)
-                page.goto(f"{origin}{normalize_base_url(base_url)}{route}", wait_until="networkidle")
+                target = f"{origin}{normalize_base_url(base_url)}{route}"
+                print(f"Rendering PDF: {route}", flush=True)
+                try:
+                    page.goto(target, wait_until="load", timeout=page_timeout_ms)
+                    page.locator("body").wait_for(state="visible", timeout=page_timeout_ms)
+                except PlaywrightTimeoutError as exc:
+                    raise RuntimeError(f"Timed out rendering {route} after {page_timeout_ms} ms") from exc
                 page.pdf(
                     path=str(output),
                     format="A4",
@@ -241,6 +250,7 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--base-url", default=os.environ.get("BASE_URL", ""))
     parser.add_argument("--skip-pdfs", action="store_true", help="Only inject the PDF download helper.")
     parser.add_argument("--max-pages", type=int, help="Render only the first N pages; useful for smoke tests.")
+    parser.add_argument("--page-timeout-ms", type=int, default=30_000)
     args = parser.parse_args(argv)
 
     html_dir = args.html_dir.resolve()
@@ -249,7 +259,7 @@ def main(argv: list[str] | None = None) -> int:
 
     rendered = 0
     if not args.skip_pdfs:
-        rendered = render_pdfs(html_dir, args.base_url, args.max_pages)
+        rendered = render_pdfs(html_dir, args.base_url, args.max_pages, args.page_timeout_ms)
     updated = add_pdf_exports(html_dir, args.base_url)
     print(f"Rendered {rendered} page PDF(s); added PDF export metadata to {updated} page(s).")
     return 0
