@@ -1102,14 +1102,57 @@ Code block 3:
 
 **Input data**
 
-- `n_z = 80`
-- `D_ms = np.array([[0.0, 2e-05, 2.2e-05], [2e-05, 0.0, 1.6e-05], [2.2e-05, 1.6e-05, 0.0]])`
+- `kma_scale = 1.0`
+- `n_z = 100`
+- `R = 8.314`
+- `L = 0.5`
+- `v_inter = 2.0`
+- `T_in = 293.0`
+- `P = 100000.0`
+- `k0 = 1000000000.0`
+- `Ea = 50000.0`
+- `dHr = -15000.0`
+- `Cp = np.array([100.0, 60.0, 40.0])`
+- `eps_s = 0.4`
+- `dp = 0.003`
+- `km = np.array([[0.0, 0.005, 0.02], [0.005, 0.0, 0.02], [0.02, 0.02, 0.0]])`
+- `n_p = 2`
+- `n_c = 3`
+- `n_z = 20`
+- `D_ms_demo = np.array([[0.0, 2e-05, 2.2e-05], [2e-05, 0.0, 1.6e-05], [2.2e-05, 1.6e-05, 0.0]])`
 
-**Hints and interpretation**
+**Numerical checks**
 
-The oxygen and carbon dioxide profiles are not exactly linear because the Maxwell-Stefan matrix changes with composition. Nitrogen has no imposed boundary jump in this example, yet its profile is slightly curved through the constraint $x_1+x_2+x_3=1$ and through frictional coupling with the O2 and CO2 fluxes.
+Code block 2:
 
-The printed flux variation is the conservation check: at steady state, each species flux should be constant through the film. The non-equimolar fluxes are large enough to create visible changes over a 100 micrometer film, which makes the multicomponent coupling clear without producing negative mole fractions.
+```text
+Outlet c_A (bulk):    19.036 mol/m³  (53.6% conversion)
+Outlet temperature:   373.4 K
+```
+
+Code block 3:
+
+```text
+Max |Δc_A| between cases: 32.0602 mol/m³
+Max |ΔT|  between cases:  117.1480 K
+(Both should be small when MT resistance is negligible)
+```
+
+Code block 4:
+
+```text
+O2  flux: 1.592 mol m⁻² s⁻¹
+CO2 flux: -1.034 mol m⁻² s⁻¹
+Flux conservation check (max ptp): 2.31e-14
+```
+
+**Reference figures**
+
+![Mass Transfer Limitations Using Maxwell-Stefan Equations: Reference figure 1 from code block 2](student_check_outputs/mass-transfer-limitations-using-maxwell-stefan-equations_block2_fig1.png)
+
+![Mass Transfer Limitations Using Maxwell-Stefan Equations: Reference figure 2 from code block 3](student_check_outputs/mass-transfer-limitations-using-maxwell-stefan-equations_block3_fig1.png)
+
+![Mass Transfer Limitations Using Maxwell-Stefan Equations: Reference figure 3 from code block 4](student_check_outputs/mass-transfer-limitations-using-maxwell-stefan-equations_block4_fig1.png)
 
 ## Coupled Batch Reactor and Particle Model
 
@@ -1176,3 +1219,9 @@ The printed flux variation is the conservation check: at steady state, each spec
 The model shows the expected coupling. As A reacts to two product moles, the total molar flux increases. The exothermic heat release raises the temperature, and the pressure drop lowers the total gas concentration. All three effects increase the superficial velocity downstream.
 
 The Ergun pressure drop remains moderate for the chosen 3 mm particles and 0.5 m/s inlet velocity. This is intentional: the pressure profile is large enough to see in the plot while keeping the ideal-gas packed-bed model in a physically sensible range. The parameter choice is consistent with standard packed-bed reactor modeling practice, where Ergun hydrodynamics are coupled to plug-flow material and energy balances.
+
+## Solution: Exercise Result Checks
+
+**Input data**
+
+Use the values stated in the exercise. The reference figures below give the expected scale and trends for those values.
