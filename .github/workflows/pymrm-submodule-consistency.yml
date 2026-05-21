@@ -52,6 +52,7 @@ jobs:
           )
 
       - name: Build Jupyter Book
+        timeout-minutes: 10
         run: jupyter-book build --html --ci
         env:
           BASE_URL: /pymrm-book

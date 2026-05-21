@@ -43,14 +43,17 @@ jobs:
       run: python3 scripts/generate_function_list.py
 
     - name: Execute notebooks
+      timeout-minutes: 20
       run: python scripts/execute_book_notebooks.py
 
     - name: Build Jupyter Book
+      timeout-minutes: 10
       run: jupyter-book build --html --ci
       env:
         BASE_URL: /pymrm-book
 
     - name: Add per-page PDF downloads
+      timeout-minutes: 10
       run: python scripts/add_page_pdf_downloads.py --base-url /pymrm-book
 
     - name: Disable Jekyll processing

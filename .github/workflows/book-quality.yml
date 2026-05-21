@@ -46,24 +46,21 @@ jobs:
           npm install --global alex
 
       - name: Execute lecture note notebooks
-        run: |
-          for nb in content/lecture_notes/*.ipynb; do
-            echo "Executing: $nb"
-            jupyter nbconvert --to notebook --execute \
-              --ExecutePreprocessor.timeout=120 \
-              "$nb" --output /tmp/nb_check_output.ipynb
-          done
+        timeout-minutes: 20
+        run: python scripts/execute_book_notebooks.py
 
       - name: Regenerate API docs
         run: python3 scripts/generate_function_list.py
 
       - name: Build Jupyter Book (HTML)
+        timeout-minutes: 10
         run: jupyter-book build --html --ci
         env:
           BASE_URL: /pymrm-book
 
       - name: Check links
         continue-on-error: true
+        timeout-minutes: 10
         run: jupyter-book build --html --check-links --ci
 
       - name: Spelling check (codespell)
