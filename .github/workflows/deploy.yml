@@ -42,8 +42,11 @@ jobs:
     - name: Regenerate API docs
       run: python3 scripts/generate_function_list.py
 
+    - name: Execute notebooks
+      run: python scripts/execute_book_notebooks.py
+
     - name: Build Jupyter Book
-      run: jupyter-book build --html --execute --ci
+      run: jupyter-book build --html --ci
       env:
         BASE_URL: /pymrm-book
 
