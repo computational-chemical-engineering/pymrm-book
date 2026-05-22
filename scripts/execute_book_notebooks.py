@@ -75,7 +75,6 @@ def execute_notebook(path: Path, timeout: int, cell_timeout: int) -> None:
         str(path),
     ]
     env = os.environ.copy()
-    env.setdefault("MPLBACKEND", "Agg")
     env.setdefault("PYTHONUNBUFFERED", "1")
 
     print(f"Executing {path}", flush=True)
