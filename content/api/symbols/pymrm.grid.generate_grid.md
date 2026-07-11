@@ -45,7 +45,7 @@ Return face coordinates and optionally cell-center coordinates.
 
 ## Source
 
-[View on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/89c91222a061c475e309f0ea6a6207ac8d5a3d20/src/pymrm/grid.py#L35-L87)
+[View on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/63f4e25920919f682a5b9ba06edd0f8453c62a65/src/pymrm/grid.py#L35-L87)
 
 ```python
 def generate_grid(size, x_f=None, generate_x_c=False, x_c=None):

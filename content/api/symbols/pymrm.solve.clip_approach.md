@@ -29,7 +29,7 @@ Project values onto bounds, optionally with a relaxed approach rule.
 
 ## Source
 
-[View on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/89c91222a061c475e309f0ea6a6207ac8d5a3d20/src/pymrm/solve.py#L126-L157)
+[View on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/63f4e25920919f682a5b9ba06edd0f8453c62a65/src/pymrm/solve.py#L135-L166)
 
 ```python
 def clip_approach(values, dummy, lower_bounds=0, upper_bounds=None, factor=0):

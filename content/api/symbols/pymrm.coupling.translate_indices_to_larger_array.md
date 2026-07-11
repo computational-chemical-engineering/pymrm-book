@@ -33,7 +33,7 @@ Map flat indices from a local array shape to a larger embedding shape.
 
 ## Source
 
-[View on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/89c91222a061c475e309f0ea6a6207ac8d5a3d20/src/pymrm/coupling.py#L11-L43)
+[View on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/63f4e25920919f682a5b9ba06edd0f8453c62a65/src/pymrm/coupling.py#L11-L43)
 
 ```python
 def translate_indices_to_larger_array(linear_indices, shape, new_shape, offset=None):

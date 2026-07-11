@@ -4,7 +4,7 @@
 
 Nonlinear-solver utilities used by `pymrm`.
 
-[View module source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/89c91222a061c475e309f0ea6a6207ac8d5a3d20/src/pymrm/solve.py)
+[View module source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/63f4e25920919f682a5b9ba06edd0f8453c62a65/src/pymrm/solve.py)
 
 ## Public API
 
@@ -34,7 +34,7 @@ Project values onto bounds, optionally with a relaxed approach rule.
   Relaxation factor for out-of-bound entries. ``0`` applies strict clipping.
   Non-zero values apply a linear approach update toward the violated bound.
 
-[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/89c91222a061c475e309f0ea6a6207ac8d5a3d20/src/pymrm/solve.py#L126-L157)
+[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/63f4e25920919f682a5b9ba06edd0f8453c62a65/src/pymrm/solve.py#L135-L166)
 
 ## `newton(function, initial_guess, args = (), tol = 1.49012e-08, maxfev = 100, solver = None, lin_solver_kwargs = None, callback = None)`
 
@@ -59,9 +59,13 @@ Solve ``function(x) = 0`` with Newton iterations.
 - `maxfev` (*int, optional*)
   Maximum number of Newton iterations.
 
-- `solver` (*{'spsolve', 'cg', 'bicgstab'} or callable, optional*)
+- `solver` (*{'spsolve', 'cg', 'bicgstab', 'splu'} or callable, optional*)
   Linear solver used for each Newton step. If ``None``, the routine picks
   ``'spsolve'`` for smaller systems and ``'bicgstab'`` for larger systems.
+  When ``'splu'`` is selected, the Jacobian returned by ``function`` is
+  expected to be an already-decomposed ``SuperLU`` object (as returned by
+  `scipy.sparse.linalg.splu`), and the solve step calls its
+  ``.solve()`` method directly.
   A callable solver must accept ``(jac_matrix, rhs, **kwargs)`` and return
   the solution vector.
 
@@ -85,4 +89,4 @@ Solve ``function(x) = 0`` with Newton iterations.
 - `RuntimeError`
   If an iterative linear solver fails to converge.
 
-[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/89c91222a061c475e309f0ea6a6207ac8d5a3d20/src/pymrm/solve.py#L10-L123)
+[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/63f4e25920919f682a5b9ba06edd0f8453c62a65/src/pymrm/solve.py#L10-L132)

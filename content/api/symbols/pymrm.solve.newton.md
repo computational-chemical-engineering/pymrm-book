@@ -29,9 +29,13 @@ Solve ``function(x) = 0`` with Newton iterations.
 - `maxfev` (*int, optional*)
   Maximum number of Newton iterations.
 
-- `solver` (*{'spsolve', 'cg', 'bicgstab'} or callable, optional*)
+- `solver` (*{'spsolve', 'cg', 'bicgstab', 'splu'} or callable, optional*)
   Linear solver used for each Newton step. If ``None``, the routine picks
   ``'spsolve'`` for smaller systems and ``'bicgstab'`` for larger systems.
+  When ``'splu'`` is selected, the Jacobian returned by ``function`` is
+  expected to be an already-decomposed ``SuperLU`` object (as returned by
+  `scipy.sparse.linalg.splu`), and the solve step calls its
+  ``.solve()`` method directly.
   A callable solver must accept ``(jac_matrix, rhs, **kwargs)`` and return
   the solution vector.
 
@@ -57,7 +61,7 @@ Solve ``function(x) = 0`` with Newton iterations.
 
 ## Source
 
-[View on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/89c91222a061c475e309f0ea6a6207ac8d5a3d20/src/pymrm/solve.py#L10-L123)
+[View on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/63f4e25920919f682a5b9ba06edd0f8453c62a65/src/pymrm/solve.py#L10-L132)
 
 ```python
 def newton(
@@ -84,9 +88,13 @@ def newton(
         Stopping tolerance on the infinity norm of the Newton update.
     maxfev : int, optional
         Maximum number of Newton iterations.
-    solver : {'spsolve', 'cg', 'bicgstab'} or callable, optional
+    solver : {'spsolve', 'cg', 'bicgstab', 'splu'} or callable, optional
         Linear solver used for each Newton step. If ``None``, the routine picks
         ``'spsolve'`` for smaller systems and ``'bicgstab'`` for larger systems.
+        When ``'splu'`` is selected, the Jacobian returned by ``function`` is
+        expected to be an already-decomposed ``SuperLU`` object (as returned by
+        :func:`scipy.sparse.linalg.splu`), and the solve step calls its
+        ``.solve()`` method directly.
         A callable solver must accept ``(jac_matrix, rhs, **kwargs)`` and return
         the solution vector.
     lin_solver_kwargs : dict, optional
@@ -149,6 +157,11 @@ def newton(
             if info != 0:
                 raise RuntimeError(f"BICGSTAB did not converge, info={info}")
             return dx_neg
+
+    elif solver == "splu":
+
+        def linsolver(jac_matrix, g, **kwargs):
+            return jac_matrix.solve(g)
 
     elif callable(solver):
 

@@ -45,7 +45,7 @@ Construct the full gradient operator including boundary contributions.
 
 ## Source
 
-[View on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/89c91222a061c475e309f0ea6a6207ac8d5a3d20/src/pymrm/operators.py#L10-L65)
+[View on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/63f4e25920919f682a5b9ba06edd0f8453c62a65/src/pymrm/operators.py#L10-L65)
 
 ```python
 def construct_grad(
