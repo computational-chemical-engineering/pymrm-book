@@ -51,6 +51,39 @@ Utility helpers used throughout `pymrm`.
 | ------ | ---- | ------- |
 | [`construct_coefficient_matrix`](symbols/pymrm.helpers.construct_coefficient_matrix) | function | Build a sparse coefficient matrix with optional broadcasting and (row, col) coupling. |
 
+## [`pymrm.ibm`](modules/pymrm.ibm)
+
+Directional ghost-cell immersed boundary method (IBM) for `pymrm`.
+
+| Symbol | Type | Summary |
+| ------ | ---- | ------- |
+| [`IBM`](symbols/pymrm.ibm.IBM) | class | Consolidated IBM crossing data for both sides of an immersed interface. |
+| [`apply_ibm`](symbols/pymrm.ibm.apply_ibm) | function | Apply the immersed-boundary method to an operator matrix. |
+| [`apply_ibm_vector`](symbols/pymrm.ibm.apply_ibm_vector) | function | Apply the IBM per-row conditioning scale to a flat vector. |
+| [`construct_ibm`](symbols/pymrm.ibm.construct_ibm) | function | Build the immersed-boundary data from a spatial signed-distance field. |
+
+## [`pymrm.ibm_coupling`](modules/pymrm.ibm_coupling)
+
+General interface conditions at immersed boundaries for `pymrm`.
+
+| Symbol | Type | Summary |
+| ------ | ---- | ------- |
+| [`apply_ibm_interface`](symbols/pymrm.ibm_coupling.apply_ibm_interface) | function | Apply general linear interface conditions to an operator matrix. |
+| [`construct_ibm_boundary_values`](symbols/pymrm.ibm_coupling.construct_ibm_boundary_values) | function | Eliminate the interface value of a single side (immersed Robin BC). |
+| [`construct_ibm_interface_values`](symbols/pymrm.ibm_coupling.construct_ibm_interface_values) | function | Eliminate the interface values for linear interface conditions. |
+
+## [`pymrm.ibm_recon`](modules/pymrm.ibm_recon)
+
+One-sided normal-derivative operators for the `pymrm` immersed boundary method.
+
+| Symbol | Type | Summary |
+| ------ | ---- | ------- |
+| [`IBMNormalDerivative`](symbols/pymrm.ibm_recon.IBMNormalDerivative) | class | One-sided normal-derivative operators and diagnostics per IBM crossing. |
+| [`construct_ibm_normal_derivative`](symbols/pymrm.ibm_recon.construct_ibm_normal_derivative) | function | Construct one-sided normal-derivative operators for every IBM crossing. |
+| [`construct_ibm_normal_derivative_ops`](symbols/pymrm.ibm_recon.construct_ibm_normal_derivative_ops) | function | Expand the reconstruction operators to the full field layout. |
+| [`gfd_normal_derivative_weights`](symbols/pymrm.ibm_recon.gfd_normal_derivative_weights) | function | GFD weights for a directional derivative at a single interface point. |
+| [`interface_normals`](symbols/pymrm.ibm_recon.interface_normals) | function | Unit interface normals (solid -> fluid) at each wall crossing. |
+
 ## [`pymrm.interpolate`](modules/pymrm.interpolate)
 
 Interpolation utilities between cell-centered and staggered grids.
@@ -83,6 +116,37 @@ Sparse gradient and divergence operators for finite-volume discretisation.
 | [`construct_grad`](symbols/pymrm.operators.construct_grad) | function | Construct the full gradient operator including boundary contributions. |
 | [`construct_grad_bc`](symbols/pymrm.operators.construct_grad_bc) | function | Construct boundary-face gradient corrections and source terms. |
 | [`construct_grad_int`](symbols/pymrm.operators.construct_grad_int) | function | Construct the interior-face gradient operator. |
+
+## [`pymrm.particles`](modules/pymrm.particles)
+
+Particle-based immersed boundaries for `pymrm`.
+
+| Symbol | Type | Summary |
+| ------ | ---- | ------- |
+| [`AnalyticParticle`](symbols/pymrm.particles.AnalyticParticle) | class | Particle from a user-supplied body-frame level function. |
+| [`Box`](symbols/pymrm.particles.Box) | class | Axis-aligned (in body frame) box; rotate via ``orientation``. |
+| [`GridParticle`](symbols/pymrm.particles.GridParticle) | class | Particle from level-function samples on its own body-frame grid. |
+| [`Particle`](symbols/pymrm.particles.Particle) | class | Abstract particle: a shape at a position with an orientation. |
+| [`ParticleIBMInfo`](symbols/pymrm.particles.ParticleIBMInfo) | class | Side-car information produced by `construct_ibm_particles`. |
+| [`Sphere`](symbols/pymrm.particles.Sphere) | class | Sphere (any dimension; in 2-D this is a disk — see `Circle`). |
+| [`construct_ibm_particles`](symbols/pymrm.particles.construct_ibm_particles) | function | Build immersed-boundary data directly from a particle assembly. |
+| [`contact_conditions`](symbols/pymrm.particles.contact_conditions) | function | Per-crossing ic: *base_ic* everywhere, a contact condition on contacts. |
+
+## [`pymrm.segmentation`](modules/pymrm.segmentation)
+
+SDF-based domain segmentation for immersed boundaries in `pymrm`.
+
+| Symbol | Type | Summary |
+| ------ | ---- | ------- |
+| [`Segmentation`](symbols/pymrm.segmentation.Segmentation) | class | Per-cell integer labelling of one region of the spatial grid. |
+| [`combine_interface_conditions`](symbols/pymrm.segmentation.combine_interface_conditions) | function | Merge per-segment interface conditions into one per-crossing ``ic``. |
+| [`crossing_segments`](symbols/pymrm.segmentation.crossing_segments) | function | Segment label of the body bounded by each IBM crossing. |
+| [`segment_domain`](symbols/pymrm.segmentation.segment_domain) | function | Label the disjoint regions of a signed distance field. |
+| [`segment_field`](symbols/pymrm.segmentation.segment_field) | function | Expand per-segment values to a per-cell spatial field. |
+| [`segment_values`](symbols/pymrm.segmentation.segment_values) | function | Expand per-segment values to a per-crossing array for `pymrm.apply_ibm`. |
+| [`wall_contact`](symbols/pymrm.segmentation.wall_contact) | function | Whether each segment reaches each domain wall. |
+| [`wall_patch`](symbols/pymrm.segmentation.wall_patch) | function | Segment labels on one domain wall, shaped as a full-field coefficient. |
+| [`wall_values`](symbols/pymrm.segmentation.wall_values) | function | Per-segment values on one domain wall as a full-field BC coefficient. |
 
 ## [`pymrm.solve`](modules/pymrm.solve)
 
