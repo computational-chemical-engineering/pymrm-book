@@ -25,13 +25,15 @@ Construct boundary-face gradient corrections and source terms.
 
 - `bc` (*tuple[dict | None, dict | None], optional*)
   Left and right boundary-condition dictionaries with keys ``a``, ``b``,
-  and ``d``.
+  and ``d`` for ``a * dc/dn + b * c = d`` with ``n`` the outward normal;
+  ``{"outflow": True}`` means zero normal gradient here.
 
 - `axis` (*int, optional*)
   Differentiation axis.
 
 - `shapes_d` (*tuple[tuple | None, tuple | None], optional*)
-  Optional source-vector shapes for left/right boundary contributions.
+  Optional source-vector shapes for left/right boundary contributions;
+  ``d`` is then a coefficient on the external vector.
 
 - `format` (*{'csc', 'csr'}, optional*)
   Sparse format for returned operator matrices.
@@ -45,7 +47,7 @@ Construct boundary-face gradient corrections and source terms.
 
 ## Source
 
-[View on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/89c91222a061c475e309f0ea6a6207ac8d5a3d20/src/pymrm/operators.py#L156-L397)
+[View on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/26b1cf19019672d855d525a0001f9d3c2a650e65/src/pymrm/operators.py#L162-L406)
 
 ```python
 def construct_grad_bc(
@@ -63,11 +65,13 @@ def construct_grad_bc(
         Cell-center coordinates.
     bc : tuple[dict | None, dict | None], optional
         Left and right boundary-condition dictionaries with keys ``a``, ``b``,
-        and ``d``.
+        and ``d`` for ``a * dc/dn + b * c = d`` with ``n`` the outward normal;
+        ``{"outflow": True}`` means zero normal gradient here.
     axis : int, optional
         Differentiation axis.
     shapes_d : tuple[tuple | None, tuple | None], optional
-        Optional source-vector shapes for left/right boundary contributions.
+        Optional source-vector shapes for left/right boundary contributions;
+        ``d`` is then a coefficient on the external vector.
     format : {'csc', 'csr'}, optional
         Sparse format for returned operator matrices.
 
@@ -78,6 +82,7 @@ def construct_grad_bc(
         ``(grad_matrix_left, grad_bc_left, grad_matrix_right, grad_bc_right)``
         otherwise.
     """
+    bc, _ = substitute_outflow_bc(bc, {"a": 1.0, "b": 0.0, "d": 0.0})
     shape_f = shape[:axis] + (shape[axis] + 1,) + shape[axis + 1:]
     shape_t = (math.prod(shape[:axis]), shape[axis], math.prod(shape[axis + 1:]))
     shape_f_t = (shape_t[0], shape_f[axis], shape_t[2])

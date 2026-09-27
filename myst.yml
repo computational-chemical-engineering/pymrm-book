@@ -16,6 +16,8 @@ project:
   - file: content/index.md
   - file: content/getting_started/getting_started.md
     title: Getting Started with PyMRM
+  - file: content/coding_agents/coding_agents.md
+    title: Coding Agents
   - file: content/tutorials/tutorials.md
     title: Tutorials
     children:
@@ -37,7 +39,17 @@ project:
     - file: pymrm/examples/darcy_flow.ipynb
     - file: pymrm/examples/lid_driven_cavity.ipynb
     - file: pymrm/examples/membrane_module_2D.ipynb
+    - file: pymrm/examples/membrane_module_2D_Sievert.ipynb
+      title: 2D Membrane Module with Sieverts' Law
+    - file: pymrm/examples/surface_reaction.ipynb
     - file: pymrm/examples/optimization_example.ipynb
+    - title: Immersed Boundary Method
+      children:
+      - file: pymrm/examples/ibm_diffusion.ipynb
+      - file: pymrm/examples/ibm_touching_particles.ipynb
+      - file: pymrm/examples/ibm_touching_convergence.ipynb
+      - file: pymrm/examples/ibm_segmentation.ipynb
+      - file: pymrm/examples/ibm_effective_diffusivity.ipynb
   - file: content/lecture_notes/index.md
     title: Lecture Notes
     children:

@@ -4,7 +4,7 @@
 
 Numerical Jacobian construction with sparse stencil support.
 
-[View module source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/89c91222a061c475e309f0ea6a6207ac8d5a3d20/src/pymrm/numjac.py)
+[View module source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/26b1cf19019672d855d525a0001f9d3c2a650e65/src/pymrm/numjac.py)
 
 ## Public API
 
@@ -22,7 +22,24 @@ Numerical Jacobian evaluator based on grouped finite differences.
 The class builds a sparse Jacobian structure from a stencil/dependency
 description and reuses that structure across repeated evaluations.
 
-[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/89c91222a061c475e309f0ea6a6207ac8d5a3d20/src/pymrm/numjac.py#L561-L756)
+With the default stencil every point is coupled in full along the LAST
+axis and not at all along the others: right for a local term (a reaction)
+on a field of shape ``(n, n_c)``. Keep a field axis for a single field,
+``(n, 1)``; a bare ``(n,)`` couples all cells and builds a dense Jacobian.
+Couplings between neighbouring cells normally come from the operators, not
+from ``NumJac``; use ``axes_diagonals`` only when the local term itself
+reads neighbours.
+
+### Examples
+
+>>> import numpy as np
+>>> from pymrm import NumJac
+>>> numjac = NumJac((5, 1))
+>>> g, jac = numjac(lambda c: c**2, np.ones((5, 1)))
+>>> jac.shape, jac.nnz
+((5, 5), 5)
+
+[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/26b1cf19019672d855d525a0001f9d3c2a650e65/src/pymrm/numjac.py#L584-L808)
 
 ## Members
 
@@ -52,7 +69,7 @@ Create a Jacobian approximator.
 - `**kwargs`
   Additional options passed to the stencil callable.
 
-[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/89c91222a061c475e309f0ea6a6207ac8d5a3d20/src/pymrm/numjac.py#L568-L623)
+[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/26b1cf19019672d855d525a0001f9d3c2a650e65/src/pymrm/numjac.py#L608-L675)
 
 ### `__call__(f, c, f_value = None)`
 
@@ -77,7 +94,7 @@ Compute the numerical Jacobian for a given function and input array.
 - `tuple`
   (Function value at c, Jacobian as a sparse matrix).
 
-[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/89c91222a061c475e309f0ea6a6207ac8d5a3d20/src/pymrm/numjac.py#L708-L756)
+[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/26b1cf19019672d855d525a0001f9d3c2a650e65/src/pymrm/numjac.py#L760-L808)
 
 ### `init_stencil(stencil, **kwargs)`
 
@@ -124,9 +141,9 @@ Sets the following attributes on the class:
 For a full description of the PyMRM dependency notation, see:
 - `dependencies_format.md` in the PyMRM package.
 
-[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/89c91222a061c475e309f0ea6a6207ac8d5a3d20/src/pymrm/numjac.py#L625-L706)
+[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/26b1cf19019672d855d525a0001f9d3c2a650e65/src/pymrm/numjac.py#L677-L758)
 
-## `stencil_block_diagonals(ndims = 1, axes_diagonals = [], axes_blocks = [-1], periodic_axes = [])`
+## `stencil_block_diagonals(ndims = 1, axes_diagonals = (), axes_blocks = None, periodic_axes = ())`
 
 [Open dedicated reference page](../symbols/pymrm.numjac.stencil_block_diagonals)
 
@@ -135,15 +152,18 @@ Generate a block-diagonal or block-banded stencil description.
 ### Parameters
 
 - `ndims` (*int, optional*)
-  Number of spatial dimensions.
+  Number of axes of the field (spatial axes plus component axes).
 
-- `axes_diagonals` (*list[int], optional*)
-  Axes for which ``[-1, 0, 1]`` neighbor offsets are included.
+- `axes_diagonals` (*sequence[int], optional*)
+  Axes along which neighbour coupling (offsets ``-1, 0, 1``) is included.
 
-- `axes_blocks` (*list[int], optional*)
-  Axes over which full-block coupling (``slice(None)``) is applied.
+- `axes_blocks` (*sequence[int] or None, optional*)
+  Axes over which full-block coupling (``slice(None)``) is applied. The
+  default, ``None``, means the last axis; on a 1-D field with
+  ``axes_diagonals=[0]`` it means no block axes, which gives a tridiagonal
+  stencil.
 
-- `periodic_axes` (*list[int], optional*)
+- `periodic_axes` (*sequence[int], optional*)
   Axes with periodic indexing.
 
 ### Returns
@@ -151,4 +171,11 @@ Generate a block-diagonal or block-banded stencil description.
 - `list[tuple]`
   Dependency specification in PyMRM notation.
 
-[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/89c91222a061c475e309f0ea6a6207ac8d5a3d20/src/pymrm/numjac.py#L430-L470)
+### Notes
+
+Axes may be given as negative numbers and are normalised modulo ``ndims``.
+An axis listed both as a block and as a diagonal axis is treated as a block
+axis: full coupling along it already contains the neighbour band, so the
+Jacobian stays exact.
+
+[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/26b1cf19019672d855d525a0001f9d3c2a650e65/src/pymrm/numjac.py#L435-L493)

@@ -25,7 +25,8 @@ Construct boundary-face upwind corrections and source terms.
 
 - `bc` (*tuple[dict | None, dict | None], optional*)
   Left and right boundary-condition dictionaries with keys ``a``, ``b``,
-  and ``d``.
+  and ``d`` for ``a * dc/dn + b * c = d`` with ``n`` the outward normal;
+  ``{"outflow": True}`` marks a pure-outflow boundary.
 
 - `v` (*float or array_like, optional*)
   Face velocity field.
@@ -34,7 +35,8 @@ Construct boundary-face upwind corrections and source terms.
   Convection axis.
 
 - `shapes_d` (*tuple[tuple | None, tuple | None], optional*)
-  Optional source-vector shapes for inhomogeneous boundary terms.
+  Optional source-vector shapes for inhomogeneous boundary terms; ``d``
+  is then a coefficient on the external vector.
 
 - `format` (*{'csc', 'csr'}, optional*)
   Sparse format for returned operator matrices.
@@ -48,7 +50,7 @@ Construct boundary-face upwind corrections and source terms.
 
 ## Source
 
-[View on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/89c91222a061c475e309f0ea6a6207ac8d5a3d20/src/pymrm/convect.py#L132-L386)
+[View on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/26b1cf19019672d855d525a0001f9d3c2a650e65/src/pymrm/convect.py#L138-L406)
 
 ```python
 def construct_convflux_bc(
@@ -67,13 +69,15 @@ def construct_convflux_bc(
         Cell-center coordinates.
     bc : tuple[dict | None, dict | None], optional
         Left and right boundary-condition dictionaries with keys ``a``, ``b``,
-        and ``d``.
+        and ``d`` for ``a * dc/dn + b * c = d`` with ``n`` the outward normal;
+        ``{"outflow": True}`` marks a pure-outflow boundary.
     v : float or array_like, optional
         Face velocity field.
     axis : int, optional
         Convection axis.
     shapes_d : tuple[tuple | None, tuple | None], optional
-        Optional source-vector shapes for inhomogeneous boundary terms.
+        Optional source-vector shapes for inhomogeneous boundary terms; ``d``
+        is then a coefficient on the external vector.
     format : {'csc', 'csr'}, optional
         Sparse format for returned operator matrices.
 
@@ -84,6 +88,11 @@ def construct_convflux_bc(
         ``(conv_matrix_left, conv_bc_left, conv_matrix_right, conv_bc_right)``
         otherwise.
     """
+
+    # A pure-outflow face takes the value of the adjacent cell. The face values
+    # are first built with a zero-gradient condition there (consistent with
+    # construct_grad), then the outflow face is set to the adjacent cell value.
+    bc, outflow = substitute_outflow_bc(bc, {"a": 1.0, "b": 0.0, "d": 0.0})
 
     # Trick: Reshape to triplet shape_t
     shape_f = shape[:axis] + (shape[axis] + 1,) + shape[axis + 1:]
@@ -150,6 +159,9 @@ def construct_convflux_bc(
             ((a[0] * alpha_0_left + b[0]) * d[1] - alpha_2_right * a[1] * d[0]) * fctr,
             shape_bc,
         ).reshape(shape_bc_d)
+        for side in (0, 1):
+            if outflow[side]:
+                values[:, side, :], values_bc[:, side, :] = 1.0, 0.0
 
         if isinstance(v, (float, int)):
             values *= v
@@ -229,6 +241,10 @@ def construct_convflux_bc(
         values[:, -1, :] = a_fctr * alpha_1
         values[:, -2, :] = -a_fctr * alpha_2
         values_bc[:, -1, :] = d_fctr
+        if outflow[0]:
+            values[:, 0, :], values[:, 1, :], values_bc[:, 0, :] = 1.0, 0.0, 0.0
+        if outflow[1]:
+            values[:, -1, :], values[:, -2, :], values_bc[:, -1, :] = 1.0, 0.0, 0.0
         if isinstance(v, (float, int)):
             values *= v
             values_bc *= v

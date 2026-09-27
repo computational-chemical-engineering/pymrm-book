@@ -4,7 +4,7 @@
 
 Convective-flux operators and TVD limiter functions.
 
-[View module source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/89c91222a061c475e309f0ea6a6207ac8d5a3d20/src/pymrm/convect.py)
+[View module source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/26b1cf19019672d855d525a0001f9d3c2a650e65/src/pymrm/convect.py)
 
 ## Public API
 
@@ -28,7 +28,7 @@ Convective-flux operators and TVD limiter functions.
 
 Compute the CLAM TVD correction in normalized-variable space.
 
-[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/89c91222a061c475e309f0ea6a6207ac8d5a3d20/src/pymrm/convect.py#L423-L433)
+[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/26b1cf19019672d855d525a0001f9d3c2a650e65/src/pymrm/convect.py#L443-L453)
 
 ## `construct_convflux_bc(shape, x_f, x_c = None, bc = (None, None), v = 1.0, axis = 0, shapes_d = (None, None), format = 'csc')`
 
@@ -49,7 +49,8 @@ Construct boundary-face upwind corrections and source terms.
 
 - `bc` (*tuple[dict | None, dict | None], optional*)
   Left and right boundary-condition dictionaries with keys ``a``, ``b``,
-  and ``d``.
+  and ``d`` for ``a * dc/dn + b * c = d`` with ``n`` the outward normal;
+  ``{"outflow": True}`` marks a pure-outflow boundary.
 
 - `v` (*float or array_like, optional*)
   Face velocity field.
@@ -58,7 +59,8 @@ Construct boundary-face upwind corrections and source terms.
   Convection axis.
 
 - `shapes_d` (*tuple[tuple | None, tuple | None], optional*)
-  Optional source-vector shapes for inhomogeneous boundary terms.
+  Optional source-vector shapes for inhomogeneous boundary terms; ``d``
+  is then a coefficient on the external vector.
 
 - `format` (*{'csc', 'csr'}, optional*)
   Sparse format for returned operator matrices.
@@ -70,7 +72,7 @@ Construct boundary-face upwind corrections and source terms.
   ``(conv_matrix_left, conv_bc_left, conv_matrix_right, conv_bc_right)``
   otherwise.
 
-[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/89c91222a061c475e309f0ea6a6207ac8d5a3d20/src/pymrm/convect.py#L132-L386)
+[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/26b1cf19019672d855d525a0001f9d3c2a650e65/src/pymrm/convect.py#L138-L406)
 
 ## `construct_convflux_upwind(shape, x_f, x_c = None, bc = (None, None), v = 1.0, axis = 0, shapes_d = (None, None), format = 'csc')`
 
@@ -91,7 +93,11 @@ Construct a first-order upwind convective-flux operator.
 
 - `bc` (*tuple[dict | None, dict | None], optional*)
   Left and right boundary-condition dictionaries with keys ``a``, ``b``,
-  and ``d``.
+  and ``d`` for ``a * dc/dn + b * c = d`` with ``n`` the outward normal
+  (at the left end ``dc/dn = -dc/dx``). ``{"outflow": True}`` marks a pure-outflow boundary: the
+  face value is the adjacent cell value (a stirred volume's exit). It is
+  meant for faces where material leaves; if flow enters there, the face
+  still carries the adjacent cell value.
 
 - `v` (*float or array_like, optional*)
   Face velocity field. Scalars and broadcastable arrays are accepted.
@@ -100,7 +106,9 @@ Construct a first-order upwind convective-flux operator.
   Convection axis.
 
 - `shapes_d` (*tuple[tuple | None, tuple | None], optional*)
-  Optional source-vector shapes for boundary inhomogeneities.
+  Optional source-vector shapes for boundary inhomogeneities. With
+  ``shapes_d`` the dictionary's ``d`` is a coefficient on that external
+  vector (use ``d = 1`` to pass the values through the vector).
 
 - `format` (*{'csc', 'csr'}, optional*)
   Sparse format for returned operator matrices.
@@ -111,7 +119,7 @@ Construct a first-order upwind convective-flux operator.
   Without ``shapes_d``: ``(conv_matrix, conv_bc)``.
   With ``shapes_d``: ``(conv_matrix, conv_bc_left, conv_bc_right)``.
 
-[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/89c91222a061c475e309f0ea6a6207ac8d5a3d20/src/pymrm/convect.py#L11-L69)
+[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/26b1cf19019672d855d525a0001f9d3c2a650e65/src/pymrm/convect.py#L11-L75)
 
 ## `construct_convflux_upwind_int(shape, v = 1.0, axis = 0, format = 'csc')`
 
@@ -138,7 +146,7 @@ Construct the internal-face upwind advection operator.
 - `scipy.sparse.csc_array or scipy.sparse.csr_array`
   Sparse matrix mapping cell-centered values to interior face fluxes.
 
-[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/89c91222a061c475e309f0ea6a6207ac8d5a3d20/src/pymrm/convect.py#L72-L129)
+[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/26b1cf19019672d855d525a0001f9d3c2a650e65/src/pymrm/convect.py#L78-L135)
 
 ## `minmod(normalized_c_c, normalized_x_c, normalized_x_d)`
 
@@ -146,7 +154,7 @@ Construct the internal-face upwind advection operator.
 
 Compute the Minmod TVD correction in normalized-variable space.
 
-[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/89c91222a061c475e309f0ea6a6207ac8d5a3d20/src/pymrm/convect.py#L398-L407)
+[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/26b1cf19019672d855d525a0001f9d3c2a650e65/src/pymrm/convect.py#L418-L427)
 
 ## `muscl(normalized_c_c, normalized_x_c, normalized_x_d)`
 
@@ -154,7 +162,7 @@ Compute the Minmod TVD correction in normalized-variable space.
 
 Compute the MUSCL TVD correction in normalized-variable space.
 
-[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/89c91222a061c475e309f0ea6a6207ac8d5a3d20/src/pymrm/convect.py#L436-L451)
+[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/26b1cf19019672d855d525a0001f9d3c2a650e65/src/pymrm/convect.py#L456-L471)
 
 ## `osher(normalized_c_c, normalized_x_c, normalized_x_d)`
 
@@ -162,7 +170,7 @@ Compute the MUSCL TVD correction in normalized-variable space.
 
 Compute the Osher TVD correction in normalized-variable space.
 
-[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/89c91222a061c475e309f0ea6a6207ac8d5a3d20/src/pymrm/convect.py#L410-L420)
+[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/26b1cf19019672d855d525a0001f9d3c2a650e65/src/pymrm/convect.py#L430-L440)
 
 ## `smart(normalized_c_c, normalized_x_c, normalized_x_d)`
 
@@ -170,7 +178,7 @@ Compute the Osher TVD correction in normalized-variable space.
 
 Compute the SMART TVD correction in normalized-variable space.
 
-[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/89c91222a061c475e309f0ea6a6207ac8d5a3d20/src/pymrm/convect.py#L454-L485)
+[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/26b1cf19019672d855d525a0001f9d3c2a650e65/src/pymrm/convect.py#L474-L505)
 
 ## `stoic(normalized_c_c, normalized_x_c, normalized_x_d)`
 
@@ -178,7 +186,7 @@ Compute the SMART TVD correction in normalized-variable space.
 
 Compute the STOIC TVD correction in normalized-variable space.
 
-[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/89c91222a061c475e309f0ea6a6207ac8d5a3d20/src/pymrm/convect.py#L488-L534)
+[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/26b1cf19019672d855d525a0001f9d3c2a650e65/src/pymrm/convect.py#L508-L554)
 
 ## `upwind(normalized_c_c, normalized_x_c, normalized_x_d)`
 
@@ -186,7 +194,7 @@ Compute the STOIC TVD correction in normalized-variable space.
 
 Return zero correction (first-order upwind limiter).
 
-[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/89c91222a061c475e309f0ea6a6207ac8d5a3d20/src/pymrm/convect.py#L392-L395)
+[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/26b1cf19019672d855d525a0001f9d3c2a650e65/src/pymrm/convect.py#L412-L415)
 
 ## `vanleer(normalized_c_c, normalized_x_c, normalized_x_d)`
 
@@ -194,4 +202,4 @@ Return zero correction (first-order upwind limiter).
 
 Compute the van-Leer TVD correction in normalized-variable space.
 
-[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/89c91222a061c475e309f0ea6a6207ac8d5a3d20/src/pymrm/convect.py#L537-L546)
+[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/26b1cf19019672d855d525a0001f9d3c2a650e65/src/pymrm/convect.py#L557-L566)

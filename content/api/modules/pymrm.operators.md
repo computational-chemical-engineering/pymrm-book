@@ -4,7 +4,7 @@
 
 Sparse gradient and divergence operators for finite-volume discretisation.
 
-[View module source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/89c91222a061c475e309f0ea6a6207ac8d5a3d20/src/pymrm/operators.py)
+[View module source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/26b1cf19019672d855d525a0001f9d3c2a650e65/src/pymrm/operators.py)
 
 ## Public API
 
@@ -44,7 +44,7 @@ Construct a divergence matrix that maps face fluxes to cell balances.
 - `scipy.sparse.csc_array or scipy.sparse.csr_array`
   Divergence operator.
 
-[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/89c91222a061c475e309f0ea6a6207ac8d5a3d20/src/pymrm/operators.py#L400-L508)
+[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/26b1cf19019672d855d525a0001f9d3c2a650e65/src/pymrm/operators.py#L409-L517)
 
 ## `construct_grad(shape, x_f, x_c = None, bc = (None, None), axis = 0, shapes_d = (None, None), format = 'csc')`
 
@@ -66,13 +66,17 @@ Construct the full gradient operator including boundary contributions.
 
 - `bc` (*tuple[dict | None, dict | None], optional*)
   Left and right boundary-condition dictionaries with coefficients
-  ``'a'``, ``'b'``, and ``'d'``.
+  ``'a'``, ``'b'``, and ``'d'`` for ``a * dc/dn + b * c = d`` with ``n``
+  the outward normal. ``{"outflow": True}`` marks a pure-outflow
+  boundary; for diffusion it means zero normal gradient.
 
 - `axis` (*int, optional*)
   Differentiation axis.
 
 - `shapes_d` (*tuple[tuple | None, tuple | None], optional*)
-  Optional output shapes for inhomogeneous boundary source vectors.
+  Optional output shapes for inhomogeneous boundary source vectors. With
+  ``shapes_d`` the dictionary's ``d`` is a coefficient on that external
+  vector (use ``d = 1`` to pass values through the vector).
 
 - `format` (*{'csc', 'csr'}, optional*)
   Sparse format used for returned operator matrices.
@@ -83,7 +87,7 @@ Construct the full gradient operator including boundary contributions.
   Without ``shapes_d``: ``(grad_matrix, grad_bc)``.
   With ``shapes_d``: ``(grad_matrix, grad_bc_left, grad_bc_right)``.
 
-[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/89c91222a061c475e309f0ea6a6207ac8d5a3d20/src/pymrm/operators.py#L10-L65)
+[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/26b1cf19019672d855d525a0001f9d3c2a650e65/src/pymrm/operators.py#L10-L71)
 
 ## `construct_grad_bc(shape, x_f, x_c = None, bc = (None, None), axis = 0, shapes_d = (None, None), format = 'csc')`
 
@@ -104,13 +108,15 @@ Construct boundary-face gradient corrections and source terms.
 
 - `bc` (*tuple[dict | None, dict | None], optional*)
   Left and right boundary-condition dictionaries with keys ``a``, ``b``,
-  and ``d``.
+  and ``d`` for ``a * dc/dn + b * c = d`` with ``n`` the outward normal;
+  ``{"outflow": True}`` means zero normal gradient here.
 
 - `axis` (*int, optional*)
   Differentiation axis.
 
 - `shapes_d` (*tuple[tuple | None, tuple | None], optional*)
-  Optional source-vector shapes for left/right boundary contributions.
+  Optional source-vector shapes for left/right boundary contributions;
+  ``d`` is then a coefficient on the external vector.
 
 - `format` (*{'csc', 'csr'}, optional*)
   Sparse format for returned operator matrices.
@@ -122,7 +128,7 @@ Construct boundary-face gradient corrections and source terms.
   ``(grad_matrix_left, grad_bc_left, grad_matrix_right, grad_bc_right)``
   otherwise.
 
-[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/89c91222a061c475e309f0ea6a6207ac8d5a3d20/src/pymrm/operators.py#L156-L397)
+[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/26b1cf19019672d855d525a0001f9d3c2a650e65/src/pymrm/operators.py#L162-L406)
 
 ## `construct_grad_int(shape, x_f, x_c = None, axis = 0, format = 'csc')`
 
@@ -152,4 +158,4 @@ Construct the interior-face gradient operator.
 - `scipy.sparse.csc_array or scipy.sparse.csr_array`
   Matrix that maps cell-centered values to face-normal gradients.
 
-[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/89c91222a061c475e309f0ea6a6207ac8d5a3d20/src/pymrm/operators.py#L68-L153)
+[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/26b1cf19019672d855d525a0001f9d3c2a650e65/src/pymrm/operators.py#L74-L159)

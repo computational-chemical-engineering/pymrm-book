@@ -12,7 +12,7 @@ Return zero correction (first-order upwind limiter).
 
 ## Source
 
-[View on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/89c91222a061c475e309f0ea6a6207ac8d5a3d20/src/pymrm/convect.py#L392-L395)
+[View on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/26b1cf19019672d855d525a0001f9d3c2a650e65/src/pymrm/convect.py#L412-L415)
 
 ```python
 def upwind(normalized_c_c, normalized_x_c, normalized_x_d):

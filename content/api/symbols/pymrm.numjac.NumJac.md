@@ -15,9 +15,26 @@ Numerical Jacobian evaluator based on grouped finite differences.
 The class builds a sparse Jacobian structure from a stencil/dependency
 description and reuses that structure across repeated evaluations.
 
+With the default stencil every point is coupled in full along the LAST
+axis and not at all along the others: right for a local term (a reaction)
+on a field of shape ``(n, n_c)``. Keep a field axis for a single field,
+``(n, 1)``; a bare ``(n,)`` couples all cells and builds a dense Jacobian.
+Couplings between neighbouring cells normally come from the operators, not
+from ``NumJac``; use ``axes_diagonals`` only when the local term itself
+reads neighbours.
+
+### Examples
+
+>>> import numpy as np
+>>> from pymrm import NumJac
+>>> numjac = NumJac((5, 1))
+>>> g, jac = numjac(lambda c: c**2, np.ones((5, 1)))
+>>> jac.shape, jac.nnz
+((5, 5), 5)
+
 ## Source
 
-[View on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/89c91222a061c475e309f0ea6a6207ac8d5a3d20/src/pymrm/numjac.py#L561-L756)
+[View on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/26b1cf19019672d855d525a0001f9d3c2a650e65/src/pymrm/numjac.py#L584-L808)
 
 ```python
 class NumJac:
@@ -25,6 +42,23 @@ class NumJac:
 
     The class builds a sparse Jacobian structure from a stencil/dependency
     description and reuses that structure across repeated evaluations.
+
+    With the default stencil every point is coupled in full along the LAST
+    axis and not at all along the others: right for a local term (a reaction)
+    on a field of shape ``(n, n_c)``. Keep a field axis for a single field,
+    ``(n, 1)``; a bare ``(n,)`` couples all cells and builds a dense Jacobian.
+    Couplings between neighbouring cells normally come from the operators, not
+    from ``NumJac``; use ``axes_diagonals`` only when the local term itself
+    reads neighbours.
+
+    Examples
+    --------
+    >>> import numpy as np
+    >>> from pymrm import NumJac
+    >>> numjac = NumJac((5, 1))
+    >>> g, jac = numjac(lambda c: c**2, np.ones((5, 1)))
+    >>> jac.shape, jac.nnz
+    ((5, 5), 5)
     """
 
     def __init__(
@@ -80,6 +114,18 @@ class NumJac:
 
         self.eps_jac = eps_jac
         self.format = format
+
+        if shape is not None and stencil is stencil_block_diagonals and not kwargs:
+            shape_t = (shape,) if isinstance(shape, (int, np.integer)) else tuple(shape)
+            if len(shape_t) == 1 and shape_t[0] >= DENSE_1D_WARNING_SIZE:
+                warnings.warn(
+                    f"NumJac({shape_t}) builds a dense {shape_t[0]} x {shape_t[0]} Jacobian "
+                    f"({shape_t[0]} function evaluations per call). For a field on a grid "
+                    f"use shape {(shape_t[0], 1)}; pass axes_blocks=[-1] to confirm that "
+                    "dense coupling is intended.",
+                    UserWarning,
+                    stacklevel=2,
+                )
 
         # Initialize stencil
         self.init_stencil(stencil, **kwargs)
@@ -246,7 +292,7 @@ Create a Jacobian approximator.
 - `**kwargs`
   Additional options passed to the stencil callable.
 
-[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/89c91222a061c475e309f0ea6a6207ac8d5a3d20/src/pymrm/numjac.py#L568-L623)
+[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/26b1cf19019672d855d525a0001f9d3c2a650e65/src/pymrm/numjac.py#L608-L675)
 
 ### `__call__(f, c, f_value = None)`
 
@@ -271,7 +317,7 @@ Compute the numerical Jacobian for a given function and input array.
 - `tuple`
   (Function value at c, Jacobian as a sparse matrix).
 
-[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/89c91222a061c475e309f0ea6a6207ac8d5a3d20/src/pymrm/numjac.py#L708-L756)
+[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/26b1cf19019672d855d525a0001f9d3c2a650e65/src/pymrm/numjac.py#L760-L808)
 
 ### `init_stencil(stencil, **kwargs)`
 
@@ -318,4 +364,4 @@ Sets the following attributes on the class:
 For a full description of the PyMRM dependency notation, see:
 - `dependencies_format.md` in the PyMRM package.
 
-[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/89c91222a061c475e309f0ea6a6207ac8d5a3d20/src/pymrm/numjac.py#L625-L706)
+[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/26b1cf19019672d855d525a0001f9d3c2a650e65/src/pymrm/numjac.py#L677-L758)
