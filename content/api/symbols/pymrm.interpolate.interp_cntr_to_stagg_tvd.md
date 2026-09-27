@@ -12,6 +12,9 @@ Perform TVD interpolation from cell centers to faces.
 
 ## Documentation
 
+A boundary given as ``{"outflow": True}`` gets the adjacent cell value at
+its face and no TVD correction there.
+
 ### Parameters
 
 - `cell_centered_values` (*numpy.ndarray*)
@@ -45,13 +48,16 @@ Perform TVD interpolation from cell centers to faces.
 
 ## Source
 
-[View on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/89c91222a061c475e309f0ea6a6207ac8d5a3d20/src/pymrm/interpolate.py#L107-L303)
+[View on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/26b1cf19019672d855d525a0001f9d3c2a650e65/src/pymrm/interpolate.py#L107-L326)
 
 ```python
 def interp_cntr_to_stagg_tvd(
     cell_centered_values, x_f, x_c=None, bc=None, v=0, tvd_limiter=None, axis=0
 ):
     """Perform TVD interpolation from cell centers to faces.
+
+    A boundary given as ``{"outflow": True}`` gets the adjacent cell value at
+    its face and no TVD correction there.
 
     Parameters
     ----------
@@ -78,6 +84,26 @@ def interp_cntr_to_stagg_tvd(
     tuple[numpy.ndarray, numpy.ndarray]
         Interpolated staggered values and TVD correction term.
     """
+    if bc is not None:
+        bc, outflow = substitute_outflow_bc(bc, {"a": 1.0, "b": 0.0, "d": 0.0})
+        if any(outflow):
+            face, delta = interp_cntr_to_stagg_tvd(
+                cell_centered_values, x_f, x_c, bc, v, tvd_limiter, axis
+            )
+            cells = np.asarray(cell_centered_values)
+            ax = axis % cells.ndim
+            shape_f = list(cells.shape)
+            shape_f[ax] += 1
+            face = np.asarray(face).reshape(shape_f).copy()
+            delta = np.asarray(delta).reshape(shape_f).copy()
+            face, delta = np.moveaxis(face, ax, 0), np.moveaxis(delta, ax, 0)
+            cells = np.moveaxis(cells, ax, 0)
+            for flag, (i_face, i_cell) in zip(outflow, ((0, 0), (-1, -1))):
+                if flag:
+                    face[i_face] = cells[i_cell]
+                    delta[i_face] = 0.0
+            return np.moveaxis(face, 0, ax), np.moveaxis(delta, 0, ax)
+
     shape = list(cell_centered_values.shape)
     if axis < 0:
         axis += len(shape)

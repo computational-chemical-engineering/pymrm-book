@@ -25,7 +25,11 @@ Construct a first-order upwind convective-flux operator.
 
 - `bc` (*tuple[dict | None, dict | None], optional*)
   Left and right boundary-condition dictionaries with keys ``a``, ``b``,
-  and ``d``.
+  and ``d`` for ``a * dc/dn + b * c = d`` with ``n`` the outward normal
+  (at the left end ``dc/dn = -dc/dx``). ``{"outflow": True}`` marks a pure-outflow boundary: the
+  face value is the adjacent cell value (a stirred volume's exit). It is
+  meant for faces where material leaves; if flow enters there, the face
+  still carries the adjacent cell value.
 
 - `v` (*float or array_like, optional*)
   Face velocity field. Scalars and broadcastable arrays are accepted.
@@ -34,7 +38,9 @@ Construct a first-order upwind convective-flux operator.
   Convection axis.
 
 - `shapes_d` (*tuple[tuple | None, tuple | None], optional*)
-  Optional source-vector shapes for boundary inhomogeneities.
+  Optional source-vector shapes for boundary inhomogeneities. With
+  ``shapes_d`` the dictionary's ``d`` is a coefficient on that external
+  vector (use ``d = 1`` to pass the values through the vector).
 
 - `format` (*{'csc', 'csr'}, optional*)
   Sparse format for returned operator matrices.
@@ -47,7 +53,7 @@ Construct a first-order upwind convective-flux operator.
 
 ## Source
 
-[View on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/89c91222a061c475e309f0ea6a6207ac8d5a3d20/src/pymrm/convect.py#L11-L69)
+[View on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/26b1cf19019672d855d525a0001f9d3c2a650e65/src/pymrm/convect.py#L11-L75)
 
 ```python
 def construct_convflux_upwind(
@@ -66,13 +72,19 @@ def construct_convflux_upwind(
         Cell-center coordinates. If omitted, arithmetic midpoints are used.
     bc : tuple[dict | None, dict | None], optional
         Left and right boundary-condition dictionaries with keys ``a``, ``b``,
-        and ``d``.
+        and ``d`` for ``a * dc/dn + b * c = d`` with ``n`` the outward normal
+        (at the left end ``dc/dn = -dc/dx``). ``{"outflow": True}`` marks a pure-outflow boundary: the
+        face value is the adjacent cell value (a stirred volume's exit). It is
+        meant for faces where material leaves; if flow enters there, the face
+        still carries the adjacent cell value.
     v : float or array_like, optional
         Face velocity field. Scalars and broadcastable arrays are accepted.
     axis : int, optional
         Convection axis.
     shapes_d : tuple[tuple | None, tuple | None], optional
-        Optional source-vector shapes for boundary inhomogeneities.
+        Optional source-vector shapes for boundary inhomogeneities. With
+        ``shapes_d`` the dictionary's ``d`` is a coefficient on that external
+        vector (use ``d = 1`` to pass the values through the vector).
     format : {'csc', 'csr'}, optional
         Sparse format for returned operator matrices.
 

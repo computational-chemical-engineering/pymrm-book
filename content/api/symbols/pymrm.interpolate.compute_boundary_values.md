@@ -26,7 +26,8 @@ Compute boundary values and boundary-normal gradients.
 - `bc` (*dict or tuple[dict | None, dict | None], optional*)
   Boundary-condition data. For a single boundary query (``bound_id`` set),
   a single dictionary is accepted. For both boundaries, pass a
-  two-element tuple.
+  two-element tuple. At a ``{"outflow": True}`` boundary the value is the
+  adjacent cell value and the gradient is zero.
 
 - `axis` (*int, optional*)
   Axis normal to the boundary.
@@ -39,11 +40,13 @@ Compute boundary values and boundary-normal gradients.
 - `tuple`
   If ``bound_id`` is ``None``:
   ``(value_left, grad_left, value_right, grad_right)``.
-  Otherwise: ``(value, grad)`` for the requested boundary.
+  Otherwise: ``(value, grad)`` for the requested boundary. Gradients are
+  along the positive ``axis`` direction, NOT the outward normal used in
+  the ``bc`` dictionaries (at the lower boundary they differ in sign).
 
 ## Source
 
-[View on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/89c91222a061c475e309f0ea6a6207ac8d5a3d20/src/pymrm/interpolate.py#L363-L574)
+[View on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/26b1cf19019672d855d525a0001f9d3c2a650e65/src/pymrm/interpolate.py#L386-L618)
 
 ```python
 def compute_boundary_values(
@@ -62,7 +65,8 @@ def compute_boundary_values(
     bc : dict or tuple[dict | None, dict | None], optional
         Boundary-condition data. For a single boundary query (``bound_id`` set),
         a single dictionary is accepted. For both boundaries, pass a
-        two-element tuple.
+        two-element tuple. At a ``{"outflow": True}`` boundary the value is the
+        adjacent cell value and the gradient is zero.
     axis : int, optional
         Axis normal to the boundary.
     bound_id : {0, 1} or None, optional
@@ -73,8 +77,28 @@ def compute_boundary_values(
     tuple
         If ``bound_id`` is ``None``:
         ``(value_left, grad_left, value_right, grad_right)``.
-        Otherwise: ``(value, grad)`` for the requested boundary.
+        Otherwise: ``(value, grad)`` for the requested boundary. Gradients are
+        along the positive ``axis`` direction, NOT the outward normal used in
+        the ``bc`` dictionaries (at the lower boundary they differ in sign).
     """
+    if bc is not None:
+        bc, outflow = substitute_outflow_bc(bc, {"a": 1.0, "b": 0.0, "d": 0.0})
+        if any(outflow):
+            result = list(compute_boundary_values(
+                cell_centered_values, x_f, x_c, bc, axis, bound_id))
+            ax = axis % cell_centered_values.ndim
+            sides = [0, 1] if bound_id is None else [bound_id]
+            if isinstance(bc, dict) or len(outflow) == 1:
+                flags = {sides[0]: outflow[0]}
+            else:
+                flags = {side: outflow[side] for side in sides}
+            for k, side in enumerate(sides):
+                if flags.get(side):
+                    adjacent = np.take(cell_centered_values, [0 if side == 0 else -1], axis=ax)
+                    result[2 * k] = adjacent.reshape(np.shape(result[2 * k]))
+                    result[2 * k + 1] = np.zeros_like(np.asarray(result[2 * k + 1], dtype=float))
+            return tuple(result)
+
     shape = list(cell_centered_values.shape)
     if axis < 0:
         axis += len(shape)

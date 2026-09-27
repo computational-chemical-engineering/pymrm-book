@@ -28,6 +28,7 @@ PYMRM_SRC = PYMRM_ROOT / "src" / "pymrm"
 API_DIR = REPO_ROOT / "content" / "api"
 MODULES_DIR = API_DIR / "modules"
 SYMBOLS_DIR = API_DIR / "symbols"
+PUBLIC_SUBMODULES = ("checks",)
 GITHUB_REPO = "https://github.com/computational-chemical-engineering/pymrm"
 
 STRUCTURED_SECTIONS = {
@@ -450,6 +451,19 @@ def main() -> None:
         item = items.get(full_name)
         if item and item["type"] in PUBLIC_TYPES:
             public_items.append(item)
+
+    # Submodules whose functions are used namespaced (pymrm.checks.residual_check)
+    # and therefore are not in pymrm.__all__.
+    for submodule_name in PUBLIC_SUBMODULES:
+        submodule = getattr(pymrm, submodule_name, None)
+        if submodule is None:
+            continue
+        for name, obj in vars(submodule).items():
+            if name.startswith("_") or getattr(obj, "__module__", None) != submodule.__name__:
+                continue
+            item = items.get(f"{submodule.__name__}.{name}")
+            if item and item["type"] in PUBLIC_TYPES:
+                public_items.append(item)
 
     public_items.sort(key=lambda item: item["full_name"])
     module_names = sorted({item["full_name"].rsplit(".", 1)[0] for item in public_items})

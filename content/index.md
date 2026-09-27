@@ -14,6 +14,11 @@ This book is a work in progress. Currently, it contains a set of tutorials, exam
 Install the pymrm Python package and run some multiphase reactor models.
 :::
 
+:::{card} ![terminal](../_static/icons/command-line.svg) Coding Agents
+:link: coding_agents/coding_agents.md
+Build and check pymrm models with a coding agent, and the pymrm plugin for agents.
+:::
+
 :::{card} ![book](../_static/icons/book-open.svg) Tutorials
 :link: tutorials/tutorials.md
 Python notebooks with tutorials on using `PyMRM` for Multiphase Reactor Models.

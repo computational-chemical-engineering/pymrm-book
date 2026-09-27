@@ -18,13 +18,14 @@ finite volume discretisation implemented by the package.
 ``_sparse_array``
     Internal helper to construct a sparse array in the requested format.
 
-[View module source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/89c91222a061c475e309f0ea6a6207ac8d5a3d20/src/pymrm/helpers.py)
+[View module source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/26b1cf19019672d855d525a0001f9d3c2a650e65/src/pymrm/helpers.py)
 
 ## Public API
 
 | Symbol | Type | Summary |
 | ------ | ---- | ------- |
 | [`construct_coefficient_matrix`](../symbols/pymrm.helpers.construct_coefficient_matrix) | function | Build a sparse coefficient matrix with optional broadcasting and (row, col) coupling. |
+| [`describe_bc`](../symbols/pymrm.helpers.describe_bc) | function | Describe boundary-condition dictionaries as the equations they impose. |
 
 ## `construct_coefficient_matrix(coefficients, shape = None, axis = None, format = 'csc')`
 
@@ -89,4 +90,37 @@ Diagonal from 2D field (staggered in axis 0):
 Rectangular coupling (cell centers -> axial faces):
     A = construct_coefficient_matrix(alpha, shape=((1, Nr), (Nz, Nr)), axis=0)
 
-[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/89c91222a061c475e309f0ea6a6207ac8d5a3d20/src/pymrm/helpers.py#L91-L201)
+[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/26b1cf19019672d855d525a0001f9d3c2a650e65/src/pymrm/helpers.py#L91-L201)
+
+## `describe_bc(bc, x_f = None, axis_name = 'x', var = 'c')`
+
+[Open dedicated reference page](../symbols/pymrm.helpers.describe_bc)
+
+Describe boundary-condition dictionaries as the equations they impose.
+
+pymrm boundary conditions read ``a * dc/dn + b * c = d`` with ``n`` the
+OUTWARD normal, so the same dictionary means opposite gradients at the two
+ends. This helper writes each condition out in terms of the axis direction,
+which makes sign errors visible.
+
+### Parameters
+
+- `bc` (*tuple[dict | None, dict | None]*)
+  Lower and upper boundary dictionaries with keys ``a``, ``b``, ``d``.
+
+- `x_f` (*array_like, optional*)
+  Face coordinates along the axis; used to print the boundary positions.
+
+- `axis_name` (*str, optional*)
+  Name of the coordinate (default ``"x"``).
+
+- `var` (*str, optional*)
+  Name of the field (default ``"c"``).
+
+### Returns
+
+- `str`
+  One line per boundary, for example
+  ``lower (x=0, outward normal -x): -1*dc/dx + 0*c = 2  [Neumann]``.
+
+[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/26b1cf19019672d855d525a0001f9d3c2a650e65/src/pymrm/helpers.py#L227-L269)

@@ -4,7 +4,7 @@
 
 ## Signature
 
-`newton(function, initial_guess, args = (), tol = 1.49012e-08, maxfev = 100, solver = None, lin_solver_kwargs = None, callback = None)`
+`newton(function, initial_guess, args = (), tol = 1.49012e-08, maxfev = 100, solver = None, lin_solver_kwargs = None, callback = None, rtol = 0.0)`
 
 ## Summary
 
@@ -23,15 +23,25 @@ Solve ``function(x) = 0`` with Newton iterations.
 - `args` (*tuple, optional*)
   Extra positional arguments passed to ``function``.
 
-- `tol` (*float, optional*)
-  Stopping tolerance on the infinity norm of the Newton update.
+- `tol` (*float or numpy.ndarray, optional*)
+  Absolute stopping tolerance on the Newton update. With the default
+  ``rtol=0`` and a scalar ``tol`` the iteration stops when the infinity
+  norm of the update is below ``tol``. This is an ABSOLUTE criterion: for
+  unknowns much smaller than ``tol`` (trace concentrations, for example)
+  it can stop after one step with a wrong answer. Scale the unknowns to order
+  one, or use ``tol=0`` with ``rtol``. An array must broadcast to the
+  unknowns.
 
 - `maxfev` (*int, optional*)
   Maximum number of Newton iterations.
 
-- `solver` (*{'spsolve', 'cg', 'bicgstab'} or callable, optional*)
+- `solver` (*{'spsolve', 'cg', 'bicgstab', 'splu'} or callable, optional*)
   Linear solver used for each Newton step. If ``None``, the routine picks
   ``'spsolve'`` for smaller systems and ``'bicgstab'`` for larger systems.
+  When ``'splu'`` is selected, the Jacobian returned by ``function`` is
+  expected to be an already-decomposed ``SuperLU`` object (as returned by
+  `scipy.sparse.linalg.splu`), and the solve step calls its
+  ``.solve()`` method directly.
   A callable solver must accept ``(jac_matrix, rhs, **kwargs)`` and return
   the solution vector.
 
@@ -41,11 +51,19 @@ Solve ``function(x) = 0`` with Newton iterations.
 - `callback` (*callable, optional*)
   Optional hook called as ``callback(x, residual)`` after each iteration.
 
+- `rtol` (*float, optional*)
+  Relative stopping tolerance. When ``rtol > 0`` or ``tol`` is an array,
+  the iteration stops when every component satisfies
+  ``abs(update) <= tol + rtol * abs(x)``. ``tol=0, rtol=1e-8`` gives a
+  purely relative criterion.
+
 ### Returns
 
 - `scipy.optimize.OptimizeResult`
-  Result object with fields ``x``, ``success``, ``nit``, ``fun``, and
-  ``message``.
+  Result object with fields ``x``, ``success``, ``nit``, ``fun``,
+  ``message`` and ``step_norm`` (infinity norm of the last update).
+  ``fun`` is the residual evaluated at the iterate BEFORE the last update,
+  not at ``x``; evaluate ``function(x)`` to check the final residual.
 
 ### Raises
 
@@ -57,7 +75,7 @@ Solve ``function(x) = 0`` with Newton iterations.
 
 ## Source
 
-[View on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/89c91222a061c475e309f0ea6a6207ac8d5a3d20/src/pymrm/solve.py#L10-L123)
+[View on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/26b1cf19019672d855d525a0001f9d3c2a650e65/src/pymrm/solve.py#L10-L156)
 
 ```python
 def newton(
@@ -69,6 +87,7 @@ def newton(
     solver=None,
     lin_solver_kwargs=None,
     callback=None,
+    rtol=0.0,
 ):
     """Solve ``function(x) = 0`` with Newton iterations.
 
@@ -80,25 +99,42 @@ def newton(
         Starting point of the iterations.
     args : tuple, optional
         Extra positional arguments passed to ``function``.
-    tol : float, optional
-        Stopping tolerance on the infinity norm of the Newton update.
+    tol : float or numpy.ndarray, optional
+        Absolute stopping tolerance on the Newton update. With the default
+        ``rtol=0`` and a scalar ``tol`` the iteration stops when the infinity
+        norm of the update is below ``tol``. This is an ABSOLUTE criterion: for
+        unknowns much smaller than ``tol`` (trace concentrations, for example)
+        it can stop after one step with a wrong answer. Scale the unknowns to order
+        one, or use ``tol=0`` with ``rtol``. An array must broadcast to the
+        unknowns.
     maxfev : int, optional
         Maximum number of Newton iterations.
-    solver : {'spsolve', 'cg', 'bicgstab'} or callable, optional
+    solver : {'spsolve', 'cg', 'bicgstab', 'splu'} or callable, optional
         Linear solver used for each Newton step. If ``None``, the routine picks
         ``'spsolve'`` for smaller systems and ``'bicgstab'`` for larger systems.
+        When ``'splu'`` is selected, the Jacobian returned by ``function`` is
+        expected to be an already-decomposed ``SuperLU`` object (as returned by
+        :func:`scipy.sparse.linalg.splu`), and the solve step calls its
+        ``.solve()`` method directly.
         A callable solver must accept ``(jac_matrix, rhs, **kwargs)`` and return
         the solution vector.
     lin_solver_kwargs : dict, optional
         Keyword arguments forwarded to the selected linear solver.
     callback : callable, optional
         Optional hook called as ``callback(x, residual)`` after each iteration.
+    rtol : float, optional
+        Relative stopping tolerance. When ``rtol > 0`` or ``tol`` is an array,
+        the iteration stops when every component satisfies
+        ``abs(update) <= tol + rtol * abs(x)``. ``tol=0, rtol=1e-8`` gives a
+        purely relative criterion.
 
     Returns
     -------
     scipy.optimize.OptimizeResult
-        Result object with fields ``x``, ``success``, ``nit``, ``fun``, and
-        ``message``.
+        Result object with fields ``x``, ``success``, ``nit``, ``fun``,
+        ``message`` and ``step_norm`` (infinity norm of the last update).
+        ``fun`` is the residual evaluated at the iterate BEFORE the last update,
+        not at ``x``; evaluate ``function(x)`` to check the final residual.
 
     Raises
     ------
@@ -150,6 +186,11 @@ def newton(
                 raise RuntimeError(f"BICGSTAB did not converge, info={info}")
             return dx_neg
 
+    elif solver == "splu":
+
+        def linsolver(jac_matrix, g, **kwargs):
+            return jac_matrix.solve(g)
+
     elif callable(solver):
 
         def linsolver(jac_matrix, g, **kwargs):
@@ -158,6 +199,8 @@ def newton(
     else:
         raise ValueError("Unsupported solver method.")
 
+    relative = rtol > 0 or not np.isscalar(tol)
+    defect = np.inf
     x = initial_guess.copy()
     for it in range(int(maxfev)):
         g, jac_matrix = function(x, *args)
@@ -166,12 +209,20 @@ def newton(
         x -= dx_neg.reshape(x.shape)
         if callback:
             callback(x, g)
-        if defect < tol:
+        if relative:
+            converged = np.all(
+                np.abs(np.asarray(dx_neg).reshape(x.shape)) <= tol + rtol * np.abs(x)
+            )
+        else:
+            converged = defect < tol
+        if converged:
             return OptimizeResult(
-                x=x, success=True, nit=it + 1, fun=g, message="Converged"
+                x=x, success=True, nit=it + 1, fun=g, message="Converged",
+                step_norm=defect,
             )
 
     return OptimizeResult(
-        x=x, success=False, nit=maxfev, fun=g, message="Did not converge"
+        x=x, success=False, nit=maxfev, fun=g, message="Did not converge",
+        step_norm=defect,
     )
 ```

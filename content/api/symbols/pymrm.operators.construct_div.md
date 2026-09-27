@@ -37,7 +37,7 @@ Construct a divergence matrix that maps face fluxes to cell balances.
 
 ## Source
 
-[View on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/89c91222a061c475e309f0ea6a6207ac8d5a3d20/src/pymrm/operators.py#L400-L508)
+[View on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/26b1cf19019672d855d525a0001f9d3c2a650e65/src/pymrm/operators.py#L409-L517)
 
 ```python
 def construct_div(shape, x_f, nu=0, axis=0, format="csc"):

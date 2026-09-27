@@ -46,7 +46,7 @@ Build matrices that evaluate boundary values from cell-centered unknowns.
 
 ## Source
 
-[View on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/89c91222a061c475e309f0ea6a6207ac8d5a3d20/src/pymrm/interpolate.py#L577-L722)
+[View on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/26b1cf19019672d855d525a0001f9d3c2a650e65/src/pymrm/interpolate.py#L621-L771)
 
 ```python
 def construct_boundary_value_matrices(
@@ -79,6 +79,11 @@ def construct_boundary_value_matrices(
         ``(matrix, mat_bc)`` where ``matrix`` maps cell-centered values to
         boundary values and ``mat_bc`` maps inhomogeneous boundary terms.
     """
+    if is_outflow_bc(bc):
+        raise NotImplementedError(
+            "construct_boundary_value_matrices does not support an outflow boundary; "
+            "the boundary value there is the adjacent cell value"
+        )
 
     if bound_id not in (0, 1):
         raise ValueError("bound_id must be 0 or 1")

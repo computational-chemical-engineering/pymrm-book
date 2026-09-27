@@ -34,7 +34,7 @@ Create a face/staggered field from scalar, centered, or staggered input.
 
 ## Source
 
-[View on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/89c91222a061c475e309f0ea6a6207ac8d5a3d20/src/pymrm/interpolate.py#L306-L360)
+[View on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/26b1cf19019672d855d525a0001f9d3c2a650e65/src/pymrm/interpolate.py#L329-L383)
 
 ```python
 def create_staggered_array(array, shape, axis, x_f=None, x_c=None):
