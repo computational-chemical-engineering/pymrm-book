@@ -27,6 +27,7 @@ project:
     - file: pymrm/tutorials/nonlinear_kinetics.ipynb
     - file: pymrm/tutorials/diffusion_2D.ipynb
     - file: pymrm/tutorials/diffusion_model_class.ipynb
+    - file: pymrm/tutorials/checking_a_model.ipynb
   - file: content/examples/examples.md
     title: Examples
     children:

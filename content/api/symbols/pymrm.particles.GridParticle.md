@@ -34,7 +34,7 @@ keeping the sign correct far away.
 
 ## Source
 
-[View on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/26b1cf19019672d855d525a0001f9d3c2a650e65/src/pymrm/particles.py#L350-L403)
+[View on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/b40fd3f7ac82d247ea864dca2aec0b8aa53589a1/src/pymrm/particles.py#L350-L403)
 
 ```python
 class GridParticle(Particle):
@@ -97,19 +97,19 @@ class GridParticle(Particle):
 
 ### `__init__(values, x_local, position, orientation = None, method = 'cubic')`
 
-[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/26b1cf19019672d855d525a0001f9d3c2a650e65/src/pymrm/particles.py#L371-L384)
+[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/b40fd3f7ac82d247ea864dca2aec0b8aa53589a1/src/pymrm/particles.py#L371-L384)
 
 ### `bounding_box(pad = 0.0)`
 
 World axis-aligned bounding box ``((lo, hi), ...)`` per axis.
 
-[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/26b1cf19019672d855d525a0001f9d3c2a650e65/src/pymrm/particles.py#L208-L214)
+[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/b40fd3f7ac82d247ea864dca2aec0b8aa53589a1/src/pymrm/particles.py#L208-L214)
 
 ### `bounding_box_body()`
 
 Body-frame bounding box ``((lo, hi), ...)`` per axis.
 
-[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/26b1cf19019672d855d525a0001f9d3c2a650e65/src/pymrm/particles.py#L402-L403)
+[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/b40fd3f7ac82d247ea864dca2aec0b8aa53589a1/src/pymrm/particles.py#L402-L403)
 
 ### `intersect(p0, p1)`
 
@@ -121,40 +121,40 @@ surface (``level(p0)`` and ``level(p1)`` of opposite sign); returns
 vectorised bisection on `level`; shapes with closed-form
 intersections override this.
 
-[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/26b1cf19019672d855d525a0001f9d3c2a650e65/src/pymrm/particles.py#L216-L238)
+[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/b40fd3f7ac82d247ea864dca2aec0b8aa53589a1/src/pymrm/particles.py#L216-L238)
 
 ### `level(coords)`
 
 Signed level function at world ``coords`` shaped (..., ndim).
 
-[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/26b1cf19019672d855d525a0001f9d3c2a650e65/src/pymrm/particles.py#L199-L201)
+[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/b40fd3f7ac82d247ea864dca2aec0b8aa53589a1/src/pymrm/particles.py#L199-L201)
 
 ### `level_body(coords)`
 
 Signed level function at body-frame ``coords`` shaped (..., ndim).
 
-[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/26b1cf19019672d855d525a0001f9d3c2a650e65/src/pymrm/particles.py#L386-L390)
+[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/b40fd3f7ac82d247ea864dca2aec0b8aa53589a1/src/pymrm/particles.py#L386-L390)
 
 ### `normal(coords)`
 
 Outward (solid→fluid) unit normal at world surface points.
 
-[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/26b1cf19019672d855d525a0001f9d3c2a650e65/src/pymrm/particles.py#L203-L206)
+[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/b40fd3f7ac82d247ea864dca2aec0b8aa53589a1/src/pymrm/particles.py#L203-L206)
 
 ### `normal_body(coords)`
 
 Gradient direction of `level_body` (finite differences).
 
-[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/26b1cf19019672d855d525a0001f9d3c2a650e65/src/pymrm/particles.py#L392-L400)
+[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/b40fd3f7ac82d247ea864dca2aec0b8aa53589a1/src/pymrm/particles.py#L392-L400)
 
 ### `to_body(coords)`
 
-[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/26b1cf19019672d855d525a0001f9d3c2a650e65/src/pymrm/particles.py#L190-L192)
+[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/b40fd3f7ac82d247ea864dca2aec0b8aa53589a1/src/pymrm/particles.py#L190-L192)
 
 ### `vec_to_world(vecs)`
 
-[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/26b1cf19019672d855d525a0001f9d3c2a650e65/src/pymrm/particles.py#L194-L195)
+[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/b40fd3f7ac82d247ea864dca2aec0b8aa53589a1/src/pymrm/particles.py#L194-L195)
 
 ### `__slots__`
 
-[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/26b1cf19019672d855d525a0001f9d3c2a650e65/src/pymrm/particles.py#L188-L188)
+[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/b40fd3f7ac82d247ea864dca2aec0b8aa53589a1/src/pymrm/particles.py#L188-L188)

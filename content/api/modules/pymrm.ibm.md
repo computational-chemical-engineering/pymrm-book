@@ -68,7 +68,7 @@ The modified matrix ``M`` and source ``g`` satisfy ``value = M @ c + g``
 The optional per-row conditioning scale is folded identically into the matrix
 and the source.
 
-[View module source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/26b1cf19019672d855d525a0001f9d3c2a650e65/src/pymrm/ibm.py)
+[View module source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/b40fd3f7ac82d247ea864dca2aec0b8aa53589a1/src/pymrm/ibm.py)
 
 ## Public API
 
@@ -145,129 +145,129 @@ n_cells : int
 n_spatial_cells : int
     Number of spatial cells, ``math.prod(spatial_shape)``.
 
-[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/26b1cf19019672d855d525a0001f9d3c2a650e65/src/pymrm/ibm.py#L113-L207)
+[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/b40fd3f7ac82d247ea864dca2aec0b8aa53589a1/src/pymrm/ibm.py#L113-L207)
 
 ## Members
 
 ### `axes`
 
-[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/26b1cf19019672d855d525a0001f9d3c2a650e65/src/pymrm/ibm.py#L203-L203)
+[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/b40fd3f7ac82d247ea864dca2aec0b8aa53589a1/src/pymrm/ibm.py#L203-L203)
 
 ### `axis`
 
-[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/26b1cf19019672d855d525a0001f9d3c2a650e65/src/pymrm/ibm.py#L178-L178)
+[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/b40fd3f7ac82d247ea864dca2aec0b8aa53589a1/src/pymrm/ibm.py#L178-L178)
 
 ### `coef_c_in`
 
-[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/26b1cf19019672d855d525a0001f9d3c2a650e65/src/pymrm/ibm.py#L194-L194)
+[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/b40fd3f7ac82d247ea864dca2aec0b8aa53589a1/src/pymrm/ibm.py#L194-L194)
 
 ### `coef_c_out`
 
-[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/26b1cf19019672d855d525a0001f9d3c2a650e65/src/pymrm/ibm.py#L184-L184)
+[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/b40fd3f7ac82d247ea864dca2aec0b8aa53589a1/src/pymrm/ibm.py#L184-L184)
 
 ### `coef_o_in`
 
-[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/26b1cf19019672d855d525a0001f9d3c2a650e65/src/pymrm/ibm.py#L195-L195)
+[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/b40fd3f7ac82d247ea864dca2aec0b8aa53589a1/src/pymrm/ibm.py#L195-L195)
 
 ### `coef_o_out`
 
-[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/26b1cf19019672d855d525a0001f9d3c2a650e65/src/pymrm/ibm.py#L185-L185)
+[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/b40fd3f7ac82d247ea864dca2aec0b8aa53589a1/src/pymrm/ibm.py#L185-L185)
 
 ### `coef_w_in`
 
-[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/26b1cf19019672d855d525a0001f9d3c2a650e65/src/pymrm/ibm.py#L196-L196)
+[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/b40fd3f7ac82d247ea864dca2aec0b8aa53589a1/src/pymrm/ibm.py#L196-L196)
 
 ### `coef_w_out`
 
-[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/26b1cf19019672d855d525a0001f9d3c2a650e65/src/pymrm/ibm.py#L186-L186)
+[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/b40fd3f7ac82d247ea864dca2aec0b8aa53589a1/src/pymrm/ibm.py#L186-L186)
 
 ### `coef_w_sib_in`
 
-[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/26b1cf19019672d855d525a0001f9d3c2a650e65/src/pymrm/ibm.py#L197-L197)
+[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/b40fd3f7ac82d247ea864dca2aec0b8aa53589a1/src/pymrm/ibm.py#L197-L197)
 
 ### `coef_w_sib_out`
 
-[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/26b1cf19019672d855d525a0001f9d3c2a650e65/src/pymrm/ibm.py#L187-L187)
+[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/b40fd3f7ac82d247ea864dca2aec0b8aa53589a1/src/pymrm/ibm.py#L187-L187)
 
 ### `coords`
 
-[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/26b1cf19019672d855d525a0001f9d3c2a650e65/src/pymrm/ibm.py#L176-L176)
+[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/b40fd3f7ac82d247ea864dca2aec0b8aa53589a1/src/pymrm/ibm.py#L176-L176)
 
 ### `crossing_key`
 
-[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/26b1cf19019672d855d525a0001f9d3c2a650e65/src/pymrm/ibm.py#L177-L177)
+[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/b40fd3f7ac82d247ea864dca2aec0b8aa53589a1/src/pymrm/ibm.py#L177-L177)
 
 ### `direction`
 
-[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/26b1cf19019672d855d525a0001f9d3c2a650e65/src/pymrm/ibm.py#L179-L179)
+[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/b40fd3f7ac82d247ea864dca2aec0b8aa53589a1/src/pymrm/ibm.py#L179-L179)
 
 ### `ghost_in`
 
-[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/26b1cf19019672d855d525a0001f9d3c2a650e65/src/pymrm/ibm.py#L192-L192)
+[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/b40fd3f7ac82d247ea864dca2aec0b8aa53589a1/src/pymrm/ibm.py#L192-L192)
 
 ### `ghost_out`
 
-[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/26b1cf19019672d855d525a0001f9d3c2a650e65/src/pymrm/ibm.py#L182-L182)
+[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/b40fd3f7ac82d247ea864dca2aec0b8aa53589a1/src/pymrm/ibm.py#L182-L182)
 
 ### `n_cells`
 
-[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/26b1cf19019672d855d525a0001f9d3c2a650e65/src/pymrm/ibm.py#L206-L206)
+[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/b40fd3f7ac82d247ea864dca2aec0b8aa53589a1/src/pymrm/ibm.py#L206-L206)
 
 ### `n_crossings`
 
-[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/26b1cf19019672d855d525a0001f9d3c2a650e65/src/pymrm/ibm.py#L175-L175)
+[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/b40fd3f7ac82d247ea864dca2aec0b8aa53589a1/src/pymrm/ibm.py#L175-L175)
 
 ### `n_spatial_cells`
 
-[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/26b1cf19019672d855d525a0001f9d3c2a650e65/src/pymrm/ibm.py#L207-L207)
+[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/b40fd3f7ac82d247ea864dca2aec0b8aa53589a1/src/pymrm/ibm.py#L207-L207)
 
 ### `ns_shape`
 
-[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/26b1cf19019672d855d525a0001f9d3c2a650e65/src/pymrm/ibm.py#L204-L204)
+[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/b40fd3f7ac82d247ea864dca2aec0b8aa53589a1/src/pymrm/ibm.py#L204-L204)
 
 ### `ns_size`
 
-[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/26b1cf19019672d855d525a0001f9d3c2a650e65/src/pymrm/ibm.py#L205-L205)
+[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/b40fd3f7ac82d247ea864dca2aec0b8aa53589a1/src/pymrm/ibm.py#L205-L205)
 
 ### `opp_in`
 
-[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/26b1cf19019672d855d525a0001f9d3c2a650e65/src/pymrm/ibm.py#L193-L193)
+[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/b40fd3f7ac82d247ea864dca2aec0b8aa53589a1/src/pymrm/ibm.py#L193-L193)
 
 ### `opp_out`
 
-[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/26b1cf19019672d855d525a0001f9d3c2a650e65/src/pymrm/ibm.py#L183-L183)
+[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/b40fd3f7ac82d247ea864dca2aec0b8aa53589a1/src/pymrm/ibm.py#L183-L183)
 
 ### `row_in`
 
-[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/26b1cf19019672d855d525a0001f9d3c2a650e65/src/pymrm/ibm.py#L191-L191)
+[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/b40fd3f7ac82d247ea864dca2aec0b8aa53589a1/src/pymrm/ibm.py#L191-L191)
 
 ### `row_out`
 
-[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/26b1cf19019672d855d525a0001f9d3c2a650e65/src/pymrm/ibm.py#L181-L181)
+[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/b40fd3f7ac82d247ea864dca2aec0b8aa53589a1/src/pymrm/ibm.py#L181-L181)
 
 ### `row_scale_in`
 
-[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/26b1cf19019672d855d525a0001f9d3c2a650e65/src/pymrm/ibm.py#L199-L199)
+[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/b40fd3f7ac82d247ea864dca2aec0b8aa53589a1/src/pymrm/ibm.py#L199-L199)
 
 ### `row_scale_out`
 
-[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/26b1cf19019672d855d525a0001f9d3c2a650e65/src/pymrm/ibm.py#L189-L189)
+[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/b40fd3f7ac82d247ea864dca2aec0b8aa53589a1/src/pymrm/ibm.py#L189-L189)
 
 ### `shape`
 
-[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/26b1cf19019672d855d525a0001f9d3c2a650e65/src/pymrm/ibm.py#L202-L202)
+[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/b40fd3f7ac82d247ea864dca2aec0b8aa53589a1/src/pymrm/ibm.py#L202-L202)
 
 ### `sib_in`
 
-[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/26b1cf19019672d855d525a0001f9d3c2a650e65/src/pymrm/ibm.py#L198-L198)
+[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/b40fd3f7ac82d247ea864dca2aec0b8aa53589a1/src/pymrm/ibm.py#L198-L198)
 
 ### `sib_out`
 
-[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/26b1cf19019672d855d525a0001f9d3c2a650e65/src/pymrm/ibm.py#L188-L188)
+[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/b40fd3f7ac82d247ea864dca2aec0b8aa53589a1/src/pymrm/ibm.py#L188-L188)
 
 ### `spatial_shape`
 
-[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/26b1cf19019672d855d525a0001f9d3c2a650e65/src/pymrm/ibm.py#L201-L201)
+[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/b40fd3f7ac82d247ea864dca2aec0b8aa53589a1/src/pymrm/ibm.py#L201-L201)
 
 ## `apply_ibm(mat, ibm, values_outside = None, values_inside = None, return_bc = 'vector')`
 
@@ -333,7 +333,7 @@ independent of ``j``).  Wall values may differ per ``j``.
     ``(n_cells, n_crossings * ns_size)`` -- source matrices with
     ``g = G_out @ values_outside.ravel() + G_in @ values_inside.ravel()``.
 
-[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/26b1cf19019672d855d525a0001f9d3c2a650e65/src/pymrm/ibm.py#L867-L1049)
+[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/b40fd3f7ac82d247ea864dca2aec0b8aa53589a1/src/pymrm/ibm.py#L867-L1049)
 
 ## `apply_ibm_vector(vec, ibm)`
 
@@ -361,7 +361,7 @@ from the spatial grid to the full field.
 - `numpy.ndarray, shape (n_cells,)`
   Row-scaled vector, always returned as a 1-D flat array.
 
-[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/26b1cf19019672d855d525a0001f9d3c2a650e65/src/pymrm/ibm.py#L1052-L1082)
+[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/b40fd3f7ac82d247ea864dca2aec0b8aa53589a1/src/pymrm/ibm.py#L1052-L1082)
 
 ## `construct_ibm(sdf, x_c, axes = None, shape = None, rescale = True)`
 
@@ -411,7 +411,7 @@ cell.  ``ibm.coords[k]``, ``ibm.row_out[k]`` (fluid side, spatial flat
 index), and ``ibm.row_in[k]`` (solid side, spatial flat index) all refer
 to the same physical wall crossing.
 
-[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/26b1cf19019672d855d525a0001f9d3c2a650e65/src/pymrm/ibm.py#L612-L658)
+[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/b40fd3f7ac82d247ea864dca2aec0b8aa53589a1/src/pymrm/ibm.py#L612-L658)
 
 ## `fill_ghost_values(ibm, x_c, field, wall_values = 0.0, side = 'out', theta_min = 0.25)`
 
@@ -425,7 +425,7 @@ other cells keep their original values.  The result is suitable for
 interpolating cell-centered state variables to faces near the immersed
 boundary (e.g. with `pymrm.interp_cntr_to_stagg`).
 
-[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/26b1cf19019672d855d525a0001f9d3c2a650e65/src/pymrm/ibm.py#L1204-L1228)
+[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/b40fd3f7ac82d247ea864dca2aec0b8aa53589a1/src/pymrm/ibm.py#L1204-L1228)
 
 ## `reconstruct_ghost_values(ibm, x_c, field, wall_values = 0.0, side = 'out', theta_min = 0.25)`
 
@@ -488,4 +488,4 @@ and the wall, or the wall value itself when additionally
 - `ghost_values` (*ndarray, shape (n_crossings, *trailing_shape)*)
   Reconstructed field values at the ghost-cell centers.
 
-[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/26b1cf19019672d855d525a0001f9d3c2a650e65/src/pymrm/ibm.py#L1085-L1201)
+[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/b40fd3f7ac82d247ea864dca2aec0b8aa53589a1/src/pymrm/ibm.py#L1085-L1201)

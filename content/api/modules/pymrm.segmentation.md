@@ -30,7 +30,7 @@ The ``region`` argument selects which side of the interface is segmented:
 (``sdf >= 0`` fluid regions), matching the solid/fluid convention of
 `pymrm.construct_ibm`.
 
-[View module source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/26b1cf19019672d855d525a0001f9d3c2a650e65/src/pymrm/segmentation.py)
+[View module source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/b40fd3f7ac82d247ea864dca2aec0b8aa53589a1/src/pymrm/segmentation.py)
 
 ## Public API
 
@@ -79,29 +79,29 @@ helpers (`crossing_segments`, `segment_values`,
   Number of cells in each segment; ``sizes[s - 1]`` is the size of the
   segment with label ``s``.
 
-[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/26b1cf19019672d855d525a0001f9d3c2a650e65/src/pymrm/segmentation.py#L54-L85)
+[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/b40fd3f7ac82d247ea864dca2aec0b8aa53589a1/src/pymrm/segmentation.py#L54-L85)
 
 ## Members
 
 ### `connectivity`
 
-[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/26b1cf19019672d855d525a0001f9d3c2a650e65/src/pymrm/segmentation.py#L84-L84)
+[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/b40fd3f7ac82d247ea864dca2aec0b8aa53589a1/src/pymrm/segmentation.py#L84-L84)
 
 ### `labels`
 
-[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/26b1cf19019672d855d525a0001f9d3c2a650e65/src/pymrm/segmentation.py#L81-L81)
+[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/b40fd3f7ac82d247ea864dca2aec0b8aa53589a1/src/pymrm/segmentation.py#L81-L81)
 
 ### `n_segments`
 
-[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/26b1cf19019672d855d525a0001f9d3c2a650e65/src/pymrm/segmentation.py#L82-L82)
+[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/b40fd3f7ac82d247ea864dca2aec0b8aa53589a1/src/pymrm/segmentation.py#L82-L82)
 
 ### `region`
 
-[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/26b1cf19019672d855d525a0001f9d3c2a650e65/src/pymrm/segmentation.py#L83-L83)
+[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/b40fd3f7ac82d247ea864dca2aec0b8aa53589a1/src/pymrm/segmentation.py#L83-L83)
 
 ### `sizes`
 
-[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/26b1cf19019672d855d525a0001f9d3c2a650e65/src/pymrm/segmentation.py#L85-L85)
+[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/b40fd3f7ac82d247ea864dca2aec0b8aa53589a1/src/pymrm/segmentation.py#L85-L85)
 
 ## `combine_interface_conditions(ic_by_segment, seg, ibm, *, default = None)`
 
@@ -136,7 +136,7 @@ condition.
   A single ``ic`` usable with `pymrm.apply_ibm_interface` /
   `pymrm.construct_ibm_interface_values`.
 
-[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/26b1cf19019672d855d525a0001f9d3c2a650e65/src/pymrm/segmentation.py#L435-L482)
+[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/b40fd3f7ac82d247ea864dca2aec0b8aa53589a1/src/pymrm/segmentation.py#L435-L482)
 
 ## `crossing_segments(seg, ibm)`
 
@@ -159,7 +159,7 @@ label is in ``1 .. n_segments``.
 
 - `ndarray of int, shape (n_crossings,)`
 
-[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/26b1cf19019672d855d525a0001f9d3c2a650e65/src/pymrm/segmentation.py#L142-L169)
+[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/b40fd3f7ac82d247ea864dca2aec0b8aa53589a1/src/pymrm/segmentation.py#L142-L169)
 
 ## `segment_domain(sdf, *, region = 'negative', connectivity = 1)`
 
@@ -187,7 +187,7 @@ Label the disjoint regions of a signed distance field.
 
 - `Segmentation`
 
-[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/26b1cf19019672d855d525a0001f9d3c2a650e65/src/pymrm/segmentation.py#L88-L128)
+[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/b40fd3f7ac82d247ea864dca2aec0b8aa53589a1/src/pymrm/segmentation.py#L88-L128)
 
 ## `segment_field(values, seg, *, default = 0.0)`
 
@@ -213,7 +213,7 @@ diffusion pattern.
 
 - `ndarray, shape ``seg.labels.shape + trailing```
 
-[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/26b1cf19019672d855d525a0001f9d3c2a650e65/src/pymrm/segmentation.py#L287-L308)
+[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/b40fd3f7ac82d247ea864dca2aec0b8aa53589a1/src/pymrm/segmentation.py#L287-L308)
 
 ## `segment_values(values, seg, ibm, *, default = None)`
 
@@ -242,7 +242,7 @@ Expand per-segment values to a per-crossing array for `pymrm.apply_ibm`.
   Canonical point-value array, ready to pass as ``values_outside`` /
   ``values_inside``.
 
-[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/26b1cf19019672d855d525a0001f9d3c2a650e65/src/pymrm/segmentation.py#L259-L284)
+[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/b40fd3f7ac82d247ea864dca2aec0b8aa53589a1/src/pymrm/segmentation.py#L259-L284)
 
 ## `wall_contact(seg)`
 
@@ -263,7 +263,7 @@ wall is an isolated pocket; with all-Neumann surroundings it makes the
 operator singular.  Detect them with
 ``np.flatnonzero(~wall_contact(seg).any(axis=(1, 2))) + 1``.
 
-[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/26b1cf19019672d855d525a0001f9d3c2a650e65/src/pymrm/segmentation.py#L315-L339)
+[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/b40fd3f7ac82d247ea864dca2aec0b8aa53589a1/src/pymrm/segmentation.py#L315-L339)
 
 ## `wall_patch(seg, ibm, axis, side)`
 
@@ -292,7 +292,7 @@ Segment labels on one domain wall, shaped as a full-field coefficient.
   directly in ``np.where`` to build a ``{a, b, d}`` wall coefficient, e.g.
   ``np.where(wall_patch(seg, ibm, 0, "lower") == k, value_k, other)``.
 
-[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/26b1cf19019672d855d525a0001f9d3c2a650e65/src/pymrm/segmentation.py#L352-L379)
+[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/b40fd3f7ac82d247ea864dca2aec0b8aa53589a1/src/pymrm/segmentation.py#L352-L379)
 
 ## `wall_values(values, seg, ibm, axis, side, *, default = 0.0)`
 
@@ -322,4 +322,4 @@ structure (broadcastable to ``ibm.ns_shape``).
   Full field shape with the wall ``axis`` at size 1 — a ready ``a`` / ``b``
   / ``d`` coefficient for `pymrm.construct_grad` and friends.
 
-[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/26b1cf19019672d855d525a0001f9d3c2a650e65/src/pymrm/segmentation.py#L382-L419)
+[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/b40fd3f7ac82d247ea864dca2aec0b8aa53589a1/src/pymrm/segmentation.py#L382-L419)

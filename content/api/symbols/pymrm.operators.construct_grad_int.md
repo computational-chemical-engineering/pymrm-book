@@ -36,7 +36,7 @@ Construct the interior-face gradient operator.
 
 ## Source
 
-[View on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/26b1cf19019672d855d525a0001f9d3c2a650e65/src/pymrm/operators.py#L74-L159)
+[View on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/b40fd3f7ac82d247ea864dca2aec0b8aa53589a1/src/pymrm/operators.py#L74-L159)
 
 ```python
 def construct_grad_int(shape, x_f, x_c=None, axis=0, format="csc"):

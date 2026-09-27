@@ -15,7 +15,7 @@ have to be rewritten (and debugged) for each model:
 
 The module depends on numpy and scipy only.
 
-[View module source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/26b1cf19019672d855d525a0001f9d3c2a650e65/src/pymrm/checks.py)
+[View module source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/b40fd3f7ac82d247ea864dca2aec0b8aa53589a1/src/pymrm/checks.py)
 
 ## Public API
 
@@ -63,7 +63,7 @@ Compare the Jacobian returned by ``fun`` with central differences.
   unknowns, ``worst_entry`` ``(row, col, jac_value, fd_value)`` from a full
   column-by-column comparison.
 
-[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/26b1cf19019672d855d525a0001f9d3c2a650e65/src/pymrm/checks.py#L26-L95)
+[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/b40fd3f7ac82d247ea864dca2aec0b8aa53589a1/src/pymrm/checks.py#L26-L95)
 
 ## `find_roots(f, lo, hi, n_scan = 64, log = False, xtol = 1e-12)`
 
@@ -97,7 +97,7 @@ Locate every sign change of ``f`` on ``[lo, hi]`` and refine each root.
   be evaluated) and ``message``. No sign change gives an empty list and
   says so; it does NOT widen the range.
 
-[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/26b1cf19019672d855d525a0001f9d3c2a650e65/src/pymrm/checks.py#L155-L204)
+[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/b40fd3f7ac82d247ea864dca2aec0b8aa53589a1/src/pymrm/checks.py#L155-L204)
 
 ## `observed_orders(solve, ns, ratio = None)`
 
@@ -137,7 +137,7 @@ range, the refinement does not control the error that dominates, or there is
 a bug. For a non-uniform grid, refine it in a nested way (see the pymrm
 agent plugin's profiles.md).
 
-[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/26b1cf19019672d855d525a0001f9d3c2a650e65/src/pymrm/checks.py#L98-L152)
+[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/b40fd3f7ac82d247ea864dca2aec0b8aa53589a1/src/pymrm/checks.py#L98-L152)
 
 ## `residual_check(fun, x, tol = 1e-08)`
 
@@ -166,4 +166,4 @@ coefficients that would make ``x`` exact.
 - `dict`
   ``ok`` (bool), ``backward_error`` and ``max_abs_residual``.
 
-[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/26b1cf19019672d855d525a0001f9d3c2a650e65/src/pymrm/checks.py#L207-L239)
+[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/b40fd3f7ac82d247ea864dca2aec0b8aa53589a1/src/pymrm/checks.py#L207-L239)

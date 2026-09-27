@@ -67,7 +67,7 @@ only through the already-scaled ``G`` matrices.  Any independent right-hand
 side assembled before the IBM must still pass through
 `pymrm.apply_ibm_vector`, exactly as for the Dirichlet IBM.
 
-[View module source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/26b1cf19019672d855d525a0001f9d3c2a650e65/src/pymrm/ibm_coupling.py)
+[View module source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/b40fd3f7ac82d247ea864dca2aec0b8aa53589a1/src/pymrm/ibm_coupling.py)
 
 ## Public API
 
@@ -120,7 +120,7 @@ with the interface-value elimination of
 - `values` (*tuple, optional*)
   Only when *return_values* is true.
 
-[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/26b1cf19019672d855d525a0001f9d3c2a650e65/src/pymrm/ibm_coupling.py#L237-L279)
+[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/b40fd3f7ac82d247ea864dca2aec0b8aa53589a1/src/pymrm/ibm_coupling.py#L237-L279)
 
 ## `construct_ibm_boundary_values(ibm, recon, bc, side = 'out', *, det_tol = 1e-12)`
 
@@ -168,7 +168,7 @@ handle the other side as a plain Dirichlet value through
 
 - `h` (*ndarray, shape (n_crossings * ns_size,)*)
 
-[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/26b1cf19019672d855d525a0001f9d3c2a650e65/src/pymrm/ibm_coupling.py#L282-L342)
+[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/b40fd3f7ac82d247ea864dca2aec0b8aa53589a1/src/pymrm/ibm_coupling.py#L282-L342)
 
 ## `construct_ibm_interface_values(ibm, recon, ic, *, det_tol = 1e-12, return_diagnostics = False)`
 
@@ -217,4 +217,4 @@ linear functions of the field:
   Only when *return_diagnostics* is true: ``det`` (shape
   ``(n_crossings, ns_size)``) and ``singular`` mask.
 
-[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/26b1cf19019672d855d525a0001f9d3c2a650e65/src/pymrm/ibm_coupling.py#L157-L234)
+[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/b40fd3f7ac82d247ea864dca2aec0b8aa53589a1/src/pymrm/ibm_coupling.py#L157-L234)

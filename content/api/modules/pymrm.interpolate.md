@@ -4,7 +4,7 @@
 
 Interpolation utilities between cell-centered and staggered grids.
 
-[View module source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/26b1cf19019672d855d525a0001f9d3c2a650e65/src/pymrm/interpolate.py)
+[View module source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/b40fd3f7ac82d247ea864dca2aec0b8aa53589a1/src/pymrm/interpolate.py)
 
 ## Public API
 
@@ -55,7 +55,7 @@ Compute boundary values and boundary-normal gradients.
   along the positive ``axis`` direction, NOT the outward normal used in
   the ``bc`` dictionaries (at the lower boundary they differ in sign).
 
-[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/26b1cf19019672d855d525a0001f9d3c2a650e65/src/pymrm/interpolate.py#L386-L618)
+[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/b40fd3f7ac82d247ea864dca2aec0b8aa53589a1/src/pymrm/interpolate.py#L386-L618)
 
 ## `construct_boundary_value_matrices(shape, x_f, x_c = None, bc = None, axis = 0, bound_id = 0, shape_d = None, format = 'csc')`
 
@@ -95,7 +95,7 @@ Build matrices that evaluate boundary values from cell-centered unknowns.
   ``(matrix, mat_bc)`` where ``matrix`` maps cell-centered values to
   boundary values and ``mat_bc`` maps inhomogeneous boundary terms.
 
-[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/26b1cf19019672d855d525a0001f9d3c2a650e65/src/pymrm/interpolate.py#L621-L771)
+[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/b40fd3f7ac82d247ea864dca2aec0b8aa53589a1/src/pymrm/interpolate.py#L621-L771)
 
 ## `create_staggered_array(array, shape, axis, x_f = None, x_c = None)`
 
@@ -123,7 +123,7 @@ Create a face/staggered field from scalar, centered, or staggered input.
 - `numpy.ndarray`
   Broadcasted/interpolated array with staggered shape.
 
-[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/26b1cf19019672d855d525a0001f9d3c2a650e65/src/pymrm/interpolate.py#L329-L383)
+[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/b40fd3f7ac82d247ea864dca2aec0b8aa53589a1/src/pymrm/interpolate.py#L329-L383)
 
 ## `interp_cntr_to_stagg(cell_centered_values, x_f, x_c = None, axis = 0)`
 
@@ -150,7 +150,7 @@ Interpolate cell-centered values to face/staggered locations.
 - `numpy.ndarray`
   Staggered values with one additional element along ``axis``.
 
-[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/26b1cf19019672d855d525a0001f9d3c2a650e65/src/pymrm/interpolate.py#L53-L104)
+[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/b40fd3f7ac82d247ea864dca2aec0b8aa53589a1/src/pymrm/interpolate.py#L53-L104)
 
 ## `interp_cntr_to_stagg_tvd(cell_centered_values, x_f, x_c = None, bc = None, v = 0, tvd_limiter = None, axis = 0)`
 
@@ -192,7 +192,7 @@ its face and no TVD correction there.
 - `tuple[numpy.ndarray, numpy.ndarray]`
   Interpolated staggered values and TVD correction term.
 
-[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/26b1cf19019672d855d525a0001f9d3c2a650e65/src/pymrm/interpolate.py#L107-L326)
+[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/b40fd3f7ac82d247ea864dca2aec0b8aa53589a1/src/pymrm/interpolate.py#L107-L326)
 
 ## `interp_stagg_to_cntr(staggered_values, x_f, x_c = None, axis = 0)`
 
@@ -219,4 +219,4 @@ Interpolate face/staggered values to cell centers.
 - `numpy.ndarray`
   Cell-centered values with one fewer element along ``axis``.
 
-[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/26b1cf19019672d855d525a0001f9d3c2a650e65/src/pymrm/interpolate.py#L9-L50)
+[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/b40fd3f7ac82d247ea864dca2aec0b8aa53589a1/src/pymrm/interpolate.py#L9-L50)
