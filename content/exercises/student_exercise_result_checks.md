@@ -1230,23 +1230,26 @@ Use the values stated in the exercise. The reference figures below give the expe
 
 **Input data and modelling choices**
 
-Use the base settings in `L8_pressure_velocity.ipynb`: `n_z=100`, `n_r=30`, `radius=0.006 m`, wall heat-transfer coefficient `20 W m^-2 K^-1`, radial diffusivity `5.0e-5 m^2/s`, and radial thermal conductivity `0.035 W m^-1 K^-1`.
+Use the base settings in `L8_pressure_velocity.ipynb`: steady pseudo-homogeneous packed bed with Darcy (Blake-Kozeny) flow, state `[c_A, c_B, c_C, T, p]` on `n_z=100`, `n_r=20` cells, `length=0.5 m`, `radius=0.006 m`, porosity `eps=0.40`, particle diameter `d_p=1.2e-3 m` (permeability `K=1.707e-9 m^2`), viscosity `mu=1.85e-5 (T/293)^0.7 Pa s`, inlet superficial molar flux `N_in=33.28 mol m^-2 s^-1` of pure A at `293 K` (the 1D inlet flux), outlet pressure `101325 Pa`, radial dispersion `D_er=1.608e-4 m^2/s` (constant), effective radial conductivity `lam_er=0.5493 W m^-1 K^-1`, overall wall coefficient `h=40 W m^-2 K^-1` to a coolant at `293 K`. Chemistry as in the fixed-bed exercise: `k0=1e9 1/s`, `E_a=50 kJ/mol`, `dH_r=-15 kJ/mol`, `Cp=(100, 60, 40) J mol^-1 K^-1`.
 
 **Numerical checks**
 
 ```text
-1D outlet conversion A         = 1.000
-1D outlet temperature          = 443.0 K
-1D outlet velocity             = 6.048 m/s
-2D outlet temperature          = 434.5 K
-2D outlet velocity             = 6.006 m/s
-2D pressure drop               = 8.77 Pa
-maximum radial temperature span = 71.8 K
+1D outlet conversion A                  = 1.0000
+1D outlet temperature                   = 443.00 K
+1D outlet interstitial velocity         = 6.0478 m/s
+2D outlet conversion A (cup-mixing)     = 0.9961
+2D outlet temperature (cup-mixing)      = 358.02 K
+2D outlet interstitial velocity         = 4.8751 m/s
+2D pressure drop                        = 8346 Pa
+2D hot spot                             = 398.56 K on the axis at z = 0.357 m
+ideal gas, max |sum(c_i) R T / p - 1|   = 6.7e-16 (round-off)
+same, pressure row without dispersion   = 2.6e-02 (break row)
 ```
 
 **Hints and interpretation**
 
-The wall-cooled 2D model has a lower outlet temperature than the 1D reference while keeping nearly complete conversion. The radial temperature and concentration spans are the main signs that the 2D model is doing something the 1D cup-mixing model cannot represent.
+The pressure row is total molar continuity for `c_t = p/(RT)` with exactly the same convective and dispersive fluxes as the species rows. The ideal gas law then holds in every cell to round-off without being imposed; if it does not, the pressure row and the sum of the species rows differ. The wall-cooled bed has a much lower outlet temperature than the adiabatic 1D reference while keeping almost complete conversion, and the colder gas leaves with a lower velocity. With `h=0` the 2D model must reproduce the 1D reference (443.00 K).
 
 ## Reactor-Particle Coupling
 
