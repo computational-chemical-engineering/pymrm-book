@@ -32,7 +32,7 @@ Update sparse-matrix indices for a new embedding shape.
 
 ## Source
 
-[View on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/26b1cf19019672d855d525a0001f9d3c2a650e65/src/pymrm/coupling.py#L164-L187)
+[View on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/b40fd3f7ac82d247ea864dca2aec0b8aa53589a1/src/pymrm/coupling.py#L164-L187)
 
 ```python
 def update_array_indices(sparse_mat, shape, new_shape, offset=None):

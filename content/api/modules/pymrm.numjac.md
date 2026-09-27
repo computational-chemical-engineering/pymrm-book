@@ -4,7 +4,7 @@
 
 Numerical Jacobian construction with sparse stencil support.
 
-[View module source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/26b1cf19019672d855d525a0001f9d3c2a650e65/src/pymrm/numjac.py)
+[View module source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/b40fd3f7ac82d247ea864dca2aec0b8aa53589a1/src/pymrm/numjac.py)
 
 ## Public API
 
@@ -39,7 +39,7 @@ reads neighbours.
 >>> jac.shape, jac.nnz
 ((5, 5), 5)
 
-[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/26b1cf19019672d855d525a0001f9d3c2a650e65/src/pymrm/numjac.py#L584-L808)
+[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/b40fd3f7ac82d247ea864dca2aec0b8aa53589a1/src/pymrm/numjac.py#L584-L808)
 
 ## Members
 
@@ -69,7 +69,7 @@ Create a Jacobian approximator.
 - `**kwargs`
   Additional options passed to the stencil callable.
 
-[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/26b1cf19019672d855d525a0001f9d3c2a650e65/src/pymrm/numjac.py#L608-L675)
+[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/b40fd3f7ac82d247ea864dca2aec0b8aa53589a1/src/pymrm/numjac.py#L608-L675)
 
 ### `__call__(f, c, f_value = None)`
 
@@ -94,7 +94,7 @@ Compute the numerical Jacobian for a given function and input array.
 - `tuple`
   (Function value at c, Jacobian as a sparse matrix).
 
-[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/26b1cf19019672d855d525a0001f9d3c2a650e65/src/pymrm/numjac.py#L760-L808)
+[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/b40fd3f7ac82d247ea864dca2aec0b8aa53589a1/src/pymrm/numjac.py#L760-L808)
 
 ### `init_stencil(stencil, **kwargs)`
 
@@ -141,7 +141,7 @@ Sets the following attributes on the class:
 For a full description of the PyMRM dependency notation, see:
 - `dependencies_format.md` in the PyMRM package.
 
-[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/26b1cf19019672d855d525a0001f9d3c2a650e65/src/pymrm/numjac.py#L677-L758)
+[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/b40fd3f7ac82d247ea864dca2aec0b8aa53589a1/src/pymrm/numjac.py#L677-L758)
 
 ## `stencil_block_diagonals(ndims = 1, axes_diagonals = (), axes_blocks = None, periodic_axes = ())`
 
@@ -178,4 +178,4 @@ An axis listed both as a block and as a diagonal axis is treated as a block
 axis: full coupling along it already contains the neighbour band, so the
 Jacobian stays exact.
 
-[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/26b1cf19019672d855d525a0001f9d3c2a650e65/src/pymrm/numjac.py#L435-L493)
+[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/b40fd3f7ac82d247ea864dca2aec0b8aa53589a1/src/pymrm/numjac.py#L435-L493)

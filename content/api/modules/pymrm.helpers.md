@@ -18,7 +18,7 @@ finite volume discretisation implemented by the package.
 ``_sparse_array``
     Internal helper to construct a sparse array in the requested format.
 
-[View module source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/26b1cf19019672d855d525a0001f9d3c2a650e65/src/pymrm/helpers.py)
+[View module source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/b40fd3f7ac82d247ea864dca2aec0b8aa53589a1/src/pymrm/helpers.py)
 
 ## Public API
 
@@ -90,7 +90,7 @@ Diagonal from 2D field (staggered in axis 0):
 Rectangular coupling (cell centers -> axial faces):
     A = construct_coefficient_matrix(alpha, shape=((1, Nr), (Nz, Nr)), axis=0)
 
-[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/26b1cf19019672d855d525a0001f9d3c2a650e65/src/pymrm/helpers.py#L91-L201)
+[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/b40fd3f7ac82d247ea864dca2aec0b8aa53589a1/src/pymrm/helpers.py#L91-L201)
 
 ## `describe_bc(bc, x_f = None, axis_name = 'x', var = 'c')`
 
@@ -123,4 +123,4 @@ which makes sign errors visible.
   One line per boundary, for example
   ``lower (x=0, outward normal -x): -1*dc/dx + 0*c = 2  [Neumann]``.
 
-[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/26b1cf19019672d855d525a0001f9d3c2a650e65/src/pymrm/helpers.py#L227-L269)
+[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/b40fd3f7ac82d247ea864dca2aec0b8aa53589a1/src/pymrm/helpers.py#L227-L269)
