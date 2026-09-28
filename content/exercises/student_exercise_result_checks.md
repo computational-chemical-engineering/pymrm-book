@@ -1130,7 +1130,7 @@ How to use it:
 :::{admonition} Check: question 1
 :class: tip
 - Sphere: use the spherical divergence and symmetry at $r = 0$. At $r = R$ the film condition with the outward normal is $D\,\partial c_s/\partial r + k_m c_s = k_m c_f$; print what your boundary dictionary imposes and compare.
-- $c_f$ changes in time, so pass it as a boundary value that can change (for example with `shapes_d`, where the dictionary's $d$ becomes a coefficient) instead of freezing it in the operators.
+- Treat $c_f$ as a time-dependent boundary input and verify that changing it affects the particle model.
 - $r_\mathrm{app}$ must be negative while the particles take up reactant. Compute it from the flux through the outer face, not from the last cell centre.
 - The exercise gives no numbers: choose them so that both the Thiele modulus and the Biot number $k_m R/D$ are of order 1 to 10, and state them as assumptions.
 :::
