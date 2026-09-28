@@ -1,3 +1,4 @@
+<!-- GENERATED FILE: made by pymrm-book-teacher/scripts/generate_student_check_guide.py from the cells tagged student-check in the teacher solutions. Do not edit it here; change those cells in the teacher repository, whose CI opens the update pull request. content-sha256: 4ce3fd89c5312c0a3e2f7aa20dae142b0b196cb1df859ef3609680f0b4a4d22f -->
 # Exercise Result Checks
 
 This page helps you check whether your own solution of an exercise is heading
@@ -1130,7 +1131,7 @@ How to use it:
 :::{admonition} Check: question 1
 :class: tip
 - Sphere: use the spherical divergence and symmetry at $r = 0$. At $r = R$ the film condition with the outward normal is $D\,\partial c_s/\partial r + k_m c_s = k_m c_f$; print what your boundary dictionary imposes and compare.
-- Treat $c_f$ as a time-dependent boundary input and verify that changing it affects the particle model.
+- $c_f$ changes in time: make sure the boundary condition uses the current $c_f$ in every step instead of the value at which the operators were built.
 - $r_\mathrm{app}$ must be negative while the particles take up reactant. Compute it from the flux through the outer face, not from the last cell centre.
 - The exercise gives no numbers: choose them so that both the Thiele modulus and the Biot number $k_m R/D$ are of order 1 to 10, and state them as assumptions.
 :::
@@ -1140,16 +1141,16 @@ How to use it:
 - Steady particle at fixed $c_f$ with first-order kinetics: $r_\mathrm{app}$ must approach $-(1-\varepsilon_b)k_\mathrm{ov}c_f$ with $1/k_\mathrm{ov} = 1/(\eta k) + R/(3k_m)$. The error should drop by about a factor 4 per doubling of the radial grid.
 - Without reaction, the uptake at fixed $c_f$ must follow the classical series for a sphere with a surface resistance (Crank); with backward Euler the error should halve when you halve $\Delta t$.
 - The reactor alone with a prescribed first-order rate must give an exponential decay, and its discrete balance must close to round-off.
-- Make sure your checks can fail: reverse the outward-normal sign in the film boundary condition, or flip the sign of $a$ in the apparent-rate calculation, and see that the check notices.
+- Make sure your checks can fail: flip the sign of the film term ($k_m$) in the boundary condition and see that the check notices.
 :::
 
 ![Coupled Batch Reactor and Particle Model: reference figure](student_check_outputs/coupled-batch-reactor-and-particle-model_cell11_fig1.png)
 
 :::{admonition} Check: question 3
 :class: tip
-- Compare the two models over one time step and document which time level supplies each coupling quantity.
-- Check the fluid concentration and particle-average concentration for physically consistent transient behavior.
-- Compare with a quasi-steady particle treatment and explain whether the transient matters for your chosen parameters.
+- Within a step, one of the two models has to use information from the previous time level; state which one and why.
+- $c_f$ must decrease monotonically for a consuming reaction, and it must not become negative for small time steps.
+- Compare with a particle treated as quasi-steady (rate from the effectiveness factor) to judge whether the particle transient matters for your parameters.
 :::
 
 :::{admonition} Check: question 4
@@ -1162,7 +1163,9 @@ How to use it:
 
 :::{admonition} Check: question 5
 :class: tip
-- Compare the Schur-complement implementation with a monolithic solve and report the convergence behavior for your chosen case.
+- Check the Jacobian of your coupled step against finite differences before trusting the Newton iterations.
+- For linear kinetics Newton should converge in very few iterations; many iterations point to an inconsistent coupling term.
+- The implicit result must satisfy the same conservation check as the explicit one (question 4).
 :::
 
 ![Coupled Batch Reactor and Particle Model: reference figure](student_check_outputs/coupled-batch-reactor-and-particle-model_cell24_fig1.png)
@@ -1171,7 +1174,7 @@ How to use it:
 :class: tip
 - The Schur elimination must agree with a monolithic sparse solve of the same step to round-off.
 - At small $\Delta t$ the explicit and implicit results converge to the same limit, with errors of opposite sign.
-- With the reference's parameters the explicit coupling gives negative $c_f$ from $\Delta t$ of about 150 s (an oscillating but still decaying mode) and becomes unstable above roughly 230 s, while the implicit coupling stays positive. Find the limit from the spectral radius of your explicit step map.
+- Increase $\Delta t$ until the explicit coupling oscillates or grows while the implicit one stays positive. Find the limit from the spectral radius of your explicit step map, and compare it with the exchange time of the particles.
 - A fast-exchange case (fast diffusion, large $k_m$) must approach the pseudo-homogeneous batch reactor, $c_f \approx \varepsilon_b c_{f,0}\,e^{-(1-\varepsilon_b)kt}$ after the initial uptake; the explicit coupling then needs a time step of order seconds or less.
 :::
 
