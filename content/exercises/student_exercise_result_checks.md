@@ -1162,9 +1162,7 @@ How to use it:
 
 :::{admonition} Check: question 5
 :class: tip
-- For one batch reactor the Schur complement is a scalar: one factorisation of the particle Jacobian per step is enough.
-- With first-order kinetics Newton needs one step plus one to confirm.
-- The Schur complement contains the total derivative of $r_\mathrm{app}$ with respect to $c_f$; it is smaller in magnitude than the derivative at fixed particle concentrations.
+- Compare the Schur-complement implementation with a monolithic solve and report the convergence behavior for your chosen case.
 :::
 
 ![Coupled Batch Reactor and Particle Model: reference figure](student_check_outputs/coupled-batch-reactor-and-particle-model_cell24_fig1.png)
