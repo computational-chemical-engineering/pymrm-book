@@ -169,6 +169,8 @@ project:
       children:
       - file: content/exercises/pressure-velocity-coupling-in-column-models.ipynb
         title: Pressure-velocity coupling in a 2D fixed-bed reactor
+      - file: content/exercises/coupled-batch-reactor-and-particle-model.ipynb
+        title: Coupled batch reactor and particle model
       - file: content/exercises/particle-model-coupled-to-column-model.ipynb
         title: Reactor-particle coupling
       - file: content/exercises/surface-reaction-2d-boundary-coupling.ipynb
