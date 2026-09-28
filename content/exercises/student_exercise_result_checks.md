@@ -1125,6 +1125,59 @@ How to use it:
 - The inlet pressure is above 1 bar (about 1.1 bar), so the inlet interstitial velocity is somewhat below 2 m/s.
 :::
 
+## Coupled Batch Reactor and Particle Model
+
+:::{admonition} Check: question 1
+:class: tip
+- Sphere: use the spherical divergence and symmetry at $r = 0$. At $r = R$ the film condition with the outward normal is $D\,\partial c_s/\partial r + k_m c_s = k_m c_f$; print what your boundary dictionary imposes and compare.
+- $c_f$ changes in time, so pass it as a boundary value that can change (for example with `shapes_d`, where the dictionary's $d$ becomes a coefficient) instead of freezing it in the operators.
+- $r_\mathrm{app}$ must be negative while the particles take up reactant. Compute it from the flux through the outer face, not from the last cell centre.
+- The exercise gives no numbers: choose them so that both the Thiele modulus and the Biot number $k_m R/D$ are of order 1 to 10, and state them as assumptions.
+:::
+
+:::{admonition} Check: question 2
+:class: tip
+- Steady particle at fixed $c_f$ with first-order kinetics: $r_\mathrm{app}$ must approach $-(1-\varepsilon_b)k_\mathrm{ov}c_f$ with $1/k_\mathrm{ov} = 1/(\eta k) + R/(3k_m)$. The error should drop by about a factor 4 per doubling of the radial grid.
+- Without reaction, the uptake at fixed $c_f$ must follow the classical series for a sphere with a surface resistance (Crank); with backward Euler the error should halve when you halve $\Delta t$.
+- The reactor alone with a prescribed first-order rate must give an exponential decay, and its discrete balance must close to round-off.
+- Make sure your checks can fail: flip the sign of $a$ in the film condition and see that the check notices.
+:::
+
+![Coupled Batch Reactor and Particle Model: reference figure](student_check_outputs/coupled-batch-reactor-and-particle-model_cell11_fig1.png)
+
+:::{admonition} Check: question 3
+:class: tip
+- Within a step: particle first with $c_f$ of the old time level, then the reactor with the rate the particle returned, held constant.
+- With the reference's assumed parameters ($R = 1$ mm, $D = 10^{-9}$ m$^2$/s, $k = 9\times10^{-3}$ s$^{-1}$, $k_m = 5\times10^{-6}$ m/s, $\varepsilon_b = 0.4$, fresh particles with $c_s = 0$ at $t = 0$) the fluid concentration is about 0.17 of its initial value after 300 s.
+- Fresh particles first load up: $\langle c_s\rangle$ passes through a maximum within the first minutes and then decays together with $c_f$.
+- A particle treated as quasi-steady misses this initial uptake; compare with it to see whether the particle transient matters for your parameters.
+:::
+
+:::{admonition} Check: question 4
+:class: tip
+- Fluid plus particles plus the amount reacted must stay constant to round-off. If not, the rate you hand to the reactor is not the flux the particle received.
+- The splitting error is first order: halving $\Delta t$ should roughly halve the difference with a reference.
+- For first-order kinetics the coupled problem is linear, so a Laplace transform in time gives an independent semi-analytical reference for $c_f(t)$.
+- Expect the lagged $c_f$ to deplete the fluid slightly too fast.
+:::
+
+:::{admonition} Check: question 5
+:class: tip
+- For one batch reactor the Schur complement is a scalar: one factorisation of the particle Jacobian per step is enough.
+- With first-order kinetics Newton needs one step plus one to confirm.
+- The Schur complement contains the total derivative of $r_\mathrm{app}$ with respect to $c_f$; it is smaller in magnitude than the derivative at fixed particle concentrations.
+:::
+
+![Coupled Batch Reactor and Particle Model: reference figure](student_check_outputs/coupled-batch-reactor-and-particle-model_cell24_fig1.png)
+
+:::{admonition} Check: question 6
+:class: tip
+- The Schur elimination must agree with a monolithic sparse solve of the same step to round-off.
+- At small $\Delta t$ the explicit and implicit results converge to the same limit, with errors of opposite sign.
+- With the reference's parameters the explicit coupling gives negative $c_f$ from $\Delta t$ of about 150 s (an oscillating but still decaying mode) and becomes unstable above roughly 230 s, while the implicit coupling stays positive. Find the limit from the spectral radius of your explicit step map.
+- A fast-exchange case (fast diffusion, large $k_m$) must approach the pseudo-homogeneous batch reactor, $c_f \approx \varepsilon_b c_{f,0}\,e^{-(1-\varepsilon_b)kt}$ after the initial uptake; the explicit coupling then needs a time step of order seconds or less.
+:::
+
 ## Reactor-Particle Coupling
 
 :::{admonition} Check: question 1
