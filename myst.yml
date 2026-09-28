@@ -44,7 +44,8 @@ project:
       title: 2D Membrane Module with Sieverts' Law
     - file: pymrm/examples/surface_reaction.ipynb
     - file: pymrm/examples/optimization_example.ipynb
-    - title: Immersed Boundary Method
+    - file: content/examples/immersed_boundary_method.md
+      title: Immersed Boundary Method
       children:
       - file: pymrm/examples/ibm_diffusion.ipynb
       - file: pymrm/examples/ibm_touching_particles.ipynb
