@@ -1140,7 +1140,7 @@ How to use it:
 - Steady particle at fixed $c_f$ with first-order kinetics: $r_\mathrm{app}$ must approach $-(1-\varepsilon_b)k_\mathrm{ov}c_f$ with $1/k_\mathrm{ov} = 1/(\eta k) + R/(3k_m)$. The error should drop by about a factor 4 per doubling of the radial grid.
 - Without reaction, the uptake at fixed $c_f$ must follow the classical series for a sphere with a surface resistance (Crank); with backward Euler the error should halve when you halve $\Delta t$.
 - The reactor alone with a prescribed first-order rate must give an exponential decay, and its discrete balance must close to round-off.
-- Make sure your checks can fail: flip the sign of $a$ in the film condition and see that the check notices.
+- Make sure your checks can fail: reverse the outward-normal sign in the film boundary condition, or flip the sign of $a$ in the apparent-rate calculation, and see that the check notices.
 :::
 
 ![Coupled Batch Reactor and Particle Model: reference figure](student_check_outputs/coupled-batch-reactor-and-particle-model_cell11_fig1.png)
