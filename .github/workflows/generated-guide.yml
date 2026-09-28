@@ -1,0 +1,31 @@
+name: Generated result-check page
+
+# The Exercise Result Checks page is generated in pymrm-book-teacher. This
+# check fails when the page or its figures were edited here, for example by
+# accepting a review suggestion on the automated pull request.
+
+on:
+  pull_request:
+    paths:
+      - "content/exercises/student_exercise_result_checks.md"
+      - "content/exercises/student_check_outputs/**"
+  push:
+    branches:
+      - main
+    paths:
+      - "content/exercises/student_exercise_result_checks.md"
+      - "content/exercises/student_check_outputs/**"
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    name: Page is unmodified since generation
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python scripts/check_generated_guide.py
