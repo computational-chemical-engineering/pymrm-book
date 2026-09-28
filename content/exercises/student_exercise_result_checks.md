@@ -1147,10 +1147,9 @@ How to use it:
 
 :::{admonition} Check: question 3
 :class: tip
-- Within a step: particle first with $c_f$ of the old time level, then the reactor with the rate the particle returned, held constant.
-- With the reference's assumed parameters ($R = 1$ mm, $D = 10^{-9}$ m$^2$/s, $k = 9\times10^{-3}$ s$^{-1}$, $k_m = 5\times10^{-6}$ m/s, $\varepsilon_b = 0.4$, fresh particles with $c_s = 0$ at $t = 0$) the fluid concentration is about 0.17 of its initial value after 300 s.
-- Fresh particles first load up: $\langle c_s\rangle$ passes through a maximum within the first minutes and then decays together with $c_f$.
-- A particle treated as quasi-steady misses this initial uptake; compare with it to see whether the particle transient matters for your parameters.
+- Compare the two models over one time step and document which time level supplies each coupling quantity.
+- Check the fluid concentration and particle-average concentration for physically consistent transient behavior.
+- Compare with a quasi-steady particle treatment and explain whether the transient matters for your chosen parameters.
 :::
 
 :::{admonition} Check: question 4
