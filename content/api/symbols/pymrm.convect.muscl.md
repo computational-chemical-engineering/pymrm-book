@@ -16,7 +16,7 @@ Uniform grid: 2 c_c up to 1/4, c_c + 1/4 up to 3/4, then 1.
 
 ## Source
 
-[View on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/b40fd3f7ac82d247ea864dca2aec0b8aa53589a1/src/pymrm/convect.py#L456-L475)
+[View on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/519353229140eeec75a2a29f225cdc3e35aa5e4f/src/pymrm/convect.py#L456-L475)
 
 ```python
 def muscl(normalized_c_c, normalized_x_c, normalized_x_d):

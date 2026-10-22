@@ -168,5 +168,9 @@ Nonlinear-solver utilities used by `pymrm`.
 
 | Symbol | Type | Summary |
 | ------ | ---- | ------- |
+| [`KrylovBreakdown`](symbols/pymrm.solve.KrylovBreakdown) | class | An iterative linear solver did not converge (status 6). |
+| [`NewtonBreakdown`](symbols/pymrm.solve.NewtonBreakdown) | class | Raised by `newton` when no Newton step can be formed. |
 | [`clip_approach`](symbols/pymrm.solve.clip_approach) | function | Project values onto bounds, optionally with a relaxed approach rule. |
-| [`newton`](symbols/pymrm.solve.newton) | function | Solve ``function(x) = 0`` with Newton iterations. |
+| [`continuation`](symbols/pymrm.solve.continuation) | function | Solve ``function(x, p) = 0`` along a sequence of parameter values. |
+| [`newton`](symbols/pymrm.solve.newton) | function | Solve ``function(x) = 0`` with a (damped) Newton iteration. |
+| [`pseudo_transient`](symbols/pymrm.solve.pseudo_transient) | function | Reach a steady state of ``function(x) = 0`` by implicit pseudo-time steps. |

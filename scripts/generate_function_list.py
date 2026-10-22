@@ -276,6 +276,10 @@ def write_text(path: Path, lines: list[str]) -> None:
 def render_class_children(item: dict, items: dict[str, dict], commit_sha: str) -> list[str]:
     """Render methods and attributes for a public class."""
     children = get_direct_children(items, item["full_name"], CLASS_CHILD_TYPES)
+    # Members without a source range in the file are inherited from a built-in
+    # base (the methods of Exception on an exception class): leave them out.
+    children = [child for child in children
+                if "range" not in child or child["range"][0] > 0]
     if not children:
         return []
 
@@ -449,6 +453,9 @@ def main() -> None:
             continue
         full_name = f"{module_name}.{name}"
         item = items.get(full_name)
+        if item and item["type"] == "exception":
+            # autodoc2 types exception classes separately; document them as classes
+            item = {**item, "type": "class"}
         if item and item["type"] in PUBLIC_TYPES:
             public_items.append(item)
 

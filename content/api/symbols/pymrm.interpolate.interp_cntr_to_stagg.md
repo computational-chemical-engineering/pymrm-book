@@ -33,7 +33,7 @@ Interpolate cell-centered values to face/staggered locations.
 
 ## Source
 
-[View on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/b40fd3f7ac82d247ea864dca2aec0b8aa53589a1/src/pymrm/interpolate.py#L53-L104)
+[View on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/519353229140eeec75a2a29f225cdc3e35aa5e4f/src/pymrm/interpolate.py#L53-L104)
 
 ```python
 def interp_cntr_to_stagg(cell_centered_values, x_f, x_c=None, axis=0):

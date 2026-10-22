@@ -34,7 +34,7 @@ Label the disjoint regions of a signed distance field.
 
 ## Source
 
-[View on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/b40fd3f7ac82d247ea864dca2aec0b8aa53589a1/src/pymrm/segmentation.py#L88-L128)
+[View on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/519353229140eeec75a2a29f225cdc3e35aa5e4f/src/pymrm/segmentation.py#L88-L128)
 
 ```python
 def segment_domain(sdf, *, region="negative", connectivity=1):
