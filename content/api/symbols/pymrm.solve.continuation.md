@@ -57,7 +57,7 @@ which this function does not do.
 
 ## Source
 
-[View on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/27bb54f8aa07d1b2692efefb5942380e91d4e33e/src/pymrm/solve.py#L1046-L1142)
+[View on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/519353229140eeec75a2a29f225cdc3e35aa5e4f/src/pymrm/solve.py#L1070-L1166)
 
 ```python
 def continuation(function, initial_guess, params, *, max_halvings=6, max_change=0.2,

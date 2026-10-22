@@ -41,7 +41,7 @@ helpers (`crossing_segments`, `segment_values`,
 
 ## Source
 
-[View on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/27bb54f8aa07d1b2692efefb5942380e91d4e33e/src/pymrm/segmentation.py#L54-L85)
+[View on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/519353229140eeec75a2a29f225cdc3e35aa5e4f/src/pymrm/segmentation.py#L54-L85)
 
 ```python
 class Segmentation:
@@ -82,20 +82,20 @@ class Segmentation:
 
 ### `connectivity`
 
-[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/27bb54f8aa07d1b2692efefb5942380e91d4e33e/src/pymrm/segmentation.py#L84-L84)
+[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/519353229140eeec75a2a29f225cdc3e35aa5e4f/src/pymrm/segmentation.py#L84-L84)
 
 ### `labels`
 
-[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/27bb54f8aa07d1b2692efefb5942380e91d4e33e/src/pymrm/segmentation.py#L81-L81)
+[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/519353229140eeec75a2a29f225cdc3e35aa5e4f/src/pymrm/segmentation.py#L81-L81)
 
 ### `n_segments`
 
-[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/27bb54f8aa07d1b2692efefb5942380e91d4e33e/src/pymrm/segmentation.py#L82-L82)
+[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/519353229140eeec75a2a29f225cdc3e35aa5e4f/src/pymrm/segmentation.py#L82-L82)
 
 ### `region`
 
-[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/27bb54f8aa07d1b2692efefb5942380e91d4e33e/src/pymrm/segmentation.py#L83-L83)
+[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/519353229140eeec75a2a29f225cdc3e35aa5e4f/src/pymrm/segmentation.py#L83-L83)
 
 ### `sizes`
 
-[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/27bb54f8aa07d1b2692efefb5942380e91d4e33e/src/pymrm/segmentation.py#L85-L85)
+[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/519353229140eeec75a2a29f225cdc3e35aa5e4f/src/pymrm/segmentation.py#L85-L85)

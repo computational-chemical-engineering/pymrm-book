@@ -4,7 +4,7 @@
 
 Convective-flux operators and TVD limiter functions.
 
-[View module source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/27bb54f8aa07d1b2692efefb5942380e91d4e33e/src/pymrm/convect.py)
+[View module source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/519353229140eeec75a2a29f225cdc3e35aa5e4f/src/pymrm/convect.py)
 
 ## Public API
 
@@ -35,7 +35,7 @@ pymrm uses the same parabola, with the same cap at ``c_f = 1``, for both:
 ``clam`` and ``vanleer`` agree on every stencil. Before pymrm 2.5.0
 ``clam`` returned the Osher curve.
 
-[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/27bb54f8aa07d1b2692efefb5942380e91d4e33e/src/pymrm/convect.py#L443-L453)
+[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/519353229140eeec75a2a29f225cdc3e35aa5e4f/src/pymrm/convect.py#L443-L453)
 
 ## `construct_convflux_bc(shape, x_f, x_c = None, bc = (None, None), v = 1.0, axis = 0, shapes_d = (None, None), format = 'csc')`
 
@@ -79,7 +79,7 @@ Construct boundary-face upwind corrections and source terms.
   ``(conv_matrix_left, conv_bc_left, conv_matrix_right, conv_bc_right)``
   otherwise.
 
-[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/27bb54f8aa07d1b2692efefb5942380e91d4e33e/src/pymrm/convect.py#L138-L406)
+[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/519353229140eeec75a2a29f225cdc3e35aa5e4f/src/pymrm/convect.py#L138-L406)
 
 ## `construct_convflux_upwind(shape, x_f, x_c = None, bc = (None, None), v = 1.0, axis = 0, shapes_d = (None, None), format = 'csc')`
 
@@ -126,7 +126,7 @@ Construct a first-order upwind convective-flux operator.
   Without ``shapes_d``: ``(conv_matrix, conv_bc)``.
   With ``shapes_d``: ``(conv_matrix, conv_bc_left, conv_bc_right)``.
 
-[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/27bb54f8aa07d1b2692efefb5942380e91d4e33e/src/pymrm/convect.py#L11-L75)
+[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/519353229140eeec75a2a29f225cdc3e35aa5e4f/src/pymrm/convect.py#L11-L75)
 
 ## `construct_convflux_upwind_int(shape, v = 1.0, axis = 0, format = 'csc')`
 
@@ -153,7 +153,7 @@ Construct the internal-face upwind advection operator.
 - `scipy.sparse.csc_array or scipy.sparse.csr_array`
   Sparse matrix mapping cell-centered values to interior face fluxes.
 
-[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/27bb54f8aa07d1b2692efefb5942380e91d4e33e/src/pymrm/convect.py#L78-L135)
+[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/519353229140eeec75a2a29f225cdc3e35aa5e4f/src/pymrm/convect.py#L78-L135)
 
 ## `minmod(normalized_c_c, normalized_x_c, normalized_x_d)`
 
@@ -161,7 +161,7 @@ Construct the internal-face upwind advection operator.
 
 Compute the Minmod TVD correction in normalized-variable space.
 
-[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/27bb54f8aa07d1b2692efefb5942380e91d4e33e/src/pymrm/convect.py#L418-L427)
+[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/519353229140eeec75a2a29f225cdc3e35aa5e4f/src/pymrm/convect.py#L418-L427)
 
 ## `muscl(normalized_c_c, normalized_x_c, normalized_x_d)`
 
@@ -171,7 +171,7 @@ Compute the MUSCL TVD correction in normalized-variable space.
 
 Uniform grid: 2 c_c up to 1/4, c_c + 1/4 up to 3/4, then 1.
 
-[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/27bb54f8aa07d1b2692efefb5942380e91d4e33e/src/pymrm/convect.py#L456-L475)
+[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/519353229140eeec75a2a29f225cdc3e35aa5e4f/src/pymrm/convect.py#L456-L475)
 
 ## `osher(normalized_c_c, normalized_x_c, normalized_x_d)`
 
@@ -179,7 +179,7 @@ Uniform grid: 2 c_c up to 1/4, c_c + 1/4 up to 3/4, then 1.
 
 Compute the Osher TVD correction in normalized-variable space.
 
-[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/27bb54f8aa07d1b2692efefb5942380e91d4e33e/src/pymrm/convect.py#L430-L440)
+[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/519353229140eeec75a2a29f225cdc3e35aa5e4f/src/pymrm/convect.py#L430-L440)
 
 ## `smart(normalized_c_c, normalized_x_c, normalized_x_d)`
 
@@ -187,7 +187,7 @@ Compute the Osher TVD correction in normalized-variable space.
 
 Compute the SMART TVD correction in normalized-variable space.
 
-[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/27bb54f8aa07d1b2692efefb5942380e91d4e33e/src/pymrm/convect.py#L478-L509)
+[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/519353229140eeec75a2a29f225cdc3e35aa5e4f/src/pymrm/convect.py#L478-L509)
 
 ## `stoic(normalized_c_c, normalized_x_c, normalized_x_d)`
 
@@ -201,7 +201,7 @@ then QUICK, then ``c_f = 1``. On a uniform grid (``x_c = 1/2``,
 ``x_d = 3/4``) this is 3 c_c, (1 + c_c)/2, 3/8 + 3 c_c/4 and 1, with breaks
 at 1/5, 1/2 and 5/6.
 
-[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/27bb54f8aa07d1b2692efefb5942380e91d4e33e/src/pymrm/convect.py#L512-L541)
+[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/519353229140eeec75a2a29f225cdc3e35aa5e4f/src/pymrm/convect.py#L512-L541)
 
 ## `upwind(normalized_c_c, normalized_x_c, normalized_x_d)`
 
@@ -209,7 +209,7 @@ at 1/5, 1/2 and 5/6.
 
 Return zero correction (first-order upwind limiter).
 
-[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/27bb54f8aa07d1b2692efefb5942380e91d4e33e/src/pymrm/convect.py#L412-L415)
+[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/519353229140eeec75a2a29f225cdc3e35aa5e4f/src/pymrm/convect.py#L412-L415)
 
 ## `vanleer(normalized_c_c, normalized_x_c, normalized_x_d)`
 
@@ -225,4 +225,4 @@ boundary where the upstream point is a face half a cell away (x_c = 1/3,
 x_d = 2/3); the correction is capped at ``1 - c_c`` to stay bounded. The
 cap acts only above c_c = x_c and does not reduce the order.
 
-[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/27bb54f8aa07d1b2692efefb5942380e91d4e33e/src/pymrm/convect.py#L544-L565)
+[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/519353229140eeec75a2a29f225cdc3e35aa5e4f/src/pymrm/convect.py#L544-L565)

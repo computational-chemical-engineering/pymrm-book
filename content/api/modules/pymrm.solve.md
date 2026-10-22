@@ -4,7 +4,7 @@
 
 Nonlinear-solver utilities used by `pymrm`.
 
-[View module source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/27bb54f8aa07d1b2692efefb5942380e91d4e33e/src/pymrm/solve.py)
+[View module source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/519353229140eeec75a2a29f225cdc3e35aa5e4f/src/pymrm/solve.py)
 
 ## Public API
 
@@ -25,7 +25,7 @@ An iterative linear solver did not converge (status 6).
 
 Also a ``RuntimeError``, as raised up to pymrm 2.5.0.
 
-[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/27bb54f8aa07d1b2692efefb5942380e91d4e33e/src/pymrm/solve.py#L56-L60)
+[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/519353229140eeec75a2a29f225cdc3e35aa5e4f/src/pymrm/solve.py#L57-L61)
 
 ## Members
 
@@ -33,25 +33,25 @@ Also a ``RuntimeError``, as raised up to pymrm 2.5.0.
 
 Initialize self.  See help(type(self)) for accurate signature.
 
-[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/27bb54f8aa07d1b2692efefb5942380e91d4e33e/src/pymrm/solve.py#L51-L53)
+[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/519353229140eeec75a2a29f225cdc3e35aa5e4f/src/pymrm/solve.py#L52-L54)
 
 ### `__delattr__()`
 
 Implement delattr(self, name).
 
-[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/27bb54f8aa07d1b2692efefb5942380e91d4e33e/src/pymrm/solve.py#L0-L0)
+[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/519353229140eeec75a2a29f225cdc3e35aa5e4f/src/pymrm/solve.py#L0-L0)
 
 ### `__dir__()`
 
 Default dir() implementation.
 
-[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/27bb54f8aa07d1b2692efefb5942380e91d4e33e/src/pymrm/solve.py#L0-L0)
+[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/519353229140eeec75a2a29f225cdc3e35aa5e4f/src/pymrm/solve.py#L0-L0)
 
 ### `__eq__()`
 
 Return self==value.
 
-[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/27bb54f8aa07d1b2692efefb5942380e91d4e33e/src/pymrm/solve.py#L0-L0)
+[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/519353229140eeec75a2a29f225cdc3e35aa5e4f/src/pymrm/solve.py#L0-L0)
 
 ### `__format__()`
 
@@ -59,101 +59,101 @@ Default object formatter.
 
 Return str(self) if format_spec is empty. Raise TypeError otherwise.
 
-[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/27bb54f8aa07d1b2692efefb5942380e91d4e33e/src/pymrm/solve.py#L0-L0)
+[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/519353229140eeec75a2a29f225cdc3e35aa5e4f/src/pymrm/solve.py#L0-L0)
 
 ### `__ge__()`
 
 Return self>=value.
 
-[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/27bb54f8aa07d1b2692efefb5942380e91d4e33e/src/pymrm/solve.py#L0-L0)
+[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/519353229140eeec75a2a29f225cdc3e35aa5e4f/src/pymrm/solve.py#L0-L0)
 
 ### `__getattribute__()`
 
 Return getattr(self, name).
 
-[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/27bb54f8aa07d1b2692efefb5942380e91d4e33e/src/pymrm/solve.py#L0-L0)
+[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/519353229140eeec75a2a29f225cdc3e35aa5e4f/src/pymrm/solve.py#L0-L0)
 
 ### `__getstate__()`
 
 Helper for pickle.
 
-[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/27bb54f8aa07d1b2692efefb5942380e91d4e33e/src/pymrm/solve.py#L0-L0)
+[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/519353229140eeec75a2a29f225cdc3e35aa5e4f/src/pymrm/solve.py#L0-L0)
 
 ### `__gt__()`
 
 Return self>value.
 
-[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/27bb54f8aa07d1b2692efefb5942380e91d4e33e/src/pymrm/solve.py#L0-L0)
+[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/519353229140eeec75a2a29f225cdc3e35aa5e4f/src/pymrm/solve.py#L0-L0)
 
 ### `__hash__()`
 
 Return hash(self).
 
-[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/27bb54f8aa07d1b2692efefb5942380e91d4e33e/src/pymrm/solve.py#L0-L0)
+[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/519353229140eeec75a2a29f225cdc3e35aa5e4f/src/pymrm/solve.py#L0-L0)
 
 ### `__le__()`
 
 Return self<=value.
 
-[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/27bb54f8aa07d1b2692efefb5942380e91d4e33e/src/pymrm/solve.py#L0-L0)
+[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/519353229140eeec75a2a29f225cdc3e35aa5e4f/src/pymrm/solve.py#L0-L0)
 
 ### `__lt__()`
 
 Return self<value.
 
-[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/27bb54f8aa07d1b2692efefb5942380e91d4e33e/src/pymrm/solve.py#L0-L0)
+[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/519353229140eeec75a2a29f225cdc3e35aa5e4f/src/pymrm/solve.py#L0-L0)
 
 ### `__ne__()`
 
 Return self!=value.
 
-[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/27bb54f8aa07d1b2692efefb5942380e91d4e33e/src/pymrm/solve.py#L0-L0)
+[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/519353229140eeec75a2a29f225cdc3e35aa5e4f/src/pymrm/solve.py#L0-L0)
 
 ### `__new__()`
 
 Create and return a new object.  See help(type) for accurate signature.
 
-[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/27bb54f8aa07d1b2692efefb5942380e91d4e33e/src/pymrm/solve.py#L0-L0)
+[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/519353229140eeec75a2a29f225cdc3e35aa5e4f/src/pymrm/solve.py#L0-L0)
 
 ### `__reduce__()`
 
 Helper for pickle.
 
-[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/27bb54f8aa07d1b2692efefb5942380e91d4e33e/src/pymrm/solve.py#L0-L0)
+[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/519353229140eeec75a2a29f225cdc3e35aa5e4f/src/pymrm/solve.py#L0-L0)
 
 ### `__reduce_ex__()`
 
 Helper for pickle.
 
-[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/27bb54f8aa07d1b2692efefb5942380e91d4e33e/src/pymrm/solve.py#L0-L0)
+[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/519353229140eeec75a2a29f225cdc3e35aa5e4f/src/pymrm/solve.py#L0-L0)
 
 ### `__repr__()`
 
 Return repr(self).
 
-[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/27bb54f8aa07d1b2692efefb5942380e91d4e33e/src/pymrm/solve.py#L0-L0)
+[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/519353229140eeec75a2a29f225cdc3e35aa5e4f/src/pymrm/solve.py#L0-L0)
 
 ### `__setattr__()`
 
 Implement setattr(self, name, value).
 
-[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/27bb54f8aa07d1b2692efefb5942380e91d4e33e/src/pymrm/solve.py#L0-L0)
+[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/519353229140eeec75a2a29f225cdc3e35aa5e4f/src/pymrm/solve.py#L0-L0)
 
 ### `__setstate__()`
 
-[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/27bb54f8aa07d1b2692efefb5942380e91d4e33e/src/pymrm/solve.py#L0-L0)
+[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/519353229140eeec75a2a29f225cdc3e35aa5e4f/src/pymrm/solve.py#L0-L0)
 
 ### `__sizeof__()`
 
 Size of object in memory, in bytes.
 
-[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/27bb54f8aa07d1b2692efefb5942380e91d4e33e/src/pymrm/solve.py#L0-L0)
+[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/519353229140eeec75a2a29f225cdc3e35aa5e4f/src/pymrm/solve.py#L0-L0)
 
 ### `__str__()`
 
 Return str(self).
 
-[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/27bb54f8aa07d1b2692efefb5942380e91d4e33e/src/pymrm/solve.py#L0-L0)
+[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/519353229140eeec75a2a29f225cdc3e35aa5e4f/src/pymrm/solve.py#L0-L0)
 
 ### `__subclasshook__()`
 
@@ -164,19 +164,19 @@ It should return True, False or NotImplemented.  If it returns
 NotImplemented, the normal algorithm is used.  Otherwise, it
 overrides the normal algorithm (and the outcome is cached).
 
-[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/27bb54f8aa07d1b2692efefb5942380e91d4e33e/src/pymrm/solve.py#L0-L0)
+[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/519353229140eeec75a2a29f225cdc3e35aa5e4f/src/pymrm/solve.py#L0-L0)
 
 ### `add_note()`
 
 Exception.add_note(note) -- add a note to the exception
 
-[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/27bb54f8aa07d1b2692efefb5942380e91d4e33e/src/pymrm/solve.py#L0-L0)
+[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/519353229140eeec75a2a29f225cdc3e35aa5e4f/src/pymrm/solve.py#L0-L0)
 
 ### `with_traceback()`
 
 Exception.with_traceback(tb) -- set self.__traceback__ to tb and return self.
 
-[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/27bb54f8aa07d1b2692efefb5942380e91d4e33e/src/pymrm/solve.py#L0-L0)
+[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/519353229140eeec75a2a29f225cdc3e35aa5e4f/src/pymrm/solve.py#L0-L0)
 
 ## `NewtonBreakdown(message, result = None)`
 
@@ -191,7 +191,7 @@ raised up to pymrm 2.5.0. ``result`` holds the
 `scipy.optimize.OptimizeResult` with the status and the last
 iterate ``x``.
 
-[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/27bb54f8aa07d1b2692efefb5942380e91d4e33e/src/pymrm/solve.py#L40-L53)
+[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/519353229140eeec75a2a29f225cdc3e35aa5e4f/src/pymrm/solve.py#L41-L54)
 
 ## Members
 
@@ -199,25 +199,25 @@ iterate ``x``.
 
 Initialize self.  See help(type(self)) for accurate signature.
 
-[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/27bb54f8aa07d1b2692efefb5942380e91d4e33e/src/pymrm/solve.py#L51-L53)
+[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/519353229140eeec75a2a29f225cdc3e35aa5e4f/src/pymrm/solve.py#L52-L54)
 
 ### `__delattr__()`
 
 Implement delattr(self, name).
 
-[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/27bb54f8aa07d1b2692efefb5942380e91d4e33e/src/pymrm/solve.py#L0-L0)
+[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/519353229140eeec75a2a29f225cdc3e35aa5e4f/src/pymrm/solve.py#L0-L0)
 
 ### `__dir__()`
 
 Default dir() implementation.
 
-[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/27bb54f8aa07d1b2692efefb5942380e91d4e33e/src/pymrm/solve.py#L0-L0)
+[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/519353229140eeec75a2a29f225cdc3e35aa5e4f/src/pymrm/solve.py#L0-L0)
 
 ### `__eq__()`
 
 Return self==value.
 
-[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/27bb54f8aa07d1b2692efefb5942380e91d4e33e/src/pymrm/solve.py#L0-L0)
+[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/519353229140eeec75a2a29f225cdc3e35aa5e4f/src/pymrm/solve.py#L0-L0)
 
 ### `__format__()`
 
@@ -225,101 +225,101 @@ Default object formatter.
 
 Return str(self) if format_spec is empty. Raise TypeError otherwise.
 
-[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/27bb54f8aa07d1b2692efefb5942380e91d4e33e/src/pymrm/solve.py#L0-L0)
+[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/519353229140eeec75a2a29f225cdc3e35aa5e4f/src/pymrm/solve.py#L0-L0)
 
 ### `__ge__()`
 
 Return self>=value.
 
-[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/27bb54f8aa07d1b2692efefb5942380e91d4e33e/src/pymrm/solve.py#L0-L0)
+[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/519353229140eeec75a2a29f225cdc3e35aa5e4f/src/pymrm/solve.py#L0-L0)
 
 ### `__getattribute__()`
 
 Return getattr(self, name).
 
-[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/27bb54f8aa07d1b2692efefb5942380e91d4e33e/src/pymrm/solve.py#L0-L0)
+[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/519353229140eeec75a2a29f225cdc3e35aa5e4f/src/pymrm/solve.py#L0-L0)
 
 ### `__getstate__()`
 
 Helper for pickle.
 
-[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/27bb54f8aa07d1b2692efefb5942380e91d4e33e/src/pymrm/solve.py#L0-L0)
+[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/519353229140eeec75a2a29f225cdc3e35aa5e4f/src/pymrm/solve.py#L0-L0)
 
 ### `__gt__()`
 
 Return self>value.
 
-[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/27bb54f8aa07d1b2692efefb5942380e91d4e33e/src/pymrm/solve.py#L0-L0)
+[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/519353229140eeec75a2a29f225cdc3e35aa5e4f/src/pymrm/solve.py#L0-L0)
 
 ### `__hash__()`
 
 Return hash(self).
 
-[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/27bb54f8aa07d1b2692efefb5942380e91d4e33e/src/pymrm/solve.py#L0-L0)
+[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/519353229140eeec75a2a29f225cdc3e35aa5e4f/src/pymrm/solve.py#L0-L0)
 
 ### `__le__()`
 
 Return self<=value.
 
-[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/27bb54f8aa07d1b2692efefb5942380e91d4e33e/src/pymrm/solve.py#L0-L0)
+[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/519353229140eeec75a2a29f225cdc3e35aa5e4f/src/pymrm/solve.py#L0-L0)
 
 ### `__lt__()`
 
 Return self<value.
 
-[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/27bb54f8aa07d1b2692efefb5942380e91d4e33e/src/pymrm/solve.py#L0-L0)
+[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/519353229140eeec75a2a29f225cdc3e35aa5e4f/src/pymrm/solve.py#L0-L0)
 
 ### `__ne__()`
 
 Return self!=value.
 
-[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/27bb54f8aa07d1b2692efefb5942380e91d4e33e/src/pymrm/solve.py#L0-L0)
+[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/519353229140eeec75a2a29f225cdc3e35aa5e4f/src/pymrm/solve.py#L0-L0)
 
 ### `__new__()`
 
 Create and return a new object.  See help(type) for accurate signature.
 
-[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/27bb54f8aa07d1b2692efefb5942380e91d4e33e/src/pymrm/solve.py#L0-L0)
+[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/519353229140eeec75a2a29f225cdc3e35aa5e4f/src/pymrm/solve.py#L0-L0)
 
 ### `__reduce__()`
 
 Helper for pickle.
 
-[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/27bb54f8aa07d1b2692efefb5942380e91d4e33e/src/pymrm/solve.py#L0-L0)
+[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/519353229140eeec75a2a29f225cdc3e35aa5e4f/src/pymrm/solve.py#L0-L0)
 
 ### `__reduce_ex__()`
 
 Helper for pickle.
 
-[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/27bb54f8aa07d1b2692efefb5942380e91d4e33e/src/pymrm/solve.py#L0-L0)
+[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/519353229140eeec75a2a29f225cdc3e35aa5e4f/src/pymrm/solve.py#L0-L0)
 
 ### `__repr__()`
 
 Return repr(self).
 
-[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/27bb54f8aa07d1b2692efefb5942380e91d4e33e/src/pymrm/solve.py#L0-L0)
+[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/519353229140eeec75a2a29f225cdc3e35aa5e4f/src/pymrm/solve.py#L0-L0)
 
 ### `__setattr__()`
 
 Implement setattr(self, name, value).
 
-[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/27bb54f8aa07d1b2692efefb5942380e91d4e33e/src/pymrm/solve.py#L0-L0)
+[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/519353229140eeec75a2a29f225cdc3e35aa5e4f/src/pymrm/solve.py#L0-L0)
 
 ### `__setstate__()`
 
-[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/27bb54f8aa07d1b2692efefb5942380e91d4e33e/src/pymrm/solve.py#L0-L0)
+[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/519353229140eeec75a2a29f225cdc3e35aa5e4f/src/pymrm/solve.py#L0-L0)
 
 ### `__sizeof__()`
 
 Size of object in memory, in bytes.
 
-[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/27bb54f8aa07d1b2692efefb5942380e91d4e33e/src/pymrm/solve.py#L0-L0)
+[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/519353229140eeec75a2a29f225cdc3e35aa5e4f/src/pymrm/solve.py#L0-L0)
 
 ### `__str__()`
 
 Return str(self).
 
-[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/27bb54f8aa07d1b2692efefb5942380e91d4e33e/src/pymrm/solve.py#L0-L0)
+[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/519353229140eeec75a2a29f225cdc3e35aa5e4f/src/pymrm/solve.py#L0-L0)
 
 ### `__subclasshook__()`
 
@@ -330,19 +330,19 @@ It should return True, False or NotImplemented.  If it returns
 NotImplemented, the normal algorithm is used.  Otherwise, it
 overrides the normal algorithm (and the outcome is cached).
 
-[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/27bb54f8aa07d1b2692efefb5942380e91d4e33e/src/pymrm/solve.py#L0-L0)
+[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/519353229140eeec75a2a29f225cdc3e35aa5e4f/src/pymrm/solve.py#L0-L0)
 
 ### `add_note()`
 
 Exception.add_note(note) -- add a note to the exception
 
-[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/27bb54f8aa07d1b2692efefb5942380e91d4e33e/src/pymrm/solve.py#L0-L0)
+[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/519353229140eeec75a2a29f225cdc3e35aa5e4f/src/pymrm/solve.py#L0-L0)
 
 ### `with_traceback()`
 
 Exception.with_traceback(tb) -- set self.__traceback__ to tb and return self.
 
-[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/27bb54f8aa07d1b2692efefb5942380e91d4e33e/src/pymrm/solve.py#L0-L0)
+[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/519353229140eeec75a2a29f225cdc3e35aa5e4f/src/pymrm/solve.py#L0-L0)
 
 ## `clip_approach(values, dummy, lower_bounds = 0, upper_bounds = None, factor = 0)`
 
@@ -365,7 +365,7 @@ Project values onto bounds, optionally with a relaxed approach rule.
   Relaxation factor for out-of-bound entries. ``0`` applies strict clipping.
   Non-zero values apply a linear approach update toward the violated bound.
 
-[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/27bb54f8aa07d1b2692efefb5942380e91d4e33e/src/pymrm/solve.py#L1145-L1176)
+[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/519353229140eeec75a2a29f225cdc3e35aa5e4f/src/pymrm/solve.py#L1169-L1200)
 
 ## `continuation(function, initial_guess, params, *, max_halvings = 6, max_change = 0.2, newton_kwargs = None, verbose = 0)`
 
@@ -416,7 +416,7 @@ which this function does not do.
   results), ``last_param`` (the last parameter at which a solution was
   found, possibly an intermediate one) and ``x`` (that solution).
 
-[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/27bb54f8aa07d1b2692efefb5942380e91d4e33e/src/pymrm/solve.py#L1046-L1142)
+[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/519353229140eeec75a2a29f225cdc3e35aa5e4f/src/pymrm/solve.py#L1070-L1166)
 
 ## `newton(function, initial_guess, args = (), tol = 1.49012e-08, maxfev = 100, solver = None, lin_solver_kwargs = None, callback = None, rtol = 0.0, *, damping = 'auto', bounds = None, tau = 0.99, scale = None, refresh = None, backward_tol = 1e-08, stagnation = False, row_scaling = False, recoverable = (FloatingPointError, OverflowError, ZeroDivisionError), verbose = 0)`
 
@@ -523,12 +523,17 @@ see the Notes.
   broadcasts against the shape of ``initial_guess`` (shape ``(nc,)``
   gives one bound per field, ``(nz, 1)`` one per cell). Use ``-np.inf``
   or ``np.inf`` for unbounded components. A single scalar or array means
-  a lower bound. No step removes more than ``tau`` of the distance of a
-  component to its bound (with a floor of 0.5 on ``lam``, below which
-  the components are projected individually). A component may sit on
-  its bound; an initial guess outside is projected, with a warning.
-  Use bounds where the residual is undefined (``T > 0``, arguments of
-  ``log`` or ``sqrt``), not to enforce physical positivity: see Notes.
+  a lower bound. A full step that crosses a bound is shortened so that
+  it removes at most ``tau`` of the distance of that component to its
+  bound (with a floor of 0.5 on ``lam``, below which the crossing
+  components are held individually). A full step that lands inside the
+  bounds is taken, however close to a bound, so a solution near a bound
+  still converges quadratically. A component may sit on its bound; an
+  initial guess outside is projected, with a warning. Use bounds where
+  the residual is undefined (``T > 0``, arguments of ``log`` or
+  ``sqrt``), not to enforce physical positivity: see Notes. Where the
+  residual is singular at the bound (``log``), prefer
+  ``damping="monotone"``: a step may land very close to the bound.
 
 - `tau` (*float, optional*)
   Fraction-to-the-boundary parameter of ``bounds``.
@@ -664,7 +669,7 @@ Jacobian, a non-finite residual or step, or an iterative linear solver
 that does not converge still raise, now as `NewtonBreakdown`
 with the result attached.
 
-[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/27bb54f8aa07d1b2692efefb5942380e91d4e33e/src/pymrm/solve.py#L337-L907)
+[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/519353229140eeec75a2a29f225cdc3e35aa5e4f/src/pymrm/solve.py#L356-L931)
 
 ## `pseudo_transient(function, initial_guess, mass = 1.0, dt = 0.001, args = (), *, dt_max = np.inf, max_steps = 200, growth = 10.0, steady_ratio = 0.1, steady_every = 10, newton_kwargs = None, steady_kwargs = None, verbose = 0)`
 
@@ -747,4 +752,4 @@ it converges.
   residual norm and Newton iterations per step) and ``steady`` (the
   last steady `newton` result).
 
-[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/27bb54f8aa07d1b2692efefb5942380e91d4e33e/src/pymrm/solve.py#L926-L1043)
+[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/519353229140eeec75a2a29f225cdc3e35aa5e4f/src/pymrm/solve.py#L950-L1067)

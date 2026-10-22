@@ -46,7 +46,7 @@ Build immersed-boundary data directly from a particle assembly.
 
 ## Source
 
-[View on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/27bb54f8aa07d1b2692efefb5942380e91d4e33e/src/pymrm/particles.py#L520-L712)
+[View on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/519353229140eeec75a2a29f225cdc3e35aa5e4f/src/pymrm/particles.py#L520-L712)
 
 ```python
 def construct_ibm_particles(particles, x_c, *, axes=None, shape=None,

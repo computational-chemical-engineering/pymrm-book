@@ -111,12 +111,17 @@ see the Notes.
   broadcasts against the shape of ``initial_guess`` (shape ``(nc,)``
   gives one bound per field, ``(nz, 1)`` one per cell). Use ``-np.inf``
   or ``np.inf`` for unbounded components. A single scalar or array means
-  a lower bound. No step removes more than ``tau`` of the distance of a
-  component to its bound (with a floor of 0.5 on ``lam``, below which
-  the components are projected individually). A component may sit on
-  its bound; an initial guess outside is projected, with a warning.
-  Use bounds where the residual is undefined (``T > 0``, arguments of
-  ``log`` or ``sqrt``), not to enforce physical positivity: see Notes.
+  a lower bound. A full step that crosses a bound is shortened so that
+  it removes at most ``tau`` of the distance of that component to its
+  bound (with a floor of 0.5 on ``lam``, below which the crossing
+  components are held individually). A full step that lands inside the
+  bounds is taken, however close to a bound, so a solution near a bound
+  still converges quadratically. A component may sit on its bound; an
+  initial guess outside is projected, with a warning. Use bounds where
+  the residual is undefined (``T > 0``, arguments of ``log`` or
+  ``sqrt``), not to enforce physical positivity: see Notes. Where the
+  residual is singular at the bound (``log``), prefer
+  ``damping="monotone"``: a step may land very close to the bound.
 
 - `tau` (*float, optional*)
   Fraction-to-the-boundary parameter of ``bounds``.
@@ -254,7 +259,7 @@ with the result attached.
 
 ## Source
 
-[View on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/27bb54f8aa07d1b2692efefb5942380e91d4e33e/src/pymrm/solve.py#L337-L907)
+[View on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/519353229140eeec75a2a29f225cdc3e35aa5e4f/src/pymrm/solve.py#L356-L931)
 
 ```python
 def newton(
@@ -370,12 +375,17 @@ def newton(
         broadcasts against the shape of ``initial_guess`` (shape ``(nc,)``
         gives one bound per field, ``(nz, 1)`` one per cell). Use ``-np.inf``
         or ``np.inf`` for unbounded components. A single scalar or array means
-        a lower bound. No step removes more than ``tau`` of the distance of a
-        component to its bound (with a floor of 0.5 on ``lam``, below which
-        the components are projected individually). A component may sit on
-        its bound; an initial guess outside is projected, with a warning.
-        Use bounds where the residual is undefined (``T > 0``, arguments of
-        ``log`` or ``sqrt``), not to enforce physical positivity: see Notes.
+        a lower bound. A full step that crosses a bound is shortened so that
+        it removes at most ``tau`` of the distance of that component to its
+        bound (with a floor of 0.5 on ``lam``, below which the crossing
+        components are held individually). A full step that lands inside the
+        bounds is taken, however close to a bound, so a solution near a bound
+        still converges quadratically. A component may sit on its bound; an
+        initial guess outside is projected, with a warning. Use bounds where
+        the residual is undefined (``T > 0``, arguments of ``log`` or
+        ``sqrt``), not to enforce physical positivity: see Notes. Where the
+        residual is singular at the bound (``log``), prefer
+        ``damping="monotone"``: a step may land very close to the bound.
     tau : float, optional
         Fraction-to-the-boundary parameter of ``bounds``.
     scale : float or numpy.ndarray, optional
@@ -607,7 +617,7 @@ def newton(
         def final_step(status, extra=""):
             """Take the converged step without evaluating there, as plain Newton did."""
             trial = x_flat - dx
-            n_clip = bnd.project(trial, x_flat) if bnd.active else 0
+            n_clip = bnd.project(trial, x_flat, dx) if bnd.active else 0
             x_flat[:] = trial
             history.append({"step_norm": step_inf, "damping": 1.0, "theta": float("nan"),
                             "clipped": n_clip})
@@ -670,7 +680,7 @@ def newton(
                 if not near and bnd.active:
                     lam = max(_LAM_FLOOR, bnd.max_step(x_flat, dx))
                 trial = x_flat - lam * dx
-                clipped = bnd.project(trial, x_flat) if bnd.active else 0
+                clipped = bnd.project(trial, x_flat, dx) if bnd.active else 0
                 x_flat[:] = trial
                 history.append({"step_norm": step_inf, "damping": lam, "theta": theta,
                                 "clipped": clipped})
@@ -712,7 +722,7 @@ def newton(
                     # Full step (shortened only by the bounds far from the solution).
                     lam = 1.0 if near else lam_max
                     trial = x_flat - lam * dx
-                    clipped = bnd.project(trial, x_flat) if bnd.active else 0
+                    clipped = bnd.project(trial, x_flat, dx) if bnd.active else 0
                     ev_t = evaluate(trial.reshape(shape), guard=True)
                     if lam == lam_max:
                         at_lam_max = (trial, ev_t, clipped)
@@ -731,7 +741,7 @@ def newton(
                     lam_min = _LAM_NEAR if near else _LAM_MIN
                     while lam >= lam_min:
                         trial = x_flat - lam * dx
-                        clipped = bnd.project(trial, x_flat) if bnd.active else 0
+                        clipped = bnd.project(trial, x_flat, dx) if bnd.active else 0
                         ev_t = evaluate(trial.reshape(shape), guard=True)
                         if lam == lam_max:
                             at_lam_max = (trial, ev_t, clipped)
@@ -775,7 +785,7 @@ def newton(
                                 ev_t = evaluate(trial.reshape(shape), guard=True)
                         else:
                             trial = x_flat - lam * dx
-                            clipped = bnd.project(trial, x_flat) if bnd.active else 0
+                            clipped = bnd.project(trial, x_flat, dx) if bnd.active else 0
                             ev_t = evaluate(trial.reshape(shape), guard=True)
                         if ev_t is not None:
                             accepted = (trial, ev_t, lam)

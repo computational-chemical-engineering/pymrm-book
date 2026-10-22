@@ -58,7 +58,7 @@ unit) derivative direction ``u``.
 
 ## Source
 
-[View on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/27bb54f8aa07d1b2692efefb5942380e91d4e33e/src/pymrm/ibm_recon.py#L244-L307)
+[View on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/519353229140eeec75a2a29f225cdc3e35aa5e4f/src/pymrm/ibm_recon.py#L244-L307)
 
 ```python
 def gfd_normal_derivative_weights(x_gamma, x_cells, direction, degree=2,

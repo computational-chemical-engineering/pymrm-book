@@ -48,7 +48,7 @@ its face and no TVD correction there.
 
 ## Source
 
-[View on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/27bb54f8aa07d1b2692efefb5942380e91d4e33e/src/pymrm/interpolate.py#L107-L326)
+[View on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/519353229140eeec75a2a29f225cdc3e35aa5e4f/src/pymrm/interpolate.py#L107-L326)
 
 ```python
 def interp_cntr_to_stagg_tvd(

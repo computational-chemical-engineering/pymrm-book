@@ -41,7 +41,7 @@ condition.
 
 ## Source
 
-[View on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/27bb54f8aa07d1b2692efefb5942380e91d4e33e/src/pymrm/segmentation.py#L435-L482)
+[View on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/519353229140eeec75a2a29f225cdc3e35aa5e4f/src/pymrm/segmentation.py#L435-L482)
 
 ```python
 def combine_interface_conditions(ic_by_segment, seg, ibm, *, default=None):

@@ -43,7 +43,7 @@ Jacobian stays exact.
 
 ## Source
 
-[View on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/27bb54f8aa07d1b2692efefb5942380e91d4e33e/src/pymrm/numjac.py#L435-L493)
+[View on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/519353229140eeec75a2a29f225cdc3e35aa5e4f/src/pymrm/numjac.py#L435-L493)
 
 ```python
 def stencil_block_diagonals(

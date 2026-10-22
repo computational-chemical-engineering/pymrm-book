@@ -12,7 +12,7 @@ Update CSR matrix row/column indexing for embedding in a larger domain.
 
 ## Source
 
-[View on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/27bb54f8aa07d1b2692efefb5942380e91d4e33e/src/pymrm/coupling.py#L123-L161)
+[View on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/519353229140eeec75a2a29f225cdc3e35aa5e4f/src/pymrm/coupling.py#L123-L161)
 
 ```python
 def update_csr_array_indices(sparse_mat, shape, new_shape, offset=None):
