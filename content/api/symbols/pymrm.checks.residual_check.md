@@ -35,7 +35,7 @@ coefficients that would make ``x`` exact.
 
 ## Source
 
-[View on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/b40fd3f7ac82d247ea864dca2aec0b8aa53589a1/src/pymrm/checks.py#L207-L239)
+[View on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/27bb54f8aa07d1b2692efefb5942380e91d4e33e/src/pymrm/checks.py#L207-L239)
 
 ```python
 def residual_check(fun, x, tol=1e-8):

@@ -27,7 +27,7 @@ operator singular.  Detect them with
 
 ## Source
 
-[View on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/b40fd3f7ac82d247ea864dca2aec0b8aa53589a1/src/pymrm/segmentation.py#L315-L339)
+[View on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/27bb54f8aa07d1b2692efefb5942380e91d4e33e/src/pymrm/segmentation.py#L315-L339)
 
 ```python
 def wall_contact(seg):

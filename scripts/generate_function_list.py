@@ -449,6 +449,9 @@ def main() -> None:
             continue
         full_name = f"{module_name}.{name}"
         item = items.get(full_name)
+        if item and item["type"] == "exception":
+            # autodoc2 types exception classes separately; document them as classes
+            item = {**item, "type": "class"}
         if item and item["type"] in PUBLIC_TYPES:
             public_items.append(item)
 

@@ -46,7 +46,7 @@ Construct implicit interface-coupling matrices for two adjacent domains.
 
 ## Source
 
-[View on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/b40fd3f7ac82d247ea864dca2aec0b8aa53589a1/src/pymrm/coupling.py#L190-L394)
+[View on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/27bb54f8aa07d1b2692efefb5942380e91d4e33e/src/pymrm/coupling.py#L190-L394)
 
 ```python
 def construct_interface_matrices(

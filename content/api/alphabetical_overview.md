@@ -71,5 +71,9 @@ Alphabetical index of the public PyMRM API with direct links to source-backed re
 | [`pymrm.segmentation.wall_contact`](symbols/pymrm.segmentation.wall_contact) | `pymrm.segmentation` | Whether each segment reaches each domain wall. |
 | [`pymrm.segmentation.wall_patch`](symbols/pymrm.segmentation.wall_patch) | `pymrm.segmentation` | Segment labels on one domain wall, shaped as a full-field coefficient. |
 | [`pymrm.segmentation.wall_values`](symbols/pymrm.segmentation.wall_values) | `pymrm.segmentation` | Per-segment values on one domain wall as a full-field BC coefficient. |
+| [`pymrm.solve.KrylovBreakdown`](symbols/pymrm.solve.KrylovBreakdown) | `pymrm.solve` | An iterative linear solver did not converge (status 6). |
+| [`pymrm.solve.NewtonBreakdown`](symbols/pymrm.solve.NewtonBreakdown) | `pymrm.solve` | Raised by `newton` when no Newton step can be formed. |
 | [`pymrm.solve.clip_approach`](symbols/pymrm.solve.clip_approach) | `pymrm.solve` | Project values onto bounds, optionally with a relaxed approach rule. |
-| [`pymrm.solve.newton`](symbols/pymrm.solve.newton) | `pymrm.solve` | Solve ``function(x) = 0`` with Newton iterations. |
+| [`pymrm.solve.continuation`](symbols/pymrm.solve.continuation) | `pymrm.solve` | Solve ``function(x, p) = 0`` along a sequence of parameter values. |
+| [`pymrm.solve.newton`](symbols/pymrm.solve.newton) | `pymrm.solve` | Solve ``function(x) = 0`` with a (damped) Newton iteration. |
+| [`pymrm.solve.pseudo_transient`](symbols/pymrm.solve.pseudo_transient) | `pymrm.solve` | Reach a steady state of ``function(x) = 0`` by implicit pseudo-time steps. |
