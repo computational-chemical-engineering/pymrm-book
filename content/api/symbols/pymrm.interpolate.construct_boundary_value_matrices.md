@@ -44,9 +44,18 @@ Build matrices that evaluate boundary values from cell-centered unknowns.
   ``(matrix, mat_bc)`` where ``matrix`` maps cell-centered values to
   boundary values and ``mat_bc`` maps inhomogeneous boundary terms.
 
+### Raises
+
+- `ValueError`
+  If the axis has a single cell: the boundary value then depends on the
+  conditions at both ends, which this function does not receive.
+
+- `NotImplementedError`
+  For an outflow boundary.
+
 ## Source
 
-[View on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/519353229140eeec75a2a29f225cdc3e35aa5e4f/src/pymrm/interpolate.py#L621-L771)
+[View on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/edd7b4da542580c2776cbb05bd6761bce4495f28/src/pymrm/interpolate.py#L628-L790)
 
 ```python
 def construct_boundary_value_matrices(
@@ -78,6 +87,14 @@ def construct_boundary_value_matrices(
     tuple
         ``(matrix, mat_bc)`` where ``matrix`` maps cell-centered values to
         boundary values and ``mat_bc`` maps inhomogeneous boundary terms.
+
+    Raises
+    ------
+    ValueError
+        If the axis has a single cell: the boundary value then depends on the
+        conditions at both ends, which this function does not receive.
+    NotImplementedError
+        For an outflow boundary.
     """
     if is_outflow_bc(bc):
         raise NotImplementedError(
@@ -93,7 +110,11 @@ def construct_boundary_value_matrices(
     shape_bc = shape[:axis] + (1,) + shape[axis + 1:]
     shape_bc_d = (shape_t[0], shape_t[2])
 
-    # Handle special case with one cell in the dimension axis
+    if shape_t[1] < 2:
+        raise ValueError(
+            "construct_boundary_value_matrices needs at least two cells along axis; "
+            "with one cell the boundary value depends on both boundary conditions"
+        )
 
     if bound_id == 0:
         idx_c_0 = 0

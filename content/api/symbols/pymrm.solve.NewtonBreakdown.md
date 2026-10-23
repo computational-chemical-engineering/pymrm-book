@@ -21,7 +21,7 @@ iterate ``x``.
 
 ## Source
 
-[View on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/519353229140eeec75a2a29f225cdc3e35aa5e4f/src/pymrm/solve.py#L41-L54)
+[View on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/edd7b4da542580c2776cbb05bd6761bce4495f28/src/pymrm/solve.py#L41-L54)
 
 ```python
 class NewtonBreakdown(np.linalg.LinAlgError):
@@ -46,4 +46,4 @@ class NewtonBreakdown(np.linalg.LinAlgError):
 
 Initialize self.  See help(type(self)) for accurate signature.
 
-[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/519353229140eeec75a2a29f225cdc3e35aa5e4f/src/pymrm/solve.py#L52-L54)
+[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/edd7b4da542580c2776cbb05bd6761bce4495f28/src/pymrm/solve.py#L52-L54)

@@ -4,7 +4,7 @@
 
 Nonlinear-solver utilities used by `pymrm`.
 
-[View module source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/519353229140eeec75a2a29f225cdc3e35aa5e4f/src/pymrm/solve.py)
+[View module source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/edd7b4da542580c2776cbb05bd6761bce4495f28/src/pymrm/solve.py)
 
 ## Public API
 
@@ -25,7 +25,7 @@ An iterative linear solver did not converge (status 6).
 
 Also a ``RuntimeError``, as raised up to pymrm 2.5.0.
 
-[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/519353229140eeec75a2a29f225cdc3e35aa5e4f/src/pymrm/solve.py#L57-L61)
+[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/edd7b4da542580c2776cbb05bd6761bce4495f28/src/pymrm/solve.py#L57-L61)
 
 ## Members
 
@@ -33,7 +33,7 @@ Also a ``RuntimeError``, as raised up to pymrm 2.5.0.
 
 Initialize self.  See help(type(self)) for accurate signature.
 
-[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/519353229140eeec75a2a29f225cdc3e35aa5e4f/src/pymrm/solve.py#L52-L54)
+[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/edd7b4da542580c2776cbb05bd6761bce4495f28/src/pymrm/solve.py#L52-L54)
 
 ## `NewtonBreakdown(message, result = None)`
 
@@ -48,7 +48,7 @@ raised up to pymrm 2.5.0. ``result`` holds the
 `scipy.optimize.OptimizeResult` with the status and the last
 iterate ``x``.
 
-[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/519353229140eeec75a2a29f225cdc3e35aa5e4f/src/pymrm/solve.py#L41-L54)
+[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/edd7b4da542580c2776cbb05bd6761bce4495f28/src/pymrm/solve.py#L41-L54)
 
 ## Members
 
@@ -56,7 +56,7 @@ iterate ``x``.
 
 Initialize self.  See help(type(self)) for accurate signature.
 
-[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/519353229140eeec75a2a29f225cdc3e35aa5e4f/src/pymrm/solve.py#L52-L54)
+[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/edd7b4da542580c2776cbb05bd6761bce4495f28/src/pymrm/solve.py#L52-L54)
 
 ## `clip_approach(values, dummy, lower_bounds = 0, upper_bounds = None, factor = 0)`
 
@@ -79,7 +79,7 @@ Project values onto bounds, optionally with a relaxed approach rule.
   Relaxation factor for out-of-bound entries. ``0`` applies strict clipping.
   Non-zero values apply a linear approach update toward the violated bound.
 
-[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/519353229140eeec75a2a29f225cdc3e35aa5e4f/src/pymrm/solve.py#L1169-L1200)
+[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/edd7b4da542580c2776cbb05bd6761bce4495f28/src/pymrm/solve.py#L1172-L1203)
 
 ## `continuation(function, initial_guess, params, *, max_halvings = 6, max_change = 0.2, newton_kwargs = None, verbose = 0)`
 
@@ -130,7 +130,7 @@ which this function does not do.
   results), ``last_param`` (the last parameter at which a solution was
   found, possibly an intermediate one) and ``x`` (that solution).
 
-[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/519353229140eeec75a2a29f225cdc3e35aa5e4f/src/pymrm/solve.py#L1070-L1166)
+[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/edd7b4da542580c2776cbb05bd6761bce4495f28/src/pymrm/solve.py#L1073-L1169)
 
 ## `newton(function, initial_guess, args = (), tol = 1.49012e-08, maxfev = 100, solver = None, lin_solver_kwargs = None, callback = None, rtol = 0.0, *, damping = 'auto', bounds = None, tau = 0.99, scale = None, refresh = None, backward_tol = 1e-08, stagnation = False, row_scaling = False, recoverable = (FloatingPointError, OverflowError, ZeroDivisionError), verbose = 0)`
 
@@ -284,10 +284,11 @@ see the Notes.
 - `stagnation` (*bool, optional*)
   Stop at the stagnation floor: when the step test cannot be met because
   round-off, or switching terms such as ``max(c, 0)`` and upwinding, keep
-  the steps from shrinking, a full step within 100 tolerances that is no
-  smaller than the smallest of the five before it ends the iteration with
-  success, provided ``backward_tol`` passes; otherwise the iteration
-  continues. A converging iteration, however slowly, makes a new smallest
+  the steps from shrinking, a Newton step within 100 tolerances that is
+  no smaller than the smallest of the five before it ends the iteration
+  with success, provided ``backward_tol`` passes; otherwise the iteration
+  continues. Steps the damping shortened count too: at the floor the
+  damping test fails on round-off. A converging iteration, however slowly, makes a new smallest
   step every time and is never stopped. Off by default: code written for
   the old iteration may rely on a ``tol`` below the floor failing.
 
@@ -383,7 +384,7 @@ Jacobian, a non-finite residual or step, or an iterative linear solver
 that does not converge still raise, now as `NewtonBreakdown`
 with the result attached.
 
-[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/519353229140eeec75a2a29f225cdc3e35aa5e4f/src/pymrm/solve.py#L356-L931)
+[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/edd7b4da542580c2776cbb05bd6761bce4495f28/src/pymrm/solve.py#L356-L934)
 
 ## `pseudo_transient(function, initial_guess, mass = 1.0, dt = 0.001, args = (), *, dt_max = np.inf, max_steps = 200, growth = 10.0, steady_ratio = 0.1, steady_every = 10, newton_kwargs = None, steady_kwargs = None, verbose = 0)`
 
@@ -466,4 +467,4 @@ it converges.
   residual norm and Newton iterations per step) and ``steady`` (the
   last steady `newton` result).
 
-[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/519353229140eeec75a2a29f225cdc3e35aa5e4f/src/pymrm/solve.py#L950-L1067)
+[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/edd7b4da542580c2776cbb05bd6761bce4495f28/src/pymrm/solve.py#L953-L1070)

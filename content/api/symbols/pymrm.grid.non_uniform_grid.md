@@ -34,7 +34,7 @@ Generate a one-dimensional stretched face grid.
 
 ## Source
 
-[View on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/519353229140eeec75a2a29f225cdc3e35aa5e4f/src/pymrm/grid.py#L6-L32)
+[View on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/edd7b4da542580c2776cbb05bd6761bce4495f28/src/pymrm/grid.py#L6-L32)
 
 ```python
 def non_uniform_grid(left_bound, right_bound, num_points, dx_inf, factor):

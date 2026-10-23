@@ -16,7 +16,7 @@ Also a ``RuntimeError``, as raised up to pymrm 2.5.0.
 
 ## Source
 
-[View on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/519353229140eeec75a2a29f225cdc3e35aa5e4f/src/pymrm/solve.py#L57-L61)
+[View on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/edd7b4da542580c2776cbb05bd6761bce4495f28/src/pymrm/solve.py#L57-L61)
 
 ```python
 class KrylovBreakdown(NewtonBreakdown, RuntimeError):
@@ -32,4 +32,4 @@ class KrylovBreakdown(NewtonBreakdown, RuntimeError):
 
 Initialize self.  See help(type(self)) for accurate signature.
 
-[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/519353229140eeec75a2a29f225cdc3e35aa5e4f/src/pymrm/solve.py#L52-L54)
+[View source on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/edd7b4da542580c2776cbb05bd6761bce4495f28/src/pymrm/solve.py#L52-L54)

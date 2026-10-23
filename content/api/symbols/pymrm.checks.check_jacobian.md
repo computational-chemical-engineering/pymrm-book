@@ -45,7 +45,7 @@ Compare the Jacobian returned by ``fun`` with central differences.
 
 ## Source
 
-[View on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/519353229140eeec75a2a29f225cdc3e35aa5e4f/src/pymrm/checks.py#L26-L95)
+[View on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/edd7b4da542580c2776cbb05bd6761bce4495f28/src/pymrm/checks.py#L26-L95)
 
 ```python
 def check_jacobian(fun, x, n_probe=4, rtol=1e-4, seed=0, eps=None):

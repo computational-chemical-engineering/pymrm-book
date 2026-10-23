@@ -48,7 +48,7 @@ its face and no TVD correction there.
 
 ## Source
 
-[View on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/519353229140eeec75a2a29f225cdc3e35aa5e4f/src/pymrm/interpolate.py#L107-L326)
+[View on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/edd7b4da542580c2776cbb05bd6761bce4495f28/src/pymrm/interpolate.py#L107-L326)
 
 ```python
 def interp_cntr_to_stagg_tvd(
@@ -166,7 +166,7 @@ def interp_cntr_to_stagg_tvd(
         fctr_m = fctr_m + np.zeros(shape_bc)
         fctr_m = np.reshape(fctr_m, shape_bc_d)
         staggered_values[:, 1, :] += fctr_m
-        staggered_values.reshape(shape_f)
+        staggered_values = staggered_values.reshape(shape_f)
         delta_staggered_values = np.zeros(shape_f)
     else:
         # bc 0

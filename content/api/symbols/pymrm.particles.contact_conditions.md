@@ -34,7 +34,7 @@ Per-crossing ic: *base_ic* everywhere, a contact condition on contacts.
 
 ## Source
 
-[View on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/519353229140eeec75a2a29f225cdc3e35aa5e4f/src/pymrm/particles.py#L807-L856)
+[View on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/edd7b4da542580c2776cbb05bd6761bce4495f28/src/pymrm/particles.py#L807-L856)
 
 ```python
 def contact_conditions(base_ic, ibm, info, *, contact_ic=None):
