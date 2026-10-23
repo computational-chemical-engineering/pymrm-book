@@ -44,6 +44,8 @@ project:
       title: 2D Membrane Module with Sieverts' Law
     - file: pymrm/examples/surface_reaction.ipynb
     - file: pymrm/examples/optimization_example.ipynb
+    - file: pymrm/examples/newton_linear_solvers.ipynb
+      title: Choosing the Linear Solver inside Newton
     - file: content/examples/immersed_boundary_method.md
       title: Immersed Boundary Method
       children:
