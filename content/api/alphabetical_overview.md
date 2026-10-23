@@ -8,6 +8,7 @@ Alphabetical index of the public PyMRM API with direct links to source-backed re
 | [`pymrm.checks.find_roots`](symbols/pymrm.checks.find_roots) | `pymrm.checks` | Locate every sign change of ``f`` on ``[lo, hi]`` and refine each root. |
 | [`pymrm.checks.observed_orders`](symbols/pymrm.checks.observed_orders) | `pymrm.checks` | Run a refinement study and report observed orders of convergence. |
 | [`pymrm.checks.residual_check`](symbols/pymrm.checks.residual_check) | `pymrm.checks` | Judge a solution by its componentwise backward error. |
+| [`pymrm.convect.ConvFluxTVD`](symbols/pymrm.convect.ConvFluxTVD) | `pymrm.convect` | TVD convective face flux with its exact Jacobians, for Newton solves. |
 | [`pymrm.convect.clam`](symbols/pymrm.convect.clam) | `pymrm.convect` | Compute the CLAM TVD correction in normalized-variable space. |
 | [`pymrm.convect.construct_convflux_bc`](symbols/pymrm.convect.construct_convflux_bc) | `pymrm.convect` | Construct boundary-face upwind corrections and source terms. |
 | [`pymrm.convect.construct_convflux_upwind`](symbols/pymrm.convect.construct_convflux_upwind) | `pymrm.convect` | Construct a first-order upwind convective-flux operator. |

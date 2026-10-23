@@ -39,7 +39,7 @@ which makes sign errors visible.
 
 ## Source
 
-[View on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/519353229140eeec75a2a29f225cdc3e35aa5e4f/src/pymrm/helpers.py#L227-L269)
+[View on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/edd7b4da542580c2776cbb05bd6761bce4495f28/src/pymrm/helpers.py#L227-L269)
 
 ```python
 def describe_bc(bc, x_f=None, axis_name="x", var="c"):

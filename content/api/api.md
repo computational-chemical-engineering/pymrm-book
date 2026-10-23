@@ -21,6 +21,7 @@ Convective-flux operators and TVD limiter functions.
 
 | Symbol | Type | Summary |
 | ------ | ---- | ------- |
+| [`ConvFluxTVD`](symbols/pymrm.convect.ConvFluxTVD) | class | TVD convective face flux with its exact Jacobians, for Newton solves. |
 | [`clam`](symbols/pymrm.convect.clam) | function | Compute the CLAM TVD correction in normalized-variable space. |
 | [`construct_convflux_bc`](symbols/pymrm.convect.construct_convflux_bc) | function | Construct boundary-face upwind corrections and source terms. |
 | [`construct_convflux_upwind`](symbols/pymrm.convect.construct_convflux_upwind) | function | Construct a first-order upwind convective-flux operator. |

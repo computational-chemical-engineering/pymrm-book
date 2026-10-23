@@ -34,7 +34,7 @@ from the spatial grid to the full field.
 
 ## Source
 
-[View on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/519353229140eeec75a2a29f225cdc3e35aa5e4f/src/pymrm/ibm.py#L1052-L1082)
+[View on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/edd7b4da542580c2776cbb05bd6761bce4495f28/src/pymrm/ibm.py#L1052-L1082)
 
 ```python
 def apply_ibm_vector(vec, ibm):

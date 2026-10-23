@@ -12,7 +12,7 @@ Compute the SMART TVD correction in normalized-variable space.
 
 ## Source
 
-[View on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/519353229140eeec75a2a29f225cdc3e35aa5e4f/src/pymrm/convect.py#L478-L509)
+[View on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/edd7b4da542580c2776cbb05bd6761bce4495f28/src/pymrm/convect.py#L490-L521)
 
 ```python
 def smart(normalized_c_c, normalized_x_c, normalized_x_d):

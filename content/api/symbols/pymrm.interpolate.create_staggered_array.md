@@ -34,7 +34,7 @@ Create a face/staggered field from scalar, centered, or staggered input.
 
 ## Source
 
-[View on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/519353229140eeec75a2a29f225cdc3e35aa5e4f/src/pymrm/interpolate.py#L329-L383)
+[View on GitHub](https://github.com/computational-chemical-engineering/pymrm/blob/edd7b4da542580c2776cbb05bd6761bce4495f28/src/pymrm/interpolate.py#L329-L374)
 
 ```python
 def create_staggered_array(array, shape, axis, x_f=None, x_c=None):
@@ -73,16 +73,7 @@ def create_staggered_array(array, shape, axis, x_f=None, x_c=None):
         array = np.full(shape_f, array)
         return array
 
-    if len(shape) != 1 and array.ndim == 1:
-        shape_new = [1] * len(shape)
-        if array.size in (shape[axis], shape_f[axis]):
-            shape_new[axis] = -1
-        else:
-            for i in range(len(shape) - 1, -1, -1):
-                if array.size == shape[i]:
-                    shape_new[i] = shape[i]
-                    break
-        array = array.reshape(shape_new)
+    array = _align_to_axes(array, shape, axis)
     if array.ndim != len(shape):
         raise ValueError("The array has the wrong number of dimensions.")
     if array.shape[axis] == shape[axis]:
